@@ -1,0 +1,55 @@
+/* GLOBAL STYLES */
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: #222;
+}
+
+.arabic {
+  font-family: "Scheherazade New", serif;
+  direction: rtl;
+}
+
+/* Category Buttons */
+.category-btn {
+  padding: 12px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.category-btn:hover {
+  background: #0056b3;
+}
+
+/* Tool Buttons */
+.tool-btn {
+  padding: 12px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tool-btn:hover {
+  background: #545b62;
+}
+
+/* NavBar */
+.navbar {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}

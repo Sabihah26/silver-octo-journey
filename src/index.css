@@ -1,0 +1,119 @@
+/* RESET */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* 🌙 DEFAULT LIGHT THEME (your gradient) */
+html, body, #root {
+  background: linear-gradient(135deg, #0b3b8c 0%, #07112B 100%);
+  color: #ffffff;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+}
+
+/* SEARCH BAR */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.search-input {
+  width: 60%;
+  padding: 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.search-button {
+  padding: 0.7rem 1.2rem;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+/* CATEGORY GRID */
+.category-grid,
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.category-card h3,
+.tool-card h3 {
+  margin-bottom: 0.3rem;
+}
+
+/* Tool card links in Learning Tools */
+.tool-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.tool-card:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* PREMIUM */
+.premium {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* 🌙 DARK MODE OVERRIDES */
+.dark-mode {
+  background: #0d1117 !important; /* GitHub-style dark */
+  color: #e6edf3 !important;
+}
+
+/* Inputs in dark mode */
+.dark-mode input,
+.dark-mode select {
+  background: #161b22;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+}
+
+/* Buttons in dark mode */
+.dark-mode button {
+  background: #238636;
+  color: #ffffff;
+}
+
+/* Cards / boxes in dark mode */
+.dark-mode div[style*="border"] {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+}

@@ -1,0 +1,49 @@
+/* ================================
+   GLOBAL WORD TYPE COLOUR CLASSES
+   ================================ */
+
+.word-verb {
+  color: var(--verb-color);
+  font-weight: 600;
+}
+
+.word-noun {
+  color: var(--noun-color);
+  font-weight: 600;
+}
+
+.word-adverb {
+  color: var(--adverb-color);
+  font-weight: 600;
+}
+
+/* Optional: coloured background badges */
+.badge-verb {
+  background: var(--verb-color);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-noun {
+  background: var(--noun-color);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-adverb {
+  background: var(--adverb-color);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}

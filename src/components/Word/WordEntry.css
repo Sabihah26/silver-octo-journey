@@ -1,0 +1,18 @@
+.word-entry-container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.arabic-word {
+  font-size: 48px;
+  font-family: "Noto Naskh Arabic", serif;
+}
+
+.english-meaning {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.button-row button {
+  margin-right: 10px;
+}

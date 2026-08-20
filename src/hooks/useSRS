@@ -1,0 +1,26 @@
+import { useState, useEffect } from "react";
+import { getItemSRS, updateSRS } from "../utils/srsEngine";
+
+export default function useSRS(verbKey) {
+  const [record, setRecord] = useState(() => getItemSRS(verbKey));
+
+  useEffect(() => {
+    setRecord(getItemSRS(verbKey));
+  }, [verbKey]);
+
+  const markCorrect = () => {
+    const updated = updateSRS(verbKey, true);
+    setRecord(updated);
+  };
+
+  const markWrong = () => {
+    const updated = updateSRS(verbKey, false);
+    setRecord(updated);
+  };
+
+  return {
+    record,
+    markCorrect,
+    markWrong,
+  };
+}

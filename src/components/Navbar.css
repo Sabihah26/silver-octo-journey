@@ -1,0 +1,43 @@
+.navbar {
+  background: #07112B;
+  padding: 0.4rem 1rem;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  width: fit-content;   /* ⭐ shrink navbar to content */
+  margin: 0 auto;       /* ⭐ center it */
+  border-radius: 12px;  /* optional: makes it look premium */
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.6rem;            /* ⭐ reduced gap */
+}
+
+.nav-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 0.45rem 0.9rem; /* ⭐ reduced from 0.7rem → 0.45rem */
+  border-radius: 8px;      /* ⭐ slightly smaller */
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;            /* ⭐ reduced spacing between icon + text */
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;      /* ⭐ slightly smaller text */
+  transition: all 0.25s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  background: rgba(255,255,255,0.28);
+}
+
+.nav-icon {
+  font-size: 1rem;         /* ⭐ reduced from 1.2rem → 1rem */
+}

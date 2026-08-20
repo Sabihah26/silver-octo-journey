@@ -1,0 +1,39 @@
+{
+  "name": "arabic-dictionary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A React application for an Arabic dictionary.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@fontsource/cairo": "^5.2.7",
+    "@fontsource/noto-naskh-arabic": "^5.2.11",
+    "@fontsource/noto-sans": "^5.2.10",
+    "@supabase/supabase-js": "^1.35.7",
+    "react-router-dom": "6.4",
+    "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
