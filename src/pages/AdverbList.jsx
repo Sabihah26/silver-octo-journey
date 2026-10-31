@@ -1,11 +1,16 @@
 // src/pages/AdverbList.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";   // ⭐ ADDED useParams
 import adverbs from "../data/Adverbs";
 
 export default function AdverbList() {
+  const { category: urlCategory } = useParams();   // ⭐ READ category from URL
+
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
+
+  // If URL has a category, override the filter
+  const activeCategory = urlCategory || filter;    // ⭐ NEW
 
   // Audio function
   const speak = (text) => {
@@ -23,14 +28,29 @@ export default function AdverbList() {
       a.english.toLowerCase().includes(q) ||
       (a.category && a.category.toLowerCase().includes(q));
 
-    const matchesFilter = filter === "all" ? true : a.category === filter;
+    const matchesFilter =
+      activeCategory === "all" ? true : a.category === activeCategory;   // ⭐ UPDATED
 
     return matchesSearch && matchesFilter;
   });
 
+  // ⭐ COLOR THEMES
+  const categoryColors = {
+    all: "#9CA3AF",        // grey
+    time: "#3B82F6",       // blue
+    place: "#10B981",      // green
+    manner: "#F59E0B",     // orange
+    frequency: "#8B5CF6",  // purple
+    degree: "#EC4899",     // pink
+  };
+
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>Adverbs</h1>
+      <h1 style={styles.title}>
+        {urlCategory
+          ? `${urlCategory.charAt(0).toUpperCase() + urlCategory.slice(1)} Adverbs`
+          : "Adverbs"}
+      </h1>
 
       {/* Search */}
       <input
@@ -41,19 +61,35 @@ export default function AdverbList() {
         style={styles.search}
       />
 
-      {/* Filters */}
+      {/* ⭐ Gemini-style category buttons with color themes */}
       <div style={styles.filterRow}>
-        {["all", "time", "place", "manner", "frequency"].map((cat) => (
+        {[
+          { id: "all", label: "All", icon: "✨" },
+          { id: "time", label: "Time", icon: "🕒" },
+          { id: "place", label: "Place", icon: "🗺️" },
+          { id: "manner", label: "Manner", icon: "⚡" },
+          { id: "frequency", label: "Frequency", icon: "🔄" },
+          { id: "degree", label: "Degree", icon: "✨" },
+        ].map((cat) => (
           <button
-            key={cat}
-            onClick={() => setFilter(cat)}
+            key={cat.id}
+            onClick={() => setFilter(cat.id)}
+            disabled={!!urlCategory}
             style={{
               ...styles.filterButton,
-              background: filter === cat ? "#1E3A8A" : "white",
-              color: filter === cat ? "white" : "#0A1A3A",
+              borderColor: categoryColors[cat.id],
+              background:
+                activeCategory === cat.id ? categoryColors[cat.id] : "white",
+              color:
+                activeCategory === cat.id ? "white" : categoryColors[cat.id],
+              opacity: urlCategory ? 0.5 : 1,
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
             }}
           >
-            {cat === "all" ? "All" : cat.charAt(0).toUpperCase() + cat.slice(1)}
+            <span style={{ fontSize: "20px" }}>{cat.icon}</span>
+            <span>{cat.label}</span>
           </button>
         ))}
       </div>
@@ -83,7 +119,7 @@ export default function AdverbList() {
 
               {/* Card content */}
               <Link
-                to={isLocked ? "#" : `/adverb/${a.id}`}
+                to={isLocked ? "#" : `/adverbs/${a.id}`}
                 style={{
                   ...styles.cardLink,
                   pointerEvents: isLocked ? "none" : "auto",
@@ -95,13 +131,32 @@ export default function AdverbList() {
                 <div style={styles.english}>{a.english}</div>
 
                 {a.category && (
-                  <div style={styles.categoryBadge}>{a.category}</div>
+                  <div
+                    style={{
+                      ...styles.categoryBadge,
+                      background: categoryColors[a.category],
+                    }}
+                  >
+                    {a.category}
+                  </div>
                 )}
               </Link>
             </div>
           );
         })}
       </div>
+
+      {/* Back to categories when inside URL category */}
+      {urlCategory && (
+        <div style={{ marginTop: 20, textAlign: "center" }}>
+          <Link
+            to="/adverbs/categories"
+            style={{ fontSize: 20, color: "#8cb9e5", textDecoration: "none" }}
+          >
+            ← Back to Categories
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
@@ -117,7 +172,6 @@ const styles = {
     color: "white",
   },
 
-  /* ⭐ NEW NAVBAR ⭐ */
   navbar: {
     display: "flex",
     justifyContent: "center",
@@ -216,7 +270,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "14px",
-    zIndex: 10,
+    zIndex: "10",
     fontWeight: "bold",
   },
 
@@ -234,9 +288,8 @@ const styles = {
 
   categoryBadge: {
     marginTop: "10px",
-    padding: "6px 10px",
+    padding: "4px 8px",
     borderRadius: "8px",
-    background: "#0A1A3A",
     color: "white",
     fontSize: "14px",
     width: "fit-content",

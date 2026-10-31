@@ -3,15 +3,28 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import verbs from "../data/verbs";
 
+// Convert 1–10 → I–X
+const romanMap = {
+  1: "I",
+  2: "II",
+  3: "III",
+  4: "IV",
+  5: "V",
+  6: "VI",
+  7: "VII",
+  8: "VIII",
+  9: "IX",
+  10: "X",
+};
+
 export default function FormDifficultyPage() {
   const { formNumber, difficulty } = useParams();
-  const formLabel = `Form ${formNumber}`;
 
-  // ⭐ FIX: Verbs do NOT have difficulty levels
-  // So we filter ONLY by form, not difficulty
-  const filtered = verbs.filter(
-    (v) => v.form === formLabel
-  );
+  // ⭐ FIX: Correct form label
+  const formLabel = `Form ${romanMap[Number(formNumber)]}`;
+
+  // Filter verbs by correct form
+  const filtered = verbs.filter((v) => v.form === formLabel);
 
   // Extract real topics
   const realTopics = Array.from(

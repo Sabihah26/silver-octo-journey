@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 /* White Folder SVG Icon */
 const WhiteFolderIcon = () => (
   <svg
-    width="28"   // bigger icon
-    height="28"
+    width="16"   // slightly smaller icon
+    height="26"
     viewBox="0 0 24 24"
     fill="white"
     xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +57,8 @@ export default function NounCategoryPage() {
             to={`/nouns/category/${cat.key}`}
             style={categoryButton}
           >
-            <span style={{ fontSize: "22px" }}>{cat.icon}</span> {/* bigger icon */}
-            <span style={{ fontSize: "20px", marginLeft: "6px" }}>{cat.label}</span> {/* bigger text */}
+            <span style={{ fontSize: "18px" }}>{cat.icon}</span> {/* smaller icon */}
+            <span style={{ fontSize: "17px", marginLeft: "6px" }}>{cat.label}</span> {/* smaller text */}
           </Link>
         ))}
       </div>
@@ -71,7 +71,7 @@ export default function NounCategoryPage() {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Link to="/topics" style={topicsButton}>
           <WhiteFolderIcon />
-          <span style={{ fontSize: "20px", fontWeight: "bold" }}>Topics</span>
+          <span style={{ fontSize: "18px", fontWeight: "bold" }}>Topics</span>
         </Link>
       </div>
     </div>
@@ -81,17 +81,17 @@ export default function NounCategoryPage() {
 /* Responsive grid: 3 columns → 2 columns → 1 column */
 const gridContainer = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-  gap: "16px",
+  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+  gap: "14px", // slightly smaller spacing
   maxWidth: "500px",
   margin: "0 auto",
 };
 
-/* Category button style */
+/* Category button style — smaller */
 const categoryButton = {
   background: "#0A1A3A",
   color: "white",
-  padding: "14px 20px",
+  padding: "30px 11px",   // smaller padding
   borderRadius: "10px",
   textDecoration: "none",
   textAlign: "center",
@@ -103,11 +103,11 @@ const categoryButton = {
 const topicsButton = {
   background: "linear-gradient(135deg, #F2C94C 0%, #F7D97A 100%)",
   color: "#1A1A1A",
-  padding: "14px 20px",
+  padding: "12px 18px",   // slightly smaller
   borderRadius: "10px",
   textDecoration: "none",
   textAlign: "center",
-  minWidth: "180px",
+  minWidth: "160px",      // smaller width
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

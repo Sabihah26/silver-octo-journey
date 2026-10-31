@@ -3,18 +3,13 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import verbs from "../data/verbs";
-import conjugate from "../utils/conjugate";
 
-// Global font sizes (easy to change)
-const FONT_SIZES = {
-  arabicForm: 40,     // main Arabic verb form
-  arabicPronoun: 30,  // Arabic pronoun
-  englishPronoun: 20, // English pronoun label
-};
+import conjugate from "../utils/conjugate";
 
 export default function VerbPage() {
   const { id } = useParams();
-  const verb = verbs.find((v) => v.id === Number(id));
+
+  const verb = verbs.find((v) => String(v.id) === String(id));
 
   if (!verb) {
     return (
@@ -25,31 +20,64 @@ export default function VerbPage() {
     );
   }
 
-  const formKey = verb.form;
-  const c = conjugate(verb.root, formKey);
+  // Normalize form key
+  const formKey =
+    typeof verb.form === "string"
+      ? verb.form.replace("Form", "").trim()
+      : verb.form;
 
-  // ⭐ Masdar handling
-  const masdarSource = verb.masdar || c.masdar;
-  let masdarList = [];
+  conjugate(verb.root, formKey);
 
-  if (Array.isArray(masdarSource)) {
-    masdarList = masdarSource
-      .map((item) => {
-        if (typeof item === "string") return { ar: item.trim() };
-        return item;
-      })
-      .filter(Boolean);
-  } else if (typeof masdarSource === "string") {
-    const parts = masdarSource
-      .split(/،|,|，/)
-      .map((s) => s.trim())
-      .filter(Boolean);
+  // ⭐ SAFE ARABIC EXTRACTION
+  const rawArabicPast =
+    verb.past ||
+    verb.arabic?.past ||
+    verb.arabic?.simple ||
+    verb.arabic?.default ||
+    verb.arabic ||
+    "";
 
-    masdarList =
-      parts.length > 1
-        ? parts.map((p) => ({ ar: p }))
-        : [{ ar: masdarSource.trim() }];
-  }
+  const arabicPast =
+    typeof rawArabicPast === "string"
+      ? rawArabicPast
+      : rawArabicPast?.past ||
+        rawArabicPast?.simple ||
+        rawArabicPast?.default ||
+        "";
+
+  // SAFE PRESENT
+  const rawArabicPresent =
+    verb.present ||
+    verb.arabic?.present ||
+    verb.presentForm ||
+    "";
+
+  const arabicPresent =
+    typeof rawArabicPresent === "string"
+      ? rawArabicPresent
+      : rawArabicPresent?.present ||
+        rawArabicPresent?.simple ||
+        "";
+
+  // SAFE TRANSLIT
+  const translitMain =
+    verb.transliteration?.past ||
+    (typeof verb.transliteration === "string"
+      ? verb.transliteration
+      : verb.transliteration?.simple) ||
+    "";
+
+  // Difficulty EN fallback
+  const difficultyEn =
+    verb.difficulty?.english ||
+    verb.difficulty?.en ||
+    "—";
+
+  // Semantic family fallback
+  const semanticFamily =
+    verb.semanticFamily ||
+    verb.relatedVerbs?.semantic?.join(", ") ||
+    "—";
 
   return (
     <div style={{ paddingBottom: 60, background: "transparent" }}>
@@ -79,7 +107,7 @@ export default function VerbPage() {
             boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
           }}
         >
-          {/* COLUMN 1 */}
+          {/* COLUMN 1 — Blue Button */}
           <div style={{ textAlign: "center" }}>
             <button
               style={{
@@ -92,105 +120,60 @@ export default function VerbPage() {
                 cursor: "pointer",
                 marginBottom: "10px",
               }}
-              onClick={() => (window.location.href = `/verb/${verb.id}`)}
+              onClick={() => (window.location.href = `/verb/${verb.id}/grid`)}
             >
-              {verb.past}
+              {arabicPast}
             </button>
 
-            <h2
-              style={{
-                fontSize: 45,
-                marginBottom: "0.5rem",
-                color: "#444",
-              }}
-            >
-              {verb.present}
+            <h2 style={{ fontSize: 45, marginBottom: "0.5rem", color: "#444" }}>
+              {arabicPresent}
             </h2>
 
             <p style={{ fontSize: 30, color: "#555" }}>
-              {verb.transliteration}
+              {translitMain}
             </p>
           </div>
 
           {/* COLUMN 2 — Grammar */}
           <div style={{ textAlign: "left", fontSize: 23 }}>
-            <p style={{ fontSize: 28, fontWeight: 600 }}>
+            <p style={{ fontSize: 28, fontWeight: 600, color: "#1061e4" }}>
               {verb.english?.simple || verb.english?.detailed || ""}
             </p>
 
-            <div
-              style={{
-                height: "0px",
-                margin: "10px 0 10px 0",
-                borderBottom: "2px solid #0000",
-                width: "85%",
-              }}
-            />
+            <div style={{ height: "0px", margin: "10px 0", width: "85%" }} />
 
-            <div
-              style={{
-                background: "white",
-                padding: "0px",
-                borderRadius: "2px",
-                lineHeight: 1.1,
-              }}
-            >
-              <p style={{ color: "#070709", marginBottom: 8 }}>
-                <strong>Root:</strong>{" "}
-                <span
-                  style={{
-                    fontSize: 40,
-                    marginLeft: 8,
-                    color: "#141f9c",
-                    fontWeight: "700",
-                  }}
-                >
+            <div style={{ background: "white", lineHeight: 1.1 }}>
+              <p style={{ marginBottom: 8 }}>
+                <strong style={{ color: "#1061e4" }}>Root:</strong>{" "}
+                <span style={{ fontSize: 40, marginLeft: 8, color: "black" }}>
                   {verb.root}
                 </span>
               </p>
 
-              <p style={{ color: "#09090b", marginBottom: 8 }}>
-                <strong>Form:</strong>{" "}
-                <span
-                  style={{
-                    fontSize: 20,
-                    fontWeight: "600",
-                    marginLeft: 8,
-                    color: "#141f9c",
-                  }}
-                >
+              <p style={{ marginBottom: 8 }}>
+                <strong style={{ color: "#1061e4" }}>Form:</strong>{" "}
+                <span style={{ fontSize: 20, marginLeft: 8, color: "black" }}>
                   {verb.form}
                 </span>
               </p>
 
-              <p style={{ color: "#000000", marginBottom: 8, fontSize: 22 }}>
-                <strong>Weak type:</strong>{" "}
-                <span style={{ marginLeft: 8 }}>{verb.weakType || "—"}</span>
+              <p style={{ marginBottom: 8, fontSize: 22 }}>
+                <strong style={{ color: "#1061e4" }}>Weak type:</strong>{" "}
+                <span style={{ marginLeft: 8, color: "black" }}>
+                  {verb.verbType || verb.weakType || "—"}
+                </span>
               </p>
 
-              <p style={{ color: "#555", marginBottom: 8 }}>
-                <strong>Wazan:</strong>{" "}
-                <span
-                  style={{
-                    fontWeight: "700",
-                    marginLeft: 8,
-                    fontSize: 42,
-                    color: "#141f9c",
-                  }}
-                >
+              <p style={{ marginBottom: 8 }}>
+                <strong style={{ color: "#1061e4" }}>Wazan:</strong>{" "}
+                <span style={{ fontSize: 42, marginLeft: 8, color: "black" }}>
                   {verb.wazan || "—"}
                 </span>
               </p>
 
-              <p style={{ color: "#555", marginBottom: 8 }}>
-                <strong>Form Family:</strong>{" "}
-                <span
-                  style={{
-                    marginLeft: 8,
-                    color: "#141f9c",
-                    fontWeight: 600,
-                  }}
-                >
+              <p style={{ marginBottom: 8 }}>
+                <strong style={{ color: "#1061e4" }}>Form Family:</strong>{" "}
+                <span style={{ marginLeft: 8, color: "black" }}>
                   {verb.formFamily?.name || "—"}
                 </span>
               </p>
@@ -206,18 +189,12 @@ export default function VerbPage() {
                     fontSize: 35,
                     fontWeight: 600,
                     textAlign: "center",
-                    marginBottom: 4,
+                    color: "black",
                   }}
                 >
                   {verb.examples.simple.ar}
                 </p>
-                <p
-                  style={{
-                    fontSize: 20,
-                    color: "#555",
-                    marginBottom: 12,
-                  }}
-                >
+                <p style={{ fontSize: 20, color: "black" }}>
                   {verb.examples.simple.en}
                 </p>
               </>
@@ -230,18 +207,12 @@ export default function VerbPage() {
                     fontSize: 35,
                     fontWeight: 600,
                     textAlign: "center",
-                    marginBottom: 4,
+                    color: "black",
                   }}
                 >
                   {verb.examples.natural.ar}
                 </p>
-                <p
-                  style={{
-                    fontSize: 20,
-                    color: "#555",
-                    marginBottom: 12,
-                  }}
-                >
+                <p style={{ fontSize: 20, color: "black" }}>
                   {verb.examples.natural.en}
                 </p>
               </>
@@ -254,13 +225,12 @@ export default function VerbPage() {
                     fontSize: 35,
                     fontWeight: 600,
                     textAlign: "center",
-                    lineHeight: 1,
-                    marginBottom: 4,
+                    color: "black",
                   }}
                 >
                   {verb.examples.rich.ar}
                 </p>
-                <p style={{ fontSize: 20, color: "#555" }}>
+                <p style={{ fontSize: 20, color: "black" }}>
                   {verb.examples.rich.en}
                 </p>
               </>
@@ -297,7 +267,6 @@ export default function VerbPage() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr",
-            gap: ".50px",
           }}
         >
           {/* Difficulty */}
@@ -305,20 +274,22 @@ export default function VerbPage() {
             <h3 style={{ fontSize: 24, marginBottom: 10, color: "#1061e4" }}>
               Difficulty
             </h3>
-            <p style={{ fontSize: 22, lineHeight: 1.8, color: "#000000" }}>
-              <strong>CEFR:</strong>{" "}
-              <span style={{ marginLeft: 8 }}>
+            <p style={{ fontSize: 22, lineHeight: 1.8 }}>
+              <strong style={{ color: "#1061e4" }}>CEFR:</strong>{" "}
+              <span style={{ color: "black" }}>
                 {verb.difficulty?.cefr || "—"}
               </span>
               <br />
-              <strong>Arabic:</strong>{" "}
-              <span style={{ marginLeft: 8,fontSize: 35 }}>
-                {verb.difficulty?.arabic || "—"}
+
+              <strong style={{ color: "#1061e4" }}>Difficulty (EN):</strong>{" "}
+              <span style={{ color: "black" }}>
+                {difficultyEn}
               </span>
               <br />
-              <strong>Frequency:</strong>{" "}
-              <span style={{ marginLeft: 8 }}>
-                {verb.difficulty?.frequency || "—"}
+
+              <strong style={{ color: "#1061e4" }}>Frequency:</strong>{" "}
+              <span style={{ color: "black" }}>
+                {verb.frequency || "—"}
               </span>
             </p>
           </div>
@@ -328,9 +299,11 @@ export default function VerbPage() {
             <h3 style={{ fontSize: 24, marginBottom: 10, color: "#1061e4" }}>
               Topics
             </h3>
-            <ul style={{ fontSize: 21, lineHeight: 1.6, color: "#000000" }}>
+            <ul style={{ fontSize: 21, lineHeight: 1.6 }}>
               {verb.topics?.map((t, i) => (
-                <li key={i}>{t}</li>
+                <li key={i} style={{ color: "black" }}>
+                  {t}
+                </li>
               ))}
             </ul>
           </div>
@@ -341,194 +314,62 @@ export default function VerbPage() {
               Related Verbs
             </h3>
 
-            <p style={{ fontSize: 20, fontWeight: 600, color: "#1061e4" }}>
-              Root Family
-            </p>
-            <ul style={{ fontSize: 21, lineHeight: 1.6, color: "#000000" }}>
-              {verb.relatedVerbs?.root?.map((v, i) => (
-                <li key={i}>{v}</li>
-              ))}
-            </ul>
+            <div style={{ marginBottom: "20px" }}>
+              <strong style={{ fontSize: 20, color: "#1061e4" }}>
+                Root Family:
+              </strong>
+              <span
+                style={{
+                  fontSize: 35,
+                  marginLeft: "12px",
+                  color: "black",
+                }}
+              >
+                {verb.rootFamily ||
+                  verb.relatedVerbs?.root?.join("، ") ||
+                  "—"}
+              </span>
+            </div>
 
-            <p
-              style={{
-                fontSize: 20,
-                fontWeight: 600,
-                marginTop: 10,
-                color: "#1061e4",
-              }}
-            >
-              Semantic Family
-            </p>
-            <ul style={{ fontSize: 18, lineHeight: 1.6, color: "#000000" }}>
-              {verb.relatedVerbs?.semantic?.map((v, i) => (
-                <li key={i}>
-                  <span style={{ fontWeight: 700 }}>{v}</span>
-                </li>
-              ))}
-            </ul>
+            <div style={{ marginBottom: "20px" }}>
+              <strong style={{ fontSize: 20, color: "#1061e4" }}>
+                Semantic Family:
+              </strong>
+              <span
+                style={{
+                  fontSize: 20,
+                  marginLeft: "12px",
+                  color: "black",
+                  fontWeight: 700,
+                }}
+              >
+                {semanticFamily}
+              </span>
+            </div>
 
-            <p
-              style={{
-                fontSize: 23,
-                fontWeight: 600,
-                marginTop: 10,
-                color: "#1061e4",
-              }}
-            >
-              Form Family
-            </p>
-            <ul style={{ fontSize: 18, lineHeight: 1.6, color: "#000000" }}>
-              {verb.relatedVerbs?.formFamily?.map((v, i) => (
-                <li key={i}>{v}</li>
-              ))}
-            </ul>
+            <div>
+              <strong style={{ fontSize: 20, color: "#1061e4" }}>
+                Form Family:
+              </strong>
+              <span
+                style={{
+                  fontSize: 20,
+                  marginLeft: "12px",
+                  color: "black",
+                }}
+              >
+                {verb.formFamily?.name ||
+                  verb.relatedVerbs?.formFamily?.join(", ") ||
+                  "—"}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      {/* MASTER GRID — 5 COLUMNS, RTL */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 220px)",
-          gap: "18px",
-          direction: "rtl",
-          justifyContent: "center",
-          marginBottom: "40px",
-        }}
-      >
-        {/* COLUMN 1 — Past */}
-        <GridCard
-          to={`/verb/${verb.id}/past`}
-          arabic="الماضي"
-          english="Past"
-          value={c.past["هو"]}
-          larger
-        />
-
-        {/* COLUMN 2 — Present */}
-        <GridCard
-          to={`/verb/${verb.id}/present`}
-          arabic="المضارع"
-          english="Present"
-          value={c.present["هو"]}
-          larger
-        />
-
-        {/* COLUMN 3 — Active Participle */}
-        <GridCard
-          to={`/verb/${verb.id}/activeParticiple`}
-          arabic="اسم الفاعل"
-          english="Active Participle"
-          value={c.activeParticiple}
-          larger
-        />
-
-        {/* COLUMN 4 — Masdar 1 */}
-        {masdarList[0] && (
-          <GridCard
-            to={`/verb/${verb.id}/masdar-1`}
-            arabic="المصدر ١"
-            english={masdarList[0].en}
-            value={masdarList[0]}
-            larger
-          />
-        )}
-
-        {/* COLUMN 5 — Masdar 2 */}
-        {masdarList.length > 1 && (
-          <GridCard
-            to={`/verb/${verb.id}/masdar-2`}
-            arabic="المصدر ٢"
-            english={masdarList[1].en}
-            value={masdarList[1]}
-            larger
-          />
-        )}
-
-        {/* ROW 2 — Passive */}
-        <GridCard
-          to={`/verb/${verb.id}/passivePast`}
-          arabic="الماضي المبني للمجهول"
-          english="Passive Past"
-          value={c.passivePast["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/passivePresent`}
-          arabic="المضارع المبني للمجهول"
-          english="Passive Present"
-          value={c.passivePresent["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/passiveParticiple`}
-          arabic="اسم المفعول"
-          english="Passive Participle"
-          value={c.passiveParticiple}
-          larger
-        />
-
-        {/* ROW 3 — Moods */}
-        <GridCard
-          to={`/verb/${verb.id}/jussive`}
-          arabic="المجزوم"
-          english="Jussive"
-          value={c.jussive["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/subjunctive`}
-          arabic="المنصوب"
-          english="Subjunctive"
-          value={c.subjunctive["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/negativePast`}
-          arabic="نفي الماضي"
-          english="Negative Past"
-          value={c.negativePast["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/negativePresent`}
-          arabic="نفي المضارع"
-          english="Negative Present"
-          value={c.negativePresent["هو"]}
-          larger
-        />
-
-        {/* ROW 4 — Futures */}
-        <GridCard
-          to={`/verb/${verb.id}/future_sa`}
-          arabic="س"
-          english="Future (sa)"
-          value={c.future_sa["هو"]}
-          larger
-        />
-
-        <GridCard
-          to={`/verb/${verb.id}/future_sawfa`}
-          arabic="سوف"
-          english="Future (sawfa)"
-          value={c.future_sawfa["هو"]}
-          larger
-        />
-      </div>
 
       {/* Navigation */}
-      <hr
-        style={{
-          margin: "32px 0",
-          borderColor: "rgba(255,255,255,0.3)",
-        }}
-      />
+      <hr style={{ margin: "32px 0", borderColor: "rgba(255,255,255,0.3)" }} />
+
       <div
         style={{
           display: "flex",
@@ -540,123 +381,15 @@ export default function VerbPage() {
         <Link to="/verbs" style={{ color: "white" }}>
           ← Back to Verb List
         </Link>
+
         <Link to={`/verb-summary/${verb.id}`} style={{ color: "white" }}>
           Verb Summary
         </Link>
-        <Link
-          to={`/weak-verb-summary/${verb.id}`}
-          style={{ color: "white" }}
-        >
+
+        <Link to={`/weak-verb-summary/${verb.id}`} style={{ color: "white" }}>
           Weak Verb View
         </Link>
       </div>
     </div>
-  );
-}
-
-/* GRID CARD */
-function GridCard({
-  to,
-  arabic,
-  english,
-  value,
-  align = "center",
-  larger = false,
-}) {
-  const width = "220px";
-  const minHeight = larger ? "200px" : "150px";
-  const padding = larger ? "18px 20px" : "14px 16px";
-
-  const isObj = value && typeof value === "object";
-  const displayArabic = isObj ? value.ar || "" : value;
-  const displayTranslit = isObj ? value.tr || null : null;
-  const displayEnglish = isObj ? value.en || english : english;
-
-  const mainFont = larger ? 40 : 30;
-  const labelFont = 35 * 0.75;
-
-  return (
-    <Link to={to} style={{ textDecoration: "none" }}>
-      <div
-        style={{
-          background: "white",
-          borderRadius: "12px",
-          padding,
-          width,
-          minHeight,
-          boxShadow: "0 3px 10px rgba(0,0,0,0.08)",
-          border: "1px solid #e5e7eb",
-          textAlign: align,
-          color: "#0A1A3A",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: align === "center" ? "center" : "flex-start",
-          transition: "transform 0.2s ease, boxShadow 0.2s ease",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.05)";
-          e.currentTarget.style.boxShadow =
-            "0 6px 16px rgba(0,0,0,0.15)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow =
-            "0 4px 12px rgba(0,0,0,0.08)";
-        }}
-      >
-        {/* Big Arabic */}
-        <div
-          style={{
-            fontSize: mainFont,
-            fontWeight: 700,
-            marginBottom: 6,
-            lineHeight: 1.2,
-          }}
-        >
-          {displayArabic}
-        </div>
-
-        {/* Transliteration */}
-        {displayTranslit && (
-          <div
-            style={{
-              fontSize: 14,
-              color: "#646e83",
-              marginBottom: 4,
-            }}
-          >
-            {displayTranslit}
-          </div>
-        )}
-
-        {/* English */}
-        {displayEnglish && (
-          <div
-            style={{
-              fontSize: 18,
-              color: "#646e83",
-              marginBottom: 4,
-            }}
-          >
-            {displayEnglish}
-          </div>
-        )}
-
-        {/* Smaller Arabic label (الماضي / المضارع / المصدر ١ / المصدر ٢) */}
-        {arabic && (
-          <div
-            style={{
-              fontSize: labelFont,
-              fontWeight: 600,
-              marginTop: 4,
-              color: "#0A1A3A",
-            }}
-          >
-            {arabic}
-          </div>
-        )}
-      </div>
-    </Link>
   );
 }

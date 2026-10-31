@@ -19,38 +19,65 @@ export default function Navbar() {
 
         {/* VERBS */}
         <NavLink 
-          to="/verbs" 
+          to="/verbs/categories"
           className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
         >
           <span className="nav-icon">📘</span>
           <span>Verbs</span>
         </NavLink>
 
-        {/* NOUNS */}
+        {/* ⭐ FIXED — NOUNS NOW GOES TO /nouns */}
         <NavLink 
-          to="/nouns" 
+          to="/nouns/categories"
           className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
         >
           <span className="nav-icon">📗</span>
           <span>Nouns</span>
         </NavLink>
 
-        {/* ADJECTIVES — NEW BUTTON */}
+        {/* ADJECTIVES */}
         <NavLink 
-          to="/adjectives" 
+          to="/adjectives/category" 
           className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
         >
           <span className="nav-icon">🎨</span>
           <span>Adjectives</span>
         </NavLink>
 
-        {/* ADVERBS */}
+        {/* ⭐ FIXED — this was the cause of the blank page */}
         <NavLink 
-          to="/adverbs" 
+          to="/adverbs"
           className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
         >
           <span className="nav-icon">📙</span>
           <span>Adverbs</span>
+        </NavLink>
+
+        {/* ⭐ ABOUT PAGE */}
+        <NavLink 
+          to="/about" 
+          className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+        >
+          <span className="nav-icon">ℹ️</span>
+          <span>About</span>
+        </NavLink>
+
+        {/* ⭐ CONTACT PAGE */}
+        <NavLink 
+          to="/contact" 
+          className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+        >
+          <span className="nav-icon">✉️</span>
+          <span>Contact</span>
+        </NavLink>
+
+        {/* ⭐ REPORT ERROR PAGE — NEW */}
+        <NavLink 
+          to="/report-error" 
+          className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+        >
+          <span className="nav-icon">⚠️</span>
+          <span>Report Error</span>
         </NavLink>
 
       </div>

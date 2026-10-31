@@ -8,7 +8,7 @@ import ExampleSentenceBox from "../components/ExampleSentenceBox";
 
 export default function VerbSummary() {
   const { id } = useParams();
-  const verb = verbs.find((v) => v.id === Number(id));
+  const verb = verbs.find((v) => v.id === id);
 
   if (!verb) {
     return <div style={styles.error}>Verb not found.</div>;
@@ -38,15 +38,26 @@ export default function VerbSummary() {
     audio.play();
   };
 
-  // 🔹 FIX: verb.english is an object (simple/detailed), not a string
+  // English fixes
   const englishSimple = verb.english?.simple || "";
   const englishDetailed = verb.english?.detailed || "";
 
-  // 🔹 FIX: verb.examples is an object (simple/natural/rich), not an array
-  // We flatten it into a single array for ExampleSentenceBox
+  // Difficulty fallback
+  const difficultyEn =
+    verb.difficulty?.english ||
+    verb.difficulty?.en ||
+    "—";
+
+  // Semantic fallback
+  const semantic =
+    verb.semanticFamily ||
+    verb.relatedVerbs?.semantic?.join(", ") ||
+    "—";
+
+  // Flatten examples
   let flatExamples = [];
   if (verb.examples && typeof verb.examples === "object") {
-    const groups = Object.values(verb.examples); // [ {ar,en,tr}, {…}, … ] or arrays
+    const groups = Object.values(verb.examples);
     flatExamples = groups.flatMap((group) =>
       Array.isArray(group) ? group : [group]
     );
@@ -57,8 +68,11 @@ export default function VerbSummary() {
       {/* Header */}
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <h1 style={styles.title} className="word-verb">
-          {verb.arabic}
+          {verb.arabic?.past}
         </h1>
+
+        {/* Transliteration */}
+        <p style={styles.translit}>{verb.transliteration?.past}</p>
 
         {/* AUDIO BUTTON FOR MAIN VERB */}
         <button
@@ -71,7 +85,7 @@ export default function VerbSummary() {
         </button>
       </div>
 
-      {/* Meaning line – uses english.simple + english.detailed */}
+      {/* Meaning line */}
       <p style={styles.meaning}>
         {englishSimple}
         {englishDetailed && (
@@ -90,9 +104,15 @@ export default function VerbSummary() {
         <p>
           <strong>Weak Type:</strong> {weakType}
         </p>
+        <p>
+          <strong>Difficulty (EN):</strong> {difficultyEn}
+        </p>
+        <p>
+          <strong>Semantic Family:</strong> {semantic}
+        </p>
       </div>
 
-      {/* Navigation to conjugation pages */}
+      {/* Navigation */}
       <h2 style={styles.sectionTitle}>Conjugations</h2>
 
       <div style={styles.navGrid}>
@@ -130,7 +150,6 @@ export default function VerbSummary() {
             <td style={styles.label}>Past (هو)</td>
             <td style={styles.value}>
               {table.past["هو"]}
-
               <button
                 onClick={() =>
                   play(`/audio/verbs/forms/${verb.id}-past.mp3`)
@@ -146,7 +165,6 @@ export default function VerbSummary() {
             <td style={styles.label}>Present (هو)</td>
             <td style={styles.value}>
               {table.present["هو"]}
-
               <button
                 onClick={() =>
                   play(`/audio/verbs/forms/${verb.id}-present.mp3`)
@@ -162,7 +180,6 @@ export default function VerbSummary() {
             <td style={styles.label}>Imperative (أنتَ)</td>
             <td style={styles.value}>
               {table.imperative["أنتَ"]}
-
               <button
                 onClick={() =>
                   play(`/audio/verbs/forms/${verb.id}-imperative.mp3`)
@@ -178,7 +195,6 @@ export default function VerbSummary() {
             <td style={styles.label}>Active Participle</td>
             <td style={styles.value}>
               {table.activeParticiple}
-
               <button
                 onClick={() =>
                   play(
@@ -196,7 +212,6 @@ export default function VerbSummary() {
             <td style={styles.label}>Passive Participle</td>
             <td style={styles.value}>
               {table.passiveParticiple}
-
               <button
                 onClick={() =>
                   play(
@@ -216,7 +231,6 @@ export default function VerbSummary() {
               {Array.isArray(table.masdar)
                 ? table.masdar.join("، ")
                 : table.masdar}
-
               <button
                 onClick={() =>
                   play(`/audio/verbs/forms/${verb.id}-masdar.mp3`)
@@ -230,7 +244,7 @@ export default function VerbSummary() {
         </tbody>
       </table>
 
-      {/* Example Sentences – uses flattened array */}
+      {/* Example Sentences */}
       {flatExamples.length > 0 && (
         <ExampleSentenceBox examples={flatExamples} verbId={verb.id} />
       )}
@@ -251,6 +265,14 @@ const styles = {
     fontSize: "36px",
     marginBottom: "10px",
   },
+
+  translit: {
+    fontSize: "22px",
+    marginTop: "-6px",
+    marginBottom: "10px",
+    color: "#444",
+  },
+
   meaning: {
     fontSize: "20px",
     marginBottom: "20px",

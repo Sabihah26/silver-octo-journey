@@ -4,11 +4,43 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import nouns from "../data/nouns";
 
+// ⭐ FONT SYSTEM — all font sizes controlled here
+const FONT = {
+  arabicMain: "40px",
+  arabicNumber: "40px",
+  arabicExample: "35px",
+
+  arabicRoot: "35px",
+
+  rootLabel: "18px",
+  rootArabicOnly: "35px",
+
+  englishMain: "22px",
+  englishInfo: "18px",
+  englishExample: "18px",
+
+  notes: "21px",
+  sectionTitle: "26px",
+  numberLabel: "16px",
+  backLink: "18px",
+  levelBtn: "16px",
+  levelActive: "16px",
+};
+
 export default function NounPage() {
   const { id } = useParams();
-  const noun = nouns.find((n) => n.id === Number(id));
+
+  // ⭐ FIXED — your noun IDs are now strings ("N1", "N204")
+  const noun = nouns.find((n) => n.id === id);
 
   const [level, setLevel] = useState("beginner");
+
+  const speak = (text) => {
+    if (!text) return;
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "ar-SA";
+    speechSynthesis.speak(utter);
+  };
 
   if (!noun) {
     return (
@@ -24,7 +56,6 @@ export default function NounPage() {
   return (
     <div style={styles.page}>
 
-      {/* Back to Category */}
       {noun.category && (
         <div style={{ textAlign: "center", marginBottom: 10 }}>
           <Link
@@ -39,16 +70,13 @@ export default function NounPage() {
       {/* HEADER GRID */}
       <div style={styles.headerGrid}>
 
-        {/* COLUMN 1 — Arabic + Audio */}
+        {/* COLUMN 1 */}
         <div style={styles.headerCol}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12 }}>
             <h1 style={styles.arabic}>{noun.arabic}</h1>
 
             <button
-              onClick={() => {
-                const audio = new Audio(`/audio/nouns/${noun.id}.mp3`);
-                audio.play();
-              }}
+              onClick={() => speak(noun.arabic)}
               style={styles.audioBtn}
               onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
               onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
@@ -57,6 +85,28 @@ export default function NounPage() {
             </button>
           </div>
 
+          {/* ⭐ ID DISPLAY */}
+          <div style={styles.idTag}>{noun.id}</div>
+
+          {/* ⭐ REPORT ERROR BUTTON — AUTO‑FILLED */}
+          <Link
+            to={`/report-error?type=noun&number=${noun.id}`}
+            style={{
+              display: "inline-block",
+              background: "#f59e0b",
+              color: "#0A1A3A",
+              padding: "8px 14px",
+              borderRadius: 10,
+              fontWeight: 600,
+              fontSize: 16,
+              textDecoration: "none",
+              marginTop: "10px",
+              marginBottom: "10px",
+            }}
+          >
+            ⚠️ Report Error
+          </Link>
+
           {noun.transliteration && (
             <p style={styles.translit}>
               <strong>Transliteration:</strong> {noun.transliteration}
@@ -64,7 +114,7 @@ export default function NounPage() {
           )}
         </div>
 
-        {/* COLUMN 2 — English + Notes */}
+        {/* COLUMN 2 */}
         <div style={styles.headerCol}>
           <p style={styles.english}>{noun.english}</p>
 
@@ -73,12 +123,12 @@ export default function NounPage() {
           )}
         </div>
 
-        {/* COLUMN 3 — Root, Gender, Category, Topics */}
+        {/* COLUMN 3 */}
         <div style={styles.headerCol}>
-
           {noun.root && (
-            <p style={styles.rootArabic}>
-              <strong>Root:</strong> {noun.root}
+            <p style={styles.rootLine}>
+              <span style={styles.rootLabel}>Root:</span>{" "}
+              <span style={styles.rootArabicOnly}>{noun.root}</span>
             </p>
           )}
 
@@ -100,7 +150,6 @@ export default function NounPage() {
               <strong>Topics:</strong> {noun.topics.join(", ")}
             </p>
           )}
-
         </div>
       </div>
 
@@ -109,21 +158,49 @@ export default function NounPage() {
         <h2 style={styles.sectionTitle}>Number Forms</h2>
 
         <div style={styles.numberRow}>
+          
+          {/* SINGULAR */}
           <div style={styles.numberCard}>
             <div style={styles.numberArabic}>{noun.singular || noun.arabic}</div>
+
+            <button
+              onClick={() => speak(noun.singular || noun.arabic)}
+              style={styles.audioBtn}
+            >
+              🔊
+            </button>
+
             <div style={styles.numberLabel}>Singular</div>
           </div>
 
-          {noun.dual && (
+          {/* DUAL */}
+          {typeof noun.dual === "string" && noun.dual.trim() !== "" && (
             <div style={styles.numberCard}>
               <div style={styles.numberArabic}>{noun.dual}</div>
+
+              <button
+                onClick={() => speak(noun.dual)}
+                style={styles.audioBtn}
+              >
+                🔊
+              </button>
+
               <div style={styles.numberLabel}>Dual</div>
             </div>
           )}
 
+          {/* PLURAL */}
           {noun.plural && (
             <div style={styles.numberCard}>
               <div style={styles.numberArabic}>{noun.plural}</div>
+
+              <button
+                onClick={() => speak(noun.plural)}
+                style={styles.audioBtn}
+              >
+                🔊
+              </button>
+
               <div style={styles.numberLabel}>Plural</div>
             </div>
           )}
@@ -154,7 +231,7 @@ export default function NounPage() {
         </button>
       </div>
 
-      {/* EXAMPLES — TWO COLUMNS */}
+      {/* EXAMPLES */}
       {examples.length > 0 && (
         <div style={styles.section}>
           <h2 style={styles.sectionTitle}>Examples ({level})</h2>
@@ -162,15 +239,20 @@ export default function NounPage() {
           {examples.map((ex, i) => (
             <div key={i} style={styles.exampleGrid}>
 
-              {/* LEFT COLUMN — English + Transliteration */}
               <div style={styles.exampleLeft}>
                 {ex.tr && <p style={styles.exampleTranslit}>{ex.tr}</p>}
                 <p style={styles.exampleEnglish}>{ex.en}</p>
               </div>
 
-              {/* RIGHT COLUMN — Arabic */}
               <div style={styles.exampleRight}>
                 <p style={styles.exampleArabic}>{ex.ar}</p>
+
+                <button
+                  onClick={() => speak(ex.ar)}
+                  style={styles.audioBtn}
+                >
+                  🔊
+                </button>
               </div>
 
             </div>
@@ -178,9 +260,8 @@ export default function NounPage() {
         </div>
       )}
 
-      {/* BACK LINKS */}
       <div style={styles.links}>
-        <Link to="/nouns" style={styles.backLink}>← Back to Noun List</Link>
+        <Link to="/nouns/categories" style={styles.backLink}>← Back to Noun List</Link>
         <Link to="/" style={styles.backLink}>Home</Link>
       </div>
     </div>
@@ -190,7 +271,7 @@ export default function NounPage() {
 const styles = {
   page: {
     padding: "10px",
-    maxWidth: "1000px",
+    maxWidth: "1100px",
     margin: "0 auto",
     color: "white",
     minHeight: "100vh",
@@ -198,7 +279,7 @@ const styles = {
 
   headerGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
     gap: "20px",
     background: "white",
     color: "#0A1A3A",
@@ -213,8 +294,15 @@ const styles = {
   },
 
   arabic: {
-    fontSize: "40px",
+    fontSize: FONT.arabicMain,
     marginBottom: "10px",
+  },
+
+  idTag: {
+    fontSize: "18px",
+    opacity: 0.7,
+    marginTop: "4px",
+    textAlign: "center",
   },
 
   audioBtn: {
@@ -227,29 +315,38 @@ const styles = {
   },
 
   english: {
-    fontSize: "22px",
+    fontSize: FONT.englishMain,
     marginBottom: "10px",
   },
 
   translit: {
-    fontSize: "18px",
+    fontSize: FONT.englishInfo,
     marginTop: "6px",
   },
 
   info: {
-    fontSize: "18px",
+    fontSize: FONT.englishInfo,
     marginBottom: "6px",
   },
 
-  /* ROOT — restored to original small size */
-  rootArabic: {
-    fontSize: "18px",
+  rootLine: {
     marginBottom: "6px",
+  },
+
+  rootLabel: {
+    fontSize: FONT.rootLabel,
+    fontWeight: "bold",
+    marginRight: "6px",
+  },
+
+  rootArabicOnly: {
+    fontSize: FONT.rootArabicOnly,
   },
 
   notes: {
     marginTop: "10px",
     fontStyle: "italic",
+    fontSize: FONT.notes,
     opacity: 0.8,
   },
 
@@ -258,13 +355,14 @@ const styles = {
   },
 
   sectionTitle: {
-    fontSize: "26px",
+    fontSize: FONT.sectionTitle,
     marginBottom: "10px",
     textAlign: "center",
   },
 
   numberRow: {
     display: "flex",
+    flexDirection: "row-reverse",   // ⭐ RTL FIX
     gap: 20,
     justifyContent: "center",
     flexWrap: "wrap",
@@ -281,17 +379,16 @@ const styles = {
   },
 
   numberArabic: {
-    fontSize: 40,
+    fontSize: FONT.arabicNumber,
     direction: "rtl",
     marginBottom: 8,
   },
 
   numberLabel: {
-    fontSize: 16,
+    fontSize: FONT.numberLabel,
     color: "#6b7280",
   },
 
-  /* TWO-COLUMN EXAMPLES */
   exampleGrid: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
@@ -312,19 +409,18 @@ const styles = {
     direction: "rtl",
   },
 
-  /* Arabic examples now 35px */
   exampleArabic: {
-    fontSize: "35px",
+    fontSize: FONT.arabicExample,
     direction: "rtl",
   },
 
   exampleTranslit: {
-    fontSize: "18px",
+    fontSize: FONT.englishInfo,
     opacity: 0.7,
   },
 
   exampleEnglish: {
-    fontSize: "18px",
+    fontSize: FONT.englishExample,
     marginTop: "6px",
   },
 
@@ -337,7 +433,7 @@ const styles = {
 
   backLink: {
     color: "white",
-    fontSize: "18px",
+    fontSize: FONT.backLink,
     textDecoration: "underline",
   },
 
@@ -346,10 +442,10 @@ const styles = {
     margin: "0 10px",
     background: "#0A1A3A",
     color: "white",
-    borderRadius: "8px",
+    borderRadius: "18px",
     border: "none",
     cursor: "pointer",
-    fontSize: "16px",
+    fontSize: FONT.levelBtn,
   },
 
   levelActive: {
@@ -360,7 +456,7 @@ const styles = {
     borderRadius: "8px",
     border: "none",
     cursor: "pointer",
-    fontSize: "16px",
+    fontSize: FONT.levelActive,
     fontWeight: "bold",
   },
 };

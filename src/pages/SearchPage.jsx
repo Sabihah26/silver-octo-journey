@@ -5,7 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 import verbs from "../data/verbs";
 import nouns from "../data/nouns";
 import adverbs from "../data/Adverbs";
-import adjectives from "../data/adjectives";   // ⭐ NEW — adjectives added
+import adjectives from "../data/adjectives";
 
 import SearchCard from "../components/SearchCard";
 
@@ -13,20 +13,28 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-/* -----------------------------
-   NORMALIZE ARABIC
------------------------------- */
+/* ⭐ SAFE NORMALIZATION */
 function normalizeArabic(str) {
-  if (!str) return "";
-  return str
-    .replace(/[\u064B-\u0652]/g, "")
-    .replace(/[أإآ]/g, "ا");
+  if (typeof str !== "string") return "";
+  try {
+    return str
+      .replace(/[\u064B-\u0652]/g, "")
+      .replace(/[أإآ]/g, "ا")
+      .trim();
+  } catch {
+    return "";
+  }
 }
 
-// distance for "did you mean"
+function normalizeRoot(str) {
+  return normalizeArabic(str).replace(/[\s-]/g, "");
+}
+
+/* ⭐ Levenshtein distance */
 function distance(a, b) {
-  a = a.toLowerCase();
-  b = b.toLowerCase();
+  a = String(a).toLowerCase();
+  b = String(b).toLowerCase();
+
   const dp = Array(a.length + 1)
     .fill(null)
     .map(() => Array(b.length + 1).fill(0));
@@ -49,7 +57,10 @@ function distance(a, b) {
 
 export default function SearchPage() {
   const query = useQuery();
-  const q = query.get("q") || "";
+  const rootQuery = query.get("root") || "";
+  const q = query.get("q") || rootQuery;
+  const isRootSearch = Boolean(rootQuery.trim());
+
   const [tab, setTab] = useState("all");
   const [visibleCount, setVisibleCount] = useState(20);
   const [didYouMean, setDidYouMean] = useState(null);
@@ -58,33 +69,51 @@ export default function SearchPage() {
   const searchTerm = q.trim().toLowerCase();
   const normalizedSearch = normalizeArabic(searchTerm);
 
-  // history
+  /* ⭐ Search history */
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("searchHistory") || "[]");
     setHistory(stored);
+
     if (searchTerm) {
-      const updated = [searchTerm, ...stored.filter((h) => h !== searchTerm)].slice(0, 10);
+      const updated = [
+        searchTerm,
+        ...stored.filter((h) => h !== searchTerm),
+      ].slice(0, 10);
+
       setHistory(updated);
       localStorage.setItem("searchHistory", JSON.stringify(updated));
     }
   }, [searchTerm]);
 
-  const allWords = useMemo(() => [...verbs, ...nouns, ...adverbs, ...adjectives], []);
+  const allWords = useMemo(
+    () => [...verbs, ...nouns, ...adverbs, ...adjectives],
+    []
+  );
 
+  /* ⭐ Did you mean */
   useEffect(() => {
     if (!searchTerm) {
       setDidYouMean(null);
       return;
     }
+
     let best = null;
     let bestScore = Infinity;
 
     allWords.forEach((w) => {
-      const arabic = normalizeArabic(w.arabic || "");
-      const d = distance(normalizedSearch, arabic);
+      const arabicCandidate =
+        w.arabic?.simple ||
+        w.arabic?.past ||
+        w.past ||
+        (typeof w.arabic === "string" ? w.arabic : "") ||
+        "";
+
+      const normalized = normalizeArabic(arabicCandidate);
+      const d = distance(normalizedSearch, normalized);
+
       if (d < bestScore) {
         bestScore = d;
-        best = w.arabic;
+        best = arabicCandidate;
       }
     });
 
@@ -95,37 +124,72 @@ export default function SearchPage() {
     }
   }, [normalizedSearch, allWords]);
 
-  /* -----------------------------
-     FILTERING LOGIC
------------------------------- */
-const filterList = (list) => {
-  return list.filter((item) => {
-    if (!searchTerm) return false;
+  /* ⭐ SAFE FILTER FUNCTION */
+  const filterList = (list) => {
+    return list.filter((item) => {
+      if (!searchTerm) return false;
 
-    const arabic = typeof item.arabic === "string"
-      ? normalizeArabic(item.arabic)
-      : "";
+      /* ⭐ Root search (verbs only) */
+      if (isRootSearch && list === verbs) {
+        const itemRoot = normalizeRoot(item.root || "");
+        const queryRoot = normalizeRoot(rootQuery);
+        return itemRoot === queryRoot;
+      }
 
-    const english = typeof item.english === "string"
-      ? item.english.toLowerCase()
-      : "";
+      /* ⭐ SAFE Arabic extraction (AMENDED FOR ADVERBS) */
+      const arabicText =
+        item.arabic?.simple ||
+        item.arabic?.past ||
+        item.past ||
+        item.arabic || // ⭐ NEW — supports adverbs
+        "";
 
-    const transliteration = typeof item.transliteration === "string"
-      ? item.transliteration.toLowerCase()
-      : "";
+      /* ⭐ SAFE English extraction (AMENDED FOR ADVERBS) */
+      const englishText =
+        item.english?.simple ||
+        item.english?.detailed ||
+        item.english || // ⭐ NEW — supports adverbs
+        "";
 
-    return (
-      arabic.includes(normalizedSearch) ||
-      english.includes(searchTerm) ||
-      transliteration.includes(searchTerm)
-    );
-  });
-};
+      /* ⭐ SAFE transliteration extraction */
+      const translitText =
+        item.transliteration?.past ||
+        item.transliteration?.present ||
+        item.transliteration?.masdar1 ||
+        (typeof item.transliteration === "string"
+          ? item.transliteration
+          : "") ||
+        "";
 
-  const verbResults = useMemo(() => filterList(verbs), [normalizedSearch, searchTerm]);
-  const nounResults = useMemo(() => filterList(nouns), [normalizedSearch, searchTerm]);
-  const adverbResults = useMemo(() => filterList(adverbs), [normalizedSearch, searchTerm]);
-  const adjectiveResults = useMemo(() => filterList(adjectives), [normalizedSearch, searchTerm]); // ⭐ NEW
+      const arabic = normalizeArabic(arabicText);
+      const english = String(englishText).toLowerCase();
+      const transliteration = String(translitText).toLowerCase();
+
+      return (
+        arabic.includes(normalizedSearch) ||
+        english.includes(searchTerm) ||
+        transliteration.includes(searchTerm)
+      );
+    });
+  };
+
+  /* ⭐ Memoized results */
+  const verbResults = useMemo(
+    () => filterList(verbs),
+    [normalizedSearch, searchTerm, isRootSearch, rootQuery]
+  );
+  const nounResults = useMemo(
+    () => filterList(nouns),
+    [normalizedSearch, searchTerm]
+  );
+  const adverbResults = useMemo(
+    () => filterList(adverbs),
+    [normalizedSearch, searchTerm]
+  );
+  const adjectiveResults = useMemo(
+    () => filterList(adjectives),
+    [normalizedSearch, searchTerm]
+  );
 
   const nothingFound =
     verbResults.length === 0 &&
@@ -135,6 +199,7 @@ const filterList = (list) => {
 
   const loadMore = () => setVisibleCount((c) => c + 20);
 
+  /* ⭐ UI */
   return (
     <div
       style={{
@@ -147,11 +212,10 @@ const filterList = (list) => {
         alignItems: "center",
       }}
     >
-
-      {/* ⭐ REMOVED TopNav — this was causing duplicate navbar */}
-
-      <div style={{ maxWidth: 700, width: "100%" }}>
-        <h1 style={{ textAlign: "center", marginBottom: 10 }}>Search Results</h1>
+      <div style={{ maxWidth: 1200, width: "100%" }}>
+        <h1 style={{ textAlign: "center", marginBottom: 10 }}>
+          Search Results
+        </h1>
 
         <p style={{ opacity: 0.7, textAlign: "center", fontSize: 20 }}>
           Showing results for:{" "}
@@ -170,7 +234,6 @@ const filterList = (list) => {
           </p>
         )}
 
-        {/* ⭐ FIXED RECENT SEARCHES */}
         {history.length > 0 && (
           <div
             style={{
@@ -182,7 +245,6 @@ const filterList = (list) => {
             }}
           >
             Recent searches:
-
             <div
               style={{
                 marginTop: 10,
@@ -194,7 +256,7 @@ const filterList = (list) => {
             >
               {history.map((h, i) => (
                 <Link
-                  key={i}
+                  key={`history-${i}`}
                   to={`/search?q=${encodeURIComponent(h)}`}
                   style={{
                     color: "#f59e0b",
@@ -210,7 +272,7 @@ const filterList = (list) => {
           </div>
         )}
 
-        {/* ⭐ UPDATED TABS — added adjectives */}
+        {/* ⭐ TABS */}
         <div
           style={{
             display: "flex",
@@ -221,7 +283,7 @@ const filterList = (list) => {
         >
           {["all", "verbs", "nouns", "adverbs", "adjectives"].map((t) => (
             <button
-              key={t}
+              key={`tab-${t}`}
               onClick={() => setTab(t)}
               style={{
                 padding: "8px 16px",
@@ -245,108 +307,141 @@ const filterList = (list) => {
           </p>
         )}
 
-        {/* results */}
-        <div
-          style={{
-            marginTop: 30,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        {/* ⭐ 4‑COLUMN RESULTS GRID */}
+        <div style={styles.grid}>
+          {/* VERBS COLUMN */}
           {(tab === "all" || tab === "verbs") && (
-            <>
-              <h2 style={{ marginTop: 20, marginBottom: 10 }}>Verbs</h2>
+            <div style={styles.column}>
+              <h2 style={{ marginTop: 10, marginBottom: 10 }}>Verbs</h2>
               {verbResults.length === 0 && (
                 <p style={{ opacity: 0.6, fontSize: 20 }}>No verbs found.</p>
               )}
               {verbResults.slice(0, visibleCount).map((v, i) => (
                 <Link
-                  key={v.id}
+                  key={`verb-${v.id}-${i}`}
                   to={`/verb/${v.id}`}
-                  style={{ width: "100%", display: "flex", justifyContent: "center" }}
+                  style={{ textDecoration: "none" }}
                 >
-                  <SearchCard item={v} type="verb" searchTerm={searchTerm} index={i} />
+                  <SearchCard
+                    item={v}
+                    type="verb"
+                    searchTerm={searchTerm}
+                    index={i}
+                  />
                 </Link>
               ))}
-            </>
+            </div>
           )}
 
+          {/* NOUNS COLUMN */}
           {(tab === "all" || tab === "nouns") && (
-            <>
-              <h2 style={{ marginTop: 30, marginBottom: 10 }}>Nouns</h2>
+            <div style={styles.column}>
+              <h2 style={{ marginTop: 10, marginBottom: 10 }}>Nouns</h2>
               {nounResults.length === 0 && (
                 <p style={{ opacity: 0.6, fontSize: 20 }}>No nouns found.</p>
               )}
               {nounResults.slice(0, visibleCount).map((n, i) => (
-                <div
-                  key={i}
-                  style={{ width: "100%", display: "flex", justifyContent: "center" }}
-                >
-                  <SearchCard item={n} type="noun" searchTerm={searchTerm} index={i} />
+                <div key={`noun-${n.id}-${i}`}>
+                  <SearchCard
+                    item={n}
+                    type="noun"
+                    searchTerm={searchTerm}
+                    index={i}
+                  />
                 </div>
               ))}
-            </>
+            </div>
           )}
 
+          {/* ADVERBS COLUMN */}
           {(tab === "all" || tab === "adverbs") && (
-            <>
-              <h2 style={{ marginTop: 30, marginBottom: 10 }}>Adverbs</h2>
+            <div style={styles.column}>
+              <h2 style={{ marginTop: 10, marginBottom: 10 }}>Adverbs</h2>
               {adverbResults.length === 0 && (
                 <p style={{ opacity: 0.6, fontSize: 20 }}>No adverbs found.</p>
               )}
               {adverbResults.slice(0, visibleCount).map((a, i) => (
-                <div
-                  key={i}
-                  style={{ width: "100%", display: "flex", justifyContent: "center" }}
+                <Link
+                  key={`adv-${a.id}-${i}`}
+                  to={`/adverbs/${a.id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  <SearchCard item={a} type="adverb" searchTerm={searchTerm} index={i} />
-                </div>
+                  <SearchCard
+                    item={a}
+                    type="adverb"
+                    searchTerm={searchTerm}
+                    index={i}
+                  />
+                </Link>
               ))}
-            </>
+            </div>
           )}
 
+          {/* ADJECTIVES COLUMN */}
           {(tab === "all" || tab === "adjectives") && (
-            <>
-              <h2 style={{ marginTop: 30, marginBottom: 10 }}>Adjectives</h2>
+            <div style={styles.column}>
+              <h2 style={{ marginTop: 10, marginBottom: 10 }}>Adjectives</h2>
               {adjectiveResults.length === 0 && (
-                <p style={{ opacity: 0.6, fontSize: 20 }}>No adjectives found.</p>
+                <p style={{ opacity: 0.6, fontSize: 20 }}>
+                  No adjectives found.
+                </p>
               )}
               {adjectiveResults.slice(0, visibleCount).map((adj, i) => (
                 <Link
-                  key={adj.id}
+                  key={`adj-${adj.id}-${i}`}
                   to={`/adjectives/${adj.id}`}
-                  style={{ width: "100%", display: "flex", justifyContent: "center" }}
+                  style={{ textDecoration: "none" }}
                 >
-                  <SearchCard item={adj} type="adjective" searchTerm={searchTerm} index={i} />
+                  <SearchCard
+                    item={adj}
+                    type="adjective"
+                    searchTerm={searchTerm}
+                    index={i}
+                  />
                 </Link>
               ))}
-            </>
-          )}
-
-          {(verbResults.length +
-            nounResults.length +
-            adverbResults.length +
-            adjectiveResults.length) >
-            visibleCount && (
-            <button
-              onClick={loadMore}
-              style={{
-                marginTop: 20,
-                padding: "10px 20px",
-                borderRadius: 20,
-                border: "none",
-                background: "#f59e0b",
-                color: "#0A1A3A",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              Load more
-            </button>
+            </div>
           )}
         </div>
+
+        {(verbResults.length +
+          nounResults.length +
+          adverbResults.length +
+          adjectiveResults.length) >
+          visibleCount && (
+          <button
+            onClick={loadMore}
+            style={{
+              marginTop: 20,
+              padding: "10px 20px",
+              borderRadius: 20,
+              border: "none",
+              background: "#f59e0b",
+              color: "#0A1A3A",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Load more
+          </button>
+        )}
       </div>
     </div>
   );
 }
+
+/* ⭐ GRID STYLES */
+const styles = {
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+    gap: 20,
+    marginTop: 30,
+  },
+  column: {
+    background: "rgba(255,255,255,0.05)",
+    padding: 10,
+    borderRadius: 12,
+    textAlign: "center",
+  },
+};

@@ -22,7 +22,13 @@ const SAMPLE_VERBS = [
     past: "كتب",
     present: "يكتب",
     masdar: "كتابة",
-    example: "أنا أكتب رسالة.",
+    examples: {
+      simple: {
+        ar: "أنا أكتب رسالة.",
+        en: "I am writing a letter.",
+        audio: "/audio/examples/ana_aktubu_risala.mp3",
+      },
+    },
   },
   {
     id: 2,
@@ -32,7 +38,13 @@ const SAMPLE_VERBS = [
     past: "قرأ",
     present: "يقرأ",
     masdar: "قراءة",
-    example: "هي تقرأ كتابًا.",
+    examples: {
+      simple: {
+        ar: "هي تقرأ كتابًا.",
+        en: "She is reading a book.",
+        audio: "/audio/examples/hiya_taqra_kitaban.mp3",
+      },
+    },
   },
 ];
 
@@ -60,7 +72,7 @@ const Confetti = () => {
 };
 
 // -----------------------------
-// SUMMARY MODAL
+// SUMMARY MODAL (UPGRADED DESIGN)
 // -----------------------------
 const SummaryModal = ({
   xpEarned,
@@ -73,78 +85,85 @@ const SummaryModal = ({
   onStudyAgain,
 }) => {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div
-        style={{
-          background: "white",
-          borderRadius: 12,
-          padding: 24,
-          width: "90%",
-          maxWidth: 400,
-          textAlign: "center",
-        }}
-      >
-        <h2 style={{ fontSize: 24, fontWeight: "bold", marginBottom: 16 }}>
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="w-[90%] max-w-[420px] bg-white rounded-2xl shadow-2xl p-6 text-center">
+        <h2
+          className="font-english text-black"
+          style={{ fontSize: 21, fontWeight: "bold", marginBottom: 20 }}
+        >
           Session Summary
         </h2>
 
-        <p style={{ fontSize: 18, marginBottom: 8 }}>
-          <strong>XP Earned:</strong> {xpEarned}
-        </p>
+        <div className="grid grid-cols-3 gap-3 mb-6">
+          <div className="bg-blue-50 rounded-xl py-3 shadow-sm">
+            <p className="font-english text-black" style={{ fontSize: 21 }}>
+              <strong>{xpEarned}</strong>
+            </p>
+            <p className="font-english text-gray-600" style={{ fontSize: 16 }}>
+              XP
+            </p>
+          </div>
 
-        <p style={{ fontSize: 18, marginBottom: 8 }}>
-          <strong>Streak:</strong> {streak} days
-        </p>
+          <div className="bg-green-50 rounded-xl py-3 shadow-sm">
+            <p className="font-english text-black" style={{ fontSize: 21 }}>
+              <strong>{streak}</strong>
+            </p>
+            <p className="font-english text-gray-600" style={{ fontSize: 16 }}>
+              Streak
+            </p>
+          </div>
 
-        <p style={{ fontSize: 18, marginBottom: 16 }}>
-          <strong>Level:</strong> {level}
-        </p>
+          <div className="bg-yellow-50 rounded-xl py-3 shadow-sm">
+            <p className="font-english text-black" style={{ fontSize: 21 }}>
+              <strong>{level}</strong>
+            </p>
+            <p className="font-english text-gray-600" style={{ fontSize: 16 }}>
+              Level
+            </p>
+          </div>
+        </div>
 
         {perfectSession && (
-          <div
-            style={{
-              background: "#d1fae5",
-              color: "#065f46",
-              padding: 12,
-              borderRadius: 8,
-              marginBottom: 16,
-              fontWeight: "bold",
-            }}
-          >
-            🎉 Perfect Session! No mistakes!
+          <div className="bg-emerald-100 text-emerald-700 font-english font-bold py-3 rounded-xl mb-6 shadow-sm">
+            🎉 Perfect Session No mistakes
           </div>
         )}
 
         {mistakes.length > 0 && (
-          <div
-            style={{
-              background: "#fee2e2",
-              color: "#991b1b",
-              padding: 12,
-              borderRadius: 8,
-              marginBottom: 16,
-            }}
-          >
-            <p style={{ fontWeight: "bold", marginBottom: 8 }}>Mistakes:</p>
+          <div className="bg-red-100 text-red-700 rounded-xl p-4 mb-6 shadow-sm">
+            <p
+              className="font-english font-bold mb-3"
+              style={{ fontSize: 21 }}
+            >
+              Mistakes
+            </p>
+
             {mistakes.map((v) => (
-              <p key={v.id}>
-                {v.arabic} — {v.english}
-              </p>
+              <div key={v.id} className="mb-2">
+                <span
+                  className="font-arabic text-black"
+                  style={{ fontSize: 35 }}
+                >
+                  {v.arabic?.past || v.arabic}
+                </span>
+                <span
+                  className="font-english text-black"
+                  style={{ fontSize: 21 }}
+                >
+                  {" — "}
+                  {v.english?.simple || v.english}
+                </span>
+              </div>
             ))}
           </div>
         )}
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div className="flex flex-col gap-3">
           {mistakes.length > 0 && (
             <button
               onClick={onReviewMistakes}
-              style={{
-                background: "#f59e0b",
-                color: "white",
-                padding: "10px 0",
-                borderRadius: 8,
-                fontWeight: "bold",
-              }}
+              className="font-english bg-orange-500 text-white py-3 rounded-xl shadow-md"
+              style={{ fontSize: 21, fontWeight: "bold" }}
             >
               Review Mistakes
             </button>
@@ -152,26 +171,16 @@ const SummaryModal = ({
 
           <button
             onClick={onStudyAgain}
-            style={{
-              background: "#2563eb",
-              color: "white",
-              padding: "10px 0",
-              borderRadius: 8,
-              fontWeight: "bold",
-            }}
+            className="font-english bg-blue-600 text-white py-3 rounded-xl shadow-md"
+            style={{ fontSize: 21, fontWeight: "bold" }}
           >
             Study Again
           </button>
 
           <button
             onClick={onClose}
-            style={{
-              background: "#e5e7eb",
-              color: "#1f2937",
-              padding: "10px 0",
-              borderRadius: 8,
-              fontWeight: "bold",
-            }}
+            className="font-english bg-gray-200 text-gray-800 py-3 rounded-xl shadow-md"
+            style={{ fontSize: 21, fontWeight: "bold" }}
           >
             Close
           </button>
@@ -218,7 +227,12 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
   }, [reviewMode, mistakes, reviewIndex, sourceVerbs, currentIndex, totalCards]);
 
   useEffect(() => {
-    if (!sessionActive && totalCards > 0 && currentIndex === 0 && !sessionCompleted) {
+    if (
+      !sessionActive &&
+      totalCards > 0 &&
+      currentIndex === 0 &&
+      !sessionCompleted
+    ) {
       setSessionActive(true);
     }
   }, [totalCards, sessionActive, currentIndex, sessionCompleted]);
@@ -234,16 +248,16 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
   const resetSession = () => {
     setCurrentIndex(0);
     setIsFlipped(false);
-    setSessionActive(totalCards > 0);
+    setSessionActive(true);
     setSessionCompleted(false);
     setMistakes([]);
     setAnswers([]);
     setXpEarned(0);
     setPerfectSession(false);
-    setShowSummaryModal(false);
-    setShowConfetti(false);
     setReviewMode(false);
     setReviewIndex(0);
+    setShowSummaryModal(false);
+    setShowConfetti(false);
   };
 
   const startReviewMistakes = () => {
@@ -252,31 +266,40 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
     setReviewIndex(0);
     setIsFlipped(false);
     setShowSummaryModal(false);
-    setShowConfetti(false);
   };
 
   const exitReviewMistakes = () => {
     setReviewMode(false);
     setReviewIndex(0);
     setIsFlipped(false);
+    setShowSummaryModal(true);
   };
 
   const handleFlip = () => {
-    if (!currentVerb || !sessionActive) return;
-    setIsFlipped(true);
+    if (!currentVerb) return;
+    setIsFlipped((prev) => !prev);
   };
 
   const handleRating = (ratingKey) => {
-    if (!currentVerb || !isFlipped) return;
+    if (!currentVerb) return;
+
     const rating = SRS_RATINGS[ratingKey];
     if (!rating) return;
 
-    setAnswers((prev) => [...prev, { verbId: currentVerb.id, rating: ratingKey }]);
+    setAnswers((prev) => [
+      ...prev,
+      {
+        verbId: currentVerb.id,
+        rating: rating.key,
+        timestamp: Date.now(),
+      },
+    ]);
 
-    if (rating.isMistake && !reviewMode) {
+    if (rating.isMistake) {
       setMistakes((prev) => {
-        const exists = prev.find((v) => v.id === currentVerb.id);
-        return exists ? prev : [...prev, currentVerb];
+        const already = prev.some((v) => v.id === currentVerb.id);
+        if (already) return prev;
+        return [...prev, currentVerb];
       });
     }
 
@@ -328,7 +351,7 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
       style={{
         width: "100%",
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #111827, #1f2937)", // HOMEPAGE BACKGROUND
+        background: "linear-gradient(135deg, #0f172a, #1f2937)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -358,13 +381,13 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
       )}
 
       {currentVerb && !sessionCompleted && (
-        <div style={{ width: "100%", maxWidth: 420, marginTop: 40 }}>
+        <div style={{ width: "100%", maxWidth: 420, marginTop: 12 }}>
           {/* FLIP CARD */}
           <div
             style={{
               position: "relative",
               width: "100%",
-              height: 420, // LARGE CARD
+              height: 640,
               cursor: "pointer",
               perspective: "1000px",
             }}
@@ -385,6 +408,7 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
                   position: "absolute",
                   inset: 0,
                   background: "white",
+                  color: "#222",
                   borderRadius: 16,
                   boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
                   display: "flex",
@@ -397,17 +421,17 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
                 }}
               >
                 <p
-                  style={{
-                    fontSize: 45,
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    marginBottom: 16,
-                    color: "#000",
-                  }}
+                  className="font-arabic mb-4 text-black"
+                  style={{ fontSize: 80 }}
                 >
-                  {currentVerb.arabic}
+                  {currentVerb.arabic?.past || currentVerb.arabic}
                 </p>
-                <p style={{ fontSize: 18, color: "#6b7280" }}>Tap</p>
+                <p
+                  className="font-english"
+                  style={{ fontSize: 29, color: "#1061e4" }}
+                >
+                  Tap
+                </p>
               </div>
 
               {/* BACK */}
@@ -416,64 +440,95 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
                   position: "absolute",
                   inset: 0,
                   background: "white",
+                  color: "#222",
+                  fontSize: 18,
                   borderRadius: 16,
                   boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
-                  padding: 24,
+                  padding: 16,
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                   textAlign: "center",
+                  boxSizing: "border-box",
+                  overflowY: "auto",
+                  lineHeight: 1.15,
                 }}
               >
                 <p
-                  style={{
-                    fontSize: 45,
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    marginBottom: 12,
-                    color: "#000",
-                  }}
+                  className="font-arabic mb-1"
+                  style={{ fontSize: 45, color: "#1061e4" }}
                 >
-                  {currentVerb.arabic}
+                  {currentVerb.arabic?.past || currentVerb.arabic}
                 </p>
 
-                {/* ⭐ CHANGED FROM 20 → 25 */}
-                <p style={{ fontSize: 25, marginBottom: 16, color: "#000" }}>
-                  {currentVerb.english}
+                <p className="font-english mb-2 text-black" style={{ fontSize: 24 }}>
+                  {currentVerb.english?.simple || currentVerb.english}
                 </p>
 
-                <p style={{ marginBottom: 8, color: "#000" }}>
-                  <strong>Root:</strong> {currentVerb.root}
+                <p className="mb-1">
+                  <strong className="font-english text-black" style={{ fontSize: 24 }}>Root:</strong>{" "}
+                  <span className="font-arabic" style={{ fontSize: 35, color: "#1061e4" }}>{currentVerb.root}</span>
                 </p>
 
                 {currentVerb.past && (
-                  <p style={{ marginBottom: 8, color: "#000" }}>
-                    <strong>Past:</strong> {currentVerb.past}
+                  <p className="mb-1">
+                    <strong className="font-english text-black" style={{ fontSize: 24 }}>Past:</strong>{" "}
+                    <span className="font-arabic" style={{ fontSize: 35, color: "#1061e4" }}>{currentVerb.past}</span>
                   </p>
                 )}
 
                 {currentVerb.present && (
-                  <p style={{ marginBottom: 8, color: "#000" }}>
-                    <strong>Present:</strong> {currentVerb.present}
+                  <p className="mb-1">
+                    <strong className="font-english text-black" style={{ fontSize: 24 }}>Present:</strong>{" "}
+                    <span className="font-arabic" style={{ fontSize: 35, color: "#1061e4" }}>{currentVerb.present}</span>
                   </p>
                 )}
 
                 {currentVerb.masdar && (
-                  <p style={{ marginBottom: 8, color: "#000" }}>
-                    <strong>Masdar:</strong> {currentVerb.masdar}
+                  <p className="mb-1">
+                    <strong className="font-english text-black" style={{ fontSize: 24 }}>Masdar:</strong>{" "}
+                    <span className="font-arabic" style={{ fontSize: 35, color: "#1061e4" }}>
+                    {Array.isArray(currentVerb.masdar)
+                      ? currentVerb.masdar.join(", ")
+                      : currentVerb.masdar}
+                    </span>
                   </p>
                 )}
 
-                {currentVerb.example && (
-                  <p style={{ marginTop: 12, fontStyle: "italic", color: "#000" }}>
-                    “{currentVerb.example}”
-                  </p>
-                )}
+                {/* SAFE EXAMPLE + AUDIO */}
+                <p
+                  className="font-arabic italic mt-2"
+                  style={{ fontSize: 35, color: "#1061e4" }}
+                >
+                  {currentVerb.examples?.simple?.ar || "لا يوجد مثال"}
+                </p>
 
-                {currentVerb.audio && (
-                  <audio controls style={{ marginTop: 12, width: "100%" }}>
-                    <source src={currentVerb.audio} type="audio/mpeg" />
-                  </audio>
+                <p className="font-english italic text-black mt-1" style={{ fontSize: 24 }}>
+                  {currentVerb.examples?.simple?.en || "No example available"}
+                </p>
+
+                {currentVerb.examples?.simple?.audio ? (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      try {
+                        const audio = new Audio(
+                          currentVerb.examples.simple.audio
+                        );
+                        audio.play().catch(() => {});
+                      } catch (err) {
+                        // silently ignore audio errors
+                      }
+                    }}
+                    className="mt-2 bg-blue-600 text-white px-4 py-2 rounded font-english"
+                    style={{ fontSize: 18 }}
+                  >
+                    ▶ Play Audio
+                  </button>
+                ) : (
+                  <p className="font-english text-gray-500 mt-2">
+                    No audio available
+                  </p>
                 )}
               </div>
             </div>
@@ -512,6 +567,7 @@ const RecommendedStudyPage = ({ recommendedVerbs = [] }) => {
                         ? "#3b82f6"
                         : "#10b981",
                   }}
+                  className="font-english"
                 >
                   <span style={{ fontSize: 22 }}>{rating.icon}</span>
                   {rating.label}

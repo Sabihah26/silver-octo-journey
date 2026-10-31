@@ -12,6 +12,24 @@ module.exports = {
       backfaceVisibility: {
         'hidden': 'hidden',
       },
+
+      // ⭐ CUSTOM FONTS
+      fontFamily: {
+        arabic: ["Amiri", "Scheherazade", "serif"],
+        english: ["Inter", "Arial", "sans-serif"],
+      },
+
+      // ⭐ CUSTOM FONT SIZES (multiple Arabic sizes)
+      fontSize: {
+        arabic: "35px",
+        arabic40: "40px",
+        arabic50: "50px",
+        arabic60: "60px",
+
+        english: "18px",
+        english22: "22px",
+        english28: "28px",
+      },
     },
   },
   plugins: [],

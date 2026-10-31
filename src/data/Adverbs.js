@@ -1,7 +1,8 @@
 const adverbs = [
-  // ⭐ FREE ADVERBS (IDs 301–305)
+  // ⭐ FREE ADVERBS
   {
-    id: 301,
+    id: "D1",
+    key: "daa'iman",
     type: "adverb",
     arabic: "دَائِمًا",
     transliteration: "daa'iman",
@@ -12,7 +13,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 302,
+    id: "D2",
+    key: "ahyaanan",
     type: "adverb",
     arabic: "أَحْيَانًا",
     transliteration: "ahyaanan",
@@ -23,7 +25,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 303,
+    id: "D3",
+    key: "naadiran",
     type: "adverb",
     arabic: "نَادِرًا",
     transliteration: "naadiran",
@@ -34,7 +37,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 304,
+    id: "D4",
+    key: "saree'an",
     type: "adverb",
     arabic: "سَرِيعًا",
     transliteration: "saree'an",
@@ -45,7 +49,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 305,
+    id: "D5",
+    key: "bibut'",
     type: "adverb",
     arabic: "بِبُطْء",
     transliteration: "bibut'",
@@ -56,9 +61,10 @@ const adverbs = [
     notes: ""
   },
 
-  // ⭐ PREMIUM ADVERBS (IDs 306–320)
+  // ⭐ PREMIUM ADVERBS
   {
-    id: 306,
+    id: "D6",
+    key: "fawran",
     type: "adverb",
     arabic: "فَوْرًا",
     transliteration: "fawran",
@@ -69,7 +75,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 307,
+    id: "D7",
+    key: "qareeban",
     type: "adverb",
     arabic: "قَرِيبًا",
     transliteration: "qareeban",
@@ -80,7 +87,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 308,
+    id: "D8",
+    key: "ba'eedan",
     type: "adverb",
     arabic: "بَعِيدًا",
     transliteration: "ba‘eedan",
@@ -91,7 +99,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 309,
+    id: "D9",
+    key: "ma'an",
     type: "adverb",
     arabic: "مَعًا",
     transliteration: "ma‘an",
@@ -102,7 +111,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 310,
+    id: "D10",
+    key: "wahdahu",
     type: "adverb",
     arabic: "وَحْدَهُ",
     transliteration: "waḥdahu",
@@ -113,7 +123,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 311,
+    id: "D11",
+    key: "haqqan",
     type: "adverb",
     arabic: "حَقًّا",
     transliteration: "ḥaqqan",
@@ -124,7 +135,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 312,
+    id: "D12",
+    key: "jiddan",
     type: "adverb",
     arabic: "جِدًّا",
     transliteration: "jiddan",
@@ -135,7 +147,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 313,
+    id: "D13",
+    key: "qabl-an",
     type: "adverb",
     arabic: "قَبْلًا",
     transliteration: "qabl-an",
@@ -146,7 +159,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 314,
+    id: "D14",
+    key: "ba'dan",
     type: "adverb",
     arabic: "بَعْدًا",
     transliteration: "ba‘dan",
@@ -157,7 +171,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 315,
+    id: "D15",
+    key: "hunaak",
     type: "adverb",
     arabic: "هُنَاكَ",
     transliteration: "hunaak",
@@ -168,7 +183,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 316,
+    id: "D16",
+    key: "hunaa",
     type: "adverb",
     arabic: "هُنَا",
     transliteration: "hunaa",
@@ -179,7 +195,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 317,
+    id: "D17",
+    key: "fi al-ghaalib",
     type: "adverb",
     arabic: "فِي الْغَالِب",
     transliteration: "fi al-ghaalib",
@@ -190,7 +207,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 318,
+    id: "D18",
+    key: "haalan",
     type: "adverb",
     arabic: "حَالًا",
     transliteration: "ḥaalan",
@@ -201,7 +219,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 319,
+    id: "D19",
+    key: "mujaddadan",
     type: "adverb",
     arabic: "مُجَدَّدًا",
     transliteration: "mujaddadan",
@@ -212,7 +231,8 @@ const adverbs = [
     notes: ""
   },
   {
-    id: 320,
+    id: "D20",
+    key: "bi-dh-dhabt",
     type: "adverb",
     arabic: "بِالضَّبْط",
     transliteration: "bi-dh-dhabt",

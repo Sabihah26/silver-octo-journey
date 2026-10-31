@@ -29,7 +29,7 @@ export default function AdjectiveCategoryList() {
             to={`/adjectives/${adj.id}`}
             style={{
               background: "white",
-              padding: 8,            // ⭐ smaller padding
+              padding: 8,
               width: 140,
               borderRadius: 12,
               textDecoration: "none",
@@ -38,11 +38,11 @@ export default function AdjectiveCategoryList() {
               textAlign: "center",
             }}
           >
-            <h2 style={{ fontSize: 35, marginBottom: 2 }}>   {/* ⭐ smaller gap */}
+            <h2 style={{ fontSize: 35, marginBottom: 2 }}>
               {adj.ar}
             </h2>
 
-            <p style={{ fontSize: 18, color: "#334155", marginTop: 0 }}> {/* ⭐ tighter */}
+            <p style={{ fontSize: 18, color: "#334155", marginTop: 0 }}>
               {adj.en}
             </p>
           </Link>
@@ -51,7 +51,7 @@ export default function AdjectiveCategoryList() {
 
       <div style={{ marginTop: 20 }}>
         <Link
-          to="/adjectives/categories"
+          to="/adjectives/category"
           style={{ fontSize: 20, color: "#8cb9e5", textDecoration: "none" }}
         >
           ← Back to Categories

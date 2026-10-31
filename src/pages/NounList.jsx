@@ -27,9 +27,6 @@ export default function NounList() {
 
   return (
     <div style={styles.page}>
-
-      {/* ⭐ GLOBAL NAVBAR WILL NOW APPEAR ABOVE THIS PAGE */}
-
       <h1 style={styles.title}>
         {topic
           ? `${category} → ${topic}`
@@ -48,7 +45,12 @@ export default function NounList() {
 
       <div style={styles.grid}>
         {filtered.map((n) => (
-          <Link key={n.id} to={`/noun/${n.id}`} style={styles.card}>
+          <Link
+            key={`${n.id}-${n.arabic}`}
+            to={`/noun/${n.id}`}
+            style={styles.card}
+          >
+            <div style={styles.id}>{n.id}</div>
             <div style={styles.arabic}>{n.arabic}</div>
             <div style={styles.english}>{n.english}</div>
           </Link>
@@ -87,22 +89,29 @@ const styles = {
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(5, 1fr)",
+    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
     gap: "20px",
+    justifyContent: "center",
   },
 
   card: {
     background: "white",
-    color: "#0A1A3A",
-    padding: "20px",
+    color: "#0a2356",
+    padding: "15px",
     borderRadius: "14px",
     textAlign: "center",
     textDecoration: "none",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
   },
 
+  id: {
+    fontSize: "16px",
+    opacity: 0.7,
+    marginBottom: "6px",
+  },
+
   arabic: {
-    fontSize: "36px",
+    fontSize: "40px",
     fontWeight: "bold",
     marginBottom: "6px",
   },

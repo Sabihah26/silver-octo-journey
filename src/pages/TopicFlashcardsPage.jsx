@@ -162,7 +162,7 @@ const cardFace = {
   justifyContent: "center",
   alignItems: "center",
   fontWeight: "bold",
-  fontSize: "24px",
+  fontSize: "21px",
   background: "white",
 };
 
@@ -180,5 +180,5 @@ const navButton = {
   borderRadius: "8px",
   border: "none",
   cursor: "pointer",
-  fontSize: "16px",
+  fontSize: "21px",
 };

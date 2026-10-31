@@ -1,7 +1,7 @@
 // src/pages/QuizPage.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import verbs from "../data/verbs";
+import verbs from "../data/index.js";
 
 export default function QuizPage() {
   // Build 5 questions from real verbs

@@ -1,8 +1,9 @@
+// src/components/Layout.jsx
 import React from "react";
 import Navbar from "./Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
 
-export default function Layout({ children }) {
+export default function Layout() {
   const location = useLocation();
 
   // ⭐ Pages that should be FULL WIDTH
@@ -11,8 +12,8 @@ export default function Layout({ children }) {
     "/verb",
     "/study",
     "/",
-    "/dev/inspector",   // ⭐ FIX: allow Inspector to render normally
-    "/dev/tests"        // ⭐ FIX: allow DevTestPage to render normally
+    "/dev/inspector",
+    "/dev/tests"
   ];
 
   const isFullWidth = fullWidthPages.some(path =>
@@ -21,18 +22,18 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* ⭐ Navbar hidden ONLY on homepage */}
-      {location.pathname !== "/" && <Navbar />}
+      {/* ⭐ Navbar ALWAYS visible now */}
+      <Navbar />
 
       {isFullWidth ? (
         // ⭐ FULL WIDTH MODE — NO PADDING, NO MAX WIDTH
         <main style={{ padding: 0, margin: 0 }}>
-          {children}
+          <Outlet />
         </main>
       ) : (
         // ⭐ NORMAL MODE — CENTERED LAYOUT
         <main style={{ padding: "1.2rem", maxWidth: "900px", margin: "0 auto" }}>
-          {children}
+          <Outlet />
         </main>
       )}
     </>

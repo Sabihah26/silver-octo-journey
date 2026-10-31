@@ -8,7 +8,8 @@ import ExampleSentenceBox from "../components/ExampleSentenceBox";
 
 export default function WeakVerbSummaryPage() {
   const { id } = useParams();
-  const verb = verbs.find((v) => v.id === Number(id));
+  const verb = verbs.find((v) => v.id === id);
+
 
   if (!verb) {
     return <div style={styles.error}>Verb not found.</div>;

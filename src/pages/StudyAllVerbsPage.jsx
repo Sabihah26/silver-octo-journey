@@ -3,12 +3,20 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import verbs from "../data/verbs";
 
-// Remove Arabic diacritics + Latin accents
+// ⭐ SAFE DIACRITIC REMOVER (works with objects)
 function stripDiacritics(text) {
   if (!text) return "";
+
+  // If Arabic object → extract simple or past
+  if (typeof text === "object") {
+    text = text.simple || text.past || "";
+  }
+
+  if (typeof text !== "string") return "";
+
   return text
     .normalize("NFD")
-    .replace(/[\u064B-\u0652]/g, "") // Arabic diacritics
+    .replace(/[\u064B-\u065F]/g, "") // Arabic diacritics
     .replace(/[\u0300-\u036f]/g, ""); // Latin accents
 }
 
@@ -57,12 +65,17 @@ export default function StudyAllVerbsPage() {
 
       const s = stripDiacritics(search.toLowerCase());
 
-      const arabic = stripDiacritics(v.arabic || "");
-      const english =
-        stripDiacritics(
-          (v.english?.simple || v.english?.detailed || "").toLowerCase()
-        );
-      const translit = stripDiacritics(v.transliteration?.toLowerCase() || "");
+      const arabic = stripDiacritics(v.arabic);
+      const english = stripDiacritics(
+        (v.english?.simple || v.english?.detailed || "").toLowerCase()
+      );
+
+      // ⭐ FIX: transliteration may not be a string
+      let translit = v.transliteration;
+      if (typeof translit === "object") translit = translit.simple || "";
+      if (typeof translit !== "string") translit = "";
+      translit = stripDiacritics(translit.toLowerCase());
+
       const root = stripDiacritics((v.root || "").toLowerCase());
 
       return (
@@ -73,8 +86,10 @@ export default function StudyAllVerbsPage() {
       );
     })
     .sort((a, b) => {
-      if (sortBy === "arabic")
-        return (a.arabic || "").localeCompare(b.arabic || "");
+      const aArabic = stripDiacritics(a.arabic);
+      const bArabic = stripDiacritics(b.arabic);
+
+      if (sortBy === "arabic") return aArabic.localeCompare(bArabic);
 
       if (sortBy === "english")
         return (a.english?.simple || "").localeCompare(
@@ -189,6 +204,8 @@ export default function StudyAllVerbsPage() {
             v.english ||
             "";
 
+          const arabicLabel = v.arabic?.simple || v.arabic?.past || "";
+
           return isMobile ? (
             // 📱 MOBILE LIST VIEW
             <Link
@@ -204,11 +221,15 @@ export default function StudyAllVerbsPage() {
                 marginBottom: 10,
                 textDecoration: "none",
                 color: "white",
-                border: `2px solid ${color}`,
+
+                // ⭐ FIX: no shorthand border
+                borderWidth: 2,
+                borderStyle: "solid",
+                borderColor: color,
               }}
             >
               <div>
-                <div style={{ fontSize: 32 }}>{v.arabic}</div>
+                <div style={{ fontSize: 32 }}>{arabicLabel}</div>
                 <div style={{ fontSize: 16, opacity: 0.8 }}>
                   {englishLabel}
                 </div>
@@ -238,7 +259,12 @@ export default function StudyAllVerbsPage() {
                 textAlign: "center",
                 textDecoration: "none",
                 color: "white",
-                border: `2px solid ${color}`,
+
+                // ⭐ FIX: no shorthand border
+                borderWidth: 2,
+                borderStyle: "solid",
+                borderColor: color,
+
                 transition: "transform 0.2s ease, box-shadow 0.2s ease",
               }}
               onMouseEnter={(e) => {
@@ -250,7 +276,9 @@ export default function StudyAllVerbsPage() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <div style={{ fontSize: 46, marginBottom: 6 }}>{v.arabic}</div>
+              <div style={{ fontSize: 46, marginBottom: 6 }}>
+                {arabicLabel}
+              </div>
               <div style={{ fontSize: 16, opacity: 0.85 }}>
                 {englishLabel}
               </div>

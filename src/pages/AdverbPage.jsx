@@ -5,7 +5,14 @@ import adverbs from "../data/Adverbs";
 
 export default function AdverbPage() {
   const { id } = useParams();
-  const adverb = adverbs.find((a) => a.id === Number(id));
+  const adverb = adverbs.find((a) => String(a.id) === String(id));
+
+  // Speech synthesis function
+  const speak = (text) => {
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "ar-SA";
+    speechSynthesis.speak(utter);
+  };
 
   if (!adverb) {
     return (
@@ -15,6 +22,8 @@ export default function AdverbPage() {
     );
   }
 
+  const isLocked = adverb.premium === true; // ⭐ NEW
+
   return (
     <div style={styles.page}>
       {/* Back to list */}
@@ -23,16 +32,20 @@ export default function AdverbPage() {
       </Link>
 
       <div style={styles.card}>
+        {/* ⭐ PREMIUM LOCK OVERLAY */}
+        {isLocked && (
+          <div style={styles.lockOverlay}>
+            🔒 Premium
+          </div>
+        )}
+
         {/* Arabic + Audio */}
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", direction: "rtl" }}>
           <div style={styles.arabic}>{adverb.arabic}</div>
 
-          {/* AUDIO BUTTON (real audio file) */}
+          {/* SPEECH SYNTHESIS BUTTON */}
           <button
-            onClick={() => {
-              const audio = new Audio(`/audio/adverbs/${adverb.id}.mp3`);
-              audio.play();
-            }}
+            onClick={() => speak(adverb.arabic)}
             style={styles.audioButton}
             title="Play pronunciation"
             onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.15)")}
@@ -50,9 +63,16 @@ export default function AdverbPage() {
         {/* English */}
         <div style={styles.english}>{adverb.english}</div>
 
-        {/* Category */}
+        {/* ⭐ CATEGORY — NOW CLICKABLE */}
         {adverb.category && (
-          <div style={styles.categoryBadge}>{adverb.category}</div>
+          <Link
+            to={`/adverbs/category/${adverb.category}`}
+            style={{ textDecoration: "none" }}
+          >
+            <div style={styles.categoryBadge}>
+              {adverb.category.charAt(0).toUpperCase() + adverb.category.slice(1)}
+            </div>
+          </Link>
         )}
 
         {/* Example Section */}
@@ -68,28 +88,18 @@ export default function AdverbPage() {
               <div style={styles.exampleEn}>{adverb.example_en}</div>
             )}
 
-            {/* AUDIO FOR EXAMPLE SENTENCE */}
-            <button
-              onClick={() => {
-                const audio = new Audio(`/audio/adverbs/examples/${adverb.id}.mp3`);
-                audio.play();
-              }}
-              style={{
-                marginTop: 10,
-                border: "none",
-                background: "transparent",
-                cursor: "pointer",
-                fontSize: 26,
-                display: "block",
-                marginLeft: "auto",
-                marginRight: "auto",
-                transition: "0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            >
-              🔊
-            </button>
+            {/* SPEECH SYNTHESIS FOR EXAMPLE */}
+            {adverb.example_ar && (
+              <button
+                onClick={() => speak(adverb.example_ar)}
+                style={styles.exampleAudioButton}
+                title="Play example"
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.2)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+              >
+                🔊
+              </button>
+            )}
           </div>
         )}
 
@@ -111,34 +121,15 @@ export default function AdverbPage() {
 const styles = {
   page: {
     padding: "20px",
-    background: "#07112B",
+    background: "#0A1A3A",
     minHeight: "100vh",
     color: "white",
-  },
-
-  /* ⭐ NAVBAR ⭐ */
-  navbar: {
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    marginBottom: "25px",
-    flexWrap: "wrap",
-  },
-
-  navItem: {
-    color: "white",
-    textDecoration: "none",
-    fontSize: "18px",
-    padding: "8px 14px",
-    borderRadius: "8px",
-    background: "#0A1A3A",
-    transition: "0.2s",
   },
 
   back: {
     color: "white",
     textDecoration: "none",
-    fontSize: "18px",
+    fontSize: "28px",
   },
 
   card: {
@@ -154,10 +145,29 @@ const styles = {
     position: "relative",
   },
 
+  // ⭐ PREMIUM LOCK OVERLAY
+  lockOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "rgba(0,0,0,0.55)",
+    color: "white",
+    fontSize: "28px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "16px",
+    zIndex: 10,
+    fontWeight: "bold",
+  },
+
   arabic: {
-    fontSize: "50px",
+    fontSize: "60px",
     fontWeight: "bold",
     textAlign: "center",
+    direction: "rtl",
   },
 
   audioButton: {
@@ -167,7 +177,7 @@ const styles = {
     border: "none",
     padding: "10px 18px",
     borderRadius: "10px",
-    fontSize: "22px",
+    fontSize: "25px",
     cursor: "pointer",
     display: "block",
     marginLeft: "auto",
@@ -179,7 +189,7 @@ const styles = {
     textAlign: "center",
     opacity: 0.7,
     marginTop: "6px",
-    fontSize: "18px",
+    fontSize: "27px",
   },
 
   english: {
@@ -191,11 +201,11 @@ const styles = {
 
   categoryBadge: {
     marginTop: "15px",
-    padding: "6px 12px",
+    padding: "4px 8px",
     borderRadius: "8px",
     background: "#0A1A3A",
     color: "white",
-    fontSize: "14px",
+    fontSize: "22px",
     width: "fit-content",
     marginLeft: "auto",
     marginRight: "auto",
@@ -213,18 +223,31 @@ const styles = {
   },
 
   exampleAr: {
-    fontSize: "30px",
+    fontSize: "41px",
     fontWeight: "bold",
     marginBottom: "6px",
+    direction: "rtl",
   },
 
   exampleEn: {
-    fontSize: "18px",
+    fontSize: "27px",
     opacity: 0.8,
   },
 
+  exampleAudioButton: {
+    marginTop: "10px",
+    border: "none",
+    background: "transparent",
+    cursor: "pointer",
+    fontSize: "30px",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    transition: "0.2s",
+  },
+
   notes: {
-    fontSize: "18px",
+    fontSize: "28px",
     opacity: 0.9,
   },
 };

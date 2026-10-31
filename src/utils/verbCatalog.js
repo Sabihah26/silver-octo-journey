@@ -68,6 +68,29 @@ export function getVerbFormEntries(verbList = verbs) {
     });
 }
 
+export function getVerbFormLabel(formNumber, verbList = verbs) {
+  const entry = getVerbFormEntries(verbList).find(
+    (form) => String(form.number) === String(formNumber)
+  );
+
+  return entry?.label || `Form ${formNumber}`;
+}
+
+/* ⭐ NEW — Safe topic grouping (no deletions, no renaming) */
+const TOPIC_GROUPS = {
+  actions: "daily life",
+  movement: "daily life",
+
+  authority: "communication",
+  commands: "communication",
+  speech: "communication",
+  writing: "communication",
+
+  learning: "school",
+
+  "family meals": "food",
+};
+
 export function getTopicsForForm(formLabel, verbList = verbs) {
   const topics = new Set();
 
@@ -77,7 +100,10 @@ export function getTopicsForForm(formLabel, verbList = verbs) {
     const verbTopics = getVerbTopics(verb);
 
     if (verbTopics.length > 0) {
-      verbTopics.forEach((topic) => topics.add(String(topic)));
+      verbTopics.forEach((topic) => {
+        const normalized = TOPIC_GROUPS[topic] || topic; // ⭐ remap micro-topics safely
+        topics.add(String(normalized));
+      });
     } else {
       topics.add("General");
     }

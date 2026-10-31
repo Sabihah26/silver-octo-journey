@@ -15,6 +15,8 @@ import VerbList from "./pages/VerbList";
 import VerbPage from "./pages/VerbPage";
 import VerbSummary from "./pages/VerbSummary";
 import WeakVerbSummaryPage from "./pages/WeakVerbSummaryPage";
+import VerbGridPage from "./pages/VerbGridPage";
+import VerbConjugationPage from "./pages/VerbConjugationPage";
 
 import NounList from "./pages/NounList";
 import NounPage from "./pages/NounPage";
@@ -50,6 +52,9 @@ import StudyMode from "./pages/StudyMode";
 import StudySettingsPage from "./pages/StudySettingsPage";
 import MasteryDashboard from "./pages/MasteryDashboard";
 import ProgressDashboard from "./pages/ProgressDashboard";
+
+// ⭐ NEW — Verb Quiz Page
+import VerbQuiz from "./pages/VerbQuiz";
 
 // -----------------------------
 // Flashcards
@@ -89,7 +94,6 @@ import BillingPage from "./pages/BillingPage";
 export default function AppRoutes() {
   return (
     <Routes>
-
       {/* Home */}
       <Route path="/" element={<HomePage />} />
       <Route path="/recommended" element={<RecommendedPage />} />
@@ -100,6 +104,10 @@ export default function AppRoutes() {
       <Route path="/verb-summary/:id" element={<VerbSummary />} />
       <Route path="/weak-verb-summary/:id" element={<WeakVerbSummaryPage />} />
 
+      {/* NEW: grid + conjugation */}
+      <Route path="/verb/:id/grid" element={<VerbGridPage />} />
+      <Route path="/verb/:id/:tense" element={<VerbConjugationPage />} />
+
       <Route path="/nouns" element={<NounList />} />
       <Route path="/noun/:id" element={<NounPage />} />
 
@@ -107,8 +115,7 @@ export default function AppRoutes() {
       <Route path="/adverb/:id" element={<AdverbPage />} />
 
       {/* Search */}
-    <Route path="/search" element={<SearchResultsPage />} />
-
+      <Route path="/search" element={<SearchResultsPage />} />
 
       {/* Grammar */}
       <Route path="/grammar" element={<GrammarPage />} />
@@ -128,6 +135,9 @@ export default function AppRoutes() {
       <Route path="/study/settings" element={<StudySettingsPage />} />
       <Route path="/study/mastery" element={<MasteryDashboard />} />
       <Route path="/study/progress" element={<ProgressDashboard />} />
+
+      {/* ⭐ Verb Quiz */}
+      <Route path="/quiz-verb" element={<VerbQuiz />} />
 
       {/* Flashcards */}
       <Route path="/flashcards" element={<FlashcardsPage />} />
@@ -150,8 +160,6 @@ export default function AppRoutes() {
       <Route path="/saved" element={<SavedWordsPage />} />
       <Route path="/word-of-the-day" element={<WordOfTheDayPage />} />
 
-      {/* Premium */}
-      <Route path="/billing" element={<BillingPage />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -15,13 +15,6 @@ export default function HomePage() {
   const [query, setQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  function handleSearch(e) {
-    e.preventDefault();
-    if (!query.trim()) return;
-    navigate(`/search?q=${encodeURIComponent(query)}`);
-    setShowSuggestions(false);
-  }
-
   const [study, setStudy] = useState(null);
 
   const defaultStudyCard = {
@@ -37,7 +30,7 @@ export default function HomePage() {
   const [rootLetters, setRootLetters] = useState(["", "", ""]);
 
   const vowelOptions = [
-    "بَ","بِ","بُ","تَ","تِ","تُ","ثَ","ثِ","ثُ","جَ","جِ","جُ","حَ","حِ","حُ",
+    "ا","اِ","اُ","بَ","بِ","بُ","تَ","تِ","تُ","ثَ","ثِ","ثُ","جَ","جِ","جُ","حَ","حِ","حُ",
     "خَ","خِ","خُ","دَ","دِ","دُ","ذَ","ذِ","ذُ","رَ","رِ","رُ","زَ","زِ","زُ",
     "سَ","سِ","سُ","شَ","شِ","شُ","صَ","صِ","صُ","ضَ","ضِ","ضُ","طَ","طِ","طُ",
     "ظَ","ظِ","ظُ","عَ","عِ","عُ","غَ","غِ","غُ","فَ","فِ","فُ","قَ","قِ","قُ",
@@ -49,11 +42,19 @@ export default function HomePage() {
     return str.normalize("NFC").replace(/\u0640/g, "");
   }
 
+  // ⭐ FIXED RTL ROOT SEARCH ⭐
   function handleRootSearch() {
-    const rawRoot = rootLetters.join("");
+    const rawRoot = rootLetters.slice().reverse().join("");   // RTL FIX
     if (!rawRoot || rawRoot.length < 3) return;
     const normalizedRoot = normalizeArabic(rawRoot);
     navigate(`/search?root=${encodeURIComponent(normalizedRoot)}`);
+  }
+
+  function handleSearch(e) {
+    e.preventDefault();
+    if (!query.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(query)}`);
+    setShowSuggestions(false);
   }
 
   const allWords = useMemo(() => [...verbs, ...nouns, ...adverbs, ...adjectives], []);
@@ -61,14 +62,13 @@ export default function HomePage() {
   const suggestions = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-   return allWords
-  .filter((w) => {
-    const arabic = typeof w.arabic === "string" ? w.arabic.toLowerCase() : "";
-    const english = typeof w.english === "string" ? w.english.toLowerCase() : "";
-    return arabic.startsWith(q) || english.startsWith(q);
-  })
-  .slice(0, 8);
-
+    return allWords
+      .filter((w) => {
+        const arabic = typeof w.arabic === "string" ? w.arabic.toLowerCase() : "";
+        const english = typeof w.english === "string" ? w.english.toLowerCase() : "";
+        return arabic.startsWith(q) || english.startsWith(q);
+      })
+      .slice(0, 8);
   }, [query, allWords]);
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function HomePage() {
             gridTemplateColumns: "220px 1fr 220px",
             alignItems: "start",
             width: "100%",
-            maxWidth: "1600px",
+            maxWidth: "1700px",
             margin: "0 auto",
             padding: "0 20px",
           }}
@@ -227,72 +227,72 @@ export default function HomePage() {
         </div>
       </div>
 
-    {/* ⭐ ROOT SEARCH SECTION ⭐ */}
-<div style={{ textAlign: "center", marginTop: 30 }}>
-  <h2 style={{ marginBottom: 10 }}>Search by Root Letters</h2>
+      {/* ⭐ ROOT SEARCH SECTION ⭐ */}
+      <div style={{ textAlign: "center", marginTop: 30 }}>
+        <h2 style={{ marginBottom: 10 }}>Search by Root Letters</h2>
 
-  {/* ROOT LETTER DROPDOWNS + ADD BUTTON */}
-  <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
-    {rootLetters.map((letter, index) => (
-      <div key={index}>
-        <select
-          value={letter}
-          onChange={(e) => {
-            const updated = [...rootLetters];
-            updated[index] = e.target.value;
-            setRootLetters(updated);
-          }}
-          style={{
-            padding: "8px",
-            borderRadius: 8,
-            fontSize: 29,
-          }}
-        >
-          <option value="">—</option>
-          {vowelOptions.map((v, i) => (
-            <option key={i} value={v}>
-              {v}
-            </option>
+        {/* ROOT LETTER DROPDOWNS + ADD BUTTON */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
+          {rootLetters.map((letter, index) => (
+            <div key={index}>
+              <select
+                value={letter}
+                onChange={(e) => {
+                  const updated = [...rootLetters];
+                  updated[index] = e.target.value;
+                  setRootLetters(updated);
+                }}
+                style={{
+                  padding: "8px",
+                  borderRadius: 8,
+                  fontSize: 29,
+                }}
+              >
+                <option value="">—</option>
+                {vowelOptions.map((v, i) => (
+                  <option key={i} value={v}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </div>
           ))}
-        </select>
+
+          {/* ⭐ ADD ANOTHER ROOT LETTER BUTTON ⭐ */}
+          <button
+            onClick={() => setRootLetters([...rootLetters, ""])}
+            style={{
+              padding: "8px 14px",
+              borderRadius: 8,
+              background: "#374151",
+              color: "white",
+              border: "none",
+              cursor: "pointer",
+              fontSize: 16,
+              fontWeight: 600,
+            }}
+          >
+            ➕ Add Root Letter
+          </button>
+        </div>
+
+        <div style={{ marginTop: 15 }}>
+          <button
+            onClick={handleRootSearch}
+            style={{
+              background: "#f59e0b",
+              color: "#111827",
+              border: "none",
+              padding: "10px 30px",
+              borderRadius: 20,
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            Search Root
+          </button>
+        </div>
       </div>
-    ))}
-
-    {/* ⭐ ADD ANOTHER ROOT LETTER BUTTON ⭐ */}
-    <button
-      onClick={() => setRootLetters([...rootLetters, ""])}
-      style={{
-        padding: "8px 14px",
-        borderRadius: 8,
-        background: "#374151",
-        color: "white",
-        border: "none",
-        cursor: "pointer",
-        fontSize: 16,
-        fontWeight: 600,
-      }}
-    >
-      ➕ Add Root Letter
-    </button>
-  </div>
-
-  <div style={{ marginTop: 15 }}>
-    <button
-      onClick={handleRootSearch}
-      style={{
-        background: "#f59e0b",
-        color: "#111827",
-        border: "none",
-        padding: "10px 30px",
-        borderRadius: 20,
-        fontWeight: 700,
-        cursor: "pointer",
-      }}
-    >
-      Search Root
-    </button>
-  </div>
-</div>
 
       {/* ⭐ DICTIONARY CARDS SECTION ⭐ */}
       <section style={{ maxWidth: 1400, margin: "30px auto", padding: "0 20px" }}>
@@ -300,13 +300,13 @@ export default function HomePage() {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: 24,
+            gap: 0,
             flexWrap: "wrap",
           }}
         >
           {/* VERBS */}
           <Link
-            to="/verbs"
+            to="/verbs/categories"
             style={{
               background: "#ffffff",
               borderRadius: 22,
@@ -346,7 +346,7 @@ export default function HomePage() {
 
           {/* NOUNS */}
           <Link
-            to="/nouns"
+            to="/nouns/categories"
             style={{
               background: "#ffffff",
               borderRadius: 22,
@@ -491,7 +491,11 @@ export default function HomePage() {
           <Link to="/study" className="tool-card">Study (SRS)</Link>
           <Link to="/study-all" className="tool-card">Study All Verbs</Link>
           <Link to="/study/weak" className="tool-card">Weak Verbs Trainer (SRS)</Link>
-          <Link to="/study/weak-quiz" className="tool-card">Verbs Quiz</Link>
+
+          {/* ⭐ NEW FULL WEAK VERBS PAGE BUTTON ⭐ */}
+          <Link to="/weak-verbs" className="tool-card">Weak Verbs — Fa / Ain / Lam</Link>
+
+          <Link to="/verb-quiz" className="tool-card">Verbs Quiz</Link>
           <Link to="/study-form" className="tool-card">Study by Form</Link>
           <Link to="/study/mastery" className="tool-card">Progress Dashboard</Link>
           <Link to="/word-of-the-day" className="tool-card">Word of the Day</Link>
@@ -539,6 +543,7 @@ export default function HomePage() {
           </p>
 
           <button
+            onClick={() => navigate("/billing")}
             style={{
               padding: "18px 34px",
               borderRadius: 14,
@@ -552,6 +557,7 @@ export default function HomePage() {
           >
             Upgrade Now
           </button>
+
         </div>
       </section>
     </div>

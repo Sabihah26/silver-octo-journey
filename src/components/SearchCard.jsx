@@ -8,37 +8,65 @@ const typeIcon = {
   adjective: "🎨",
 };
 
+/* ⭐ SAFE normalizeArabic */
+function normalizeArabic(str) {
+  if (typeof str !== "string") return "";
+  try {
+    return str
+      .replace(/[\u064B-\u0652]/g, "")
+      .replace(/[أإآ]/g, "ا")
+      .trim();
+  } catch {
+    return "";
+  }
+}
+
+/* ⭐ SAFE highlight */
+function highlight(text, query) {
+  const safeText = typeof text === "string" ? text : String(text || "");
+
+  if (!query) return safeText;
+
+  try {
+    const regex = new RegExp(`(${query})`, "gi");
+    return safeText.replace(
+      regex,
+      `<span style="
+        background:#f59e0b;
+        color:#0A1A3A;
+        padding:2px 4px;
+        border-radius:4px;
+        font-size:inherit;
+        font-weight:inherit;
+      ">$1</span>`
+    );
+  } catch {
+    return safeText;
+  }
+}
+
 export default function SearchCard({ item, type, searchTerm, index }) {
   const icon = typeIcon[type] || "📘";
 
-  // ⭐ SAFE highlight function
-  const highlight = (text, query) => {
-    const safeText = typeof text === "string" ? text : String(text || "");
+  /* ⭐ SAFE Arabic extraction */
+  const arabicText =
+    item.arabic?.simple ||
+    item.arabic?.past ||
+    item.past ||
+    (typeof item.arabic === "string" ? item.arabic : "") ||
+    "";
 
-    if (!query) return safeText;
-
-    try {
-      const regex = new RegExp(`(${query})`, "gi");
-      return safeText.replace(
-        regex,
-        `<span style="
-          background:#f59e0b;
-          color:#0A1A3A;
-          padding:2px 4px;
-          border-radius:4px;
-          font-size:inherit;
-          font-weight:inherit;
-        ">$1</span>`
-      );
-    } catch {
-      return safeText;
-    }
-  };
+  /* ⭐ SAFE English extraction */
+  const englishText =
+    item.english?.simple ||
+    item.english?.detailed ||
+    (typeof item.english === "string" ? item.english : "") ||
+    "";
 
   const style = {
     width: "100%",
     maxWidth: 600,
-    padding: 25,
+    padding: 7,
     marginBottom: 25,
     background: "#FFFFFF",
     color: "#0A1A3A",
@@ -73,9 +101,10 @@ export default function SearchCard({ item, type, searchTerm, index }) {
           fontWeight: 700,
           color: "#0A1A3A",
           lineHeight: "1.3",
+          direction: "rtl",
         }}
         dangerouslySetInnerHTML={{
-          __html: highlight(item.arabic || "", searchTerm),
+          __html: highlight(normalizeArabic(arabicText), searchTerm),
         }}
       />
 
@@ -83,7 +112,7 @@ export default function SearchCard({ item, type, searchTerm, index }) {
       <div
         style={{ opacity: 0.75, fontSize: 20 }}
         dangerouslySetInnerHTML={{
-          __html: highlight(item.english || "", searchTerm),
+          __html: highlight(englishText, searchTerm),
         }}
       />
     </div>

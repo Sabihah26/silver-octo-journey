@@ -1,6 +1,6 @@
 const nouns = [
 {
-  id: 201,
+ id: "N1",
   type: "noun",
   arabic: "كِتَاب",
   transliteration: "kitaab",
@@ -50,7 +50,7 @@ const nouns = [
 },
 
  {
-  id: 202,
+  id: "N2",
   type: "noun",
   arabic: "مَدْرَسَة",
   transliteration: "madrasa",
@@ -100,57 +100,7 @@ const nouns = [
 },
 
  {
-  id: 203,
-  type: "noun",
-  arabic: "مَدْرَسَة",
-  transliteration: "madrasa",
-  english: "school",
-  root: "د-ر-س",
-  gender: "f",
-  singular: "مَدْرَسَة",
-  dual: "مَدْرَسَتَانِ",
-  plural: "مَدَارِس",
-  category: "school",
-  topics: ["places", "school"],
-  notes: "A place of learning; common in everyday vocabulary.",
-
-  examples: {
-    beginner: [
-      {
-        ar: "هُوَ يَذْهَبُ إِلَى المَدْرَسَةِ كُلَّ صَبَاحٍ",
-        en: "He goes to the school every morning",
-        tr: "huwa yadhhab ila al-madrasa kulla sabaah"
-      }
-    ],
-    medium: [
-      {
-        ar: "هِيَ تَدْرُسُ فِي مَدْرَسَةٍ كَبِيرَةٍ",
-        en: "She studies in a large school",
-        tr: "hiya tadrus fi madrasatin kabeera"
-      },
-      {
-        ar: "هُمْ يَصِلُونَ إِلَى المَدْرَسَةِ مُبَكِّرًا",
-        en: "They arrive at the school early",
-        tr: "hum yasiloona ila al-madrasa mubakkiran"
-      }
-    ],
-    advanced: [
-      {
-        ar: "هُوَ شَارَكَ فِي نَشَاطٍ مَدْرَسِيٍّ جَدِيدٍ",
-        en: "He participated in a new school activity",
-        tr: "huwa shaaraka fi nashaat madrasee jadeed"
-      },
-      {
-        ar: "هُمْ سَيُنَظِّمُونَ حَفْلًا كَبِيرًا فِي المَدْرَسَةِ",
-        en: "They will organize a big event in the school",
-        tr: "hum sayunazzimoon haflan kabeeran fi al-madrasa"
-      }
-    ]
-  }
-},
-
- {
-  id: 204,
+  id: "N3",
   type: "noun",
   arabic: "مَاء",
   transliteration: "maa'",
@@ -200,7 +150,7 @@ const nouns = [
 },
 
  {
-  id: 205,
+  id: "N4",
   type: "noun",
   arabic: "قَلَم",
   transliteration: "qalam",
@@ -250,7 +200,7 @@ const nouns = [
 },
 
  {
-  id: 206,
+  id: "N5",
   type: "noun",
   arabic: "طَعَام",
   transliteration: "ta'aam",
@@ -300,7 +250,7 @@ const nouns = [
 },
 
   {
-  id: 207,
+  id: "N6",
   type: "noun",
   arabic: "سَيَّارَة",
   transliteration: "sayyaara",
@@ -350,7 +300,7 @@ const nouns = [
 },
 
  {
-  id: 208,
+id: "N7",
   type: "noun",
   arabic: "مَسْجِد",
   transliteration: "masjid",
@@ -399,7 +349,7 @@ const nouns = [
   }
 },
 {
-  id: 209,
+  id: "N8",
   type: "noun",
   arabic: "طَالِب",
   transliteration: "taalib",
@@ -449,9 +399,9 @@ const nouns = [
 },
 
 {
-  id: 210,
+  id: "N9",
   type: "noun",
-  arabic: "مُعَلِّم",
+  arabic: "مُعَلِّم",
   transliteration: "mu‘allim",
   english: "teacher",
   root: "ع-ل-م",
@@ -499,7 +449,7 @@ const nouns = [
 },
 
 {
-  id: 211,
+  id: "N10",
   type: "noun",
   arabic: "مَكْتَب",
   transliteration: "maktab",
@@ -549,7 +499,7 @@ const nouns = [
 },
 
 {
-  id: 212,
+  id: "N11",
   type: "noun",
   arabic: "كُرْسِيّ",
   transliteration: "kursiyy",
@@ -599,7 +549,7 @@ const nouns = [
 },
 
 {
-  id: 213,
+  id: "N12",
   type: "noun",
   arabic: "حَقِيبَة",
   transliteration: "haqeeba",
@@ -649,7 +599,7 @@ const nouns = [
 },
 
 {
-  id: 214,
+  id: "N13",
   type: "noun",
   arabic: "مِفْتَاح",
   transliteration: "miftaah",
@@ -699,7 +649,7 @@ const nouns = [
 },
 
   {
-  id: 215,
+  id: "N14",
   type: "noun",
   arabic: "بَاب",
   transliteration: "baab",
@@ -749,7 +699,7 @@ const nouns = [
 },
 
 {
-  id: 216,
+  id: "N15",
   type: "noun",
   arabic: "شُبَّاك",
   transliteration: "shubbak",
@@ -799,7 +749,7 @@ const nouns = [
 },
 
 {
-  id: 217,
+  id: "N16",
   type: "noun",
   arabic: "سَاعَة",
   transliteration: "saa‘a",
@@ -849,7 +799,7 @@ const nouns = [
 },
 
 {
-  id: 218,
+  id: "N17",
   type: "noun",
   arabic: "هَاتِف",
   transliteration: "haatif",
@@ -899,7 +849,7 @@ const nouns = [
 },
 
 {
-  id: 219,
+  id: "N18",
   type: "noun",
   arabic: "حَاسُوب",
   transliteration: "hasoob",
@@ -949,7 +899,7 @@ const nouns = [
 },
 
 {
-  id: 220,
+  id: "N19",
   type: "noun",
   arabic: "كُوب",
   transliteration: "koob",
@@ -999,7 +949,7 @@ const nouns = [
 },
 
   {
-  id: 221,
+  id: "N20",
   type: "noun",
   arabic: "صَحْن",
   transliteration: "sahn",
@@ -1049,7 +999,7 @@ const nouns = [
 },
 
 {
-  id: 222,
+  id: "N21",
   type: "noun",
   arabic: "مِلْعَقَة",
   transliteration: "mil‘aqa",
@@ -1099,7 +1049,7 @@ const nouns = [
 },
 
 {
-  id: 223,
+  id: "N22",
   type: "noun",
   arabic: "سِكِّين",
   transliteration: "sikkeen",
@@ -1149,7 +1099,7 @@ const nouns = [
 },
 
 {
-  id: 224,
+  id: "N23",
   type: "noun",
   arabic: "طَاوِلَة",
   transliteration: "taawila",
@@ -1199,7 +1149,7 @@ const nouns = [
 },
 
 {
-  id: 225,
+  id: "N24",
   type: "noun",
   arabic: "سَرِير",
   transliteration: "sareer",
@@ -1249,7 +1199,7 @@ const nouns = [
 },
 
 {
-  id: 226,
+  id: "N25",
   type: "noun",
   arabic: "مِرْآة",
   transliteration: "mir’aah",
@@ -1299,7 +1249,7 @@ const nouns = [
 },
 
   {
-  id: 227,
+  id: "N26",
   type: "noun",
   arabic: "سِتَارَة",
   transliteration: "sitaara",
@@ -1349,7 +1299,7 @@ const nouns = [
 },
 
 {
-  id: 228,
+  id: "N27",
   type: "noun",
   arabic: "ثَلَّاجَة",
   transliteration: "thallaja",
@@ -1399,7 +1349,7 @@ const nouns = [
 },
 
 {
-  id: 229,
+  id: "N28",
   type: "noun",
   arabic: "فُرْن",
   transliteration: "furn",
@@ -1449,7 +1399,7 @@ const nouns = [
 },
 
 {
-  id: 230,
+ id: "N29",
   type: "noun",
   arabic: "مِكْنَسَة",
   transliteration: "miknasa",
@@ -1498,7 +1448,7 @@ const nouns = [
   }
 },
 {
-  id: 231,
+  id: "N30",
   type: "noun",
   arabic: "مِصْبَاح",
   transliteration: "misbaah",
@@ -1527,7 +1477,7 @@ const nouns = [
   }
 },
 {
-  id: 232,
+  id: "N31",
   type: "noun",
   arabic: "سِجَّادَة",
   transliteration: "sajjaada",
@@ -1556,7 +1506,7 @@ const nouns = [
   }
 },
 {
-  id: 233,
+  id: "N32",
   type: "noun",
   arabic: "مِظَلَّة",
   transliteration: "mizalla",
@@ -1585,7 +1535,7 @@ const nouns = [
   }
 },
 {
-  id: 234,
+ id: "N33",
   type: "noun",
   arabic: "قِنِّينَة",
   transliteration: "qinneena",
@@ -1614,36 +1564,7 @@ const nouns = [
   }
 },
 {
-  id: 235,
-  type: "noun",
-  arabic: "مِفْرَش",
-  transliteration: "mifrash",
-  english: "blanket",
-  root: "",
-  gender: "m",
-  singular: "مِفْرَش",
-  dual: "مِفْرَشَانِ",
-  plural: "مَفَارِش",
-  category: "household",
-  topics: ["object"],
-  notes: "",
-
-  examples: {
-    beginner: [
-      { ar: "هُوَ يَسْتَعْمِلُ المِفْرَشَ فِي اللَّيْلِ", en: "He uses the blanket at night", tr: "huwa yasta‘mil al-mifrash fil-layl" }
-    ],
-    medium: [
-      { ar: "هِيَ تَغْسِلُ المَفَارِشَ كُلَّ أُسْبُوعٍ", en: "She washes the blankets every week", tr: "hiya taghsil al-mafaarish kulla usboo‘" },
-      { ar: "هُمْ يَضَعُونَ المِفْرَشَ عَلَى السَّرِيرِ", en: "They place the blanket on the bed", tr: "hum yada‘oon al-mifrash ‘ala as-sareer" }
-    ],
-    advanced: [
-      { ar: "هُوَ اشْتَرَى مِفْرَشًا دَافِئًا لِلشِّتَاءِ", en: "He bought a warm blanket for winter", tr: "huwa ishtara mifrash daafi’an lish-shitaa’" },
-      { ar: "هُمْ سَيَسْتَخْدِمُونَ مَفَارِشَ جَدِيدَةً فِي غُرَفِ النَّوْمِ", en: "They will use new blankets in the bedrooms", tr: "hum sayastakhdimoon mafaarish jadeeda fil-ghuraf" }
-    ]
-  }
-},
-{
-  id: 235,
+ id: "N34",
   type: "noun",
   arabic: "مِفْرَش",
   transliteration: "mifrash",
@@ -1672,7 +1593,7 @@ const nouns = [
   }
 },
 {
-  id: 236,
+  id: "N35",
   type: "noun",
   arabic: "شَوْكَة",
   transliteration: "shawka",
@@ -1698,7 +1619,7 @@ const nouns = [
   }
 },
 {
-  id: 237,
+  id: "N36",
   type: "noun",
   arabic: "دَفْتَر",
   transliteration: "daftar",
@@ -1724,7 +1645,7 @@ const nouns = [
   }
 },
 {
-  id: 238,
+  id: "N37",
   type: "noun",
   arabic: "مِسْطَرَة",
   transliteration: "mistara",
@@ -1750,7 +1671,7 @@ const nouns = [
   }
 },
 {
-  id: 239,
+  id: "N38",
   type: "noun",
   arabic: "مِمْحَاة",
   transliteration: "mimhaa",
@@ -1776,7 +1697,7 @@ const nouns = [
   }
 },
 {
-  id: 240,
+  id: "N39",
   type: "noun",
   arabic: "حَقِيبَة ظَهْر",
   transliteration: "haqeebat zahr",
@@ -1802,7 +1723,7 @@ const nouns = [
   }
 },
 {
-  id: 241,
+  id: "N40",
   type: "noun",
   arabic: "طَمَاطِم",
   transliteration: "tamaatim",
@@ -1828,7 +1749,7 @@ const nouns = [
   }
 },
 {
-  id: 242,
+  id: "N41",
   type: "noun",
   arabic: "تُفَّاحَة",
   transliteration: "tuffaaha",
@@ -1854,7 +1775,7 @@ const nouns = [
   }
 },
 {
-  id: 243,
+  id: "N42",
   type: "noun",
   arabic: "مَوْز",
   transliteration: "mawz",
@@ -1880,7 +1801,7 @@ const nouns = [
   }
 },
 {
-  id: 244,
+  id: "N43",
   type: "noun",
   arabic: "بَصَل",
   transliteration: "basal",
@@ -1906,7 +1827,7 @@ const nouns = [
   }
 },
 {
-  id: 245,
+  id: "N44",
   type: "noun",
   arabic: "حَلِيب",
   transliteration: "haleeb",
@@ -1932,7 +1853,7 @@ const nouns = [
   }
 },
 {
-  id: 246,
+  id: "N45",
   type: "noun",
   arabic: "عَصِير",
   transliteration: "aseer",
@@ -1958,7 +1879,7 @@ const nouns = [
   }
 },
 {
-  id: 247,
+  id: "N46",
   type: "noun",
   arabic: "حَافِلَة",
   transliteration: "haafila",
@@ -1984,7 +1905,7 @@ const nouns = [
   }
 },
 {
-  id: 248,
+  id: "N47",
   type: "noun",
   arabic: "قِطَار",
   transliteration: "qitaar",
@@ -2010,7 +1931,7 @@ const nouns = [
   }
 },
 {
-  id: 249,
+  id: "N48",
   type: "noun",
   arabic: "طَائِرَة",
   transliteration: "taa'ira",
@@ -2036,7 +1957,7 @@ const nouns = [
   }
 },
 {
-  id: 250,
+  id: "N49",
   type: "noun",
   arabic: "شَارِع",
   transliteration: "shaari'",
@@ -2062,7 +1983,7 @@ const nouns = [
   }
 },
 {
-  id: 251,
+  id: "N50",
   type: "noun",
   arabic: "حَدِيقَة",
   transliteration: "hadeeqa",
@@ -2088,7 +2009,7 @@ const nouns = [
   }
 },
 {
-  id: 252,
+  id: "N51",
   type: "noun",
   arabic: "جَبَل",
   transliteration: "jabal",
@@ -2114,7 +2035,7 @@ const nouns = [
   }
 },
 {
-  id: 253,
+  id: "N52",
   type: "noun",
   arabic: "نَهْر",
   transliteration: "nahr",
@@ -2140,7 +2061,7 @@ const nouns = [
   }
 },
 {
-  id: 254,
+  id: "N53",
   type: "noun",
   arabic: "زَهْرَة",
   transliteration: "zahra",
@@ -2166,7 +2087,7 @@ const nouns = [
   }
 },
 {
-  id: 255,
+  id: "N54",
   type: "noun",
   arabic: "سَحَابَة",
   transliteration: "sahaaba",
@@ -2192,7 +2113,7 @@ const nouns = [
   }
 },
 {
-  id: 256,
+  id: "N55",
   type: "noun",
   arabic: "طَابِعَة",
   transliteration: "taabi'a",
@@ -2218,7 +2139,7 @@ const nouns = [
   }
 },
 {
-  id: 257,
+  id: "N56",
   type: "noun",
   arabic: "لَوْحَةُ مَفَاتِيح",
   transliteration: "lawhat mafateeh",
@@ -2244,7 +2165,7 @@ const nouns = [
   }
 },
 {
-  id: 258,
+  id: "N57",
   type: "noun",
   arabic: "مِطْرَقَة",
   transliteration: "mitraqa",
@@ -2270,7 +2191,7 @@ const nouns = [
   }
 },
 {
-  id: 259,
+  id: "N58",
   type: "noun",
   arabic: "مِفَكّ",
   transliteration: "mifakk",
@@ -2296,7 +2217,7 @@ const nouns = [
   }
 },
 {
-  id: 260,
+  id: "N59",
   type: "noun",
   arabic: "مُوَظَّف",
   transliteration: "muwaẓẓaf",
@@ -2322,7 +2243,7 @@ const nouns = [
   }
 },
 {
-  id: 261,
+   id: "N60",
   type: "noun",
   arabic: "مُدِير",
   transliteration: "mudeer",
@@ -2348,7 +2269,7 @@ const nouns = [
   }
 },
 {
-  id: 262,
+  id: "N61",
   type: "noun",
   arabic: "فِكْرَة",
   transliteration: "fikra",
@@ -2374,7 +2295,7 @@ const nouns = [
   }
 },
 {
-  id: 263,
+  id: "N62",
   type: "noun",
   arabic: "مَشَاعِر",
   transliteration: "masha'ir",
@@ -2400,7 +2321,7 @@ const nouns = [
   }
 },
 {
-  id: 264,
+  id: "N63",
   type: "noun",
   arabic: "رَقْم",
   transliteration: "raqm",
@@ -2426,7 +2347,7 @@ const nouns = [
   }
 },
 {
-  id: 265,
+  id: "N64",
   type: "noun",
   arabic: "وَقْت",
   transliteration: "waqt",
@@ -2452,7 +2373,7 @@ const nouns = [
   }
 },
 {
-  id: 266,
+  id: "N65",
   type: "noun",
   arabic: "طَبِيب",
   transliteration: "tabeeb",
@@ -2478,7 +2399,7 @@ const nouns = [
   }
 },
 {
-  id: 267,
+  id: "N66",
   type: "noun",
   arabic: "مُمَرِّضَة",
   transliteration: "mumarrida",
@@ -2504,7 +2425,7 @@ const nouns = [
   }
 },
 {
-  id: 268,
+ id: "N67",
   type: "noun",
   arabic: "مُهَنْدِس",
   transliteration: "muhandis",
@@ -2530,7 +2451,7 @@ const nouns = [
   }
 },
 {
-  id: 269,
+ id: "N68",
   type: "noun",
   arabic: "مِفْتَاح رَبْط",
   transliteration: "miftaah rabt",
@@ -2556,7 +2477,7 @@ const nouns = [
   }
 },
 {
-  id: 270,
+  id: "N69",
   type: "noun",
   arabic: "مِثْقَاب",
   transliteration: "mithqaab",
@@ -2582,7 +2503,7 @@ const nouns = [
   }
 },
 {
-  id: 271,
+  id: "N70",
   type: "noun",
   arabic: "مَطَر",
   transliteration: "matar",
@@ -2608,7 +2529,7 @@ const nouns = [
   }
 },
 {
-  id: 272,
+  id: "N71",
   type: "noun",
   arabic: "ثَلْج",
   transliteration: "thalj",
@@ -2634,7 +2555,7 @@ const nouns = [
   }
 },
 {
-  id: 273,
+  id: "N72",
   type: "noun",
   arabic: "جُبْن",
   transliteration: "jubn",
@@ -2660,7 +2581,7 @@ const nouns = [
   }
 },
 {
-  id: 274,
+  id: "N73",
   type: "noun",
   arabic: "خِزَانَة",
   transliteration: "khizaana",
@@ -2686,7 +2607,7 @@ const nouns = [
   }
 },
 {
-  id: 275,
+  id: "N74",
   type: "noun",
   arabic: "رَفّ",
   transliteration: "raff",
@@ -2712,33 +2633,7 @@ const nouns = [
   }
 },
 {
-  id: 275,
-  type: "noun",
-  arabic: "رَفّ",
-  transliteration: "raff",
-  english: "shelf",
-  root: "ر-ف-ف",
-  gender: "m",
-  singular: "رَفّ",
-  dual: "رَفَّانِ",
-  plural: "رُفُوف",
-  category: "household",
-  topics: ["furniture"],
-  notes: "Used for storing items.",
-  examples: {
-    beginner: [
-      { ar: "هُوَ يَضَعُ الكُتُبَ عَلَى الرَّفِّ", en: "He puts the books on the shelf", tr: "huwa yada' al-kutub 'ala ar-raff" }
-    ],
-    medium: [
-      { ar: "هِيَ تُرَتِّبُ الرُّفُوفَ فِي الغُرْفَةِ", en: "She arranges the shelves in the room", tr: "hiya turattib ar-rufoof fil-ghurfa" }
-    ],
-    advanced: [
-      { ar: "هُمْ يَرْكَبُونَ رُفُوفًا جَدِيدَةً فِي المَنْزِلِ", en: "They install new shelves in the house", tr: "hum yarkaboon rufoofan jadeeda fil-manzil" }
-    ]
-  }
-},
-{
-  id: 276,
+ id: "N75",
   type: "noun",
   arabic: "فُلْفُل",
   transliteration: "fulful",
@@ -2764,7 +2659,7 @@ const nouns = [
   }
 },
 {
-  id: 277,
+ id: "N76",
   type: "noun",
   arabic: "ثُوم",
   transliteration: "thoom",
@@ -2790,7 +2685,7 @@ const nouns = [
   }
 },
 {
-  id: 278,
+  id: "N77",
   type: "noun",
   arabic: "وَرَقَة",
   transliteration: "waraqa",
@@ -2816,7 +2711,7 @@ const nouns = [
   }
 },
 {
-  id: 279,
+  id: "N78",
   type: "noun",
   arabic: "أَسَد",
   transliteration: "asad",
@@ -2842,7 +2737,7 @@ const nouns = [
   }
 },
 {
-  id: 280,
+  id: "N79",
   type: "noun",
   arabic: "رَسَّام",
   transliteration: "rassaam",
@@ -2868,7 +2763,7 @@ const nouns = [
   }
 },
 {
-  id: 281,
+ id: "N80",
   type: "noun",
   arabic: "رَئِيس",
   transliteration: "ra'eess",
@@ -2894,7 +2789,7 @@ const nouns = [
   }
 },
 {
-  id: 282,
+  id: "N81",
   type: "noun",
   arabic: "صَمْغ",
   transliteration: "samgh",
@@ -2920,7 +2815,7 @@ const nouns = [
   }
 },
 {
-  id: 283,
+ id: "N82",
   type: "noun",
   arabic: "شَمْعَة",
   transliteration: "sham'a",
@@ -2946,7 +2841,7 @@ const nouns = [
   }
 },
 {
-  id: 284,
+  id: "N83",
   type: "noun",
   arabic: "تَسْرِيحَة",
   transliteration: "tasreeha",
@@ -2972,7 +2867,7 @@ const nouns = [
   }
 },
 {
-  id: 285,
+  id: "N84",
   type: "noun",
   arabic: "شَجَاعَة",
   transliteration: "shaja'a",
@@ -2998,7 +2893,7 @@ const nouns = [
   }
 },
 {
-  id: 286,
+  id: "N85",
   type: "noun",
   arabic: "فَرَاوْلَة",
   transliteration: "farawla",
@@ -3024,7 +2919,7 @@ const nouns = [
   }
 },
 {
-  id: 287,
+  id: "N86",
   type: "noun",
   arabic: "بَطِّيخ",
   transliteration: "batteekh",
@@ -3050,7 +2945,7 @@ const nouns = [
   }
 },
 {
-  id: 288,
+  id: "N87",
   type: "noun",
   arabic: "فَرَاشَة",
   transliteration: "farasha",
@@ -3076,7 +2971,7 @@ const nouns = [
   }
 },
 {
-  id: 289,
+  id: "N88",
   type: "noun",
   arabic: "نَجَّار",
   transliteration: "najjaar",
@@ -3102,7 +2997,7 @@ const nouns = [
   }
 },
 {
-  id: 290,
+ id: "N89",
   type: "noun",
   arabic: "دَهَّان",
   transliteration: "dahhaan",
@@ -3128,7 +3023,7 @@ const nouns = [
   }
 },
 {
-  id: 291,
+ id: "N90",
   type: "noun",
   arabic: "طَقْمُ مَفَاكّ",
   transliteration: "taqm mafakk",
@@ -3154,7 +3049,7 @@ const nouns = [
   }
 },
 {
-  id: 292,
+  id: "N91",
   type: "noun",
   arabic: "مِكْنَسَة كَهْرَبَائِيَّة",
   transliteration: "miknasa kahraba'iyya",
@@ -3180,7 +3075,7 @@ const nouns = [
   }
 },
 {
-  id: 293,
+  id: "N92",
   type: "noun",
   arabic: "غِطَاءُ لِحَاف",
   transliteration: "ghitaa' lihaaf",
@@ -3206,7 +3101,7 @@ const nouns = [
   }
 },
 {
-  id: 294,
+  id: "N93",
   type: "noun",
   arabic: "صِدْق",
   transliteration: "sidq",
@@ -3232,7 +3127,7 @@ const nouns = [
   }
 },
 {
-  id: 295,
+  id: "N94",
   type: "noun",
   arabic: "صَبْر",
   transliteration: "sabr",
@@ -3258,7 +3153,7 @@ const nouns = [
   }
 },
 {
-  id: 296,
+  id: "N95",
   type: "noun",
   arabic: "خَوْخَة",
   transliteration: "khawkha",
@@ -3284,7 +3179,7 @@ const nouns = [
   }
 },
 {
-  id: 297,
+  id: "N96",
   type: "noun",
   arabic: "عِنَب",
   transliteration: "inab",
@@ -3310,7 +3205,7 @@ const nouns = [
   }
 },
 {
-  id: 298,
+  id: "N97",
   type: "noun",
   arabic: "جَمَل",
   transliteration: "jamal",
@@ -3336,7 +3231,7 @@ const nouns = [
   }
 },
 {
-  id: 299,
+  id: "N98",
   type: "noun",
   arabic: "عَالِم",
   transliteration: "aalim",
@@ -3362,7 +3257,7 @@ const nouns = [
   }
 },
 {
-  id: 300,
+  id: "N99",
   type: "noun",
   arabic: "مُحَاسِب",
   transliteration: "muhaasib",
@@ -3388,7 +3283,7 @@ const nouns = [
   }
 },
 {
-  id: 301,
+  id: "N100",
   type: "noun",
   arabic: "صُنْدُوقُ أَدَوَات",
   transliteration: "sunduq adawaat",
@@ -3414,7 +3309,7 @@ const nouns = [
   }
 },
 {
-  id: 302,
+  id: "N101",
   type: "noun",
   arabic: "أَرِيكَة",
   transliteration: "areeka",
@@ -3440,7 +3335,7 @@ const nouns = [
   }
 },
 {
-  id: 303,
+  id: "N102",
   type: "noun",
   arabic: "دُولَاب",
   transliteration: "doolaab",
@@ -3466,7 +3361,7 @@ const nouns = [
   }
 },
 {
-  id: 304,
+  id: "N103",
   type: "noun",
   arabic: "حِكْمَة",
   transliteration: "hikma",
@@ -3492,7 +3387,7 @@ const nouns = [
   }
 },
 {
-  id: 305,
+  id: "N104",
   type: "noun",
   arabic: "أَمَل",
   transliteration: "amal",
@@ -3518,7 +3413,7 @@ const nouns = [
   }
 },
 {
-  id: 306,
+  id: "N105",
   type: "noun",
   arabic: "قَارَّة",
   transliteration: "qaara",
@@ -3544,7 +3439,7 @@ const nouns = [
   }
 },
 {
-  id: 307,
+  id: "N106",
   type: "noun",
   arabic: "صَحْرَاء",
   transliteration: "sahraa'",
@@ -3570,7 +3465,7 @@ const nouns = [
   }
 },
 {
-  id: 308,
+  id: "N107",
   type: "noun",
   arabic: "مَمَرّ",
   transliteration: "mamar",
@@ -3596,7 +3491,7 @@ const nouns = [
   }
 },
 {
-  id: 309,
+  id: "N108",
   type: "noun",
   arabic: "غَزَال",
   transliteration: "ghazaal",
@@ -3622,7 +3517,7 @@ const nouns = [
   }
 },
 {
-  id: 310,
+  id: "N109",
   type: "noun",
   arabic: "مَهَمَّة",
   transliteration: "mahama",
@@ -3648,7 +3543,7 @@ const nouns = [
   }
 },
 {
-  id: 311,
+  id: "N110",
   type: "noun",
   arabic: "كَمَّاشَة",
   transliteration: "kammasha",
@@ -3674,7 +3569,7 @@ const nouns = [
   }
 },
 {
-  id: 312,
+  id: "N111",
   type: "noun",
   arabic: "مِجْرَف",
   transliteration: "mijraf",
@@ -3700,7 +3595,7 @@ const nouns = [
   }
 },
 {
-  id: 313,
+  id: "N112",
   type: "noun",
   arabic: "مِسْحَاة",
   transliteration: "mishha",
@@ -3726,7 +3621,7 @@ const nouns = [
   }
 },
 {
-  id: 314,
+  id: "N113",
   type: "noun",
   arabic: "قُبَّعَة",
   transliteration: "qubba'a",
@@ -3752,7 +3647,7 @@ const nouns = [
   }
 },
 {
-  id: 315,
+  id: "N114",
   type: "noun",
   arabic: "وِشَاح",
   transliteration: "wishaah",
@@ -3778,7 +3673,7 @@ const nouns = [
   }
 },
 {
-  id: 316,
+  id: "N115",
   type: "noun",
   arabic: "غَلَّايَة",
   transliteration: "ghallaaya",
@@ -3804,7 +3699,7 @@ const nouns = [
   }
 },
 {
-  id: 317,
+  id: "N116",
   type: "noun",
   arabic: "أَرْنَب",
   transliteration: "arnab",
@@ -3830,7 +3725,7 @@ const nouns = [
   }
 },
 {
-  id: 318,
+  id: "N117",
   type: "noun",
   arabic: "عِلِّيَّة",
   transliteration: "illiya",
@@ -3856,7 +3751,7 @@ const nouns = [
   }
 },
 {
-  id: 319,
+  id: "N118",
   type: "noun",
   arabic: "مَكْتَبَة",
   transliteration: "maktaba",
@@ -3882,7 +3777,7 @@ const nouns = [
   }
 },
 {
-  id: 320,
+  id: "N119",
   type: "noun",
   arabic: "ابْنُ عَمّ / ابْنُ خَال",
   transliteration: "ibn 'amm / ibn khaal",
@@ -3908,7 +3803,7 @@ const nouns = [
   }
 },
 {
-  id: 321,
+    id: "N120",
   type: "noun",
   arabic: "طَبَاشِير",
   transliteration: "tabaasheer",
@@ -3934,7 +3829,7 @@ const nouns = [
   }
 },
 {
-  id: 322,
+  id: "N121",
   type: "noun",
   arabic: "سَبُّورَة",
   transliteration: "sabboora",
@@ -3960,7 +3855,7 @@ const nouns = [
   }
 },
 {
-  id: 323,
+  id: "N122",
   type: "noun",
   arabic: "مُدِيرُ المَدْرَسَة",
   transliteration: "mudeer al-madrasa",
@@ -3986,7 +3881,7 @@ const nouns = [
   }
 },
 {
-  id: 324,
+  id: "N123",
   type: "noun",
   arabic: "دَبَّاسَة",
   transliteration: "dabbaasa",
@@ -4012,7 +3907,7 @@ const nouns = [
   }
 },
 {
-  id: 325,
+  id: "N124",
   type: "noun",
   arabic: "سِوَار",
   transliteration: "siwaar",

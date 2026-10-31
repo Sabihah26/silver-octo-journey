@@ -1,7 +1,7 @@
 // src/pages/StudyFormPage.jsx
 import React, { useState, useMemo } from "react";
 import verbs from "../data/verbs";
-import { Link, useNavigate } from "react-router-dom"; // ⭐ ADDED
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   loadStudyProgress,
@@ -19,7 +19,7 @@ function shuffleArray(array) {
 }
 
 export default function StudyFormPage() {
-  const navigate = useNavigate(); // ⭐ ADDED
+  const navigate = useNavigate();
 
   const [selectedForm, setSelectedForm] = useState(null);
   const [openExample, setOpenExample] = useState(null);
@@ -49,28 +49,51 @@ export default function StudyFormPage() {
     "Form X": "#2E7D32",
   };
 
+  // ⭐ NEW — separate grids
+  const gridStyleForms = {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+    gap: 16,
+    padding: "22px 64px",
+    marginTop: 20,
+    justifyItems: "center",
+  };
+
+  const gridStyleVerbs = {
+    display: "grid",
+    gridTemplateColumns: "repeat(6, 190px)",
+    gap: 36,
+    justifyContent: "center",
+    justifyItems: "center",
+    width: "100%",
+    marginTop: 20,
+  };
+
+  // ⭐ FIX — normalize form names
   const filteredVerbs = useMemo(() => {
     if (!selectedForm) return [];
-    return verbs.filter((v) => v.form === selectedForm);
+
+    const normalizedSelected = selectedForm.replace("Form", "").trim();
+
+    return verbs.filter((v) => {
+      const normalizedForm = (v.form || "").replace("Form", "").trim();
+      return normalizedForm === normalizedSelected;
+    });
   }, [selectedForm]);
 
   const studiedCount = filteredVerbs.filter((v) => v.studied).length;
   const totalCount = filteredVerbs.length;
   const progress = totalCount ? Math.round((studiedCount / totalCount) * 100) : 0;
 
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-    gap: 16,
-    marginTop: 20,
-  };
-
   const formButtonStyle = (form) => ({
-    padding: "18px 10px",
+    padding: "38px 40px",
     background: "white",
     borderRadius: 12,
     border: `2px solid ${formColors[form]}`,
     fontSize: 18,
+    gap: 8,
+    display: "flex",
+    justifyContent: "center",
     fontWeight: 600,
     cursor: "pointer",
     textAlign: "center",
@@ -80,9 +103,8 @@ export default function StudyFormPage() {
 
   const cardStyle = (verb) => ({
     width: "100%",
-    maxWidth: 600,
-    padding: 20,
-    margin: "0 auto 14px auto",
+    padding: 12,
+    textAlign: "center",
     background: "white",
     borderRadius: 12,
     border:
@@ -96,12 +118,6 @@ export default function StudyFormPage() {
     transition: "0.25s",
   });
 
-  // ⭐ KEEPING — NOT REMOVED
-  const handleStudyNow = (verb) => {
-    markStudyReviewed();
-    alert(`Studied: ${verb.arabic} — progress saved!`);
-  };
-
   const startQuiz = () => {
     if (filteredVerbs.length < 3) return;
     const shuffled = shuffleArray(filteredVerbs);
@@ -113,10 +129,12 @@ export default function StudyFormPage() {
       const others = shuffleArray(
         filteredVerbs.filter((v) => v.id !== correctVerb.id)
       ).slice(0, 3);
+
       const options = shuffleArray([correctVerb, ...others]).map((v) => ({
         id: v.id,
-        english: v.english,
+        english: v.english?.simple || v.english?.detailed || "",
       }));
+
       questions.push({ verb: correctVerb, options });
     }
 
@@ -170,7 +188,7 @@ export default function StudyFormPage() {
         justifyContent: "center",
       }}
     >
-      <div style={{ maxWidth: 900, width: "100%", margin: "0 auto" }}> {/* ⭐ CENTERED */}
+      <div style={{ maxWidth: 900, width: "100%", margin: "0 auto" }}>
         <h1 style={{ textAlign: "center", marginBottom: 10 }}>
           Study by Verb Form
         </h1>
@@ -181,7 +199,8 @@ export default function StudyFormPage() {
               Choose a form to begin studying
             </p>
 
-            <div style={gridStyle}>
+            {/* ⭐ FORM SELECTION GRID */}
+            <div style={gridStyleForms}>
               {forms.map((form) => (
                 <div
                   key={form}
@@ -298,6 +317,7 @@ export default function StudyFormPage() {
                     <div style={{ marginBottom: 8, fontSize: 15 }}>
                       Question {quizIndex + 1} of {quizQuestions.length}
                     </div>
+
                     <div
                       style={{
                         fontSize: 26,
@@ -307,11 +327,16 @@ export default function StudyFormPage() {
                         textAlign: "right",
                       }}
                     >
-                      {quizQuestions[quizIndex].verb.arabic}
+                      {quizQuestions[quizIndex].verb.arabic?.past ||
+                       quizQuestions[quizIndex].verb.arabic ||
+                       quizQuestions[quizIndex].verb.past ||
+                       ""}
                     </div>
+
                     <div style={{ marginBottom: 10, fontSize: 15 }}>
                       Choose the correct English meaning:
                     </div>
+
                     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                       {quizQuestions[quizIndex].options.map((opt) => (
                         <button
@@ -375,147 +400,172 @@ export default function StudyFormPage() {
 
             {filteredVerbs.length === 0 && <p>No verbs found for this form.</p>}
 
-            {filteredVerbs.map((verb, index) => (
-              <div
-                key={index}
-                id={`verb-card-${verb.id}`}
-                style={cardStyle(verb)}
-              >
-                {/* Header */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Link
-                    to={`/verb/${verb.id}`}
-                    style={{ textDecoration: "none", color: "#000", flex: 1 }}
-                  >
-                    <div>
-                      <div style={{ fontSize: 28, fontWeight: 700 }}>
-                        {verb.arabic}
-                      </div>
-                      <div style={{ fontSize: 18, opacity: 0.7 }}>
-                        {verb.english?.simple || verb.english?.detailed || ""}
-                      </div>
-                    </div>
-                  </Link>
+            {/* ⭐ VERB GRID */}
+            <div style={gridStyleVerbs}>
+              {filteredVerbs.map((verb, index) => {
+                const arabicMain =
+                  verb.arabic?.simple ||
+                  verb.arabic?.past ||
+                  verb.arabic ||
+                  verb.past ||
+                  "";
 
-                  {/* Audio */}
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const audio = new Audio(`/audio/verbs/${verb.id}.mp3`);
-                      audio.play();
-                    }}
-                    style={{
-                      border: "none",
-                      background: "transparent",
-                      cursor: "pointer",
-                      fontSize: 26,
-                      padding: 6,
-                      transition: "0.2s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.transform = "scale(1.2)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.transform = "scale(1)")
-                    }
+                return (
+                  <div
+                    key={index}
+                    id={`verb-card-${verb.id}`}
+                    style={cardStyle(verb)}
                   >
-                    🔊
-                  </button>
-
-                  {/* ⭐ STUDY NOW — UPDATED */}
-                  <button
-                    onClick={() =>
-                      navigate(`/flashcards?form=${selectedForm}&start=${verb.id}`)
-                    }
-                    style={{
-                      padding: "8px 12px",
-                      borderRadius: 8,
-                      background: formColors[selectedForm],
-                      color: "white",
-                      border: "none",
-                      cursor: "pointer",
-                      fontSize: 14,
-                      marginLeft: 10,
-                    }}
-                  >
-                    Study Now
-                  </button>
-                </div>
-
-                {/* Example */}
-                {verb.example_ar && (
-                  <div style={{ marginTop: 14 }}>
-                    <button
-                      onClick={() =>
-                        setOpenExample(openExample === index ? null : index)
-                      }
+                    {/* Header */}
+                    <div
                       style={{
-                        background: "#f0f0f0",
-                        border: "1px solid #ccc",
-                        padding: "6px 12px",
-                        borderRadius: 8,
-                        cursor: "pointer",
-                        fontSize: 14,
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
                       }}
                     >
-                      {openExample === index ? "Hide example" : "Show example"}
-                    </button>
+                      <Link
+                        to={`/verb/${verb.id}`}
+                        style={{ textDecoration: "none", color: "#000", flex: 1 }}
+                      >
+                        <div>
+                          <div style={{ fontSize: 28, fontWeight: 700 }}>
+                            {arabicMain}
+                          </div>
+                          <div style={{ fontSize: 18, opacity: 0.7 }}>
+                            {verb.english?.simple || verb.english?.detailed || ""}
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
 
-                    {openExample === index && (
-                      <div
+                    {/* Study + Audio */}
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: 8,
+                        marginTop: 10,
+                      }}
+                    >
+                      <button
+                        onClick={() =>
+                          navigate(`/flashcards?form=${selectedForm}&start=${verb.id}`)
+                        }
                         style={{
-                          marginTop: 12,
-                          padding: 12,
-                          background: "#fafafa",
-                          borderRadius: 8,
-                          border: "1px solid #eee",
+                          padding: "8px 12px",
+                          borderRadius: 10,
+                          background: formColors[selectedForm],
+                          color: "white",
+                          border: "none",
+                          cursor: "pointer",
+                          fontSize: 14,
+                          width: "100%",
+                          maxWidth: 130,
+                          textAlign: "center",
                         }}
                       >
-                        <div
-                          style={{
-                            fontSize: 22,
-                            fontWeight: 600,
-                            marginBottom: 6,
-                            direction: "rtl",
-                            textAlign: "right",
-                          }}
-                        >
-                          {verb.example_ar}
-                        </div>
+                        Study Now
+                      </button>
 
-                        <div style={{ fontSize: 16, opacity: 0.8 }}>
-                          {verb.example_en}
-                        </div>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const audio = new Audio(`/audio/verbs/${verb.id}.mp3`);
+                          audio.play();
+                        }}
+                        style={{
+                          border: "none",
+                          background: "transparent",
+                          cursor: "pointer",
+                          fontSize: 26,
+                          padding: 6,
+                          lineHeight: 1,
+                          transition: "0.2s",
+                          transform: "scale(1)",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.transform = "scale(1.2)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                      >
+                        🔊
+                      </button>
+                    </div>
 
+                    {/* Example */}
+                    {verb.example_ar && (
+                      <div style={{ marginTop: 14 }}>
                         <button
-                          onClick={() => {
-                            const audio = new Audio(
-                              `/audio/examples/${verb.id}.mp3`
-                            );
-                            audio.play();
-                          }}
+                          onClick={() =>
+                            setOpenExample(openExample === index ? null : index)
+                          }
                           style={{
-                            marginTop: 10,
-                            border: "none",
-                            background: "transparent",
+                            background: "#f0f0f0",
+                            border: "1px solid #ccc",
+                            padding: "6px 12px",
+                            borderRadius: 8,
                             cursor: "pointer",
-                            fontSize: 22,
+                            fontSize: 14,
                           }}
                         >
-                          🔊
+                          {openExample === index ? "Hide example" : "Show example"}
                         </button>
+
+                        {openExample === index && (
+                          <div
+                            style={{
+                              marginTop: 12,
+                              padding: 12,
+                              background: "#fafafa",
+                              borderRadius: 8,
+                              border: "1px solid #eee",
+                            }}
+                          >
+                            <div
+                              style={{
+                                fontSize: 22,
+                                fontWeight: 600,
+                                marginBottom: 6,
+                                direction: "rtl",
+                                textAlign: "right",
+                              }}
+                            >
+                              {verb.example_ar}
+                            </div>
+
+                            <div style={{ fontSize: 16, opacity: 0.8 }}>
+                              {verb.example_en}
+                            </div>
+
+                            <button
+                              onClick={() => {
+                                const audio = new Audio(
+                                  `/audio/examples/${verb.id}.mp3`
+                                );
+                                audio.play();
+                              }}
+                              style={{
+                                marginTop: 10,
+                                border: "none",
+                                background: "transparent",
+                                cursor: "pointer",
+                                fontSize: 22,
+                              }}
+                            >
+                              🔊
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </>
         )}
       </div>

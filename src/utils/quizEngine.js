@@ -63,8 +63,22 @@ export function buildVerbQuiz({ verb, root, form, mode }) {
     const useArabic = Math.random() < 0.5;
     const pronounEn = PRONOUN_MAP[pronoun] || pronoun;
 
+    // ⭐ PATCH: make ID safe for both verb objects and strings
+    const verbLabel =
+      typeof verb === "string"
+        ? verb
+        : verb?.past ||
+          verb?.arabic ||
+          verb?.english?.simple ||
+          String(verb?.id || "");
+
+    const verbIdPart =
+      typeof verb === "string"
+        ? verb
+        : String(verb?.id || verbLabel || "");
+
     return {
-      id: `${verb}-${mode}-${idx}`,
+      id: `${verbIdPart}-${mode}-${idx}`, // ⭐ FIXED
       verb,
       root,
       form,

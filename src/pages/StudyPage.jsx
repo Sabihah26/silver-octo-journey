@@ -90,15 +90,26 @@ export default function StudyPage() {
   const verb = session.current;
   const srs = record || getItemSRS(verb.id);
 
-  // ⭐ NEW — SAFE ACCESSORS
-  const arabicMain = verb.past || verb.arabic || "";
+  const arabicMain =
+    verb.arabic?.simple ||
+    verb.arabic?.past ||
+    verb.past ||
+    verb.arabic ||
+    "";
+
   const englishMain =
     verb.english?.simple ||
     verb.english?.detailed ||
     verb.english ||
     "";
 
-  const translit = verb.transliteration || "";
+  const translit =
+    verb.transliteration?.past ||
+    verb.transliteration?.present ||
+    verb.transliteration?.masdar1 ||
+    (typeof verb.transliteration === "string" ? verb.transliteration : "") ||
+    "";
+
   const root = verb.root || "";
   const form = verb.form || "";
 
@@ -106,78 +117,80 @@ export default function StudyPage() {
     <div style={styles.page}>
       <h1 style={styles.title}>Study Session</h1>
 
-      {/* CARD */}
-      <div
-        style={{
-          ...styles.card,
-          opacity: animateCard ? 1 : 0,
-          transform: animateCard ? "translateY(0px)" : "translateY(20px)",
-          transition: "all 0.35s ease",
-        }}
-      >
-        <h2 style={styles.arabic}>{arabicMain}</h2>
+      {/* CARD 1 — Verb Info */}
+      <div style={styles.tableCard}>
+        <div style={styles.row}>
+          <div style={styles.leftCell}>{translit}</div>
+          <div style={styles.rightArabic}>{arabicMain}</div>
+        </div>
 
-        <p style={styles.english}>{englishMain}</p>
+        <div style={styles.row}>
+          <div style={styles.leftCell}>{englishMain}</div>
+          <div style={styles.rightCell}>{form}</div>
+        </div>
 
-        <p style={styles.meta}>
-          Root: {root} • {form}
-        </p>
-
-        {translit && (
-          <p style={{ fontSize: 18, color: "#555", marginTop: 6 }}>
-            {translit}
-          </p>
-        )}
+        {/* ⭐ FIXED — Root now uses rootArabic */}
+        <div style={styles.row}>
+          <div style={styles.leftCell}>Root</div>
+          <div style={styles.rootArabic}>{root}</div>
+        </div>
       </div>
 
-      {/* SRS PANEL */}
-      <div style={styles.srsPanel}>
-        <p style={styles.srsLine}>
-          <strong>Score:</strong> {srs.score}
-        </p>
+      {/* CARD 2 — SRS Stats */}
+      <div style={styles.tableCard}>
+        <div style={styles.row}>
+          <div style={styles.leftCell}>Score: {srs.score}</div>
+          <div style={styles.rightCell}>Interval: {srs.interval} day(s)</div>
+        </div>
 
-        <p
-          style={{
-            ...styles.srsLine,
-            ...(animateXP ? styles.xpPop : {}),
-          }}
-        >
-          <strong>XP:</strong> {srs.xp}
-        </p>
+        <div style={styles.row}>
+          <div
+            style={{
+              ...styles.leftCell,
+              ...(animateXP ? styles.xpPop : {}),
+            }}
+          >
+            XP: {srs.xp}
+          </div>
+          <div style={styles.rightCell}>
+            Next review: {new Date(srs.nextReview).toLocaleDateString()}
+          </div>
+        </div>
 
-        <p
-          style={{
-            ...styles.srsLine,
-            ...(animateStreak ? styles.streakPulse : {}),
-          }}
-        >
-          <strong>Streak:</strong> {srs.streak} day(s)
-        </p>
-
-        <p style={styles.srsLine}>
-          <strong>Interval:</strong> {srs.interval} day(s)
-        </p>
-
-        <p style={styles.srsLine}>
-          <strong>Next review:</strong>{" "}
-          {new Date(srs.nextReview).toLocaleDateString()}
-        </p>
+        <div style={styles.row}>
+          <div
+            style={{
+              ...styles.leftCell,
+              ...(animateStreak ? styles.streakPulse : {}),
+            }}
+          >
+            Streak: {srs.streak} day(s)
+          </div>
+          <div style={styles.rightCell}></div>
+        </div>
       </div>
 
-      {/* RECOMMENDED VERB */}
+      {/* CARD 3 — Next Recommended Verb */}
       {recommended && (
-        <div style={styles.recommendBox}>
-          <h3 style={styles.recommendTitle}>Next Recommended Verb</h3>
+        <div style={styles.tableCard}>
+          <div style={styles.titleRow}>Next Recommended Verb</div>
 
-          <p style={styles.recommendArabic}>
-            {recommended.past || recommended.arabic}
-          </p>
+          <div style={styles.row}>
+            <div style={styles.leftGreen}>
+              {recommended.english?.simple ||
+                recommended.english?.detailed ||
+                recommended.english ||
+                ""}
+            </div>
 
-          <p style={styles.recommendEnglish}>
-            {recommended.english?.simple ||
-              recommended.english?.detailed ||
-              ""}
-          </p>
+            <div style={styles.rightArabic}>
+              {recommended.arabic?.simple ||
+                recommended.arabic?.past ||
+                recommended.past ||
+                recommended.arabic ||
+                ""}
+            </div>
+          </div>
         </div>
       )}
 
@@ -213,7 +226,7 @@ export default function StudyPage() {
   );
 }
 
-/* STYLES — unchanged except where needed */
+/* NEW STYLES */
 const styles = {
   page: {
     maxWidth: 700,
@@ -223,73 +236,68 @@ const styles = {
     minHeight: "100vh",
     color: "white",
   },
+
   title: {
     fontSize: 36,
     fontWeight: 800,
     marginBottom: 20,
     textAlign: "center",
   },
-  card: {
-    background: "#ffffff",
-    padding: 32,
-    borderRadius: 20,
-    boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
-    marginBottom: 24,
-    textAlign: "center",
-    color: "#111827",
-  },
-  arabic: {
-    fontSize: 48,
-    marginBottom: 10,
-    color: "#111827",
-  },
-  english: {
-    fontSize: 22,
-    marginBottom: 10,
-    color: "#111827",
-  },
-  meta: {
-    fontSize: 20,
-    color: "#4b5563",
-  },
-  srsPanel: {
-    background: "#f9fafb",
+
+  tableCard: {
+    background: "white",
+    borderRadius: 16,
     padding: 20,
-    borderRadius: 14,
     marginBottom: 24,
-    color: "#111827",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
   },
-  srsLine: {
-    fontSize: 18,
-    margin: "6px 0",
+
+  row: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "10px 0",
+    borderBottom: "1px solid #eee",
   },
-  xpPop: {
-    animation: "xpPopAnim 0.6s ease",
+
+  leftCell: {
+    fontSize: 20,
+    color: "#333",
   },
-  streakPulse: {
-    animation: "streakPulseAnim 0.6s ease",
+
+  rightCell: {
+    fontSize: 20,
+    color: "#111",
+    textAlign: "right",
   },
-  recommendBox: {
-    marginTop: 10,
-    marginBottom: 24,
-    padding: 18,
-    background: "#f3f4f6",
-    borderRadius: 14,
-    textAlign: "center",
-    color: "#111827",
+
+  rightArabic: {
+    fontSize: 45,
+    color: "#1061e4",
+    textAlign: "right",
+    direction: "rtl",
   },
-  recommendTitle: {
-    fontSize: 22,
-    marginBottom: 8,
-  },
-  recommendArabic: {
-    fontSize: 36,
+
+  /* ⭐ NEW — ONLY ROOT LETTERS (35px) */
+  rootArabic: {
+    fontSize: 35,
     fontWeight: 700,
+    color: "#1061e4",
+    direction: "rtl",
   },
-  recommendEnglish: {
-    fontSize: 18,
-    color: "#555",
+
+  leftGreen: {
+    fontSize: 22,
+    color: "green",
   },
+
+  titleRow: {
+    fontSize: 22,
+    fontWeight: "bold",
+    paddingBottom: 10,
+    textAlign: "center",
+    color: "#333",
+  },
+
   buttons: {
     display: "flex",
     justifyContent: "center",
@@ -297,6 +305,7 @@ const styles = {
     flexWrap: "wrap",
     marginBottom: 24,
   },
+
   buttonBase: {
     padding: "12px 18px",
     color: "#fff",
@@ -306,10 +315,24 @@ const styles = {
     fontWeight: 600,
     fontSize: 16,
   },
+
   again: { background: "#ef4444" },
   hard: { background: "#f97316" },
   good: { background: "#10b981" },
   easy: { background: "#3b82f6" },
+
+  nav: {
+    marginTop: 24,
+    display: "flex",
+    justifyContent: "space-between",
+  },
+
+  link: {
+    fontSize: 18,
+    textDecoration: "none",
+    color: "#3b82f6",
+  },
+
   finished: {
     textAlign: "center",
     padding: 40,
@@ -317,20 +340,19 @@ const styles = {
     minHeight: "100vh",
     color: "white",
   },
+
   backLink: {
     fontSize: 18,
     textDecoration: "none",
     color: "#3b82f6",
   },
-  nav: {
-    marginTop: 24,
-    display: "flex",
-    justifyContent: "space-between",
+
+  xpPop: {
+    animation: "xpPopAnim 0.6s ease",
   },
-  link: {
-    fontSize: 18,
-    textDecoration: "none",
-    color: "#3b82f6",
+
+  streakPulse: {
+    animation: "streakPulseAnim 0.6s ease",
   },
 };
 

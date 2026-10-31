@@ -15,14 +15,15 @@ export default function BillingPage() {
       </p>
 
       <div style={card}>
-        <h2 style={planTitle}>Lifetime Access</h2>
-        <p style={price}>£29.99 one‑time</p>
+        <h2 style={planTitle}>Yearly Subscription</h2>
+        <p style={price}>£75 / year</p>
 
         <ul style={featureList}>
           <li>All verb, noun, and adverb entries</li>
           <li>Full examples and grammar lessons</li>
           <li>Unlimited flashcards and quizzes</li>
           <li>Saved words synced on this device</li>
+          <li>Premium-only study modes</li>
         </ul>
 
         <button style={primaryBtn} onClick={startCheckout}>
@@ -30,7 +31,7 @@ export default function BillingPage() {
         </button>
 
         <p style={smallNote}>
-          Secure payment via Stripe. One‑time purchase.
+          Secure payment via Stripe. Auto-renews yearly.
         </p>
       </div>
 
@@ -47,27 +48,27 @@ const pageContainer = {
   padding: 20,
   maxWidth: 600,
   margin: "0 auto",
-  color: "white",              // ⭐ FIX: Text matches dark theme
+  color: "white",
 };
 
 const title = {
   fontSize: 32,
   marginBottom: 10,
-  color: "white",              // ⭐ FIX
+  color: "white",
 };
 
 const subtitle = {
   fontSize: 18,
   opacity: 0.9,
-  color: "white",              // ⭐ FIX
+  color: "white",
 };
 
 const card = {
   marginTop: 20,
   padding: 20,
   borderRadius: 12,
-  background: "white",         // ⭐ FIX: White card stays white
-  color: "#222",               // ⭐ FIX: Dark text inside card
+  background: "white",
+  color: "#222",
   border: "1px solid #ddd",
   boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
 };
@@ -110,5 +111,5 @@ const smallNote = {
 const backLink = {
   fontSize: 18,
   textDecoration: "none",
-  color: "#4da3ff",            // ⭐ FIX: Matches your app’s link colour
+  color: "#4da3ff",
 };

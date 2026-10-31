@@ -24,7 +24,7 @@ export default function TopNav() {
       }}
     >
       <Link to="/" style={navItem}>🏠 Home</Link>
-      <Link to="/verbs" style={{ ...navItem, fontWeight: "bold" }}>📘 Verbs</Link>
+      <Link to="/verbs/categories" style={{ ...navItem, fontWeight: "bold" }}>📘 Verbs</Link>
       <Link to="/nouns" style={navItem}>📗 Nouns</Link>
       <Link to="/adverbs" style={navItem}>📙 Adverbs</Link>
     </div>

@@ -4,8 +4,9 @@
 // jussive/subjunctive, passive, participles, masdar.
 // ------------------------------------------------------
 
-// ⭐ Normalize UI/data labels ("Form I") → engine keys ("I")
+// ⭐ Normalize UI/data labels ("Form I", "Form1", "1") → engine keys ("I")
 const FORM_KEY_MAP = {
+  // Roman‑numeral labels
   "Form I": "I",
   "Form II": "II",
   "Form III": "III",
@@ -16,6 +17,42 @@ const FORM_KEY_MAP = {
   "Form VIII": "VIII",
   "Form IX": "IX",
   "Form X": "X",
+
+  // Numeric labels used in data / UI
+  "Form1": "I",
+  "Form2": "II",
+  "Form3": "III",
+  "Form4": "IV",
+  "Form5": "V",
+  "Form6": "VI",
+  "Form7": "VII",
+  "Form8": "VIII",
+  "Form9": "IX",
+  "Form10": "X",
+
+  // Lowercase variants
+  "form1": "I",
+  "form2": "II",
+  "form3": "III",
+  "form4": "IV",
+  "form5": "V",
+  "form6": "VI",
+  "form7": "VII",
+  "form8": "VIII",
+  "form9": "IX",
+  "form10": "X",
+
+  // Bare numbers (from verb.form.replace("Form", ""))
+  "1": "I",
+  "2": "II",
+  "3": "III",
+  "4": "IV",
+  "5": "V",
+  "6": "VI",
+  "7": "VII",
+  "8": "VIII",
+  "9": "IX",
+  "10": "X",
 };
 
 // Normalise root input: "ك-ت-ب" → ["ك","ت","ب"]
@@ -253,7 +290,6 @@ function buildPastFromLemma(past3ms, root, weakType, form) {
     "1p": stem + "نَا",
   };
 }
-
 // ------------------------------------------------------
 // Build FULL 14‑PERSON ACTIVE PRESENT from lemma (3ms present)
 // with weak-verb + Form I pattern handling
@@ -496,7 +532,6 @@ function buildFuture(present, prefix) {
   for (const [k, v] of Object.entries(present)) out[k] = prefix + v;
   return out;
 }
-
 // ------------------------------------------------------
 // Participles (pattern‑based; these are regular)
 // ------------------------------------------------------
@@ -586,7 +621,7 @@ export default function conjugate(rootInput, formInput, overrides = {}) {
   const root = normalizeRoot(rootInput);
   const weakType = detectWeakType(root);
 
-  // ⭐ Normalize "Form I" → "I" etc.
+  // ⭐ Normalize "Form I", "Form1", "form1", "1" → "I" etc.
   const form = FORM_KEY_MAP[formInput] || formInput;
 
   const formPatterns = FORM_PATTERNS[form];
