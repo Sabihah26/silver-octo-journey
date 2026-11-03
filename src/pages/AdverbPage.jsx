@@ -121,7 +121,7 @@ export default function AdverbPage() {
 const styles = {
   page: {
     padding: "20px",
-    background: "#0A1A3A",
+    background: "#041d50",
     minHeight: "100vh",
     color: "white",
   },
@@ -152,7 +152,7 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    background: "rgba(0,0,0,0.55)",
+    background: "rgba(4, 14, 76, 0.55)",
     color: "white",
     fontSize: "28px",
     display: "flex",
@@ -203,7 +203,7 @@ const styles = {
     marginTop: "15px",
     padding: "4px 8px",
     borderRadius: "8px",
-    background: "#0A1A3A",
+    background: "#0F2A5A",
     color: "white",
     fontSize: "22px",
     width: "fit-content",

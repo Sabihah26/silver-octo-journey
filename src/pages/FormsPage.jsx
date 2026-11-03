@@ -29,9 +29,15 @@ export default function FormsPage() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+
+          // ⭐ EXACTLY 5 columns → 2 rows total
+          gridTemplateColumns: "repeat(5, 1fr)",
+
           gap: "20px",
-          maxWidth: "900px",
+
+          // ⭐ Must be wide enough to hold 5 cards
+          maxWidth: "1300px",
+
           margin: "0 auto",
         }}
       >
@@ -44,7 +50,7 @@ export default function FormsPage() {
             <div
               style={{
                 background: "white",
-                color: "#0A1A3A",
+                color: "#072156",
                 padding: "24px",
                 borderRadius: "14px",
                 textAlign: "center",

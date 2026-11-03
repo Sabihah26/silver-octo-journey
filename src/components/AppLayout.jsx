@@ -16,8 +16,8 @@ export default function AppLayout() {
   useEffect(() => {
     document.body.style.background = dark ? "#0d0d0d" : "#f5f5f5";
     document.body.style.color = dark ? "#eee" : "#222";
-    document.body.style.margin = 0;          // ⭐ remove browser default margin
-    document.body.style.padding = 0;         // ⭐ remove browser default padding
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
     document.body.style.transition = "background 0.3s, color 0.3s";
   }, [dark]);
 
@@ -33,40 +33,65 @@ export default function AppLayout() {
         flexDirection: "column",
       }}
     >
-      {/* NAVBAR */}
+      {/* ⭐ CENTRED NAVBAR ⭐ */}
       <nav style={styles.nav(dark)}>
-        <div style={styles.navLeft}>
-          <span style={styles.brand(dark)}>ArabicMaster</span>
-        </div>
-
-        <div style={styles.navLinks}>
-          {navItem("/", "Home", location, dark)}
-          {navItem("/verbs", "Verbs", location, dark)}
-          {navItem("/nouns", "Nouns", location, dark)}
-          {navItem("/adverbs", "Adverbs", location, dark)}
-          {navItem("/study", "Study", location, dark)}
-          {navItem("/flashcards", "Flashcards", location, dark)}
-        </div>
-
-        <button
-          onClick={() => setDark(!dark)}
-          style={styles.themeButton(dark)}
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "1100px",
+            margin: "0 auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
         >
-          {dark ? "☀️ Light" : "🌙 Dark"}
-        </button>
+          <span style={styles.brand(dark)}>ArabicMaster</span>
+
+          <div style={styles.navLinks}>
+            {navItem("/", "Home", location, dark)}
+            {navItem("/verbs", "Verbs", location, dark)}
+            {navItem("/nouns", "Nouns", location, dark)}
+            {navItem("/adverbs", "Adverbs", location, dark)}
+            {navItem("/study", "Study", location, dark)}
+            {navItem("/flashcards", "Flashcards", location, dark)}
+          </div>
+
+          <button
+            onClick={() => setDark(!dark)}
+            style={styles.themeButton(dark)}
+          >
+            {dark ? "☀️ Light" : "🌙 Dark"}
+          </button>
+        </div>
       </nav>
 
-      {/* ⭐ FULL-WIDTH PAGE CONTENT ⭐ */}
+      {/* ⭐ CENTRED PAGE CONTENT ⭐ */}
       <main
         style={{
-          width: "100%",          // ⭐ full width
-          maxWidth: "100%",       // ⭐ remove container limit
+          width: "100%",
+          maxWidth: "100%",
           margin: 0,
           padding: 0,
-          flexGrow: 1,            // ⭐ allows page to fill height
+          flexGrow: 1,
         }}
       >
-        <Outlet />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "100%",
+              maxWidth: "1100px",
+              margin: "0 auto",
+            }}
+          >
+            <Outlet />
+          </div>
+        </div>
       </main>
     </div>
   );
@@ -89,7 +114,7 @@ function navItem(path, label, location, dark) {
       }}
       style={{
         ...styles.navItem(dark),
-        ...(active ? styles.activeNavItem(dark) : {})
+        ...(active ? styles.activeNavItem(dark) : {}),
       }}
     >
       {label}
@@ -114,10 +139,7 @@ function navItem(path, label, location, dark) {
 /* NAV + LAYOUT STYLES */
 const styles = {
   nav: (dark) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "16px 28px",
+    padding: "16px 0",
     background: dark
       ? "rgba(20,20,20,0.85)"
       : "rgba(255,255,255,0.85)",
@@ -134,12 +156,6 @@ const styles = {
     letterSpacing: "0.5px",
     color: dark ? "#fff" : "#111",
   }),
-
-  navLeft: {
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-  },
 
   navLinks: {
     display: "flex",

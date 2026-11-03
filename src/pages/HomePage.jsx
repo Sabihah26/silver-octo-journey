@@ -104,7 +104,7 @@ export default function HomePage() {
               src={logo}
               alt="Arabic Dictionary Logo"
               style={{
-                width: 180,
+                width: 230,
                 height: "auto",
                 marginTop: 10,
               }}

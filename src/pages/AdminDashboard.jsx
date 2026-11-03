@@ -1,3 +1,4 @@
+// src/pages/AdminDashboard.jsx
 import React, { useEffect, useState } from "react";
 import {
   fetchRealtimeActiveUsers,
@@ -29,45 +30,98 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold mb-6 text-gray-800">
-        Admin Dashboard
-      </h1>
+    <div
+      style={{
+        width: "100%",
+        padding: "2rem 1rem",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          margin: "0 auto",
+          textAlign: "center",
+        }}
+      >
+        <h1 style={{ fontSize: "2.5rem", marginBottom: "2rem" }}>
+          Admin Dashboard
+        </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
+          {/* ACTIVE USERS */}
+          <div
+            style={{
+              background: "white",
+              padding: "1.5rem",
+              borderRadius: "12px",
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem" }}>Active Users (Realtime)</h2>
+            <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
+              {activeUsers !== null ? activeUsers : "Loading..."}
+            </p>
+          </div>
 
-        {/* Active Users */}
-        <div className="bg-white shadow p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-2">Active Users (Realtime)</h2>
-          <p className="text-3xl font-bold text-blue-600">
-            {activeUsers !== null ? activeUsers : "Loading..."}
-          </p>
+          {/* EVENTS TODAY */}
+          <div
+            style={{
+              background: "white",
+              padding: "1.5rem",
+              borderRadius: "12px",
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem" }}>Events Today</h2>
+            <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
+              {eventsToday !== null ? eventsToday : "Loading..."}
+            </p>
+          </div>
+
+          {/* TOP PAGES */}
+          <div
+            style={{
+              background: "white",
+              padding: "1.5rem",
+              borderRadius: "12px",
+              color: "black",
+              textAlign: "center",
+            }}
+          >
+            <h2 style={{ marginBottom: "1rem" }}>Top Pages</h2>
+
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                fontSize: "1.1rem",
+                lineHeight: "1.8rem",
+              }}
+            >
+              {topPages.length > 0 ? (
+                topPages.map((p, i) => (
+                  <li key={i}>
+                    {p.page} — {p.views} views
+                  </li>
+                ))
+              ) : (
+                <li>Loading...</li>
+              )}
+            </ul>
+          </div>
         </div>
-
-        {/* Events Today */}
-        <div className="bg-white shadow p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-2">Events Today</h2>
-          <p className="text-3xl font-bold text-green-600">
-            {eventsToday !== null ? eventsToday : "Loading..."}
-          </p>
-        </div>
-
-        {/* Top Pages */}
-        <div className="bg-white shadow p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-2">Top Pages</h2>
-          <ul className="text-gray-700">
-            {topPages.length > 0 ? (
-              topPages.map((p, i) => (
-                <li key={i} className="py-1">
-                  {p.page} — {p.views} views
-                </li>
-              ))
-            ) : (
-              <li>Loading...</li>
-            )}
-          </ul>
-        </div>
-
       </div>
     </div>
   );

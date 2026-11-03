@@ -125,7 +125,7 @@ const styles = {
 
   card: {
     background: "white",
-    color: "#0A1A3A",
+    color: "#051e4f",
     padding: "30px",
     borderRadius: "16px",
     marginTop: "20px",
@@ -175,7 +175,7 @@ const styles = {
     marginTop: "15px",
     padding: "6px 12px",
     borderRadius: "8px",
-    background: "#0A1A3A",
+    background: "#051e4f",
     color: "white",
     fontSize: "14px",
     width: "fit-content",
