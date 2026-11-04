@@ -121,7 +121,7 @@ export default function AdverbPage() {
 const styles = {
   page: {
     padding: "20px",
-    background: "#041d50",
+    background: "#12306B",
     minHeight: "100vh",
     color: "white",
   },
@@ -134,7 +134,7 @@ const styles = {
 
   card: {
     background: "white",
-    color: "#0A1A3A",
+    color: "#0A2A5A",
     padding: "30px",
     borderRadius: "16px",
     marginTop: "20px",

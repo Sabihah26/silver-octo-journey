@@ -10,7 +10,7 @@ export default function FormsPage() {
     <div
       style={{
         padding: "40px 20px",
-        background: "#0A1A3A",
+        background: "#12306B",
         minHeight: "100vh",
         color: "white",
       }}

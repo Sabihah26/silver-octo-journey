@@ -63,7 +63,7 @@ export default function NounList() {
 const styles = {
   page: {
     padding: "20px",
-    background: "#07112B",
+    background: "#12306B",
     minHeight: "100vh",
     color: "white",
   },

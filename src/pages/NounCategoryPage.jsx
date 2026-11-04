@@ -89,7 +89,7 @@ const gridContainer = {
 
 /* Category button style — smaller */
 const categoryButton = {
-  background: "#0A1A3A",
+  background: "#061a44",
   color: "white",
   padding: "30px 11px",   // smaller padding
   borderRadius: "10px",
@@ -102,7 +102,7 @@ const categoryButton = {
 /* Gold Gradient Topics Button */
 const topicsButton = {
   background: "linear-gradient(135deg, #F2C94C 0%, #F7D97A 100%)",
-  color: "#1A1A1A",
+  color: "#12306B",
   padding: "12px 18px",   // slightly smaller
   borderRadius: "10px",
   textDecoration: "none",

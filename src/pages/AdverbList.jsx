@@ -167,7 +167,7 @@ export default function AdverbList() {
 const styles = {
   page: {
     padding: "20px",
-    background: "#07112B",
+    background: "#12306B",
     minHeight: "100vh",
     color: "white",
   },
@@ -186,7 +186,7 @@ const styles = {
     fontSize: "18px",
     padding: "8px 14px",
     borderRadius: "8px",
-    background: "#0A1A3A",
+    background: "#12306B",
     transition: "0.2s",
   },
 
