@@ -1,90 +1,176 @@
 export default {
-  id: "V22",
+  id: "V22_bana",
   type: "verb",
 
-  arabic: { past: "بَنَى" },
+  arabic: {
+    past: "بَنَى"
+  },
 
   transliteration: {
-    past: "banaa",
-    present: "yabnee",
+    past: "banā",
+    present: "yabnī",
 
     "passive-past": "buniya",
-    "passive-present": "yubnaa",
+    "passive-present": "yubnā",
 
-    masdar1: "binaa'",
+    masdar1: "bināʾ",
+    masdar2: "",
 
-    "active-participle": "baanee",
-    "passive-participle": "mabnee",
+    "active-participle": "bānin",
+    "passive-participle": "mabniyy",
 
     subjunctive: "yabniya",
     jussive: "yabni",
 
-    "negative-past": "maa banaa",
-    "negative-present": "laa yabnee",
+    "negative-past": "mā banā",
+    "negative-present": "lā yabnī",
+    "negative-future": "lan yabniya",
 
-    "future-sa": "sayabnee",
-    "future-sawfa": "sawfa yabnee"
+    "future-sa": "sayabnī",
+    "future-sawfa": "sawfa yabnī"
   },
 
   english: {
     simple: "to build",
-    detailed: "to build; to construct; to erect; to establish"
+    detailed: "to build or construct something"
+  },
+
+  englishByType: {
+    past: "he built",
+    present: "he builds",
+    imperative: "build!",
+
+    "passive-past": "it was built",
+    "passive-present": "it is built",
+
+    "negative-past": "he did not build",
+    "negative-present": "he does not build",
+    "negative-future": "he will not build",
+
+    "future-sa": "he will build",
+    "future-sawfa": "he will build",
+
+    "active-participle": "builder",
+    "passive-participle": "built",
+
+    masdar: "building; construction"
   },
 
   root: "ب-ن-ي",
-  rootFamily: "بناء، مبني، بنية",
+  rootFamily: "بَنَى، بَانٍ، مَبْنِيّ",
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
-    name: "fa'ala",
+    name: "faʿala",
     past: "فَعَلَ",
-    present: "يَفْعَلُ"
+    present: "يَفْعِلُ"
   },
 
-  verbType: "defective (final ي)",
+  verbType: "defective",
 
-  difficulty: { cefr: "A2", arabic: "متوسط" },
-  frequency: "Common",
+  difficulty: {
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common for constructing buildings and other things.",
+    learnerNotes: "This is a weak-final verb. Its imperative is اِبْنِ (ibni).",
+    corpusRank: 100
+  },
+
+  frequency: "Very High",
 
   past: "بَنَى",
   present: "يَبْنِي",
   imperative: "اِبْنِ",
+
   future_sa: "سَيَبْنِي",
   future_sawfa: "سَوْفَ يَبْنِي",
 
-  masdar: ["بِنَاء"],
+  masdar: [
+    "بِنَاء"
+  ],
+
+  activeParticiple: "بَانٍ",
+  passiveParticiple: "مَبْنِيّ",
 
   overrides: {
     past: "بَنَى",
     present: "يَبْنِي",
     passivePast: "بُنِيَ",
     passivePresent: "يُبْنَى",
-    masdar: ["بِنَاء"]
+
+    masdar: [
+      "بِنَاء"
+    ]
   },
 
-  topics: ["construction", "creation", "actions"],
+  superTopic: "Construction & Daily Life",
 
-  relatedNouns: ["بناء", "مبنى", "بنية"],
-  relatedVerbs: ["شيّد", "أقام"],
-  synonyms: ["شيّد"],
-  antonyms: ["هَدَمَ"],
+  topics: [
+    "building",
+    "construction"
+  ],
+
+  semanticFamily: "construction verbs",
+
+  categories: [
+    "daily"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "بَنَى",
+      "اِبْتَنَى",
+      "تَبَنَّى"
+    ],
+
+    semantic: [
+      "شَيَّدَ",
+      "أَسَّسَ"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "بِنَاء",
+    "بَانٍ",
+    "مَبْنًى"
+  ],
+
+  synonyms: [
+    "شَيَّدَ",
+    "أَسَّسَ"
+  ],
+
+  antonyms: [
+    "هَدَمَ"
+  ],
 
   examples: {
     simple: {
-      ar: "بَنَى الرَّجُلُ بَيْتًا جَدِيدًا.",
-      en: "The man built a new house.",
-      tr: "banaa ar-rajulu baytan jadeedan"
+      ar: "بَنَى الرَّجُلُ بَيْتًا.",
+      en: "The man built a house.",
+      tr: "banā ar-rajulu baytan",
+      audio: ""
     },
+
     natural: {
-      ar: "بَنَيْنَا جِسْرًا فَوْقَ النَّهْرِ.",
-      en: "We built a bridge over the river.",
-      tr: "banayna jisran fawqa an-nahr"
+      ar: "يَبْنِي العُمَّالُ جِسْرًا جَدِيدًا.",
+      en: "The workers are building a new bridge.",
+      tr: "yabnī al-ʿummālu jisran jadīdan",
+      audio: ""
     },
+
     rich: {
-      ar: "بَنَتِ الدَّوْلَةُ مَدِينَةً حَدِيثَةً بِمَرَافِقَ مُتَطَوِّرَةٍ.",
-      en: "The state built a modern city with advanced facilities.",
-      tr: "banat ad-dawlah madeenatan hadeethatan bi-marafiq mutatawwirah"
+      ar: "بَنَتِ الشَّرِكَةُ مَدْرَسَةً كَبِيرَةً لِأَطْفَالِ القَرْيَةِ.",
+      en: "The company built a large school for the village children.",
+      tr: "banati ash-sharikatu madrasatan kabīratan li-aṭfāli al-qaryah",
+      audio: ""
     }
   },
 

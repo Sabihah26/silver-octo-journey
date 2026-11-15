@@ -127,8 +127,29 @@ export default function AdverbList() {
                   opacity: isLocked ? 0.6 : 1,
                 }}
               >
-                <div style={styles.arabic}>{a.arabic}</div>
-                <div style={styles.english}>{a.english}</div>
+                <div
+  style={{
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "#64748b",
+    marginBottom: "4px",
+  }}
+>
+  {a.id}
+</div>
+
+<div style={styles.arabic}>{a.arabic}</div>
+                <div
+  style={{
+    fontSize: "16px",
+    color: "#64748b",
+    marginBottom: "4px",
+  }}
+>
+  {a.transliteration}
+</div>
+
+<div style={styles.english}>{a.english}</div>
 
                 {a.category && (
                   <div
@@ -232,15 +253,15 @@ const styles = {
     gap: "20px",
   },
 
-  card: {
-    position: "relative",
-    background: "white",
-    color: "#0A1A3A",
-    padding: "20px",
-    borderRadius: "14px",
-    textAlign: "center",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-  },
+card: {
+  position: "relative",
+  background: "white",
+  color: "#0A1A3A",
+  padding: "14px",
+  borderRadius: "14px",
+  textAlign: "center",
+  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+},
 
   cardLink: {
     textDecoration: "none",

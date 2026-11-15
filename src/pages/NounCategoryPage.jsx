@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 /* White Folder SVG Icon */
 const WhiteFolderIcon = () => (
   <svg
-    width="16"   // slightly smaller icon
+    width="16"
     height="26"
     viewBox="0 0 24 24"
     fill="white"
@@ -56,9 +56,10 @@ export default function NounCategoryPage() {
             key={cat.key}
             to={`/nouns/category/${cat.key}`}
             style={categoryButton}
+            className="category-hover"
           >
-            <span style={{ fontSize: "18px" }}>{cat.icon}</span> {/* smaller icon */}
-            <span style={{ fontSize: "17px", marginLeft: "6px" }}>{cat.label}</span> {/* smaller text */}
+            <span style={{ fontSize: "22px" }}>{cat.icon}</span>
+            <span style={{ fontSize: "20px", marginLeft: "10px" }}>{cat.label}</span>
           </Link>
         ))}
       </div>
@@ -78,24 +79,24 @@ export default function NounCategoryPage() {
   );
 }
 
-/* Responsive grid: 3 columns → 2 columns → 1 column */
+/* Responsive grid — increased size to match verbs */
 const gridContainer = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-  gap: "14px", // slightly smaller spacing
-  maxWidth: "500px",
+  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", // bigger boxes
+  gap: "20px",
+  maxWidth: "700px",
   margin: "0 auto",
 };
 
-/* Category button style — smaller */
+/* Category button — NO outline, bigger, dark-blue, glow hover */
 const categoryButton = {
   background: "#061a44",
   color: "white",
-  padding: "30px 11px",   // smaller padding
-  borderRadius: "10px",
+  padding: "24px 20px",   // bigger padding to match verbs
+  borderRadius: "12px",
   textDecoration: "none",
   textAlign: "center",
-  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+  boxShadow: "0 5px 14px rgba(0,0,0,0.2)", // same shadow style as verbs
   transition: "0.2s",
 };
 
@@ -103,11 +104,11 @@ const categoryButton = {
 const topicsButton = {
   background: "linear-gradient(135deg, #F2C94C 0%, #F7D97A 100%)",
   color: "#12306B",
-  padding: "12px 18px",   // slightly smaller
+  padding: "12px 18px",
   borderRadius: "10px",
   textDecoration: "none",
   textAlign: "center",
-  minWidth: "160px",      // smaller width
+  minWidth: "160px",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

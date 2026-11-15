@@ -33,11 +33,30 @@ const pronounMeanings = {
 ============================================================ */
 const playAudio = (text) => {
   if (!text) return;
+
+  const synth = window.speechSynthesis;
+
+  // Force voices to load (Chrome bug)
+  if (synth.getVoices().length === 0) {
+    synth.onvoiceschanged = () => playAudio(text);
+    return;
+  }
+
+  const voices = synth.getVoices();
+  const arabicVoice =
+    voices.find((v) => v.lang === "ar-SA") ||
+    voices.find((v) => v.lang.startsWith("ar")) ||
+    null;
+
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "ar-SA";
   u.rate = 0.9;
-  speechSynthesis.speak(u);
+  if (arabicVoice) u.voice = arabicVoice;
+
+  synth.cancel(); // prevents double-speaking
+  synth.speak(u);
 };
+
 
 /* ============================================================
    SIMPLE TRANSLITERATION
@@ -56,16 +75,16 @@ const transliterate = (arabic) => {
     "ل": "l", "م": "m", "ن": "n",
     "ه": "h", "و": "w", "ي": "y",
 
-    "َ": "a",  // fatḥa
-    "ِ": "i",  // kasra
-    "ُ": "u",  // ḍamma
+    "َ": "a",
+    "ِ": "i",
+    "ُ": "u",
 
     "ً": "an",
     "ٍ": "in",
     "ٌ": "un",
 
-    "ْ": "",   // sukoon
-    "ّ": "SHADDA", // special marker
+    "ْ": "",
+    "ّ": "SHADDA",
   };
 
   let result = "";
@@ -73,7 +92,7 @@ const transliterate = (arabic) => {
 
   for (let ch of arabic) {
     if (ch === "ّ") {
-      if (last) result += last; // double the consonant
+      if (last) result += last;
       continue;
     }
 
@@ -148,7 +167,6 @@ const VerbCell = ({ form, pronoun }) => {
   return (
     <div style={styles.cell}>
       <div style={styles.arabic}>{form}</div>
-      {/* ONE PRONOUN ONLY: Arabic pronoun + English meaning */}
       <div style={styles.meaning}>{pronounMeanings[pronoun] || ""}</div>
       <button style={styles.audioButton} onClick={() => playAudio(form)}>🔊</button>
     </div>
@@ -171,145 +189,52 @@ const VerbRow = ({
 };
 
 /* ============================================================
-   TENSE COMPONENTS (ENGINE PERSON KEYS)
+   TENSE COMPONENTS — FIXED TO USE c.tables
 ============================================================ */
 const PastTense = ({ c }) => {
-  const p = c.past;
+  const p = c.tables?.past;
   if (!p) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Past Tense</div>
 
-      <VerbRow
-        singular={p["3ms"]}
-        dual={p["3md"]}
-        plural={p["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={p["3fs"]}
-        dual={p["3fd"]}
-        plural={p["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={p["2ms"]}
-        dual={p["2md"]}
-        plural={p["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={p["2fs"]}
-        dual={p["2fd"]}
-        plural={p["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={p["1s"]}
-        dual={null}
-        plural={p["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={p["3ms"]} dual={p["3md"]} plural={p["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={p["3fs"]} dual={p["3fd"]} plural={p["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={p["2ms"]} dual={p["2md"]} plural={p["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={p["2fs"]} dual={p["2fd"]} plural={p["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={p["1s"]} dual={null} plural={p["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
 
 const PresentTense = ({ c }) => {
-  const pr = c.present;
+  const pr = c.tables?.present;
   if (!pr) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Present Tense</div>
 
-      <VerbRow
-        singular={pr["3ms"]}
-        dual={pr["3md"]}
-        plural={pr["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={pr["3fs"]}
-        dual={pr["3fd"]}
-        plural={pr["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={pr["2ms"]}
-        dual={pr["2md"]}
-        plural={pr["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={pr["2fs"]}
-        dual={pr["2fd"]}
-        plural={pr["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={pr["1s"]}
-        dual={null}
-        plural={pr["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={pr["3ms"]} dual={pr["3md"]} plural={pr["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={pr["3fs"]} dual={pr["3fd"]} plural={pr["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={pr["2ms"]} dual={pr["2md"]} plural={pr["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={pr["2fs"]} dual={pr["2fd"]} plural={pr["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={pr["1s"]} dual={null} plural={pr["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
 
 const Imperative = ({ c }) => {
-  const imp = c.imperative;
+  const imp = c.tables?.imperative;
   if (!imp) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Imperative</div>
 
-      <VerbRow
-        singular={imp["2ms"]}
-        dual={imp["2md"]}
-        plural={imp["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={imp["2fs"]}
-        dual={imp["2fd"]}
-        plural={imp["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
+      <VerbRow singular={imp["2ms"]} dual={imp["2md"]} plural={imp["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={imp["2fs"]} dual={imp["2fd"]} plural={imp["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
     </div>
   );
 };
@@ -350,232 +275,72 @@ const Masdar = ({ c }) => {
 };
 
 const Subjunctive = ({ c }) => {
-  const s = c.subjunctive;
+  const s = c.tables?.subjunctive;
   if (!s) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Subjunctive</div>
 
-      <VerbRow
-        singular={s["3ms"]}
-        dual={s["3md"]}
-        plural={s["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={s["3fs"]}
-        dual={s["3fd"]}
-        plural={s["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={s["2ms"]}
-        dual={s["2md"]}
-        plural={s["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={s["2fs"]}
-        dual={s["2fd"]}
-        plural={s["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={s["1s"]}
-        dual={null}
-        plural={s["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={s["3ms"]} dual={s["3md"]} plural={s["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={s["3fs"]} dual={s["3fd"]} plural={s["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={s["2ms"]} dual={s["2md"]} plural={s["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={s["2fs"]} dual={s["2fd"]} plural={s["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={s["1s"]} dual={null} plural={s["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
 
 const Jussive = ({ c }) => {
-  const j = c.jussive;
+  const j = c.tables?.jussive;
   if (!j) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Jussive</div>
 
-      <VerbRow
-        singular={j["3ms"]}
-        dual={j["3md"]}
-        plural={j["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={j["3fs"]}
-        dual={j["3fd"]}
-        plural={j["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={j["2ms"]}
-        dual={j["2md"]}
-        plural={j["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={j["2fs"]}
-        dual={j["2fd"]}
-        plural={j["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={j["1s"]}
-        dual={null}
-        plural={j["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={j["3ms"]} dual={j["3md"]} plural={j["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={j["3fs"]} dual={j["3fd"]} plural={j["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={j["2ms"]} dual={j["2md"]} plural={j["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={j["2fs"]} dual={j["2fd"]} plural={j["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={j["1s"]} dual={null} plural={j["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
 
-/* ============================================================
-   FUTURE (سَـ) AND FUTURE (سَوْفَ)
-============================================================ */
 const FutureSa = ({ c }) => {
-  const f = c.future_sa;
+  const f = c.tables?.future_sa;
   if (!f) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Future (سَـ)</div>
 
-      <VerbRow
-        singular={f["3ms"]}
-        dual={f["3md"]}
-        plural={f["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={f["3fs"]}
-        dual={f["3fd"]}
-        plural={f["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={f["2ms"]}
-        dual={f["2md"]}
-        plural={f["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={f["2fs"]}
-        dual={f["2fd"]}
-        plural={f["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={f["1s"]}
-        dual={null}
-        plural={f["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={f["3ms"]} dual={f["3md"]} plural={f["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={f["3fs"]} dual={f["3fd"]} plural={f["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={f["2ms"]} dual={f["2md"]} plural={f["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={f["2fs"]} dual={f["2fd"]} plural={f["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={f["1s"]} dual={null} plural={f["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
 
 const FutureSawfa = ({ c }) => {
-  const f = c.future_sawfa;
+  const f = c.tables?.future_sawfa;
   if (!f) return null;
 
   return (
     <div style={styles.tableWrapper}>
       <div style={styles.sectionTitle}>Future (سَوْفَ)</div>
 
-      <VerbRow
-        singular={f["3ms"]}
-        dual={f["3md"]}
-        plural={f["3mp"]}
-        singularPronoun="هو"
-        dualPronoun="هما (م)"
-        pluralPronoun="هم"
-      />
-
-      <VerbRow
-        singular={f["3fs"]}
-        dual={f["3fd"]}
-        plural={f["3fp"]}
-        singularPronoun="هي"
-        dualPronoun="هما (ف)"
-        pluralPronoun="هنّ"
-      />
-
-      <VerbRow
-        singular={f["2ms"]}
-        dual={f["2md"]}
-        plural={f["2mp"]}
-        singularPronoun="أنتَ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتم"
-      />
-
-      <VerbRow
-        singular={f["2fs"]}
-        dual={f["2fd"]}
-        plural={f["2fp"]}
-        singularPronoun="أنتِ"
-        dualPronoun="أنتما"
-        pluralPronoun="أنتنّ"
-      />
-
-      <VerbRow
-        singular={f["1s"]}
-        dual={null}
-        plural={f["1p"]}
-        singularPronoun="أنا"
-        dualPronoun={null}
-        pluralPronoun="نحن"
-      />
+      <VerbRow singular={f["3ms"]} dual={f["3md"]} plural={f["3mp"]} singularPronoun="هو" dualPronoun="هما (م)" pluralPronoun="هم" />
+      <VerbRow singular={f["3fs"]} dual={f["3fd"]} plural={f["3fp"]} singularPronoun="هي" dualPronoun="هما (ف)" pluralPronoun="هنّ" />
+      <VerbRow singular={f["2ms"]} dual={f["2md"]} plural={f["2mp"]} singularPronoun="أنتَ" dualPronoun="أنتما" pluralPronoun="أنتم" />
+      <VerbRow singular={f["2fs"]} dual={f["2fd"]} plural={f["2fp"]} singularPronoun="أنتِ" dualPronoun="أنتما" pluralPronoun="أنتنّ" />
+      <VerbRow singular={f["1s"]} dual={null} plural={f["1p"]} singularPronoun="أنا" dualPronoun={null} pluralPronoun="نحن" />
     </div>
   );
 };
-
 /* ============================================================
    MAIN PAGE — ONE TENSE PER PAGE
 ============================================================ */
@@ -588,21 +353,26 @@ export default function VerbConjugationPage() {
   // Use overrides so Akala and weak verbs work
   const c = conjugate(verb.root, verb.form, verb.overrides || {});
 
-  const renderTense = () => {
-    switch (tense) {
-      case "past": return <PastTense c={c} />;
-      case "present": return <PresentTense c={c} />;
-      case "imperative": return <Imperative c={c} />;
-      case "activeParticiple": return <ActiveParticiple c={c} />;
-      case "passiveParticiple": return <PassiveParticiple c={c} />;
-      case "masdar": return <Masdar c={c} />;
-      case "subjunctive": return <Subjunctive c={c} />;
-      case "jussive": return <Jussive c={c} />;
-      case "future_sa": return <FutureSa c={c} />;
-      case "future_sawfa": return <FutureSawfa c={c} />;
-      default: return <div>Invalid tense</div>;
-    }
-  };
+const renderTense = () => {
+  switch (tense) {
+    case "past": return <PastTense c={c} tables={c.tables} />;
+    case "present": return <PresentTense c={c} tables={c.tables} />;
+    case "imperative": return <Imperative c={c} tables={c.tables} />;
+    case "activeParticiple": return <ActiveParticiple c={c} tables={c.tables} />;
+    case "passiveParticiple": return <PassiveParticiple c={c} tables={c.tables} />;
+    case "masdar": return <Masdar c={c} tables={c.tables} />;
+    case "subjunctive": return <Subjunctive c={c} tables={c.tables} />;
+    case "jussive": return <Jussive c={c} tables={c.tables} />;
+    case "future_sa": return <FutureSa c={c} tables={c.tables} />;
+    case "future_sawfa": return <FutureSawfa c={c} tables={c.tables} />;
+    case "negativeFuture":
+      return <NegativeFuture c={c} tables={c.tables} />;
+
+    default:
+      return <div>Invalid tense</div>;
+  }
+};
+
 
   return (
     <div style={{ padding: "20px" }}>

@@ -1,8 +1,10 @@
 export default {
-  id: "V21",
+  id: "V21_baddala",
   type: "verb",
 
-  arabic: { past: "بَدَّلَ" },
+  arabic: {
+    past: "بَدَّلَ"
+  },
 
   transliteration: {
     past: "baddala",
@@ -11,7 +13,8 @@ export default {
     "passive-past": "buddila",
     "passive-present": "yubaddalu",
 
-    masdar1: "tabdeel",
+    masdar1: "tabdīl",
+    masdar2: "",
 
     "active-participle": "mubaddil",
     "passive-participle": "mubaddal",
@@ -19,72 +22,155 @@ export default {
     subjunctive: "yubaddila",
     jussive: "yubaddil",
 
-    "negative-past": "maa baddala",
-    "negative-present": "laa yubaddilu",
+    "negative-past": "mā baddala",
+    "negative-present": "lā yubaddilu",
+    "negative-future": "lan yubaddila",
 
     "future-sa": "sayubaddilu",
     "future-sawfa": "sawfa yubaddilu"
   },
 
   english: {
-    simple: "to change",
-    detailed: "to change; to replace; to alter; to modify"
+    simple: "to change; to replace",
+    detailed: "to change or replace one thing with another"
+  },
+
+  englishByType: {
+    past: "he changed; he replaced",
+    present: "he changes; he replaces",
+    imperative: "change; replace!",
+
+    "passive-past": "it was changed; it was replaced",
+    "passive-present": "it is changed; it is replaced",
+
+    "negative-past": "he did not change",
+    "negative-present": "he does not change",
+    "negative-future": "he will not change",
+
+    "future-sa": "he will change",
+    "future-sawfa": "he will change",
+
+    "active-participle": "one who changes or replaces",
+    "passive-participle": "that which is changed or replaced",
+
+    masdar: "changing; replacement"
   },
 
   root: "ب-د-ل",
-  rootFamily: "بدل، تبديل، بديل",
+  rootFamily: "بَدَل، تَبْدِيل، مُبَدِّل",
 
   form: "Form II",
   wazan: "فَعَّلَ",
+
   formFamily: {
-    name: "fa''ala",
+    name: "faʿʿala",
     past: "فَعَّلَ",
     present: "يُفَعِّلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "A2", arabic: "سهل" },
-  frequency: "Common",
+  difficulty: {
+    cefr: "A2",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common when changing or replacing something.",
+    learnerNotes: "Often used with بِـ (bi-) to introduce what something is changed or replaced with.",
+    corpusRank: 200
+  },
+
+  frequency: "High",
 
   past: "بَدَّلَ",
   present: "يُبَدِّلُ",
   imperative: "بَدِّلْ",
+
   future_sa: "سَيُبَدِّلُ",
   future_sawfa: "سَوْفَ يُبَدِّلُ",
 
-  masdar: ["تَبْدِيل"],
+  masdar: [
+    "تَبْدِيل"
+  ],
+
+  activeParticiple: "مُبَدِّل",
+  passiveParticiple: "مُبَدَّل",
 
   overrides: {
     past: "بَدَّلَ",
     present: "يُبَدِّلُ",
     passivePast: "بُدِّلَ",
     passivePresent: "يُبَدَّلُ",
-    masdar: ["تَبْدِيل"]
+
+    masdar: [
+      "تَبْدِيل"
+    ]
   },
 
-  topics: ["change", "actions", "daily life"],
+  superTopic: "Change & Replacement",
 
-  relatedNouns: ["تبديل", "بديل"],
-  relatedVerbs: ["غيّر", "استبدل"],
-  synonyms: ["غيّر"],
-  antonyms: ["أبقى"],
+  topics: [
+    "change",
+    "replacement"
+  ],
+
+  semanticFamily: "change verbs",
+
+  categories: [
+    "daily"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "بَدَلَ",
+      "بَدَّلَ",
+      "تَبَدَّلَ"
+    ],
+
+    semantic: [
+      "غَيَّرَ",
+      "اِسْتَبْدَلَ"
+    ],
+
+    formFamily: [
+      "faʿʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "بَدَل",
+    "تَبْدِيل",
+    "مُبَدِّل"
+  ],
+
+  synonyms: [
+    "غَيَّرَ",
+    "اِسْتَبْدَلَ"
+  ],
+
+  antonyms: [
+    "أَبْقَى"
+  ],
 
   examples: {
     simple: {
-      ar: "بَدَّلَ الرَّجُلُ مَلَابِسَهُ.",
-      en: "The man changed his clothes.",
-      tr: "baddala ar-rajulu malaabisahu"
+      ar: "بَدَّلَ الرَّجُلُ مَقْعَدَهُ.",
+      en: "The man changed his seat.",
+      tr: "baddala ar-rajulu maqʿadahu",
+      audio: ""
     },
+
     natural: {
-      ar: "بَدَّلْتُ خُطَّتِي لِأَنَّ الوَضْعَ تَغَيَّرَ.",
-      en: "I changed my plan because the situation changed.",
-      tr: "baddaltu khuttatee li'anna al-wad'a taghayyara"
+      ar: "تُبَدِّلُ أُمِّي مَلَابِسَهَا بَعْدَ العَمَلِ.",
+      en: "My mother changes her clothes after work.",
+      tr: "tubaddilu ummī malābisahā baʿda al-ʿamali",
+      audio: ""
     },
+
     rich: {
-      ar: "بَدَّلَتِ الشَّرِكَةُ نِظَامَهَا لِتَحْسِينِ الكَفَاءَةِ.",
-      en: "The company replaced its system to improve efficiency.",
-      tr: "baddalat ash-sharikah nizaamaha li-tahseen al-kafaa'ah"
+      ar: "بَدَّلَتِ الشَّرِكَةُ النِّظَامَ القَدِيمَ بِنِظَامٍ أَكْثَرَ فَاعِلِيَّةً.",
+      en: "The company replaced the old system with a more effective one.",
+      tr: "baddalati ash-sharikatu an-niẓāma al-qadīma biniẓāmin akthara fāʿiliyyatan",
+      audio: ""
     }
   },
 

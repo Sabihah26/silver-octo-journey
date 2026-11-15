@@ -1,0 +1,20 @@
+{
+  "semantic": [
+    "daily",
+    "motion",
+    "thinking",
+    "speaking",
+    "writing",
+    "school",
+    "learning",
+    "communication"
+  ],
+
+  "grammatical": [
+    "sound",
+    "weak",
+    "hollow",
+    "defective",
+    "doubled"
+  ]
+}

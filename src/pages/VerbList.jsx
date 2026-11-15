@@ -44,9 +44,9 @@ export default function VerbList() {
   // ⭐ NEW — read category from URL
   const { category } = useParams();
 
-  // ⭐ NEW — category filtering logic
+  // ⭐ FIXED — correct category filtering logic
   const categoryFiltered = category
-    ? verbs.filter((v) => v.category === category)
+    ? verbs.filter((v) => v.categories?.includes(category))
     : verbs;
 
   // ⭐ EXISTING — search filter (applied after category filter)
@@ -62,7 +62,13 @@ export default function VerbList() {
       (v.form && v.form.toLowerCase().includes(q))
     );
   });
+  // ⭐ SORT VERBS BY ID NUMBER (V1, V2, V3, V4...)
+  const sorted = [...filtered].sort((a, b) => {
+    const aNum = parseInt(String(a.id).match(/\d+/)?.[0] || 0);
+    const bNum = parseInt(String(b.id).match(/\d+/)?.[0] || 0);
 
+    return aNum - bNum;
+  });
   return (
     <div style={styles.page}>
       {/* ⭐ NEW — dynamic title */}
@@ -126,36 +132,35 @@ export default function VerbList() {
       </div>
 
       <div style={styles.grid}>
-        {filtered.map((v) => {
+        {sorted.map((v) => {
           const weakType = detectWeakType(v.root);
           const weakLabel = getWeakLabel(weakType);
           const weakColor = getWeakColor(weakType);
 
           return (
             <Link key={v.id} to={`/verb/${v.id}`} style={styles.card}>
-              
               {/* ID */}
               <div style={styles.id}>{v.id}</div>
 
-              {/* 1️⃣ Arabic verb */}
+              {/* Arabic verb */}
               <div style={styles.arabic}>{v.arabic?.past}</div>
 
-              {/* 2️⃣ English meaning */}
+              {/* English meaning */}
               <div style={styles.english}>
                 {v.english?.simple || v.english?.detailed || ""}
               </div>
 
-              {/* 3️⃣ Root */}
+              {/* Root */}
               <div style={{ fontSize: "28px", fontWeight: "700", marginBottom: "8px" }}>
                 {v.root}
               </div>
 
-              {/* 4️⃣ Form */}
+              {/* Form */}
               <div style={{ fontSize: "18px", marginBottom: "6px" }}>
                 <strong>Form:</strong> {v.form}
               </div>
 
-              {/* 5️⃣ Translit */}
+              {/* Translit */}
               <div style={{ fontSize: "18px", marginBottom: "6px" }}>
                 <strong>Translit:</strong> {v.transliteration?.past}
               </div>
@@ -215,7 +220,7 @@ const styles = {
   },
   card: {
     background: "white",
-    color: "#0A1A3A",
+    color: "#06225a",
     padding: "14px",
     borderRadius: "14px",
     width: "260px",

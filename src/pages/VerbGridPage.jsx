@@ -120,7 +120,7 @@ export default function VerbGridPage() {
 
   // Correct form key
   const formKey = verb.form.replace("Form", "").trim();
-  const c = conjugate(verb.root, formKey);
+  const c = conjugate(verb.root, formKey, verb.overrides || {});
 
   // ⭐ UNIVERSAL ARABIC SELECTOR
   const arabicMain =
@@ -165,28 +165,35 @@ export default function VerbGridPage() {
     think: { past: "thought", passive: "thought", active: "thinking" },
   };
 
-  // ⭐ Determine correct forms
+  // ⭐ Determine correct fallback forms
   const past = irregular[bare]?.past || bare + "ed";
   const passive = irregular[bare]?.passive || past;
   const active = irregular[bare]?.active || bare + "ing";
 
-  // ⭐ Build correct English forms
+  // ⭐ NEW — Use englishByType when available
   const englishMeaning = {
-    past: `he ${past}`,
-    present: `he ${bare === "be" ? "is" : bare === "do" ? "does" : bare + "s"}`,
-    continuous: `he is ${active}`,
-    "passive-past": `he was ${passive}`,
-    "passive-present": `he is ${passive}`,
-    subjunctive: `he should ${bare}`,
-    jussive: `he may ${bare}`,
-    "negative-past": `he did not ${bare}`,
-    "negative-present": `he does not ${bare}`,
-    "future-sa": `he will ${bare}`,
-    "future-sawfa": `he will ${bare}`,
-    masdar1: `the act of ${active}`,
-    masdar2: `the act of ${active}`,
-    "active-participle": `the one who ${bare}s`,
-    "passive-participle": `the one who is ${passive}`,
+    past: verb.englishByType?.past || `he ${past}`,
+    present: verb.englishByType?.present || `he ${bare === "be" ? "is" : bare === "do" ? "does" : bare + "s"}`,
+    continuous: verb.englishByType?.continuous || `he is ${active}`,
+
+    "passive-past": verb.englishByType?.["passive-past"] || `he was ${passive}`,
+    "passive-present": verb.englishByType?.["passive-present"] || `he is ${passive}`,
+
+    subjunctive: verb.englishByType?.subjunctive || `he should ${bare}`,
+    jussive: verb.englishByType?.jussive || `he may ${bare}`,
+
+    "negative-past": verb.englishByType?.["negative-past"] || `he did not ${bare}`,
+    "negative-present": verb.englishByType?.["negative-present"] || `he does not ${bare}`,
+    "negative-future": verb.englishByType?.["negative-future"] || `he will not ${bare}`,
+
+    "future-sa": verb.englishByType?.["future-sa"] || `he will ${bare}`,
+    "future-sawfa": verb.englishByType?.["future-sawfa"] || `he will ${bare}`,
+
+    masdar1: verb.englishByType?.masdar || `the act of ${active}`,
+    masdar2: verb.englishByType?.masdar || `the act of ${active}`,
+
+    "active-participle": verb.englishByType?.["active-participle"] || `the one who ${bare}s`,
+    "passive-participle": verb.englishByType?.["passive-participle"] || `the one that is ${passive}`,
   };
 
   // Masdar handling
@@ -223,9 +230,20 @@ export default function VerbGridPage() {
     { key: "subjunctive", labelAr: "المنصوب", value: c.subjunctive["هو"], audio: "subjunctive" },
     { key: "negative-past", labelAr: "نفي الماضي", value: c.negativePast["هو"], audio: "negativePast" },
     { key: "negative-present", labelAr: "نفي المضارع", value: c.negativePresent["هو"], audio: "negativePresent" },
+
+    // ⭐ NEW — Correct negative future card
+    {
+      key: "negative-future",
+      labelAr: "نفي المستقبل",
+      value: c.negativeFuture["هو"],
+      audio: "negativeFuture"
+    },
+
     { key: "future-sa", labelAr: "س", value: c.future_sa["هو"], audio: "future_sa" },
     { key: "future-sawfa", labelAr: "سوف", value: c.future_sawfa["هو"], audio: "future_sawfa" },
   ];
+
+  const rows = [items.slice(0, 5), items.slice(5, 10), items.slice(10, 15)];
 
   return (
     <div
@@ -278,29 +296,38 @@ export default function VerbGridPage() {
         Full Conjugation — {verb.arabic?.past} ({verb.root})
       </h1>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 280px)",
-          gap: "10px",
-          justifyContent: "center",
-        }}
-      >
-        {items.map((item, i) =>
-          item.value ? (
-            <Link key={i} to={`/verb/${verb.id}/${item.key}`} style={{ textDecoration: "none" }}>
-              <GridBox
-                id={verb.id}
-                labelAr={item.labelAr}
-                labelEn={englishMeaning[item.key]}
-                valueAr={item.value}
-                valueTr={verb.transliteration?.[item.key] || autoTranslit(item.value)}
-                valueEn={englishMeaning[item.key]}
-                audioFile={item.audio}
-              />
-            </Link>
-          ) : null
-        )}
+      <div style={{ display: "grid", gap: "10px", justifyContent: "center" }}>
+        {rows.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(5, 280px)",
+              gap: "10px",
+              justifyContent: "center",
+            }}
+          >
+            {row.map((item) =>
+              item.value && String(item.value).trim() ? (
+                <Link
+                  key={item.key}
+                  to={`/verb/${verb.id}/${item.key}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <GridBox
+                    id={verb.id}
+                    labelAr={item.labelAr}
+                    labelEn={englishMeaning[item.key]}
+                    valueAr={item.value}
+                    valueTr={verb.transliteration?.[item.key] || autoTranslit(item.value)}
+                    valueEn={englishMeaning[item.key]}
+                    audioFile={item.audio}
+                  />
+                </Link>
+              ) : null
+            )}
+          </div>
+        ))}
       </div>
 
       <div style={{ textAlign: "center", marginTop: 30 }}>

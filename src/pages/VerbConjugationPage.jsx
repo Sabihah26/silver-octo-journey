@@ -5,30 +5,56 @@ import { useParams, Link } from "react-router-dom";
 import verbs from "../data/verbs";
 import conjugate, { PERSONS_14 } from "../utils/conjugate";
 
+// ⭐ Map route tense → verb file englishByType keys
+const ENGLISH_TENSE_KEY_MAP = {
+  past: "past",
+  present: "present",
+  imperative: "imperative",
+
+  negativePast: "negative-past",
+  negativePresent: "negative-present",
+  negativeFuture: "negative-future",
+
+  passivePast: "passive-past",
+  passivePresent: "passive-present",
+
+  future_sa: "future-sa",
+  future_sawfa: "future-sawfa",
+
+  jussive: "jussive",
+  subjunctive: "subjunctive",
+};
+
 export default function VerbConjugationPage() {
   const { id, tense } = useParams();
 
   const verb = verbs.find((v) => String(v.id) === String(id));
   if (!verb) return <div>Verb not found</div>;
 
-  const c = conjugate(verb.root, verb.form);
+  const c = conjugate(verb.root, verb.form, verb.overrides || {});
 
-  const TENSE_MAP = {
-    past: "past",
-    present: "present",
-    passivePast: "passivePast",
-    passivePresent: "passivePresent",
-    jussive: "jussive",
-    subjunctive: "subjunctive",
-    negativePast: "negativePast",
-    negativePresent: "negativePresent",
-    future_sa: "future_sa",
-    future_sawfa: "future_sawfa",
-    imperative: "imperative",
+  const englishMeaning = {
+    past: "Past",
+    present: "Present",
+    imperative: "Imperative",
+
+    negativePast: "Negative past",
+    negativePresent: "Negative present",
+    "negative-future": "Negative future",
+
+    future_sa: "Future (sa)",
+    future_sawfa: "Future (sawfa)",
+
+    passivePast: "Passive past",
+    passivePresent: "Passive present",
+
+    jussive: "Jussive",
+    subjunctive: "Subjunctive",
   };
 
-  const engineKey = TENSE_MAP[tense] || "past";
-  const table14 = c.tables[engineKey];
+  // ⭐ Use route tense key for tables (camelCase)
+  const tableKey = tense;
+  const table14 = c.tables[tableKey];
 
   if (!table14) {
     return (
@@ -73,7 +99,7 @@ export default function VerbConjugationPage() {
     eat: { past: "ate", passive: "eaten", active: "eating" },
     write: { past: "wrote", passive: "written", active: "writing" },
     see: { past: "saw", passive: "seen", active: "seeing" },
-    take: { past: "took", passive: "taken", active: "taking" },
+    take: { past: "took", passive: "taken", active: "doing" },
     give: { past: "gave", passive: "given", active: "giving" },
     make: { past: "made", passive: "made", active: "making" },
     come: { past: "came", passive: "come", active: "coming" },
@@ -123,7 +149,7 @@ export default function VerbConjugationPage() {
     "1p": "we",
   };
 
-  // ⭐ English tense engine (Option 1)
+  // ⭐ English tense engine (fallback only)
   const englishTense = {
     past: (p) => `${EN_PRONOUNS[p]} ${past}`,
     present: (p) =>
@@ -163,20 +189,19 @@ export default function VerbConjugationPage() {
       } ${active}`,
   };
 
-  // ⭐ FIXED: imperative now works correctly
-  const englishMeaningForPerson = (key) => {
-    if (engineKey === "present") return englishTense.present(key);
-    if (engineKey === "past") return englishTense.past(key);
-    if (engineKey === "jussive") return englishTense.jussive(key);
-    if (engineKey === "subjunctive") return englishTense.subjunctive(key);
-    if (engineKey === "negativePast") return englishTense.negativePast(key);
-    if (engineKey === "negativePresent") return englishTense.negativePresent(key);
-    if (engineKey === "passivePast") return englishTense.passivePast(key);
-    if (engineKey === "passivePresent") return englishTense.passivePresent(key);
-    if (engineKey === "future_sa") return englishTense.future_sa(key);
-    if (engineKey === "future_sawfa") return englishTense.future_sawfa(key);
-    if (engineKey === "imperative") return englishTense.imperative(key);
-    return englishTense.past(key);
+  // ⭐ Use verb file meanings when available; fallback to engine
+  const englishMeaningForPerson = (personKey) => {
+    const englishKey = ENGLISH_TENSE_KEY_MAP[tense] || "past";
+
+    // 1) Try verb-specific meaning (Akala, etc.)
+    const fromVerb =
+      verb.englishByType?.[englishKey] || verb.englishByType?.past;
+
+    if (fromVerb) return fromVerb;
+
+    // 2) Fallback to generated sentence per person
+    const engineFn = englishTense[tense] || englishTense.past;
+    return engineFn(personKey);
   };
 
   // ⭐ Grouping
@@ -245,6 +270,7 @@ export default function VerbConjugationPage() {
           "subjunctive",
           "negativePast",
           "negativePresent",
+          "negativeFuture",
           "future_sa",
           "future_sawfa",
           "imperative",

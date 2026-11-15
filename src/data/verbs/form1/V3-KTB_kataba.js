@@ -1,8 +1,10 @@
 export default {
-  id: "V3",
+  id: "V3_kataba",
   type: "verb",
 
-  arabic: { past: "كَتَبَ" },
+  arabic: {
+    past: "كَتَبَ"
+  },
 
   transliteration: {
     past: "kataba",
@@ -12,7 +14,7 @@ export default {
     "passive-present": "yuktabu",
 
     masdar1: "kitābah",
-    masdar2: "kitāb",
+    masdar2: "",
 
     "active-participle": "kātib",
     "passive-participle": "maktūb",
@@ -20,8 +22,9 @@ export default {
     subjunctive: "yaktuba",
     jussive: "yaktub",
 
-    "negative-past": "maa kataba",
-    "negative-present": "laa yaktubu",
+    "negative-past": "mā kataba",
+    "negative-present": "lā yaktubu",
+    "negative-future": "lan yaktuba",
 
     "future-sa": "sayaktubu",
     "future-sawfa": "sawfa yaktubu"
@@ -29,7 +32,28 @@ export default {
 
   english: {
     simple: "to write",
-    detailed: "to write; to compose text"
+    detailed: "to write; to record in writing"
+  },
+
+  englishByType: {
+    past: "he wrote",
+    present: "he writes",
+    imperative: "write!",
+
+    "passive-past": "it was written",
+    "passive-present": "it is written",
+
+    "negative-past": "he did not write",
+    "negative-present": "he does not write",
+    "negative-future": "he will not write",
+
+    "future-sa": "he will write",
+    "future-sawfa": "he will write",
+
+    "active-participle": "one who writes",
+    "passive-participle": "that which is written",
+
+    masdar: "writing"
   },
 
   root: "ك-ت-ب",
@@ -37,6 +61,7 @@ export default {
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
     name: "faʿala",
     past: "فَعَلَ",
@@ -46,37 +71,107 @@ export default {
   verbType: "sound",
 
   difficulty: {
-    level: "A2",
-    frequency: "high",
+    cefr: "A1",
+    english: "Easy",
     arabicLevel: "beginner",
-    usage: "High frequency in MSA and dialects.",
-    learnerNotes: "Essential verb for writing contexts.",
-    corpusRank: 312
+    usage: "Very high frequency in daily speech.",
+    learnerNotes: "Essential verb for reading, writing and communication.",
+    corpusRank: 75
   },
+
+  frequency: "Very High",
 
   past: "كَتَبَ",
   present: "يَكْتُبُ",
   imperative: "اُكْتُبْ",
+
   future_sa: "سَيَكْتُبُ",
   future_sawfa: "سَوْفَ يَكْتُبُ",
 
-  masdar: ["كِتَابَة", "كِتَاب"],
+  masdar: [
+    "كِتَابَة"
+  ],
+
+  activeParticiple: "كَاتِب",
+  passiveParticiple: "مَكْتُوب",
 
   overrides: {
     past: "كَتَبَ",
     present: "يَكْتُبُ",
     passivePast: "كُتِبَ",
     passivePresent: "يُكْتَبُ",
-    masdar: ["كِتَابَة", "كِتَاب"]
+
+    masdar: [
+      "كِتَابَة"
+    ],
+
+    form1VowelClass: "u"
   },
 
-  topics: ["writing", "communication"],
+  superTopic: "Communication & Writing",
+
+  topics: [
+    "writing",
+    "communication"
+  ],
+
+  semanticFamily: "writing verbs",
+
+  categories: [
+    "education"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "كتب",
+      "كاتب",
+      "مكتوب"
+    ],
+
+    semantic: [
+      "دَوَّنَ",
+      "سَجَّلَ"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "كِتَاب",
+    "كِتَابَة",
+    "مَكْتُوب"
+  ],
+
+  synonyms: [
+    "دَوَّنَ"
+  ],
+
+  antonyms: [
+    "مَحَا"
+  ],
 
   examples: {
     simple: {
-      ar: "كَتَبَ الرَّجُلُ رِسَالَةً.",
-      en: "The man wrote a letter.",
-      audio: "/audio/examples/kataba_example_1.mp3"
+      ar: "كَتَبَ الطَّالِبُ الدَّرْسَ.",
+      en: "The student wrote the lesson.",
+      tr: "kataba aṭ-ṭālibu ad-darsa",
+      audio: ""
+    },
+
+    natural: {
+      ar: "يَكْتُبُ الرَّجُلُ رِسَالَةً إِلَى صَدِيقِهِ.",
+      en: "The man writes a letter to his friend.",
+      tr: "yaktubu ar-rajulu risālatan ilā ṣadīqihi",
+      audio: ""
+    },
+
+    rich: {
+      ar: "كَتَبَ المُؤَلِّفُ كِتَابًا مُفِيدًا فِي تَعَلُّمِ اللُّغَةِ العَرَبِيَّةِ.",
+      en: "The author wrote a useful book about learning Arabic.",
+      tr: "kataba al-muʾallifu kitāban mufīdan fī taʿallumi al-lughati al-ʿarabiyyah",
+      audio: ""
     }
   },
 

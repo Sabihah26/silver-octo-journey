@@ -1,93 +1,180 @@
 export default {
-  id: "V7",
+  id: "V7_inqataa",
   type: "verb",
 
-  arabic: { past: "اِنْقَطَعَ" },
+  arabic: {
+    past: "اِنْقَطَعَ"
+  },
 
   transliteration: {
-    past: "inqata'a",
-    present: "yanqati'u",
+    past: "inqaṭaʿa",
+    present: "yanqaṭiʿu",
 
-    "passive-past": "unquti'a",
-    "passive-present": "yunqata'u",
+    "passive-past": "",
+    "passive-present": "",
 
-    masdar1: "inqita'a",
+    masdar1: "inqiṭāʿ",
+    masdar2: "",
 
-    "active-participle": "munqati'",
-    "passive-participle": "munqata'",
+    "active-participle": "munqaṭiʿ",
+    "passive-participle": "munqaṭaʿ",
 
-    subjunctive: "yanqati'a",
-    jussive: "yanqati'",
+    subjunctive: "yanqaṭiʿa",
+    jussive: "yanqaṭiʿ",
 
-    "negative-past": "maa inqata'a",
-    "negative-present": "laa yanqati'u",
+    "negative-past": "mā inqaṭaʿa",
+    "negative-present": "lā yanqaṭiʿu",
+    "negative-future": "lan yanqaṭiʿa",
 
-    "future-sa": "sayanqati'u",
-    "future-sawfa": "sawfa yanqati'u"
+    "future-sa": "sayanqaṭiʿu",
+    "future-sawfa": "sawfa yanqaṭiʿu"
   },
 
   english: {
-    simple: "to stop",
-    detailed: "to be cut off; to cease; to break"
+    simple: "to be cut off; to stop",
+    detailed: "to be cut off, interrupted, or disconnected; to cease"
+  },
+
+  englishByType: {
+    past: "it stopped; it was cut off",
+    present: "it stops; it is cut off",
+    imperative: "stop!",
+
+    "passive-past": "",
+    "passive-present": "",
+
+    "negative-past": "it did not stop",
+    "negative-present": "it does not stop",
+    "negative-future": "it will not stop",
+
+    "future-sa": "it will stop",
+    "future-sawfa": "it will stop",
+
+    "active-participle": "one that is cut off",
+    "passive-participle": "that which is cut off",
+
+    masdar: "stopping; interruption"
   },
 
   root: "ق-ط-ع",
-  rootFamily: "قطع، انقطاع، مقطوع",
+  rootFamily: "قَطَعَ، قَطَّعَ، اِنْقَطَعَ",
 
   form: "Form VII",
   wazan: "اِنْفَعَلَ",
+
   formFamily: {
-    name: "infa'ala",
+    name: "infaʿala",
     past: "اِنْفَعَلَ",
     present: "يَنْفَعِلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "A2", arabic: "متوسط" },
-  frequency: "Common",
+  difficulty: {
+    cefr: "B1",
+    english: "Medium",
+    arabicLevel: "intermediate",
+    usage: "Common for things that stop, break off, or become disconnected.",
+    learnerNotes: "This verb is generally intransitive and already has a passive-like meaning; a separate passive form is not commonly used.",
+    corpusRank: 500
+  },
+
+  frequency: "Medium",
 
   past: "اِنْقَطَعَ",
   present: "يَنْقَطِعُ",
-  imperative: "—",
+  imperative: "اِنْقَطِعْ",
+
   future_sa: "سَيَنْقَطِعُ",
   future_sawfa: "سَوْفَ يَنْقَطِعُ",
 
-  masdar: ["اِنْقِطَاع"],
+  masdar: [
+    "اِنْقِطَاع"
+  ],
+
+  activeParticiple: "مُنْقَطِع",
+  passiveParticiple: "مُنْقَطَع",
 
   overrides: {
     past: "اِنْقَطَعَ",
     present: "يَنْقَطِعُ",
-    passivePast: "اُنْقُطِعَ",
-    passivePresent: "يُنْقَطَعُ",
-    masdar: ["اِنْقِطَاع"]
+    passivePast: "",
+    passivePresent: "",
+
+    masdar: [
+      "اِنْقِطَاع"
+    ]
   },
 
-  topics: ["communication", "movement", "daily life"],
+  superTopic: "Communication & Interruption",
 
-  relatedNouns: ["انقطاع", "قطع", "مقطوع"],
-  relatedVerbs: ["توقّف", "انتهى", "قطع"],
-  synonyms: ["توقّف"],
-  antonyms: ["استمرّ"],
+  topics: [
+    "interruption",
+    "disconnection"
+  ],
+
+  semanticFamily: "separation verbs",
+
+  categories: [
+    "communication"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "قَطَعَ",
+      "قَطَّعَ",
+      "اِنْقَطَعَ"
+    ],
+
+    semantic: [
+      "تَوَقَّفَ",
+      "اِنْفَصَلَ"
+    ],
+
+    formFamily: [
+      "infaʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "قَطْع",
+    "اِنْقِطَاع",
+    "مَقْطَع"
+  ],
+
+  synonyms: [
+    "تَوَقَّفَ",
+    "اِنْفَصَلَ"
+  ],
+
+  antonyms: [
+    "اِسْتَمَرَّ",
+    "اِتَّصَلَ"
+  ],
 
   examples: {
     simple: {
-      ar: "اِنْقَطَعَ الطَّرِيقُ بِسَبَبِ الثَّلْجِ.",
-      en: "The road was cut off because of the snow.",
-      tr: "inqata'a at-tariiqu bisababi ath-thalji"
+      ar: "اِنْقَطَعَ الحَبْلُ.",
+      en: "The rope broke.",
+      tr: "inqaṭaʿa al-ḥablu",
+      audio: ""
     },
+
     natural: {
-      ar: "اِنْقَطَعَ الاتِّصَالُ بَيْنَنَا.",
-      en: "The connection between us was cut off.",
-      tr: "inqata'a al-ittisaalu baynanaa"
+      ar: "اِنْقَطَعَ الاتِّصَالُ أَثْنَاءَ المُكَالَمَةِ.",
+      en: "The connection was cut off during the call.",
+      tr: "inqaṭaʿa al-ittiṣālu athnāʾa al-mukālamah",
+      audio: ""
     },
+
     rich: {
-      ar: "اِنْقَطَعَ التَّيَّارُ الكَهْرَبَائِيُّ بَعْدَ العَاصِفَةِ.",
-      en: "The electricity supply was cut off after the storm.",
-      tr: "inqata'a at-tayyaaru al-kahrabaa'iyyu ba'da al-'aasifah"
+      ar: "اِنْقَطَعَتِ الكَهْرَبَاءُ عَنِ المَنْزِلِ بِسَبَبِ العَاصِفَةِ.",
+      en: "The power to the house went out because of the storm.",
+      tr: "inqaṭaʿati al-kahrabāʾu ʿani al-manzili bisababi al-ʿāṣifah",
+      audio: ""
     }
   },
 
   audio: "",
-  notes: ""
+  notes: "Form VII is generally intransitive here, so a separate passive conjugation is not commonly used."
 };

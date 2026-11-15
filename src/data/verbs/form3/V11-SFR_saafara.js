@@ -1,92 +1,181 @@
 export default {
-  id: "V11",
+  id: "V11_saafara",
   type: "verb",
 
-  arabic: { past: "سَافَرَ" },
+  arabic: {
+    past: "سَافَرَ"
+  },
 
   transliteration: {
-    past: "saafara",
-    present: "yusaafir",
+    past: "sāfara",
+    present: "yusāfiru",
 
-    "passive-past": "suufira",
-    "passive-present": "yusaafar",
+    "passive-past": "sūfira",
+    "passive-present": "yusāfaru",
 
     masdar1: "safar",
+    masdar2: "musāfarah",
 
     "active-participle": "musāfir",
-    "passive-participle": "masfūr", // rarely used but structurally correct
+    "passive-participle": "musāfar",
 
-    subjunctive: "yusaafira",
-    jussive: "yusaafir",
+    subjunctive: "yusāfira",
+    jussive: "yusāfir",
 
-    "negative-past": "maa saafara",
-    "negative-present": "laa yusaafir",
+    "negative-past": "mā sāfara",
+    "negative-present": "lā yusāfiru",
+    "negative-future": "lan yusāfira",
 
-    "future-sa": "sayusaafir",
-    "future-sawfa": "sawfa yusaafir"
+    "future-sa": "sayusāfiru",
+    "future-sawfa": "sawfa yusāfiru"
   },
 
   english: {
     simple: "to travel",
-    detailed: "to travel; to journey"
+    detailed: "to travel; to go on a journey"
+  },
+
+  englishByType: {
+    past: "he traveled",
+    present: "he travels",
+    imperative: "travel!",
+
+    "passive-past": "it was traveled",
+    "passive-present": "it is traveled",
+
+    "negative-past": "he did not travel",
+    "negative-present": "he does not travel",
+    "negative-future": "he will not travel",
+
+    "future-sa": "he will travel",
+    "future-sawfa": "he will travel",
+
+    "active-participle": "traveler",
+    "passive-participle": "traveled",
+
+    masdar: "travel; journey"
   },
 
   root: "س-ف-ر",
-  rootFamily: "سفر، مسافر، سفارة",
+  rootFamily: "سَفَر، مُسَافِر، سَفِير",
 
   form: "Form III",
   wazan: "فَاعَلَ",
+
   formFamily: {
-    name: "faa'ala",
+    name: "fāʿala",
     past: "فَاعَلَ",
     present: "يُفَاعِلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "A1", arabic: "سهل" },
-  frequency: "Top 200",
+  difficulty: {
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common in everyday conversation.",
+    learnerNotes: "Often followed by إِلَى (ilā) to name the destination.",
+    corpusRank: 100
+  },
+
+  frequency: "Very High",
 
   past: "سَافَرَ",
   present: "يُسَافِرُ",
   imperative: "سَافِرْ",
+
   future_sa: "سَيُسَافِرُ",
   future_sawfa: "سَوْفَ يُسَافِرُ",
 
-  masdar: ["سَفَر"],
+  masdar: [
+    "سَفَر",
+    "مُسَافَرَة"
+  ],
+
+  activeParticiple: "مُسَافِر",
+  passiveParticiple: "مُسَافَر",
 
   overrides: {
     past: "سَافَرَ",
     present: "يُسَافِرُ",
     passivePast: "سُوفِرَ",
     passivePresent: "يُسَافَرُ",
-    masdar: ["سَفَر"]
+
+    masdar: [
+      "سَفَر",
+      "مُسَافَرَة"
+    ]
   },
 
-  topics: ["travel", "movement"],
-  relatedNouns: ["مسافر", "سفر"],
-  relatedVerbs: ["ذهب", "رجع"],
-  synonyms: ["ارتحل"],
-  antonyms: ["أقام"],
+  superTopic: "Travel & Transportation",
+
+  topics: [
+    "travel",
+    "transportation"
+  ],
+
+  semanticFamily: "travel verbs",
+
+  categories: [
+    "motion",
+  ],
+
+  relatedVerbs: {
+    root: [
+      "سَفَرَ",
+      "سَافَرَ",
+      "أَسْفَرَ"
+    ],
+
+    semantic: [
+      "رَحَلَ",
+      "اِرْتَحَلَ"
+    ],
+
+    formFamily: [
+      "fāʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "سَفَر",
+    "مُسَافِر",
+    "سَفَرِيَّة"
+  ],
+
+  synonyms: [
+    "رَحَلَ",
+    "اِرْتَحَلَ"
+  ],
+
+  antonyms: [
+    "أَقَامَ"
+  ],
 
   examples: {
     simple: {
-      ar: "سَافَرَ الرَّجُلُ إِلَى مِصْرَ.",
-      en: "The man traveled to Egypt.",
-      tr: "saafara ar-rajulu ila misr"
+      ar: "سَافَرَ الرَّجُلُ إِلَى القَاهِرَةِ.",
+      en: "The man traveled to Cairo.",
+      tr: "sāfara ar-rajulu ilā al-Qāhirah",
+      audio: ""
     },
+
     natural: {
-      ar: "سَافَرْنَا فِي العُطْلَةِ الصَّيْفِيَّةِ.",
-      en: "We traveled during the summer vacation.",
-      tr: "saafarna fi al-'utlah as-sayfiyyah"
+      ar: "تُسَافِرُ أُسْرَتِي فِي العُطْلَةِ الصَّيْفِيَّةِ.",
+      en: "My family travels during the summer vacation.",
+      tr: "tusāfiru usratī fī al-ʿuṭlati aṣ-ṣayfiyyah",
+      audio: ""
     },
+
     rich: {
-      ar: "سَافَرَ الطُّلَّابُ لِحُضُورِ دَوْرَةٍ تَعْلِيمِيَّةٍ.",
-      en: "The students traveled to attend an educational course.",
-      tr: "saafara at-tullaabu lihudoori dawratin ta'leemiyyah"
+      ar: "سَافَرَ الطَّالِبُ إِلَى دِمَشْقَ لِدِرَاسَةِ اللُّغَةِ العَرَبِيَّةِ.",
+      en: "The student traveled to Damascus to study Arabic.",
+      tr: "sāfara aṭ-ṭālibu ilā Dimashqa li-dirāsati al-lughati al-ʿarabiyyah",
+      audio: ""
     }
   },
 
   audio: "",
-  notes: ""
+  notes: "This verb is usually intransitive; its passive forms are uncommon."
 };

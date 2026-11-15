@@ -1,8 +1,10 @@
 export default {
-  id: "V2",
+  id: "V2_amara",
   type: "verb",
 
-  arabic: { past: "أَمَرَ" },
+  arabic: {
+    past: "أَمَرَ"
+  },
 
   transliteration: {
     past: "amara",
@@ -12,82 +14,165 @@ export default {
     "passive-present": "yu'maru",
 
     masdar1: "amr",
-    masdar2: "ma'muriyyah",
+    masdar2: "",
 
-    "active-participle": "amir",
-    "passive-participle": "ma'mur",
+    "active-participle": "āmir",
+    "passive-participle": "ma'mūr",
 
     subjunctive: "ya'mura",
     jussive: "ya'mur",
 
-    "negative-past": "maa amara",
-    "negative-present": "laa ya'muru",
+    "negative-past": "mā amara",
+    "negative-present": "lā ya'muru",
+    "negative-future": "lan ya'mura",
 
-    "future-sa": "sayamuru",
+    "future-sa": "saya'muru",
     "future-sawfa": "sawfa ya'muru"
   },
 
   english: {
-    simple: "to order",
-    detailed: "to order; to command; to instruct"
+    simple: "to order; to command",
+    detailed: "to order or command someone to do something"
+  },
+
+  englishByType: {
+    past: "he ordered",
+    present: "he orders",
+    imperative: "order!",
+
+    "passive-past": "he was ordered",
+    "passive-present": "he is ordered",
+
+    "negative-past": "he did not order",
+    "negative-present": "he does not order",
+    "negative-future": "he will not order",
+
+    "future-sa": "he will order",
+    "future-sawfa": "he will order",
+
+    "active-participle": "one who orders",
+    "passive-participle": "one who is ordered",
+
+    masdar: "ordering; command"
   },
 
   root: "أ-م-ر",
-  rootFamily: "أمر، مأمور، أمارة",
+  rootFamily: "أمر، آمر، مأمور",
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
-    name: "nasara",
+    name: "faʿala",
     past: "فَعَلَ",
     present: "يَفْعُلُ"
   },
 
-  verbType: "sound",
+  verbType: "hamzated",
 
-  difficulty: { cefr: "A2", arabic: "متوسط" },
-  frequency: "Common",
+  difficulty: {
+    cefr: "A2",
+    english: "Medium",
+    arabicLevel: "beginner",
+    usage: "Common in instructions and everyday conversation.",
+    learnerNotes: "The imperative is مُرْ (mur), with the initial hamza dropped.",
+    corpusRank: 300
+  },
+
+  frequency: "High",
 
   past: "أَمَرَ",
   present: "يَأْمُرُ",
   imperative: "مُرْ",
+
   future_sa: "سَيَأْمُرُ",
   future_sawfa: "سَوْفَ يَأْمُرُ",
 
-  masdar: ["أَمْر", "مَأْمُورِيَّة"],
+  masdar: [
+    "أَمْر"
+  ],
+
+  activeParticiple: "آمِر",
+  passiveParticiple: "مَأْمُور",
 
   overrides: {
     past: "أَمَرَ",
     present: "يَأْمُرُ",
     passivePast: "أُمِرَ",
     passivePresent: "يُؤْمَرُ",
-    masdar: ["أَمْر", "مَأْمُورِيَّة"]
+
+    masdar: [
+      "أَمْر"
+    ],
+
+    form1VowelClass: "u"
   },
 
-  // ⭐ NEW FIELD — added without deleting anything
-  categories: ["speaking"],
+  superTopic: "Communication & Instructions",
 
-  topics: ["commands", "authority", "speech"],
-  relatedNouns: ["أمر", "مأمور", "أوامر"],
-  relatedVerbs: ["نهى", "طلب", "أوجب"],
-  synonyms: ["طلب", "وجه"],
-  antonyms: ["رفض", "امتنع"],
+  topics: [
+    "commands",
+    "communication"
+  ],
+
+  semanticFamily: "commanding verbs",
+
+  categories: [
+    "communication"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "أمر",
+      "آمر",
+      "مأمور"
+    ],
+
+    semantic: [
+      "طَلَبَ",
+      "وَجَّهَ"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "أَمْر",
+    "أَمِير",
+    "مَأْمُور"
+  ],
+
+  synonyms: [
+    "طَلَبَ",
+    "وَجَّهَ"
+  ],
+
+  antonyms: [
+    "نَهَى"
+  ],
 
   examples: {
     simple: {
-      ar: "أَمَرَ المُعَلِّمُ الطُّلَّابَ بِالصَّمْتِ.",
-      en: "The teacher ordered the students to be quiet.",
-      tr: "amara al-mu'allimu al-tullāba bi-s-samti"
+      ar: "أَمَرَ المُعَلِّمُ الطَّالِبَ بِالقِرَاءَةِ.",
+      en: "The teacher ordered the student to read.",
+      tr: "amara al-mu'allimu aṭ-ṭāliba bil-qirā'ah",
+      audio: ""
     },
+
     natural: {
-      ar: "أَمَرَ الوَالِدُ ابْنَهُ بِتَرْتِيبِ الغُرْفَةِ.",
-      en: "The father instructed his son to tidy the room.",
-      tr: "amara al-wālidu ibnahu bi-tartīb al-ghurfah"
+      ar: "يَأْمُرُ الأَبُ ابْنَهُ بِتَرْتِيبِ غُرْفَتِهِ.",
+      en: "The father tells his son to tidy his room.",
+      tr: "ya'muru al-abu ibnahu bitartībi ghurfatihi",
+      audio: ""
     },
+
     rich: {
-      ar: "أَمَرَ القَائِدُ الجُنُودَ بِالتَّقَدُّمِ بَعْدَ دِرَاسَةِ الوَضْعِ.",
-      en: "The commander ordered the soldiers to advance after assessing the situation.",
-      tr: "amara al-qā'idu al-junūda bi-t-taqaddumi ba'da dirāsati al-wad'i"
+      ar: "أَمَرَ المُدِيرُ المُوَظَّفِينَ بِإِكْمَالِ العَمَلِ قَبْلَ نِهَايَةِ اليَوْمِ.",
+      en: "The manager ordered the employees to finish the work before the end of the day.",
+      tr: "amara al-mudīru al-muwaẓẓafīna bi-ikmāli al-'amali qabla nihāyati al-yawm",
+      audio: ""
     }
   },
 

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { PremiumProvider } from "./context/PremiumContext.jsx";
 
 import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 
 // PREMIUM
 import BillingPage from "./pages/BillingPage";
@@ -108,6 +109,7 @@ export default function App() {
 
         {/* ❌ REMOVED FLOATING REPORT BUTTON (as requested) */}
         {/* <FloatingReportButton /> */}
+        <ScrollToTop />
 
         <Routes>
           <Route element={<Layout />}>

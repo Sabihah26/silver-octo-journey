@@ -1,93 +1,181 @@
 export default {
-  id: "V13",
+  id: "V13_tashaaraka",
   type: "verb",
 
-  arabic: { past: "تَشَارَكَ" },
+  arabic: {
+    past: "تَشَارَكَ"
+  },
 
   transliteration: {
-    past: "tashaaraka",
-    present: "yatashaaraku",
+    past: "tashāraka",
+    present: "yatashāraku",
 
-    "passive-past": "tushuurika",
-    "passive-present": "yutashaaraku",
+    "passive-past": "tushūrika",
+    "passive-present": "yutashāraku",
 
-    masdar1: "tashaaruk",
+    masdar1: "tashāruk",
+    masdar2: "",
 
-    "active-participle": "mutashaarik",
-    "passive-participle": "mutashaarak",
+    "active-participle": "mutashārik",
+    "passive-participle": "mutashārak",
 
-    subjunctive: "yatashaaraka",
-    jussive: "yatashaarak",
+    subjunctive: "yatashāraka",
+    jussive: "yatashārak",
 
-    "negative-past": "maa tashaaraka",
-    "negative-present": "laa yatashaaraku",
+    "negative-past": "mā tashāraka",
+    "negative-present": "lā yatashāraku",
+    "negative-future": "lan yatashāraka",
 
-    "future-sa": "sayatashaaraku",
-    "future-sawfa": "sawfa yatashaaraku"
+    "future-sa": "sayatashāraku",
+    "future-sawfa": "sawfa yatashāraku"
   },
 
   english: {
-    simple: "to participate together",
-    detailed: "to share in; to take part jointly; to collaborate"
+    simple: "to share; to participate together",
+    detailed: "to share something jointly; to participate together in something"
+  },
+
+  englishByType: {
+    past: "he shared; he participated",
+    present: "he shares; he participates",
+    imperative: "share; participate together!",
+
+    "passive-past": "it was shared",
+    "passive-present": "it is shared",
+
+    "negative-past": "he did not share",
+    "negative-present": "he does not share",
+    "negative-future": "he will not share",
+
+    "future-sa": "he will share",
+    "future-sawfa": "he will share",
+
+    "active-participle": "one who shares or participates",
+    "passive-participle": "that which is shared",
+
+    masdar: "sharing; joint participation"
   },
 
   root: "ش-ر-ك",
-  rootFamily: "شرك، مشاركة، شريك",
+  rootFamily: "شَرِكَ، شَرِيك، شَرَكَة",
 
   form: "Form VI",
   wazan: "تَفَاعَلَ",
+
   formFamily: {
-    name: "tafaa'ala",
+    name: "tafāʿala",
     past: "تَفَاعَلَ",
     present: "يَتَفَاعَلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "B1", arabic: "متوسط" },
-  frequency: "Common",
+  difficulty: {
+    cefr: "B1",
+    english: "Medium",
+    arabicLevel: "intermediate",
+    usage: "Used for sharing or taking part jointly.",
+    learnerNotes: "Often followed by فِي (fī) when describing participation in an activity.",
+    corpusRank: 500
+  },
+
+  frequency: "Medium",
 
   past: "تَشَارَكَ",
   present: "يَتَشَارَكُ",
   imperative: "تَشَارَكْ",
+
   future_sa: "سَيَتَشَارَكُ",
   future_sawfa: "سَوْفَ يَتَشَارَكُ",
 
-  masdar: ["تَشَارُك"],
+  masdar: [
+    "تَشَارُك"
+  ],
+
+  activeParticiple: "مُتَشَارِك",
+  passiveParticiple: "مُتَشَارَك",
 
   overrides: {
     past: "تَشَارَكَ",
     present: "يَتَشَارَكُ",
     passivePast: "تُشُورِكَ",
     passivePresent: "يُتَشَارَكُ",
-    masdar: ["تَشَارُك"]
+
+    masdar: [
+      "تَشَارُك"
+    ]
   },
 
-  topics: ["teamwork", "community", "collaboration"],
+  superTopic: "Cooperation & Participation",
 
-  relatedNouns: ["مشاركة", "شريك"],
-  relatedVerbs: ["شارك", "تعاون"],
-  synonyms: ["تعاون"],
-  antonyms: ["انفرد"],
+  topics: [
+    "sharing",
+    "participation",
+    "cooperation"
+  ],
+
+  semanticFamily: "sharing verbs",
+
+  categories: [
+    "communication",
+    "social interaction"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "شَرِكَ",
+      "أَشْرَكَ",
+      "شَارَكَ"
+    ],
+
+    semantic: [
+      "تَعَاوَنَ",
+      "اِشْتَرَكَ"
+    ],
+
+    formFamily: [
+      "tafāʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "تَشَارُك",
+    "مُشَارَكَة",
+    "شَرِيك"
+  ],
+
+  synonyms: [
+    "شَارَكَ",
+    "اِشْتَرَكَ"
+  ],
+
+  antonyms: [
+    "اِنْفَرَدَ"
+  ],
 
   examples: {
     simple: {
-      ar: "تَشَارَكَ الطُّلَّابُ فِي المَشْرُوعِ.",
-      en: "The students participated together in the project.",
-      tr: "tashaaraka at-tullaabu fi al-mashroo'"
+      ar: "تَشَارَكَ الطُّلَّابُ فِي النَّشَاطِ.",
+      en: "The students participated together in the activity.",
+      tr: "tashāraka aṭ-ṭullābu fī an-nashāṭ",
+      audio: ""
     },
+
     natural: {
-      ar: "تَشَارَكْنَا فِي إِعْدَادِ الحَفْلِ.",
-      en: "We collaborated in preparing the event.",
-      tr: "tashaaraknaa fi i'daad al-hafl"
+      ar: "تَشَارَكَ الأَخَوَانِ المَسْؤُولِيَّةَ.",
+      en: "The two brothers shared the responsibility.",
+      tr: "tashāraka al-akhawāni al-masʾūliyyata",
+      audio: ""
     },
+
     rich: {
-      ar: "تَشَارَكَ الفَرِيقُ فِي وَضْعِ خُطَّةٍ جَدِيدَةٍ.",
-      en: "The team collaborated in creating a new plan.",
-      tr: "tashaaraka al-fareeq fi wad'i khuttah jadeedah"
+      ar: "تَشَارَكَ أَعْضَاءُ الفَرِيقِ الأَفْكَارَ لِإِنْجَاحِ المَشْرُوعِ.",
+      en: "The team members shared ideas to make the project a success.",
+      tr: "tashāraka aʿḍāʾu al-farīqi al-afkāra li-injāḥi al-mashrūʿ",
+      audio: ""
     }
   },
 
   audio: "",
-  notes: ""
+  notes: "The passive forms are grammatically possible but uncommon; this verb is usually used reflexively or reciprocally."
 };

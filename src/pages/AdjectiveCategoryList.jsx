@@ -5,11 +5,17 @@ import adjectives from "../data/adjectives";
 export default function AdjectiveCategoryList() {
   const { category } = useParams();
 
-  const filtered = adjectives.filter((a) => a.category === category);
+  const filtered = adjectives
+    .filter((a) => a.category === category)
+    .sort((a, b) => {
+      const aNum = parseInt(a.id.replace(/\D/g, "")) || 0;
+      const bNum = parseInt(b.id.replace(/\D/g, "")) || 0;
+
+      return aNum - bNum;
+    });
 
   return (
     <div style={{ padding: 20, textAlign: "center" }}>
-      
       <h1 style={{ fontSize: 27, marginBottom: 20, color: "#e7ebf3" }}>
         {category.charAt(0).toUpperCase() + category.slice(1)} Adjectives
       </h1>
@@ -29,8 +35,8 @@ export default function AdjectiveCategoryList() {
             to={`/adjectives/${adj.id}`}
             style={{
               background: "white",
-              padding: 8,
-              width: 140,
+              padding: 10,
+              width: 180,
               borderRadius: 12,
               textDecoration: "none",
               color: "#0A1A3A",
@@ -38,11 +44,46 @@ export default function AdjectiveCategoryList() {
               textAlign: "center",
             }}
           >
-            <h2 style={{ fontSize: 35, marginBottom: 2 }}>
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: "700",
+                color: "#64748b",
+                marginBottom: 4,
+              }}
+            >
+              {adj.id}
+            </div>
+
+            <h2
+              style={{
+                fontSize: 35,
+                marginBottom: 2,
+                marginTop: 0,
+              }}
+            >
               {adj.ar}
             </h2>
 
-            <p style={{ fontSize: 18, color: "#334155", marginTop: 0 }}>
+            <p
+              style={{
+                fontSize: 16,
+                color: "#64748b",
+                marginTop: 0,
+                marginBottom: 4,
+              }}
+            >
+              {adj.tr}
+            </p>
+
+            <p
+              style={{
+                fontSize: 18,
+                color: "#334155",
+                marginTop: 0,
+                marginBottom: 0,
+              }}
+            >
               {adj.en}
             </p>
           </Link>
@@ -52,7 +93,11 @@ export default function AdjectiveCategoryList() {
       <div style={{ marginTop: 20 }}>
         <Link
           to="/adjectives/category"
-          style={{ fontSize: 20, color: "#8cb9e5", textDecoration: "none" }}
+          style={{
+            fontSize: 20,
+            color: "#8cb9e5",
+            textDecoration: "none",
+          }}
         >
           ← Back to Categories
         </Link>

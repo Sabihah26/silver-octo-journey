@@ -25,6 +25,8 @@ const arabicTypeLabels = {
   subjunctive: "المنصوب",
   "negative-past": "النفي (ماضي)",
   "negative-present": "النفي (مضارع)",
+  // ⭐ NEW: label for lan
+  "negative-future": "لن",
   "future-sa": "سـ",
   "future-sawfa": "سوف",
   "active-participle": "اسم الفاعل",
@@ -208,7 +210,7 @@ export default function VerbDetailPage() {
   // ⭐ Extract bare verb (remove "to ")
   const bare = verb.english.simple.replace(/^to\s+/, "").trim();
 
-  // ⭐ Irregular verb support (same style as other pages)
+  // ⭐ Irregular verb support
   const irregular = {
     do: { past: "did", passive: "done", active: "doing" },
     go: { past: "went", passive: "gone", active: "going" },
@@ -240,28 +242,59 @@ export default function VerbDetailPage() {
     think: { past: "thought", passive: "thought", active: "thinking" },
   };
 
+  // ⭐ Build basic English forms
   const past = irregular[bare]?.past || bare + "ed";
   const passive = irregular[bare]?.passive || past;
   const active = irregular[bare]?.active || bare + "ing";
 
-  // ⭐ English meaning per type (no pronoun here; pronoun is labelEn)
-  const englishByType = {
-    past: past,
-    present: bare === "do" ? "does" : bare,
-    imperative: `${bare}!`,
-    "passive-past": `was ${passive}`,
-    "passive-present": `is ${passive}`,
-    jussive: `may ${bare}`,
-    subjunctive: `should ${bare}`,
-    "negative-past": `did not ${bare}`,
-    "negative-present": `does not ${bare}`,
-    "future-sa": `will ${bare}`,
-    "future-sawfa": `will ${bare}`,
-    "active-participle": `the one who ${bare}s`,
-    "passive-participle": `the one who is ${passive}`,
-    masdar: `the act of ${bare}ing`,
+  // ⭐ Build English metadata for this verb
+  const verbData = {
+    bare,
+    past,
+    presentThird:
+      irregular[bare]?.presentThird ||
+      (bare.endsWith("y") ? bare.slice(0, -1) + "ies" : bare + "s"),
+    passive,
+    gerund: active,
   };
 
+  // ⭐ Build all English meanings (fallback only)
+  function buildEnglishMeanings(verbData) {
+    return {
+      past: verbData.past,
+      present: verbData.presentThird,
+      imperative: `${verbData.bare}!`,
+
+      // PASSIVE
+      "passive-past": `was ${verbData.passive}`,
+      "passive-present": `is being ${verbData.passive}`,
+
+      // MOODS
+      jussive: `may ${verbData.bare}`,
+      subjunctive: `should ${verbData.bare}`,
+
+      // NEGATION
+      "negative-past": `did not ${verbData.bare}`,
+      "negative-present": `does not ${verbData.bare}`,
+      "negative-future": `will not be ${verbData.passive}`,
+
+      // FUTURE
+      "future-sa": `will ${verbData.bare}`,
+      "future-sawfa": `will ${verbData.bare}`,
+
+      // PARTICIPLES
+      "active-participle": `the one who ${verbData.presentThird}`,
+      "passive-participle": `the one that is ${verbData.passive}`,
+
+      // MASDAR
+      masdar: `the act of ${verbData.gerund}`,
+    };
+  }
+
+  // ⭐ Use verb-specific meanings if available
+  const englishByType = verb.englishByType || buildEnglishMeanings(verbData);
+
+  // ⭐ Meaning lookup — use current tense `type`
   const englishMeaningForPerson = () => {
     return englishByType[type] || past;
   };
@@ -326,7 +359,8 @@ export default function VerbDetailPage() {
       <h2 style={{ fontSize: "28px", marginTop: "10px", color: "white" }}>{title}</h2>
 
       {fixedRows.length > 0 ? (
-        renderRows(fixedRows, () => englishMeaningForPerson())
+        // ⭐ FIX: pass the function itself, not a wrapper
+        renderRows(fixedRows, englishMeaningForPerson)
       ) : (
         <div style={{ marginTop: "48px", color: "white" }}>
           <p style={{ fontSize: "28px", marginBottom: "18px" }}>

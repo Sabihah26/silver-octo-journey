@@ -294,13 +294,33 @@ function buildPastFromLemma(past3ms, root, weakType, form) {
 // Build FULL 14‑PERSON ACTIVE PRESENT from lemma (3ms present)
 // with weak-verb + Form I pattern handling
 // ------------------------------------------------------
-function buildPresentFromLemma(present3ms, root, weakType, form, past3ms) {
+function buildPresentFromLemma(present3ms, root, weakType, form, past3ms, overrides) {
   let base = present3ms;
   let stem = stripFinalHaraka(base);
   let withoutPrefix = stem.slice(1);
 
+  // ⭐ Explicit Form I vowel class override
+  if (form === "I" && overrides && overrides.form1VowelClass) {
+    const cls = overrides.form1VowelClass;
+
+    if (cls === "a") {
+      base = applyPattern(root, "يَفْعَلُ");
+    } else if (cls === "i") {
+      base = applyPattern(root, "يَفْعِلُ");
+    } else if (cls === "u") {
+      base = applyPattern(root, "يَفْعُلُ");
+    }
+
+    stem = stripFinalHaraka(base);
+    withoutPrefix = stem.slice(1);
+  }
+
   // Form I vowel pattern adjustment
-  if (form === "I") {
+  if (
+    form === "I" &&
+    !overrides?.present &&
+    !overrides?.form1VowelClass
+  ) {
     const pattern = detectFormIPattern(past3ms);
     if (pattern === "faʿila") {
       // يَفْعِلُ pattern
@@ -653,12 +673,29 @@ export default function conjugate(rootInput, formInput, overrides = {}) {
     };
   }
 
-  // --- ACTIVE LEMMAS ---
-  const lemmaPast =
-    overrides.past || applyPattern(root, formPatterns.past);
+// --- ACTIVE LEMMAS ---
+const lemmaPast =
+  overrides.past || applyPattern(root, formPatterns.past);
 
-  const lemmaPresent =
-    overrides.present || applyPattern(root, formPatterns.present);
+// Build present lemma (3ms)
+let lemmaPresent =
+  overrides.present || applyPattern(root, formPatterns.present);
+
+// ⭐ Apply Form I vowel‑class override BEFORE building the 14 forms
+if (form === "I" && overrides && overrides.form1VowelClass) {
+  const cls = overrides.form1VowelClass;
+
+  if (cls === "a") {
+    // faʿala → yafʿalu
+    lemmaPresent = applyPattern(root, "يَفْعَلُ");
+  } else if (cls === "i") {
+    // faʿila → yafʿilu
+    lemmaPresent = applyPattern(root, "يَفْعِلُ");
+  } else if (cls === "u") {
+    // faʿula → yafʿulu
+    lemmaPresent = applyPattern(root, "يَفْعُلُ");
+  }
+}
 
   // --- PASSIVE LEMMAS ---
   const lemmaPassivePast =
@@ -669,7 +706,14 @@ export default function conjugate(rootInput, formInput, overrides = {}) {
 
   // --- FULL TABLES (14-person keys) ---
   const past14 = buildPastFromLemma(lemmaPast, root, weakType, form);
-  const present14 = buildPresentFromLemma(lemmaPresent, root, weakType, form, lemmaPast);
+  const present14 = buildPresentFromLemma(
+    lemmaPresent,
+    root,
+    weakType,
+    form,
+    lemmaPast,
+    overrides
+  );
   const passivePast14 = buildPassivePastFromLemma(lemmaPassivePast);
   const passivePresent14 = buildPassivePresentFromLemma(lemmaPassivePresent);
 
@@ -695,6 +739,13 @@ export default function conjugate(rootInput, formInput, overrides = {}) {
 
     negativePast: negativePast14,
     negativePresent: negativePresent14,
+   negativeFuture: Object.fromEntries(
+  Object.entries(subjunctive14).map(([key, value]) => [
+    key,
+    `لَنْ ${value}`
+  ])
+),
+
 
     future_sa: future_sa14,
     future_sawfa: future_sawfa14,
@@ -718,21 +769,25 @@ export default function conjugate(rootInput, formInput, overrides = {}) {
     form,
     weakType,
 
-    past: toArabicMap(past14),
-    present: toArabicMap(present14),
-    imperative: tables.imperative,
-    passivePast: toArabicMap(passivePast14),
-    passivePresent: toArabicMap(passivePresent14),
-    jussive: toArabicMap(jussive14),
-    subjunctive: toArabicMap(subjunctive14),
-    negativePast: toArabicMap(negativePast14),
-    negativePresent: toArabicMap(negativePresent14),
-    future_sa: toArabicMap(future_sa14),
-    future_sawfa: toArabicMap(future_sawfa14),
+past: toArabicMap(past14),
+present: toArabicMap(present14),
+imperative: tables.imperative,
+passivePast: toArabicMap(passivePast14),
+passivePresent: toArabicMap(passivePresent14),
+jussive: toArabicMap(jussive14),
+subjunctive: toArabicMap(subjunctive14),
 
-    activeParticiple: tables.activeParticiple,
-    passiveParticiple: tables.passiveParticiple,
-    masdar,
+negativePast: toArabicMap(negativePast14),
+negativePresent: toArabicMap(negativePresent14),
+negativeFuture: toArabicMap(tables.negativeFuture),
+
+future_sa: toArabicMap(future_sa14),
+future_sawfa: toArabicMap(future_sawfa14),
+
+activeParticiple: tables.activeParticiple,
+passiveParticiple: tables.passiveParticiple,
+masdar,
+
 
     tables,
   };

@@ -1,8 +1,10 @@
 export default {
-  id: "V24",
+  id: "V24_dakhala",
   type: "verb",
 
-  arabic: { past: "دَخَلَ" },
+  arabic: {
+    past: "دَخَلَ"
+  },
 
   transliteration: {
     past: "dakhala",
@@ -11,16 +13,18 @@ export default {
     "passive-past": "dukhila",
     "passive-present": "yudkhalu",
 
-    masdar1: "dukhool",
+    masdar1: "dukhūl",
+    masdar2: "",
 
-    "active-participle": "daakhil",
-    "passive-participle": "madkhool",
+    "active-participle": "dākhil",
+    "passive-participle": "madkhūl",
 
     subjunctive: "yadkhula",
     jussive: "yadkhul",
 
-    "negative-past": "maa dakhala",
-    "negative-present": "laa yadkhulu",
+    "negative-past": "mā dakhala",
+    "negative-present": "lā yadkhulu",
+    "negative-future": "lan yadkhula",
 
     "future-sa": "sayadkhulu",
     "future-sawfa": "sawfa yadkhulu"
@@ -28,63 +32,146 @@ export default {
 
   english: {
     simple: "to enter",
-    detailed: "to enter; to go in; to come in"
+    detailed: "to enter or go into a place"
+  },
+
+  englishByType: {
+    past: "he entered",
+    present: "he enters",
+    imperative: "enter!",
+
+    "passive-past": "it was entered",
+    "passive-present": "it is entered",
+
+    "negative-past": "he did not enter",
+    "negative-present": "he does not enter",
+    "negative-future": "he will not enter",
+
+    "future-sa": "he will enter",
+    "future-sawfa": "he will enter",
+
+    "active-participle": "one who enters; someone inside",
+    "passive-participle": "that which is entered",
+
+    masdar: "entering"
   },
 
   root: "د-خ-ل",
-  rootFamily: "دخول، داخل، مدخول",
+  rootFamily: "دَخَلَ، دَاخِل، مَدْخَل",
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
-    name: "fa'ala",
+    name: "faʿala",
     past: "فَعَلَ",
     present: "يَفْعُلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "A1", arabic: "سهل" },
-  frequency: "Top 200",
+  difficulty: {
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Very common in everyday conversation.",
+    learnerNotes: "Often followed by فِي (fī) when naming the place entered.",
+    corpusRank: 50
+  },
+
+  frequency: "Very High",
 
   past: "دَخَلَ",
   present: "يَدْخُلُ",
   imperative: "اُدْخُلْ",
+
   future_sa: "سَيَدْخُلُ",
   future_sawfa: "سَوْفَ يَدْخُلُ",
 
-  masdar: ["دُخُول"],
+  masdar: [
+    "دُخُول"
+  ],
+
+  activeParticiple: "دَاخِل",
+  passiveParticiple: "مَدْخُول",
 
   overrides: {
     past: "دَخَلَ",
     present: "يَدْخُلُ",
     passivePast: "دُخِلَ",
     passivePresent: "يُدْخَلُ",
-    masdar: ["دُخُول"]
+
+    masdar: [
+      "دُخُول"
+    ],
+
+    form1VowelClass: "u"
   },
 
-  topics: ["movement", "location", "daily life"],
+  superTopic: "Daily Life & Movement",
 
-  relatedNouns: ["دخول", "داخل"],
-  relatedVerbs: ["دخل", "انضمّ"],
-  synonyms: ["وَلَجَ"],
-  antonyms: ["خَرَجَ"],
+  topics: [
+    "entering",
+    "movement"
+  ],
+
+  semanticFamily: "movement verbs",
+
+  categories: [
+    "daily"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "دَخَلَ",
+      "أَدْخَلَ",
+      "تَدَاخَلَ"
+    ],
+
+    semantic: [
+      "وَلَجَ",
+      "اِقْتَحَمَ"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "دُخُول",
+    "مَدْخَل",
+    "دَاخِل"
+  ],
+
+  synonyms: [
+    "وَلَجَ"
+  ],
+
+  antonyms: [
+    "خَرَجَ"
+  ],
 
   examples: {
     simple: {
-      ar: "دَخَلَ الرَّجُلُ البَيْتَ.",
-      en: "The man entered the house.",
-      tr: "dakhala ar-rajulu al-bayta"
+      ar: "دَخَلَ الوَلَدُ البَيْتَ.",
+      en: "The boy entered the house.",
+      tr: "dakhala al-waladu al-bayta",
+      audio: ""
     },
+
     natural: {
-      ar: "دَخَلْتُ الفَصْلَ مُتَأَخِّرًا قَلِيلًا.",
-      en: "I entered the classroom a little late.",
-      tr: "dakhalttu al-fasla muta'akhiran qaleelan"
+      ar: "يَدْخُلُ المُعَلِّمُ إِلَى الصَّفِّ.",
+      en: "The teacher enters the classroom.",
+      tr: "yadkhulu al-muʿallimu ilā aṣ-ṣaffi",
+      audio: ""
     },
+
     rich: {
-      ar: "دَخَلَ الطُّلَّابُ القَاعَةَ لِبِدَايَةِ المُحَاضَرَةِ.",
-      en: "The students entered the hall for the start of the lecture.",
-      tr: "dakhala at-tullaabu al-qa'ah libidaayati al-muhaadarah"
+      ar: "دَخَلَتِ الأُسْرَةُ المَطْعَمَ وَجَلَسَتْ بِالقُرْبِ مِنَ النَّافِذَةِ.",
+      en: "The family entered the restaurant and sat near the window.",
+      tr: "dakhalati al-usrah al-maṭʿama wa-jalasat bil-qurbi mina an-nāfidhah",
+      audio: ""
     }
   },
 

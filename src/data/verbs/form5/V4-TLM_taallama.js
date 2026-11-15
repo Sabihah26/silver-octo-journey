@@ -1,90 +1,175 @@
 export default {
-  id: "V4",
+  id: "V4_taallama",
   type: "verb",
 
-  arabic: { past: "تَعَلَّمَ" },
+  arabic: {
+    past: "تَعَلَّمَ"
+  },
 
   transliteration: {
-    past: "ta'allama",
-    present: "yata'allamu",
+    past: "taʿallama",
+    present: "yataʿallamu",
 
     "passive-past": "tuʿullima",
-    "passive-present": "yuta'allamu",
+    "passive-present": "yutaʿallamu",
 
-    masdar1: "ta'allum",
+    masdar1: "taʿallum",
+    masdar2: "",
 
-    "active-participle": "muta'allim",
-    "passive-participle": "muta'allam",
+    "active-participle": "mutaʿallim",
+    "passive-participle": "mutaʿallam",
 
-    subjunctive: "yata'allama",
-    jussive: "yata'allam",
+    subjunctive: "yataʿallama",
+    jussive: "yataʿallam",
 
-    "negative-past": "maa ta'allama",
-    "negative-present": "laa yata'allamu",
+    "negative-past": "mā taʿallama",
+    "negative-present": "lā yataʿallamu",
+    "negative-future": "lan yataʿallama",
 
-    "future-sa": "sayata'allamu",
-    "future-sawfa": "sawfa yata'allamu"
+    "future-sa": "sayaʿallamu",
+    "future-sawfa": "sawfa yataʿallamu"
   },
 
   english: {
     simple: "to learn",
-    detailed: "to learn; to acquire knowledge; to study"
+    detailed: "to learn; to acquire knowledge or a skill"
+  },
+
+  englishByType: {
+    past: "he learned",
+    present: "he learns",
+    imperative: "learn!",
+
+    "passive-past": "it was learned",
+    "passive-present": "it is learned",
+
+    "negative-past": "he did not learn",
+    "negative-present": "he does not learn",
+    "negative-future": "he will not learn",
+
+    "future-sa": "he will learn",
+    "future-sawfa": "he will learn",
+
+    "active-participle": "learner",
+    "passive-participle": "that which is learned",
+
+    masdar: "learning"
   },
 
   root: "ع-ل-م",
-  rootFamily: "علم، تعليم، معلومة",
+  rootFamily: "عَلِمَ، عَالِم، مَعْلُوم",
 
   form: "Form V",
   wazan: "تَفَعَّلَ",
+
   formFamily: {
-    name: "tafa'ala",
+    name: "tafaʿʿala",
     past: "تَفَعَّلَ",
     present: "يَتَفَعَّلُ"
   },
 
   verbType: "sound",
 
-  difficulty: { cefr: "A2", arabic: "متوسط" },
-  frequency: "Top 200",
+  difficulty: {
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common in everyday conversation and education.",
+    learnerNotes: "Often used for learning a subject, language, or skill.",
+    corpusRank: 150
+  },
+
+  frequency: "High",
 
   past: "تَعَلَّمَ",
   present: "يَتَعَلَّمُ",
   imperative: "تَعَلَّمْ",
+
   future_sa: "سَيَتَعَلَّمُ",
   future_sawfa: "سَوْفَ يَتَعَلَّمُ",
 
-  masdar: ["تَعَلُّم"],
+  masdar: [
+    "تَعَلُّم"
+  ],
+
+  activeParticiple: "مُتَعَلِّم",
+  passiveParticiple: "مُتَعَلَّم",
 
   overrides: {
     past: "تَعَلَّمَ",
     present: "يَتَعَلَّمُ",
     passivePast: "تُعُلِّمَ",
     passivePresent: "يُتَعَلَّمُ",
-    masdar: ["تَعَلُّم"]
+
+    masdar: [
+      "تَعَلُّم"
+    ]
   },
 
-  topics: ["education", "school", "self‑development"],
+  superTopic: "Education & Learning",
 
-  relatedNouns: ["علم", "تعليم", "معلومة"],
-  relatedVerbs: ["درس", "قرأ", "فهم"],
-  synonyms: ["اكتسب المعرفة"],
-  antonyms: ["جَهِلَ"],
+  topics: [
+    "learning",
+    "education"
+  ],
+
+  semanticFamily: "learning verbs",
+
+  categories: [
+    "education"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "عَلِمَ",
+      "عَلَّمَ",
+      "تَعَلَّمَ"
+    ],
+
+    semantic: [
+      "دَرَسَ",
+      "اِكْتَسَبَ"
+    ],
+
+    formFamily: [
+      "tafaʿʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "عِلْم",
+    "تَعَلُّم",
+    "مُتَعَلِّم"
+  ],
+
+  synonyms: [
+    "دَرَسَ"
+  ],
+
+  antonyms: [
+    "جَهِلَ"
+  ],
 
   examples: {
     simple: {
-      ar: "تَعَلَّمَ الوَلَدُ الكِتَابَةَ.",
-      en: "The boy learned writing.",
-      tr: "ta'allama al-waladu al-kitaabata"
+      ar: "تَعَلَّمَ الطَّالِبُ كَلِمَةً جَدِيدَةً.",
+      en: "The student learned a new word.",
+      tr: "taʿallama aṭ-ṭālibu kalimatan jadīdatan",
+      audio: ""
     },
+
     natural: {
-      ar: "تَعَلَّمْتُ اللُّغَةَ العَرَبِيَّةَ فِي المَدْرَسَةِ.",
-      en: "I learned the Arabic language at school.",
-      tr: "ta'allamtu al-lughata al-arabiyyata fi al-madrasah"
+      ar: "يَتَعَلَّمُ أَخِي اللُّغَةَ العَرَبِيَّةَ.",
+      en: "My brother is learning Arabic.",
+      tr: "yataʿallamu akhī al-lughata al-ʿarabiyyah",
+      audio: ""
     },
+
     rich: {
-      ar: "تَعَلَّمَ الطُّلَّابُ مَهَارَاتٍ جَدِيدَةً مِنْ خِلَالِ الدَّرْسِ التَّطْبِيقِيِّ.",
-      en: "The students learned new skills through the practical lesson.",
-      tr: "ta'allama at-tullaabu mahaaratan jadeedatan min khilaali ad-darsi at-tatbiqiyy"
+      ar: "تَعَلَّمَتِ الطَّالِبَةُ كَيْفَ تَكْتُبُ رِسَالَةً رَسْمِيَّةً.",
+      en: "The student learned how to write a formal letter.",
+      tr: "taʿallamati aṭ-ṭālibatu kayfa taktubu risālatan rasmiyyatan",
+      audio: ""
     }
   },
 

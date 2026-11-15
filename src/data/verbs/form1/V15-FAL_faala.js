@@ -1,41 +1,67 @@
 export default {
-  id: "V15",
+  id: "V15_faala",
   type: "verb",
 
-  arabic: { past: "فَعَلَ" },
+  arabic: {
+    past: "فَعَلَ"
+  },
 
   transliteration: {
-    past: "fa'ala",
-    present: "yaf'alu",
+    past: "faʿala",
+    present: "yafʿalu",
 
-    "passive-past": "fu'ila",
-    "passive-present": "yuf'alu",
+    "passive-past": "fuʿila",
+    "passive-present": "yufʿalu",
 
-    masdar1: "fi'l",
+    masdar1: "fiʿl",
+    masdar2: "faʿl",
 
-    "active-participle": "fa'il",
-    "passive-participle": "maf'ul",
+    "active-participle": "fāʿil",
+    "passive-participle": "mafʿūl",
 
-    subjunctive: "yaf'ala",
-    jussive: "yaf'al",
+    subjunctive: "yafʿala",
+    jussive: "yafʿal",
 
-    "negative-past": "maa fa'ala",
-    "negative-present": "laa yaf'alu",
+    "negative-past": "mā faʿala",
+    "negative-present": "lā yafʿalu",
+    "negative-future": "lan yafʿala",
 
-    "future-sa": "sayaf'alu",
-    "future-sawfa": "sawfa yaf'alu"
+    "future-sa": "sayafʿalu",
+    "future-sawfa": "sawfa yafʿalu"
   },
 
   english: {
-    simple: "to do",
-    detailed: "to do; to perform; to carry out an action"
+    simple: "to do; to act",
+    detailed: "to do or perform an action"
+  },
+
+  englishByType: {
+    past: "he did",
+    present: "he does",
+    imperative: "do!",
+
+    "passive-past": "it was done",
+    "passive-present": "it is done",
+
+    "negative-past": "he did not do",
+    "negative-present": "he does not do",
+    "negative-future": "he will not do",
+
+    "future-sa": "he will do",
+    "future-sawfa": "he will do",
+
+    "active-participle": "doer",
+    "passive-participle": "done",
+
+    masdar: "doing; action"
   },
 
   root: "ف-ع-ل",
-  rootFamily: "فعل، مفعول، فاعل",
+  rootFamily: "فَعَلَ، فَاعِل، مَفْعُول",
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
     name: "faʿala",
     past: "فَعَلَ",
@@ -44,47 +70,111 @@ export default {
 
   verbType: "sound",
 
-  difficulty: { cefr: "A1", arabic: "سهل" },
-  frequency: "Very common",
+  difficulty: {
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "A basic verb meaning to do or perform.",
+    learnerNotes: "فَعَلَ is also the common pattern name used to describe Arabic verb forms.",
+    corpusRank: 100
+  },
+
+  frequency: "Very High",
 
   past: "فَعَلَ",
   present: "يَفْعَلُ",
   imperative: "اِفْعَلْ",
+
   future_sa: "سَيَفْعَلُ",
   future_sawfa: "سَوْفَ يَفْعَلُ",
 
-  masdar: ["فِعْل"],
+  masdar: [
+    "فِعْل",
+    "فَعْل"
+  ],
+
+  activeParticiple: "فَاعِل",
+  passiveParticiple: "مَفْعُول",
 
   overrides: {
     past: "فَعَلَ",
     present: "يَفْعَلُ",
     passivePast: "فُعِلَ",
     passivePresent: "يُفْعَلُ",
-    masdar: ["فِعْل"]
+
+    masdar: [
+      "فِعْل",
+      "فَعْل"
+    ],
+
+    form1VowelClass: "a"
   },
 
-  topics: ["general actions", "daily life"],
+  superTopic: "Actions & Activities",
 
-  relatedNouns: ["فِعْل", "مَفْعُول", "فَاعِل"],
-  relatedVerbs: ["عمل", "قام", "أنجز"],
-  synonyms: ["عمل"],
-  antonyms: ["تَرَكَ"],
+  topics: [
+    "actions",
+    "activities"
+  ],
+
+  semanticFamily: "action verbs",
+
+  categories: [
+    "daily"
+  ],
+
+  relatedVerbs: {
+    root: [
+      "فَعَلَ",
+      "فَاعَلَ",
+      "أَفْعَلَ"
+    ],
+
+    semantic: [
+      "عَمِلَ",
+      "صَنَعَ"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
+  },
+
+  relatedNouns: [
+    "فِعْل",
+    "فَاعِل",
+    "مَفْعُول"
+  ],
+
+  synonyms: [
+    "عَمِلَ",
+    "صَنَعَ"
+  ],
+
+  antonyms: [
+    "تَرَكَ"
+  ],
 
   examples: {
     simple: {
-      ar: "فَعَلَ الوَلَدُ وَاجِبَهُ.",
-      en: "The boy did his homework.",
-      tr: "fa'ala al-waladu wajibahu"
+      ar: "فَعَلَ الطَّالِبُ وَاجِبَهُ.",
+      en: "The student did his homework.",
+      tr: "faʿala aṭ-ṭālibu wājibahu",
+      audio: ""
     },
+
     natural: {
-      ar: "فَعَلْتُ مَا طَلَبْتَ مِنِّي.",
-      en: "I did what you asked of me.",
-      tr: "fa'altu maa talabta minni"
+      ar: "يَفْعَلُ أَبِي ذَلِكَ كُلَّ يَوْمٍ.",
+      en: "My father does that every day.",
+      tr: "yafʿalu abī dhālika kulla yawmin",
+      audio: ""
     },
+
     rich: {
-      ar: "فَعَلَ المُعَلِّمُ كُلَّ مَا يَسْتَطِيعُ لِمُسَاعَدَةِ الطُّلَّابِ.",
-      en: "The teacher did everything he could to help the students.",
-      tr: "fa'ala al-mu'allimu kulla maa yastati'u limusa'adati at-tullaab"
+      ar: "فَعَلَ الفَرِيقُ كُلَّ مَا يَسْتَطِيعُ لِمُسَاعَدَةِ المُجْتَمَعِ.",
+      en: "The team did everything it could to help the community.",
+      tr: "faʿala al-farīqu kulla mā yastaṭīʿu li-musāʿadati al-mujtamaʿ",
+      audio: ""
     }
   },
 
