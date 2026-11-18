@@ -38,7 +38,6 @@ const romanMap = {
 };
 
 export default function WeakVerbsPage() {
-  // ⭐ Weak type memory
   const [weakType, setWeakType] = useState(
     localStorage.getItem("weakType") || "fa"
   );
@@ -87,225 +86,271 @@ export default function WeakVerbsPage() {
     return topicFiltered.filter((verb) => verb.difficulty === difficulty);
   }, [topicFiltered, difficulty]);
 
+  // ⭐ WRAPPER FIX — forces light background on this page only
   return (
-    <div style={{ padding: "40px 20px", color: "white", minHeight: "100vh" }}>
-      <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <Link
-          to="/forms"
+    <div
+      id="weak-verbs-page"
+      style={{
+        background: "#0A2A5A",
+        minHeight: "100vh",
+        paddingTop: "20px",
+      }}
+    >
+      <div style={{ padding: "40px 20px", color: "white", minHeight: "100vh" }}>
+        <div style={{ textAlign: "center", marginBottom: 20 }}>
+          <Link
+            to="/forms"
+            style={{
+              color: "white",
+              textDecoration: "underline",
+              fontSize: "21px",
+            }}
+          >
+            ← Back to Forms I–X
+          </Link>
+        </div>
+
+        <h1 style={{ textAlign: "center", marginBottom: 30 }}>Weak Verbs</h1>
+
+        {/* FILTER BAR */}
+        <div
           style={{
-            color: "white",
-            textDecoration: "underline",
-            fontSize: "21px",
+            display: "flex",
+            gap: "30px",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            marginBottom: "40px",
           }}
         >
-          ← Back to Forms I–X
-        </Link>
-      </div>
-
-      <h1 style={{ textAlign: "center", marginBottom: 30 }}>Weak Verbs</h1>
-
-      {/* FILTER BAR */}
-      <div
-        style={{
-          display: "flex",
-          gap: "30px",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          marginBottom: "40px",
-        }}
-      >
-        {/* Weak Type */}
-        <Dropdown
-          label="🧬 Weak Type"
-          isOpen={openDropdown === "weakType"}
-          onToggle={() => toggleDropdown("weakType")}
-        >
-          <DropdownItem
-            onClick={() => {
-              setWeakType("fa");
-              localStorage.setItem("weakType", "fa");
-              setOpenDropdown(null);
-            }}
+          {/* Weak Type */}
+          <Dropdown
+            label="🧬 Weak Type"
+            isOpen={openDropdown === "weakType"}
+            onToggle={() => toggleDropdown("weakType")}
           >
-            Fa‑weak
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setWeakType("ain");
-              localStorage.setItem("weakType", "ain");
-              setOpenDropdown(null);
-            }}
-          >
-            Ain‑weak
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setWeakType("lam");
-              localStorage.setItem("weakType", "lam");
-              setOpenDropdown(null);
-            }}
-          >
-            Lam‑weak
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setWeakType("hamza");
-              localStorage.setItem("weakType", "hamza");
-              setOpenDropdown(null);
-            }}
-          >
-            Hamza‑weak
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setWeakType("double");
-              localStorage.setItem("weakType", "double");
-              setOpenDropdown(null);
-            }}
-          >
-            Double‑weak
-          </DropdownItem>
-        </Dropdown>
-
-        {/* Form */}
-        <Dropdown
-          label="🔤 Form"
-          isOpen={openDropdown === "form"}
-          onToggle={() => toggleDropdown("form")}
-        >
-          <DropdownItem
-            onClick={() => {
-              setFormNumber("all");
-              setOpenDropdown(null);
-            }}
-          >
-            All Forms
-          </DropdownItem>
-
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
             <DropdownItem
-              key={num}
               onClick={() => {
-                setFormNumber(String(num));
+                setWeakType("fa");
+                localStorage.setItem("weakType", "fa");
                 setOpenDropdown(null);
               }}
             >
-              {romanMap[num]}
+              Fa‑weak
             </DropdownItem>
-          ))}
-        </Dropdown>
 
-        {/* Topic */}
-        <Dropdown
-          label="🗂️ Topic"
-          isOpen={openDropdown === "topic"}
-          onToggle={() => toggleDropdown("topic")}
-        >
-          {allTopics.map((topic) => (
             <DropdownItem
-              key={topic}
               onClick={() => {
-                setSelectedTopic(topic);
+                setWeakType("ain");
+                localStorage.setItem("weakType", "ain");
                 setOpenDropdown(null);
               }}
             >
-              {topic}
+              Ain‑weak
             </DropdownItem>
-          ))}
-        </Dropdown>
 
-        {/* Difficulty */}
-        <Dropdown
-          label="🎚️ Difficulty"
-          isOpen={openDropdown === "difficulty"}
-          onToggle={() => toggleDropdown("difficulty")}
-        >
-          <DropdownItem
-            onClick={() => {
-              setDifficulty("all");
-              setOpenDropdown(null);
-            }}
-          >
-            All
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setDifficulty("easy");
-              setOpenDropdown(null);
-            }}
-          >
-            Easy
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setDifficulty("medium");
-              setOpenDropdown(null);
-            }}
-          >
-            Medium
-          </DropdownItem>
-
-          <DropdownItem
-            onClick={() => {
-              setDifficulty("hard");
-              setOpenDropdown(null);
-            }}
-          >
-            Hard
-          </DropdownItem>
-        </Dropdown>
-      </div>
-
-      {/* VERB GRID */}
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "40px auto 0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-          gap: "24px",
-          justifyItems: "center",
-        }}
-      >
-        {finalVerbs.length === 0 ? (
-          <div style={{ textAlign: "center", color: "#d1d5db" }}>
-            No weak verbs found.
-          </div>
-        ) : (
-          finalVerbs.map((verb) => (
-            <Link
-              key={verb.id}
-              to={`/verb/${verb.id}`}
-              style={{
-                background: "white",
-                border: "1px solid #d1d5db",
-                borderRadius: "12px",
-                padding: "16px 12px",
-                color: "black",
-                textDecoration: "none",
-                width: "180px",
-                textAlign: "center",
-                boxShadow: "0 3px 10px rgba(0,0,0,0.10)",
+            <DropdownItem
+              onClick={() => {
+                setWeakType("lam");
+                localStorage.setItem("weakType", "lam");
+                setOpenDropdown(null);
               }}
             >
-              <div style={{ marginTop: 4, fontSize: 40, fontWeight: 700 }}>
-                {verb.arabic?.simple ?? verb.arabic}
-              </div>
+              Lam‑weak
+            </DropdownItem>
 
-              <div style={{ marginTop: 8, fontSize: 22, fontWeight: 600 }}>
-                {typeof verb.english === "object"
-                  ? verb.english.simple
-                  : verb.english}
-              </div>
-            </Link>
-          ))
-        )}
+            <DropdownItem
+              onClick={() => {
+                setWeakType("hamza");
+                localStorage.setItem("weakType", "hamza");
+                setOpenDropdown(null);
+              }}
+            >
+              Hamza‑weak
+            </DropdownItem>
+
+            <DropdownItem
+              onClick={() => {
+                setWeakType("double");
+                localStorage.setItem("weakType", "double");
+                setOpenDropdown(null);
+              }}
+            >
+              Double‑weak
+            </DropdownItem>
+          </Dropdown>
+
+          {/* Form */}
+          <Dropdown
+            label="🔤 Form"
+            isOpen={openDropdown === "form"}
+            onToggle={() => toggleDropdown("form")}
+          >
+            <DropdownItem
+              onClick={() => {
+                setFormNumber("all");
+                setOpenDropdown(null);
+              }}
+            >
+              All Forms
+            </DropdownItem>
+
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+              <DropdownItem
+                key={num}
+                onClick={() => {
+                  setFormNumber(String(num));
+                  setOpenDropdown(null);
+                }}
+              >
+                {romanMap[num]}
+              </DropdownItem>
+            ))}
+          </Dropdown>
+
+          {/* Topic */}
+          <Dropdown
+            label="🗂️ Topic"
+            isOpen={openDropdown === "topic"}
+            onToggle={() => toggleDropdown("topic")}
+          >
+            {allTopics.map((topic) => (
+              <DropdownItem
+                key={topic}
+                onClick={() => {
+                  setSelectedTopic(topic);
+                  setOpenDropdown(null);
+                }}
+              >
+                {topic}
+              </DropdownItem>
+            ))}
+          </Dropdown>
+
+          {/* Difficulty */}
+          <Dropdown
+            label="🎚️ Difficulty"
+            isOpen={openDropdown === "difficulty"}
+            onToggle={() => toggleDropdown("difficulty")}
+          >
+            <DropdownItem
+              onClick={() => {
+                setDifficulty("all");
+                setOpenDropdown(null);
+              }}
+            >
+              All
+            </DropdownItem>
+
+            <DropdownItem
+              onClick={() => {
+                setDifficulty("easy");
+                setOpenDropdown(null);
+              }}
+            >
+              Easy
+            </DropdownItem>
+
+            <DropdownItem
+              onClick={() => {
+                setDifficulty("medium");
+                setOpenDropdown(null);
+              }}
+            >
+              Medium
+            </DropdownItem>
+
+            <DropdownItem
+              onClick={() => {
+                setDifficulty("hard");
+                setOpenDropdown(null);
+              }}
+            >
+              Hard
+            </DropdownItem>
+          </Dropdown>
+        </div>
+
+        {/* VERB GRID */}
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "40px auto 0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "24px",
+            justifyItems: "center",
+          }}
+        >
+          {finalVerbs.length === 0 ? (
+            <div style={{ textAlign: "center", color: "#d1d5db" }}>
+              No weak verbs found.
+            </div>
+          ) : (
+            finalVerbs.map((verb) => (
+              <Link
+                key={verb.id}
+                to={`/verb/${verb.id}`}
+                style={{
+                  background: "white",
+                  border: "1px solid #d1d5db",
+                  borderRadius: "12px",
+                  padding: "16px 12px",
+                  color: "black",
+                  textDecoration: "none",
+                  width: "180px",
+                  textAlign: "center",
+                  boxShadow: "0 3px 10px rgba(0,0,0,0.10)",
+                }}
+              >
+              <div
+  style={{
+    fontSize: "14px",
+    fontWeight: "700",
+    color: "#6b7280",
+    marginBottom: "6px",
+  }}
+>
+  {verb.id?.split("_")[0]}
+</div>
+
+<div
+  style={{
+    marginTop: 4,
+    fontSize: 40,
+    fontWeight: 700,
+  }}
+>
+  {verb.arabic?.simple || verb.arabic?.past || verb.arabic || ""}
+</div>
+
+<div
+  style={{
+    marginTop: 4,
+    fontSize: 16,
+    color: "#666",
+  }}
+>
+  {verb.transliteration?.simple ||
+    verb.transliteration?.past ||
+    verb.transliteration ||
+    ""}
+</div>
+
+<div
+  style={{
+    marginTop: 8,
+    fontSize: 22,
+    fontWeight: 600,
+  }}
+>
+  {typeof verb.english === "object"
+    ? verb.english.simple
+    : verb.english}
+</div>
+              </Link>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,70 +1,178 @@
-// WVL6.js
 export default {
-  id: "WVL6",
+  id: "WVL6_nasiya",
   type: "verb",
 
-  arabic: "نَسِيَ",
-  transliteration: "nasiya",
+  arabic: {
+    past: "نَسِيَ"
+  },
+
+  transliteration: {
+    past: "nasiya",
+    present: "yansā",
+
+    "passive-past": "nusiya",
+    "passive-present": "yunsā",
+
+    masdar1: "nisyān",
+    masdar2: "nisy",
+
+    "active-participle": "nāsin",
+    "passive-participle": "mansiyy",
+
+    subjunctive: "yansā",
+    jussive: "yansa",
+
+    "negative-past": "mā nasiya",
+    "negative-present": "lā yansā",
+    "negative-future": "lan yansā",
+
+    "future-sa": "sayansā",
+    "future-sawfa": "sawfa yansā"
+  },
+
   english: {
     simple: "to forget",
-    detailed: "to forget; to fail to remember"
+    detailed: "to forget or fail to remember something"
+  },
+
+  englishByType: {
+    past: "he forgot",
+    present: "he forgets",
+    imperative: "forget!",
+
+    "passive-past": "it was forgotten",
+    "passive-present": "it is forgotten",
+
+    "negative-past": "he did not forget",
+    "negative-present": "he does not forget",
+    "negative-future": "he will not forget",
+
+    "future-sa": "he will forget",
+    "future-sawfa": "he will forget",
+
+    "active-participle": "one who forgets",
+    "passive-participle": "forgotten",
+
+    masdar: "forgetting; forgetfulness"
   },
 
   root: "ن-س-ي",
-  rootFamily: "نسيان، ناسٍ، منسيّ",
+  rootFamily: "نَسِيَ، نَاسٍ، مَنْسِيّ",
 
   form: "Form I",
   wazan: "فَعِلَ",
+
   formFamily: {
     name: "faʿila",
     past: "فَعِلَ",
     present: "يَفْعَلُ"
   },
 
-  verbType: "weak",
+  verbType: "defective",
 
   difficulty: {
-    cefr: "A2",
-    english: "Easy"
+    cefr: "A1",
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common in everyday conversation.",
+    learnerNotes: "This is a weak-final verb. Its present is يَنْسَى (yansā), and its imperative is اِنْسَ (insa).",
+    corpusRank: 50
   },
 
-  frequency: "Common",
+  frequency: "Very High",
 
   past: "نَسِيَ",
   present: "يَنْسَى",
   imperative: "اِنْسَ",
+
   future_sa: "سَيَنْسَى",
   future_sawfa: "سَوْفَ يَنْسَى",
 
-  masdar: ["نِسْيَان"],
+  masdar: [
+    "نِسْيَان",
+    "نِسْي"
+  ],
+
+  activeParticiple: "نَاسٍ",
+  passiveParticiple: "مَنْسِيّ",
 
   overrides: {
     past: "نَسِيَ",
     present: "يَنْسَى",
     passivePast: "نُسِيَ",
     passivePresent: "يُنْسَى",
-    masdar: ["نِسْيَان"]
+
+    masdar: [
+      "نِسْيَان",
+      "نِسْي"
+    ]
   },
 
-  superTopic: "Daily Life",
-  topics: ["memory", "daily actions"],
-  semanticFamily: "mental verbs",
+  superTopic: "Memory & Daily Life",
+
+  topics: [
+    "forgetting",
+    "memory"
+  ],
+
+  semanticFamily: "memory verbs",
+
+  categories: [
+    "daily"
+  ],
 
   relatedVerbs: {
-    root: ["نسيان", "ناسٍ"],
-    semantic: ["تذكّر", "غفل"],
-    formFamily: ["faʿila"]
+    root: [
+      "نَسِيَ",
+      "أَنْسَى",
+      "تَنَاسَى"
+    ],
+
+    semantic: [
+      "غَفَلَ",
+      "سَهَا"
+    ],
+
+    formFamily: [
+      "faʿila"
+    ]
   },
 
-  relatedNouns: ["نِسْيَان"],
-  synonyms: ["غفل"],
-  antonyms: ["تذكّر"],
+  relatedNouns: [
+    "نِسْيَان",
+    "نَاسٍ",
+    "مَنْسِيّ"
+  ],
+
+  synonyms: [
+    "غَفَلَ",
+    "سَهَا"
+  ],
+
+  antonyms: [
+    "ذَكَرَ"
+  ],
 
   examples: {
     simple: {
-      ar: "نَسِيَ الوَلَدُ مَفَاتِيحَهُ فِي البَيْتِ.",
-      en: "The boy forgot his keys at home.",
-      tr: "nasiya al-waladu mafātīḥahu fī al-bayt"
+      ar: "نَسِيَ الوَلَدُ حَقِيبَتَهُ.",
+      en: "The boy forgot his bag.",
+      tr: "nasiya al-waladu ḥaqībatahu",
+      audio: ""
+    },
+
+    natural: {
+      ar: "أَنْسَى أَحْيَانًا أَيْنَ وَضَعْتُ مِفْتَاحِي.",
+      en: "I sometimes forget where I put my key.",
+      tr: "ansā aḥyānan ayna waḍaʿtu miftāḥī",
+      audio: ""
+    },
+
+    rich: {
+      ar: "نَسِيَتِ الطَّالِبَةُ مَوْعِدَ الاِمْتِحَانِ فَلَمْ تَسْتَعِدَّ لَهُ.",
+      en: "The student forgot the exam date, so she did not prepare for it.",
+      tr: "nasiyati aṭ-ṭālibatu mawʿida al-imtiḥāni falam tastaʿidda lahu",
+      audio: ""
     }
   },
 

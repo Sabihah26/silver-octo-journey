@@ -1,72 +1,178 @@
 export default {
-  id: "WVL3",
+  id: "WVL3_masha",
   type: "verb",
 
-  arabic: "مَشَى",
-  transliteration: "mashā",
+  arabic: {
+    past: "مَشَى"
+  },
+
+  transliteration: {
+    past: "mashā",
+    present: "yamshī",
+
+    "passive-past": "mushiya",
+    "passive-present": "yamshā",
+
+    masdar1: "mashy",
+    masdar2: "mashāyah",
+
+    "active-participle": "māshin",
+    "passive-participle": "mamshiyy",
+
+    subjunctive: "yamshiya",
+    jussive: "yamshi",
+
+    "negative-past": "mā mashā",
+    "negative-present": "lā yamshī",
+    "negative-future": "lan yamshiya",
+
+    "future-sa": "sayamshī",
+    "future-sawfa": "sawfa yamshī"
+  },
+
   english: {
     simple: "to walk",
     detailed: "to walk; to move on foot"
   },
 
+  englishByType: {
+    past: "he walked",
+    present: "he walks",
+    imperative: "walk!",
+
+    "passive-past": "it was walked on; it was walked upon; it was trodden",
+    "passive-present": "it is walked on; it is walked upon; it is trodden",
+
+    "negative-past": "he did not walk",
+    "negative-present": "he does not walk",
+    "negative-future": "he will not walk",
+
+    "future-sa": "he will walk",
+    "future-sawfa": "he will walk",
+
+    "active-participle": "one who walks; walker",
+    "passive-participle": "walked on; walked upon; trodden",
+
+    masdar: "walking"
+  },
+
   root: "م-ش-ي",
-  rootFamily: "مشي، ماشٍ، ممشيّ",
+  rootFamily: "مَشَى، مَاشٍ، مَشْي",
 
   form: "Form I",
   wazan: "فَعَلَ",
+
   formFamily: {
     name: "faʿala",
     past: "فَعَلَ",
-    present: "يَفْعَلُ"
+    present: "يَفْعِلُ"
   },
 
-  verbType: "weak",
+  verbType: "defective",
 
   difficulty: {
     cefr: "A1",
-    english: "Very Easy"
+    english: "Easy",
+    arabicLevel: "beginner",
+    usage: "Common in everyday conversation.",
+    learnerNotes: "This is a weak-final verb. Its imperative is اِمْشِ (imshi).",
+    corpusRank: 100
   },
 
-  frequency: "Common",
+  frequency: "Very High",
 
   past: "مَشَى",
   present: "يَمْشِي",
   imperative: "اِمْشِ",
+
   future_sa: "سَيَمْشِي",
   future_sawfa: "سَوْفَ يَمْشِي",
 
-  masdar: ["مَشْي"],
+  masdar: [
+    "مَشْي"
+  ],
+
+  activeParticiple: "مَاشٍ",
+  passiveParticiple: "",
 
   overrides: {
     past: "مَشَى",
     present: "يَمْشِي",
     passivePast: "مُشِيَ",
     passivePresent: "يُمْشَى",
-    masdar: ["مَشْي"]
+
+    masdar: [
+      "مَشْي"
+    ]
   },
 
-  superTopic: "Travel & Movement",
-  topics: ["movement", "travel"],
+  superTopic: "Daily Life & Movement",
+
+  topics: [
+    "walking",
+    "movement"
+  ],
+
   semanticFamily: "movement verbs",
 
+  categories: [
+    "daily"
+  ],
+
   relatedVerbs: {
-    root: ["مشي", "ماشٍ", "ممشيّ"],
-    semantic: ["سار", "ذهب"],
-    formFamily: ["faʿala"]
+    root: [
+      "مَشَى",
+      "مَشَّى",
+      "تَمَشَّى"
+    ],
+
+    semantic: [
+      "سَارَ",
+      "خَطَا"
+    ],
+
+    formFamily: [
+      "faʿala"
+    ]
   },
 
-  relatedNouns: ["مَشْي", "ماشٍ"],
-  synonyms: ["سار"],
-  antonyms: ["توقّف"],
+  relatedNouns: [
+    "مَشْي",
+    "مَاشٍ",
+    "مَمْشًى"
+  ],
+
+  synonyms: [
+    "سَارَ"
+  ],
+
+  antonyms: [
+    "وَقَفَ"
+  ],
 
   examples: {
     simple: {
-      ar: "مَشَى الوَلَدُ فِي الطَّرِيقِ.",
-      en: "The boy walked on the road.",
-      tr: "mashā al-waladu fī aṭ-ṭarīq"
+      ar: "مَشَى الرَّجُلُ إِلَى السُّوقِ.",
+      en: "The man walked to the market.",
+      tr: "mashā ar-rajulu ilā as-sūq",
+      audio: ""
+    },
+
+    natural: {
+      ar: "يَمْشِي الطَّالِبُ إِلَى المَدْرَسَةِ كُلَّ صَبَاحٍ.",
+      en: "The student walks to school every morning.",
+      tr: "yamshī aṭ-ṭālibu ilā al-madrasati kulla ṣabāḥ",
+      audio: ""
+    },
+
+    rich: {
+      ar: "مَشَى أَفْرَادُ الأُسْرَةِ عَلَى الشَّاطِئِ عِنْدَ الغُرُوبِ.",
+      en: "The family members walked along the beach at sunset.",
+      tr: "mashā afrādu al-usrah ʿalā ash-shāṭiʾi ʿinda al-ghurūb",
+      audio: ""
     }
   },
 
   audio: "",
-  notes: ""
+  notes: "This verb is intransitive, so passive forms are not normally used."
 };
