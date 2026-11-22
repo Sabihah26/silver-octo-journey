@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";   // ⭐ ADDED useParams
 import adverbs from "../data/Adverbs";
+import { usePremium } from "../context/PremiumContext";
 
 export default function AdverbList() {
+  const { isPremium } = usePremium();
   const { category: urlCategory } = useParams();   // ⭐ READ category from URL
 
   const [query, setQuery] = useState("");
@@ -97,7 +99,7 @@ export default function AdverbList() {
       {/* Grid */}
       <div style={styles.grid}>
         {filtered.map((a) => {
-          const isLocked = a.premium === true;
+          const isLocked = a.premium === true && !isPremium;
 
           return (
             <div key={a.id} style={styles.card}>
@@ -119,10 +121,10 @@ export default function AdverbList() {
 
               {/* Card content */}
               <Link
-                to={isLocked ? "#" : `/adverbs/${a.id}`}
+                to={isLocked ? "/billing" : `/adverbs/${a.id}`}
                 style={{
                   ...styles.cardLink,
-                  pointerEvents: isLocked ? "none" : "auto",
+                  pointerEvents: "auto",
                   filter: isLocked ? "blur(2px)" : "none",
                   opacity: isLocked ? 0.6 : 1,
                 }}

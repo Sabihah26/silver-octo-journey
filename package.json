@@ -14,7 +14,7 @@
     "@fontsource/cairo": "^5.2.7",
     "@fontsource/noto-naskh-arabic": "^5.2.11",
     "@fontsource/noto-sans": "^5.2.10",
-    "@supabase/supabase-js": "^1.35.7",
+    "@supabase/supabase-js": "2.49.1",
     "react-router-dom": "6.4",
     "react-scripts": "4.0.3"
   },

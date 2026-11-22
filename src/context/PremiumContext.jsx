@@ -1,38 +1,147 @@
-// src/context/PremiumContext.jsx
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { supabase } from "../supabase";
 
 const PremiumContext = createContext();
 
-const STRIPE_CHECKOUT_URL = "https://checkout.stripe.com/pay/YOUR_STRIPE_LINK_HERE";
+// supabase-js v2 hides the function's JSON body behind a generic
+// "non-2xx status code" error; pull out the real { error } message.
+async function functionErrorMessage(error, fallback) {
+  try {
+    const body = await error?.context?.json?.();
+    if (body?.error) return body.error;
+  } catch {
+    // body was not JSON
+  }
+  return error?.message || fallback;
+}
+
+async function invokeBillingFunction(name, fallback) {
+  const { data: { session } } = await supabase.auth.getSession();
+  const { data, error } = await supabase.functions.invoke(name, {
+    headers: session?.access_token
+      ? { Authorization: `Bearer ${session.access_token}` }
+      : {},
+    body: {},
+  });
+
+  if (error) {
+    const message = await functionErrorMessage(error, fallback);
+    console.error(`${name} failed:`, message);
+    throw new Error(message);
+  }
+  if (!data?.url) throw new Error(fallback);
+  return data.url;
+}
 
 export function PremiumProvider({ children }) {
   const [isPremium, setIsPremium] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [hasStripeCustomer, setHasStripeCustomer] = useState(false);
+  const userRef = useRef(null);
+  userRef.current = user;
 
-  // Load premium state from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem("isPremium");
-    if (saved === "true") {
-      setIsPremium(true);
+  const refreshPremium = useCallback(async (sessionUser = userRef.current) => {
+    if (!sessionUser) {
+      setIsPremium(false);
+      setHasStripeCustomer(false);
+      return false;
     }
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("is_premium, stripe_customer_id")
+      .eq("id", sessionUser.id)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Could not load premium status:", error);
+      setIsPremium(false);
+      setHasStripeCustomer(false);
+      return false;
+    }
+
+    const premium = data?.is_premium === true;
+    setIsPremium(premium);
+    setHasStripeCustomer(Boolean(data?.stripe_customer_id));
+    return premium;
   }, []);
 
-  // Save premium state
-  const unlockPremium = () => {
-    localStorage.setItem("isPremium", "true");
-    setIsPremium(true);
+  useEffect(() => {
+    let active = true;
+    let refreshTimer;
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const sessionUser = session?.user || null;
+      setUser(sessionUser);
+      setIsPremium(false);
+      setHasStripeCustomer(false);
+      setLoading(Boolean(sessionUser));
+
+      window.clearTimeout(refreshTimer);
+      if (sessionUser) {
+        refreshTimer = window.setTimeout(() => {
+          refreshPremium(sessionUser).finally(() => {
+            if (active) setLoading(false);
+          });
+        }, 0);
+      } else {
+        setLoading(false);
+      }
+    });
+
+    return () => {
+      active = false;
+      window.clearTimeout(refreshTimer);
+      subscription.unsubscribe();
+    };
+  }, [refreshPremium]);
+
+  const startCheckout = async () => {
+    if (!userRef.current) {
+      window.location.assign("/auth?redirect=/billing");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const url = await invokeBillingFunction(
+        "create-checkout-session",
+        "Could not start Stripe checkout."
+      );
+      window.location.assign(url);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Open Stripe Checkout in a new tab
-  const startCheckout = () => {
-    window.open(STRIPE_CHECKOUT_URL, "_blank");
+  const openCustomerPortal = async () => {
+    if (!userRef.current) {
+      window.location.assign("/auth?redirect=/billing");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const url = await invokeBillingFunction(
+        "create-customer-portal",
+        "Could not open the Stripe customer portal."
+      );
+      window.location.assign(url);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <PremiumContext.Provider
       value={{
         isPremium,
-        unlockPremium,
+        user,
+        loading,
+        hasStripeCustomer,
         startCheckout,
+        openCustomerPortal,
+        refreshPremium,
       }}
     >
       {children}

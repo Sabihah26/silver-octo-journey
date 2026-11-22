@@ -1,18 +1,56 @@
 // src/pages/BillingPage.jsx
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { usePremium } from "../context/PremiumContext";
 
 export default function BillingPage() {
-  const { startCheckout } = usePremium();
+  const { isPremium, user, loading, hasStripeCustomer, startCheckout, openCustomerPortal, refreshPremium } = usePremium();
+  const [searchParams] = useSearchParams();
+  const [message, setMessage] = useState("");
+  const [actionLoading, setActionLoading] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get("status") === "success") {
+      setMessage("Payment received. Confirming your premium access...");
+      let attempts = 0;
+      const poll = window.setInterval(async () => {
+        attempts += 1;
+        const premium = await refreshPremium();
+        if (premium) {
+          setMessage("Your Premium subscription is active.");
+          window.clearInterval(poll);
+        } else if (attempts >= 10) {
+          setMessage("Payment was received. Premium access may take a minute to update; refresh this page shortly.");
+          window.clearInterval(poll);
+        }
+      }, 2000);
+      return () => window.clearInterval(poll);
+    } else if (searchParams.get("status") === "cancelled") {
+      setMessage("Checkout was cancelled. You have not been charged.");
+    }
+  }, [searchParams, refreshPremium]);
+
+  const runAction = async (action) => {
+    setActionLoading(true);
+    setMessage("");
+    try {
+      await action();
+    } catch (error) {
+      setMessage(error.message);
+    } finally {
+      setActionLoading(false);
+    }
+  };
 
   return (
     <div style={pageContainer}>
-      <h1 style={title}>Go Premium</h1>
+      <h1 style={title}>{isPremium ? "Premium Active" : "Go Premium"}</h1>
       <p style={subtitle}>
         Unlock all verbs, nouns, adverbs, examples, grammar lessons, quizzes,
         flashcards, and saved words.
       </p>
+
+      {message && <p style={statusMessage}>{message}</p>}
 
       <div style={card}>
         <h2 style={planTitle}>Yearly Subscription</h2>
@@ -26,9 +64,23 @@ export default function BillingPage() {
           <li>Premium-only study modes</li>
         </ul>
 
-        <button style={primaryBtn} onClick={startCheckout}>
-          Upgrade Now
-        </button>
+        {isPremium || hasStripeCustomer ? (
+          <button
+            style={primaryBtn}
+            disabled={loading || actionLoading}
+            onClick={() => runAction(openCustomerPortal)}
+          >
+            Manage Subscription
+          </button>
+        ) : (
+          <button
+            style={primaryBtn}
+            disabled={loading || actionLoading}
+            onClick={() => runAction(startCheckout)}
+          >
+            {user ? "Upgrade Now" : "Sign in to Upgrade"}
+          </button>
+        )}
 
         <p style={smallNote}>
           Secure payment via Stripe. Auto-renews yearly.
@@ -106,6 +158,14 @@ const smallNote = {
   marginTop: 10,
   fontSize: 13,
   opacity: 0.7,
+};
+
+const statusMessage = {
+  marginTop: 16,
+  padding: "10px 12px",
+  borderRadius: 8,
+  background: "rgba(255,255,255,0.12)",
+  color: "white",
 };
 
 const backLink = {

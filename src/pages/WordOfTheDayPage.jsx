@@ -8,11 +8,13 @@ import { transliterate } from "../engine/transliterate";
 
 export default function WordOfTheDayPage() {
   const word = loadWordOfTheDay();
+  const arabicPast = word?.arabic?.past;
+  const transliterationPast = word?.transliteration?.past;
 
   console.log("WORD OF THE DAY:", word); // ⭐ DEBUG
 
   // ⭐ SAFETY CHECK — prevents blank page
-  if (!word || !word.arabic || !word.english) {
+  if (!arabicPast || !word.english?.simple) {
     return (
       <div style={wrap}>
         <Link
@@ -53,11 +55,13 @@ export default function WordOfTheDayPage() {
         {/* Arabic */}
         <div
           style={arabic}
-          dangerouslySetInnerHTML={{ __html: colorizeArabic(word.arabic) }}
+          dangerouslySetInnerHTML={{ __html: colorizeArabic(arabicPast) }}
         />
 
         {/* Transliteration */}
-        <div style={translit}>{transliterate(word.arabic)}</div>
+        <div style={translit}>
+          {transliterationPast || transliterate(arabicPast)}
+        </div>
 
         {/* English meaning */}
         <div style={meaning}>

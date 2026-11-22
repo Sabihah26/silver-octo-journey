@@ -10,6 +10,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 // PREMIUM
 import BillingPage from "./pages/BillingPage";
+import AuthPage from "./pages/AuthPage";
 
 // MAIN PAGES
 import HomePage from "./pages/HomePage";
@@ -202,6 +203,7 @@ export default function App() {
 
             {/* ⭐ PREMIUM */}
             <Route path="/billing" element={<BillingPage />} />
+            <Route path="/auth" element={<AuthPage />} />
 
             {/* DEV PAGES */}
             <Route path="/dev/tests" element={<DevTestPage />} />

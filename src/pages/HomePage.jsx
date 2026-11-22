@@ -386,7 +386,7 @@ export default function HomePage() {
 
           {/* ADJECTIVES */}
           <Link
-            to="/adjectives/categories"
+            to="/adjectives/category"
             style={{
               background: "#ffffff",
               borderRadius: 22,

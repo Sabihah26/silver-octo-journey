@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { usePremium } from "../context/PremiumContext";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const { user } = usePremium();
+
   return (
     <nav className="navbar">
 
@@ -78,6 +81,22 @@ export default function Navbar() {
         >
           <span className="nav-icon">⚠️</span>
           <span>Report Error</span>
+        </NavLink>
+
+        <NavLink
+          to="/billing"
+          className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+        >
+          <span className="nav-icon">💳</span>
+          <span>Premium</span>
+        </NavLink>
+
+        <NavLink
+          to="/auth"
+          className={({ isActive }) => isActive ? "nav-btn active" : "nav-btn"}
+        >
+          <span className="nav-icon">👤</span>
+          <span>{user ? "Account" : "Sign in"}</span>
         </NavLink>
 
       </div>

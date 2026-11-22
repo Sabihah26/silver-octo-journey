@@ -3,9 +3,19 @@ import React from "react";
 import { usePremium } from "../context/PremiumContext";
 
 export default function PremiumModal({ isOpen, onClose }) {
-  const { startCheckout, unlockPremium } = usePremium();
+  const { startCheckout, loading } = usePremium();
+  const [error, setError] = React.useState("");
 
   if (!isOpen) return null;
+
+  const upgrade = async () => {
+    setError("");
+    try {
+      await startCheckout();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div style={overlay}>
@@ -27,13 +37,11 @@ export default function PremiumModal({ isOpen, onClose }) {
           <li>✔ Unlimited quizzes & flashcards</li>
         </ul>
 
-        <button style={upgradeBtn} onClick={startCheckout}>
+        <button style={upgradeBtn} onClick={upgrade} disabled={loading}>
           Upgrade Now
         </button>
 
-        <button style={alreadyPaidBtn} onClick={unlockPremium}>
-          Already paid? Unlock manually
-        </button>
+        {error && <p style={{ marginBottom: 10, color: "#ffd2d2" }}>{error}</p>}
 
         <button style={closeBtn} onClick={onClose}>
           Close
