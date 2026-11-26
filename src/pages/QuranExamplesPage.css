@@ -65,6 +65,13 @@
   line-height: 1.8;
 }
 
+.quran-translation {
+  margin: 0 0 16px;
+  color: #374151;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
 .quran-source {
   margin: 0;
   color: #4b5563;

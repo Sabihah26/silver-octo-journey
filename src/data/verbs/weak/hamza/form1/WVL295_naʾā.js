@@ -189,7 +189,7 @@ export default {
       lemma: "نَأَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And when We bestow favor on man he turns away and becomes remote on his side. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=17&verse=83"
     }

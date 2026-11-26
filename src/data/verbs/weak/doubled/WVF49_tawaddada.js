@@ -186,7 +186,7 @@ export default {
       lemma: "تَوَدَّدَ",
       use: "related word",
       morphology: "Form I perfect, third-person masculine plural, a related verb from the same root و-د-د",
-      translation: "",
+      translation: "They wish that you should compromise, so they would compromise.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=68&verse=9"
     }

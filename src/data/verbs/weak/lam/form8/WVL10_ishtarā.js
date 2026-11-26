@@ -184,7 +184,7 @@ export default {
       lemma: "اِشْتَرَى",
       use: "verb",
       morphology: "Form VIII perfect, third-person masculine plural",
-      translation: "",
+      translation: "Those (are) the ones who bought [the] astraying for [the] guidance. So not profited their commerce and not were they guided-ones.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=16"
     }

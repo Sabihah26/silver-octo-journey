@@ -189,7 +189,7 @@ export default {
       lemma: "زَارَ",
       use: "verb",
       morphology: "Form I perfect, second-person masculine plural",
-      translation: "",
+      translation: "Until you visit the graves.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=102&verse=2"
     }

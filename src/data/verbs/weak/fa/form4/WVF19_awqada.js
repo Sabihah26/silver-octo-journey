@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْقَدَ",
       use: "verb",
       morphology: "Form IV imperfect, second-person masculine plural",
-      translation: "",
+      translation: "The One Who made for you from the tree [the] green - fire, and behold! You from it ignite.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=36&verse=80"
     }

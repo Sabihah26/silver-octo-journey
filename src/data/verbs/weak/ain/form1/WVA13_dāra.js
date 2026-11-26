@@ -190,7 +190,7 @@ export default {
       lemma: "دَارَ",
       use: "verb",
       morphology: "Form I imperfect, third-person feminine singular",
-      translation: "",
+      translation: "… towards you. But when comes the fear, you see them looking at you, revolving their eyes like one who faints faints from [the] death. But when …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=19"
     }

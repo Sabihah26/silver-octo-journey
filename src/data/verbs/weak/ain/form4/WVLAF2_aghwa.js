@@ -184,7 +184,7 @@ export default {
       lemma: "أَغْوَى",
       use: "verb",
       morphology: "Form IV perfect, second-person masculine singular with first-person singular object suffix",
-      translation: "",
+      translation: "He said, \"My Lord! Because You misled me, surely, I will make (evil) fair-seeming to them in the earth and I will mislead them all",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=15&verse=39"
     }

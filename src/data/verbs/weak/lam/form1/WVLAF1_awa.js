@@ -188,7 +188,7 @@ export default {
       lemma: "أَوَى",
       use: "verb",
       morphology: "Form I imperative, second-person masculine plural",
-      translation: "",
+      translation: "… then retreat to the cave. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=16"
     }

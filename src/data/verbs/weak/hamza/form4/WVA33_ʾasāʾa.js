@@ -187,7 +187,7 @@ export default {
       lemma: "أَسَاءَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "Whoever does righteous deeds then it is for his soul; and whoever does evil, then it is against it. And not (is) your Lord unjust to His slaves.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=41&verse=46"
     }

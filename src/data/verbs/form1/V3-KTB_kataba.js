@@ -186,7 +186,7 @@ export default {
       lemma: "كَتَبَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Allah has decreed, Allah has decreed, \"Surely, I will overcome, I and My Messengers.\" Indeed, Allah (is) All-Strong, All-Mighty.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=58&verse=21"
     }

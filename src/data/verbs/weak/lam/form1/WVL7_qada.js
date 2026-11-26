@@ -186,7 +186,7 @@ export default {
       lemma: "قَضَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "(The) Originator (of) the heavens and the earth! And when He decrees a matter, [so] only He says to it \"Be,\" and it becomes.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=117"
     }

@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْجَدَ",
       use: "related word",
       morphology: "Form I perfect, third-person masculine singular, a related verb from the same root و-ج-د",
-      translation: "",
+      translation: "Until, when he reached between the two mountains, he found besides them besides them a community, not who would almost understand (his) speech.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=93"
     }

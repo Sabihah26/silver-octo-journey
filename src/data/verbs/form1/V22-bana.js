@@ -185,7 +185,7 @@ export default {
       lemma: "بَنَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And the heaven and (He) Who constructed it,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=91&verse=5"
     }

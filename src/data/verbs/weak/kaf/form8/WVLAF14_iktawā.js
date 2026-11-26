@@ -179,7 +179,7 @@ export default {
       lemma: "كَوَى",
       use: "related root verb",
       morphology: "Form I imperfect, third-person feminine singular passive; same root as اِكْتَوَى, but not the target Form VIII",
-      translation: "",
+      translation: "and will be branded with it their foreheads",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordmorphology.jsp?location=%289%3A35%3A7%29"
     }

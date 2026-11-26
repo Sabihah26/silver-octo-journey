@@ -189,7 +189,7 @@ export default {
       lemma: "وَصَلَ",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine singular",
-      translation: "",
+      translation: "… by their claim, \"And this (is) for our partners.\" But what is for their partners (does) not reach [to] Allah, while what is for Allah then it reaches …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=136"
     }

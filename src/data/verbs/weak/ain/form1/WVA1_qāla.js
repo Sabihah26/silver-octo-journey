@@ -192,7 +192,7 @@ export default {
       lemma: "قَالَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "He said, \"Throw it down, O Musa!\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=19"
     }

@@ -184,7 +184,7 @@ export default {
       lemma: "أَرْسَلَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "And He sent against them birds (in) flocks.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=105&verse=3"
     }

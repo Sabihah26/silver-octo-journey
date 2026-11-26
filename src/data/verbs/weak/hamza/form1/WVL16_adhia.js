@@ -191,7 +191,7 @@ export default {
       lemma: "أَذِيَ",
       use: "related word",
       morphology: "Noun from the same root أ-ذ-ي",
-      translation: "",
+      translation: "A word kind and (seeking) forgiveness (are) better than a charity followed [it] (by) hurt. And Allah (is) All-Sufficient, All-Forbearing.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=263"
     }

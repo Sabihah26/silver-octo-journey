@@ -190,7 +190,7 @@ export default {
       lemma: "هَيَّأَ",
       use: "verb",
       morphology: "Form II imperfect jussive, third-person masculine singular",
-      translation: "",
+      translation: "And when you withdraw from them and what they worship except Allah, then retreat to the cave. Will spread for you your Lord of His Mercy and will facilitate for you [from] your affair (in) ease.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=16"
     }

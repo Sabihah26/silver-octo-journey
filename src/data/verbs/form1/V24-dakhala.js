@@ -186,7 +186,7 @@ export default {
       lemma: "دَخَلَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And he entered his garden while he (was) unjust to himself. He said, \"Not I think that will perish this ever.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=35"
     }

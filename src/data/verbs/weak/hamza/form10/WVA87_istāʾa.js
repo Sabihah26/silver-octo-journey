@@ -187,7 +187,7 @@ export default {
       lemma: "اِسْتَاءَ",
       use: "related word",
       morphology: "Form I perfect, third-person masculine singular, a related verb from the same root س-و-ء",
-      translation: "",
+      translation: "And We rained upon them a rain, and was evil (the) rain (on) those who were warned.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=58"
     }

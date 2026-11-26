@@ -184,7 +184,7 @@ export default {
       lemma: "وَهَى",
       use: "related participle",
       morphology: "Active participle from the same root و-ه-ي; the verse describes the sky as frail",
-      translation: "",
+      translation: "And will split the heaven, so it (is on) that Day frail.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=69&verse=16"
     }

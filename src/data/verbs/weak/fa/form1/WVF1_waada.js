@@ -185,7 +185,7 @@ export default {
       lemma: "وَعَدَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Has promised Allah those who believe and do the righteous deeds - for them (is) forgiveness and a reward great.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=5&verse=9"
     }

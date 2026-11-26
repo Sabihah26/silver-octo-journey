@@ -186,7 +186,7 @@ export default {
       lemma: "أَزْجَى",
       use: "verb",
       morphology: "Form IV imperfect, third-person masculine singular",
-      translation: "",
+      translation: "Your Lord (is) the One Who drives for you the ship in the sea, that you may seek of His Bounty. Indeed, He is to you Ever Merciful.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=17&verse=66"
     }

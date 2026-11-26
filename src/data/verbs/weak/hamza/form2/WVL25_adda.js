@@ -190,7 +190,7 @@ export default {
       lemma: "أَدَّى",
       use: "verb",
       morphology: "Form II imperative, second-person masculine plural",
-      translation: "",
+      translation: "That, \"Deliver to me (the) servants (of) Allah. Indeed, I am to you a Messenger trustworthy.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=44&verse=18"
     }

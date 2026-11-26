@@ -185,7 +185,7 @@ export default {
       lemma: "أَوْصَى",
       use: "verb",
       morphology: "Form IV imperfect, third-person masculine singular with second-person masculine plural object suffix",
-      translation: "",
+      translation: "Instructs you Allah concerning your children -",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=4&verse=11"
     }

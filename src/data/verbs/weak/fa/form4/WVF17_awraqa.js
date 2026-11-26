@@ -185,7 +185,7 @@ export default {
       lemma: "أَوْرَقَ",
       use: "related word",
       morphology: "Noun from the same root و-ر-ق",
-      translation: "",
+      translation: "Then they both ate from it, so became apparent to them their shame and they began, (to) fasten on themselves from (the) leaves (of) Paradise. And Adam disobeyed And Adam disobeyed his Lord, and erred.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=121"
     }

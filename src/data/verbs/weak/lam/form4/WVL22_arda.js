@@ -186,7 +186,7 @@ export default {
       lemma: "أَرْضَى",
       use: "verb",
       morphology: "Form IV imperfect subjunctive, third-person masculine plural",
-      translation: "",
+      translation: "They swear by Allah to you to please you. And Allah and His Messenger (have) more right that they should please Him, if they are believers.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=9&verse=62"
     }

@@ -191,7 +191,7 @@ export default {
       lemma: "حَازَ",
       use: "related word",
       morphology: "Active participle from the same root ح-و-ز",
-      translation: "",
+      translation: "And whoever turns to them that day his back except (as) a strategy of war or (to) join to a group, certainly (he has) incurred wrath of Allah and his abode (is) Hell, a wretched destination.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=8&verse=16"
     }

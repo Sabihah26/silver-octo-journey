@@ -179,12 +179,12 @@ export default {
   quranExamples: [
     {
       reference: "Qur'an 63:5",
-      arabic: "لَوَّوْا رُءُوسَهُمْ",
-      focusWord: "لَوَّوْا",
+      arabic: "… لَوَّوْا۟ رُءُوسَهُمْ …",
+      focusWord: "لَوَّوْا۟",
       lemma: "لَوَّى",
       use: "related root verb",
       morphology: "Form II perfect, third-person masculine plural; related to اِلتَوَى by root ل-و-ي, but not the target Form VIII",
-      translation: "",
+      translation: "… They turn aside their heads …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordmorphology.jsp?location=%2863%3A5%3A9%29"
     }

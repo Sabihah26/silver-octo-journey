@@ -185,7 +185,7 @@ export default {
       lemma: "أَخْرَجَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "And the One Who brings forth the pasture,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=87&verse=4"
     }

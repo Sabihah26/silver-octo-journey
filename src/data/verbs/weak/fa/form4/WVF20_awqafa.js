@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْقَفَ",
       use: "related word",
       morphology: "Form I passive perfect, third-person masculine plural, a related verb from the same root و-ق-ف",
-      translation: "",
+      translation: "And if you (could) see when they are made to stand by the Fire then they (will) say, \"Oh! Would that we were sent back and not we would deny (the) Signs (of) our Lord and we would be among the believers.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=27"
     }

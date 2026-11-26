@@ -185,7 +185,7 @@ export default {
       lemma: "بَدَّلَ",
       use: "verb",
       morphology: "Form II perfect, third-person masculine singular",
-      translation: "",
+      translation: "Except who wrongs then substitutes good after evil, then indeed, I Am Oft-Forgiving, Most Merciful.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=11"
     }

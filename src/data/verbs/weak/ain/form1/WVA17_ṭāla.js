@@ -188,7 +188,7 @@ export default {
       lemma: "طَالَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Nay, We gave provision (to) these and their fathers until grew long for them, the life. Then do not they see that We We come (to) the land, We reduce it from its borders? So is (it) they (who will be) overcoming?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=44"
     }

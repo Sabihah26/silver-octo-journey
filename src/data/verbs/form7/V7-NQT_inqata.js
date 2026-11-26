@@ -186,7 +186,7 @@ export default {
       lemma: "اِنْقَطَعَ",
       use: "related word",
       morphology: "Form I perfect, first-person plural, a related verb from the same root ق-ط-ع",
-      translation: "",
+      translation: "Then certainly We (would) have cut off from him the aorta.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=69&verse=46"
     }

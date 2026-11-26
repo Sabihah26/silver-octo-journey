@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْدَعَ",
       use: "related word",
       morphology: "Form II perfect, third-person masculine singular, a related verb from the same root و-د-ع",
-      translation: "",
+      translation: "Not has forsaken you your Lord and not He is displeased,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=93&verse=3"
     }

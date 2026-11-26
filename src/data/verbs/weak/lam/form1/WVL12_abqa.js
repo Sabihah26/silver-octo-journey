@@ -185,7 +185,7 @@ export default {
       lemma: "أَبْقَى",
       use: "verb",
       morphology: "Form IV imperfect, third-person feminine singular",
-      translation: "",
+      translation: "Not it lets remain and not it leaves,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=28"
     }

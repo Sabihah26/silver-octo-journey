@@ -180,12 +180,12 @@ export default {
   quranExamples: [
     {
       reference: "Qur'an 11:44",
-      arabic: "وَاسْتَوَتْ عَلَى الْجُودِيِّ",
-      focusWord: "وَاسْتَوَتْ",
+      arabic: "… وَٱسْتَوَتْ عَلَى ٱلْجُودِىِّ …",
+      focusWord: "وَٱسْتَوَتْ",
       lemma: "اِسْتَوَى",
       use: "verb",
       morphology: "Form VIII perfect, third-person feminine singular, prefixed with the conjunction وَ",
-      translation: "",
+      translation: "… And it rested on the Judi. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordmorphology.jsp?location=%2811%3A44%3A11%29"
     }

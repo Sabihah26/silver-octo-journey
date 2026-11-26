@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْكَلَ",
       use: "related word",
       morphology: "Form V perfect, first-person plural, a related verb from the same root و-ك-ل",
-      translation: "",
+      translation: "Then they said, \"Upon Allah we put our trust. Our Lord! (Do) not make us a trial for the people - the wrongdoers.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=10&verse=85"
     }

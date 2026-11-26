@@ -191,7 +191,7 @@ export default {
       lemma: "وَقَعَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "So was established the truth, and became futile what they used to do.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=7&verse=118"
     }

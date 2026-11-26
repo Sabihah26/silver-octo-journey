@@ -185,7 +185,7 @@ export default {
       lemma: "أَوْلَى",
       use: "related word",
       morphology: "Form V perfect, third-person masculine singular, a related verb from the same root و-ل-ي",
-      translation: "",
+      translation: "Did you see the one who turned away",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=53&verse=33"
     }

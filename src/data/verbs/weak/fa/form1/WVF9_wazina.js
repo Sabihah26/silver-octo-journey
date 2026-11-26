@@ -187,7 +187,7 @@ export default {
       lemma: "وَزَنَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine plural",
-      translation: "",
+      translation: "But when they give by measure (to) them or they weigh (for) them they give less.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=83&verse=3"
     }

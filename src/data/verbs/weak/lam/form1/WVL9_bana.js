@@ -185,7 +185,7 @@ export default {
       lemma: "بَنَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Are you a more difficult creation or the heaven. He constructed it?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=79&verse=27"
     }

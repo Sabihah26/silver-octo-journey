@@ -188,7 +188,7 @@ overrides: {
       lemma: "جَرَى",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine singular",
-      translation: "",
+      translation: "… the day over the night. And He subjected the sun and the moon, each running for a term specified. Unquestionably, He (is) the All-Mighty, the Oft-Forgiving.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=39&verse=5"
     }

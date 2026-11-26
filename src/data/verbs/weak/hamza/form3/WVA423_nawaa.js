@@ -191,7 +191,7 @@ export default {
       lemma: "نَاوَأَ",
       use: "related word",
       morphology: "Form I imperfect, third-person feminine singular, a related verb from the same root ن-و-ء",
-      translation: "",
+      translation: "… [on] them. And We gave him of the treasures which indeed (the) keys of it would burden a company (of men) possessors of great strength. possessors of great strength. When said to him his people, …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=76"
     }

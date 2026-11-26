@@ -185,7 +185,7 @@ export default {
       lemma: "أَخٌ",
       use: "related noun",
       morphology: "Plural noun from the same root أ-خ-و, expressing brotherhood",
-      translation: "",
+      translation: "Only the believers (are) brothers,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=49&verse=10"
     }

@@ -192,7 +192,7 @@ export default {
       lemma: "صَارَ",
       use: "verb",
       morphology: "Form I imperfect, third-person feminine singular",
-      translation: "",
+      translation: "(The) path (of) Allah, the One to Whom (belongs) whatever (is) in the heavens and whatever (is) in the earth. Unquestionably! To Allah reach all affairs.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=42&verse=53"
     }

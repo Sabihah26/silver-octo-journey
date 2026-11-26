@@ -187,7 +187,7 @@ export default {
       lemma: "جَاءَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Because came to him the blind man.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=80&verse=2"
     }

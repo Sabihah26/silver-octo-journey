@@ -191,7 +191,7 @@ export default {
       lemma: "سَاءَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And We rained upon them a rain, and evil was (was) the rain (on) those who were warned.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=26&verse=173"
     }

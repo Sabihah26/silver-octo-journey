@@ -186,7 +186,7 @@ export default {
       lemma: "أَجَابَ",
       use: "verb",
       morphology: "Form IV perfect, second-person masculine plural",
-      translation: "",
+      translation: "And (the) Day He will call them and say, \"What did you answer the Messengers?\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=65"
     }

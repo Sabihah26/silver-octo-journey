@@ -186,7 +186,7 @@ export default {
       lemma: "اِسْتَخْرَجَ",
       use: "verb",
       morphology: "Form X perfect, third-person masculine singular",
-      translation: "",
+      translation: "So he began with their bags before (the) bag (of) his brother; then he brought it out from (the) bag (of) his brother. Thus (did) We plan for Yusuf. He could not …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=76"
     }

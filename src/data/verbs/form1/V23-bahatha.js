@@ -188,7 +188,7 @@ export default {
       lemma: "بَحَثَ",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine singular",
-      translation: "",
+      translation: "Then (was) sent (by) Allah a crow, it (was) scratching in the earth to show him how to hide (the) dead body (of) his brother. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=5&verse=31"
     }

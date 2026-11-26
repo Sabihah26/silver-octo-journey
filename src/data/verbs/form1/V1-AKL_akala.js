@@ -186,7 +186,7 @@ export default {
       lemma: "أَكَلَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "They said, \"If eats him the wolf while we (are) a group, indeed, we then surely (would be) losers.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=14"
     }

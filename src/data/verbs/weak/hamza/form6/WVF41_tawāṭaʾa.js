@@ -188,7 +188,7 @@ export default {
       lemma: "تَوَاطَأَ",
       use: "related word",
       morphology: "Form III imperfect subjunctive, third-person masculine plural, a related verb from the same root و-ط-أ",
-      translation: "",
+      translation: "… by it those who disbelieve. They make it lawful one year and make it unlawful (another) year, to adjust the number which Allah has made unlawful Allah has made unlawful and making lawful what Allah has made unlawful. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=9&verse=37"
     }

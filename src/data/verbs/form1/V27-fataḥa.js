@@ -187,7 +187,7 @@ export default {
       lemma: "فَتَحَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "… meet in private some of them with some (others), they say, \"Do you tell them what has Allah to you so that they argue with you therewith before your Lord? Then do (you) not …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=76"
     }

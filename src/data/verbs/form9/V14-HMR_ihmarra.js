@@ -184,7 +184,7 @@ export default {
       lemma: "اِحْمَرَّ",
       use: "related word",
       morphology: "Noun from the same root ح-م-ر",
-      translation: "",
+      translation: "As if they (were) donkeys frightened,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=50"
     }

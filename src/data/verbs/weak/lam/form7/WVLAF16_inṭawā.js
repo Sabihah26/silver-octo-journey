@@ -184,7 +184,7 @@ export default {
       lemma: "اِنْطَوَى",
       use: "related word",
       morphology: "Form I imperfect, first-person plural, a related verb from the same root ط-و-ي",
-      translation: "",
+      translation: "(The) Day We will fold the heaven like (the) folding (of) a scroll …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=104"
     }

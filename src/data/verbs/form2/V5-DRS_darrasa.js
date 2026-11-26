@@ -184,7 +184,7 @@ export default {
       lemma: "دَرَّسَ",
       use: "related word",
       morphology: "Form I perfect, second-person masculine singular, a related verb from the same root د-ر-س",
-      translation: "",
+      translation: "And thus We explain the Signs that they (may) say, \"You have studied,\" and that We (may) make it clear for a people who know.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=105"
     }

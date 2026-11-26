@@ -185,7 +185,7 @@ export default {
       lemma: "أَخْبَرَ",
       use: "related word",
       morphology: "Noun from the same root خ-ب-ر",
-      translation: "",
+      translation: "That Day, it will report its news,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=99&verse=4"
     }

@@ -187,7 +187,7 @@ export default {
       lemma: "قَرَأَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And he (had) recited it to them, not they would in it (be) believers.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=26&verse=199"
     }

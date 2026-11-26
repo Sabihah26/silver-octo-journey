@@ -185,7 +185,7 @@ export default {
       lemma: "اِسْتَهْوَى",
       use: "verb",
       morphology: "Form X perfect, third-person feminine singular with third-person masculine singular object suffix",
-      translation: "",
+      translation: "Like the one whom (has been) enticed (by) the Shaitaan in the earth, confused,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=71"
     }

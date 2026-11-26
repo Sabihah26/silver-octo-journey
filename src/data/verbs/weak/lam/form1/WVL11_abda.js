@@ -186,7 +186,7 @@ export default {
       lemma: "أَبْدَى",
       use: "verb",
       morphology: "Form IV imperfect jussive, third-person masculine singular",
-      translation: "",
+      translation: "… before.\" before.\" But Yusuf kept it secret But Yusuf kept it secret within himself, and (did) not reveal it to them. He said, \"You (are the) worse (in) position, and Allah knows best …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=77"
     }

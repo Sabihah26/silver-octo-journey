@@ -192,7 +192,7 @@ export default {
       lemma: "خَافَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "But for (him) who fears (the) standing (before) his Lord (are) two gardens.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=55&verse=46"
     }

@@ -188,7 +188,7 @@ export default {
       lemma: "وَقَفَ",
       use: "verb",
       morphology: "Form I imperative, second-person masculine plural",
-      translation: "",
+      translation: "And stop them; indeed, they (are) to be questioned.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=37&verse=24"
     }

@@ -187,7 +187,7 @@ export default {
       lemma: "فَهِمَ",
       use: "related word",
       morphology: "Form II perfect, first-person plural, a related verb from the same root ف-ه-م",
-      translation: "",
+      translation: "And We gave understanding of it (to) Sulaiman, and (to) each We gave judgment and knowledge. And We subjected with Dawud the mountains (to) glorify Our praises and the birds. And We were the Doers.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=79"
     }

@@ -190,7 +190,7 @@ export default {
       lemma: "صَامَ",
       use: "verb",
       morphology: "Form I imperfect jussive, third-person masculine singular",
-      translation: "",
+      translation: "… of [the] Guidance and the Criterion. So whoever witnesses among you the month, then he should fast in it, and whoever is sick or on a journey then prescribed number (should be made up) …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=185"
     }

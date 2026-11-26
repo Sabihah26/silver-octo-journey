@@ -191,7 +191,7 @@ export default {
       lemma: "عَادَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And the moon - We have ordained for it phases until, it returns like the date stalk, the old.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=36&verse=39"
     }

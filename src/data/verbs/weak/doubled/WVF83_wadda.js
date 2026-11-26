@@ -188,7 +188,7 @@ export default {
       lemma: "وَدَّ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Wish[ed] many from (the) People (of) the Book if they could turn you back from …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=109"
     }

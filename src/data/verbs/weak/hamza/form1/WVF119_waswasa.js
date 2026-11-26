@@ -188,7 +188,7 @@ export default {
       lemma: "وَسْوَسَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Then whispered to him Shaitaan, he said, \"O Adam! Shall I direct you to (the) tree (of) the Eternity and a kingdom not (that will) deteriorate?\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=120"
     }

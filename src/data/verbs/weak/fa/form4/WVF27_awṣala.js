@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْصَلَ",
       use: "related word",
       morphology: "Form II perfect, first-person plural, a related verb from the same root و-ص-ل",
-      translation: "",
+      translation: "And indeed, We have conveyed to them the Word so that they may remember.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=51"
     }

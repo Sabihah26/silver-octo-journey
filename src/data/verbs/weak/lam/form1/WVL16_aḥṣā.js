@@ -187,7 +187,7 @@ export default {
       lemma: "أَحْصَى",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "Verily, He has enumerated them and counted them, a counting.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=19&verse=94"
     }

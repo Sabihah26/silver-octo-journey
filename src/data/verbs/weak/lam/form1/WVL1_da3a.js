@@ -188,7 +188,7 @@ export default {
       lemma: "دَعَا",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "So he called his Lord, \"I am one overpowered, so help.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=54&verse=10"
     }

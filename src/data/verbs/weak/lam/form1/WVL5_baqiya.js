@@ -188,7 +188,7 @@ export default {
       lemma: "بَقِيَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "O you who believe[d]! Fear Allah and give up what remained of [the] usury, if you are believers.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=278"
     }

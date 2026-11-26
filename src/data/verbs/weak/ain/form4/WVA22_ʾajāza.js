@@ -187,7 +187,7 @@ export default {
       lemma: "أَجَازَ",
       use: "related word",
       morphology: "Form III perfect, third-person masculine dual, a related verb from the same root ج-و-ز",
-      translation: "",
+      translation: "Then when they had passed beyond he said to his boy, \"Bring us our morning meal. Certainly we have suffered in our journey this, fatigue.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=62"
     }

@@ -190,7 +190,7 @@ export default {
       lemma: "قَامَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And that when stood up (the) slave (of) Allah calling (upon) Him, they almost became around him a compacted mass.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=72&verse=19"
     }

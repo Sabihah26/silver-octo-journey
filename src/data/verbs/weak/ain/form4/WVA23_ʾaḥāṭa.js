@@ -186,7 +186,7 @@ export default {
       lemma: "أَحَاطَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "That He may make evident that indeed, they have conveyed (the) Messages (of) their Lord; and He has encompassed what (is) with them and He takes account (of) all things (in) number.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=72&verse=28"
     }

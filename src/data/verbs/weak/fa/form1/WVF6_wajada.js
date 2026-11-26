@@ -189,7 +189,7 @@ export default {
       lemma: "وَجَدَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And He found you in need, so He made self-sufficient.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=93&verse=8"
     }

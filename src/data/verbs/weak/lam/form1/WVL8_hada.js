@@ -187,7 +187,7 @@ export default {
       lemma: "هَدَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And the One Who measured then guided,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=87&verse=3"
     }

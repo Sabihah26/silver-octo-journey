@@ -187,7 +187,7 @@ export default {
       lemma: "نَسِيَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And verily We made a covenant with Adam before, before, but he forgot; and not We found in him determination.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=115"
     }

@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْصَدَ",
       use: "related word",
       morphology: "Adjective from the same root و-ص-د",
-      translation: "",
+      translation: "Over them, (will be the) Fire closed in.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=90&verse=20"
     }

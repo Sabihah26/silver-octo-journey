@@ -187,7 +187,7 @@ export default {
       lemma: "أَثَارَ",
       use: "verb",
       morphology: "Form IV perfect, third-person feminine plural",
-      translation: "",
+      translation: "Then raise thereby dust,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=100&verse=4"
     }

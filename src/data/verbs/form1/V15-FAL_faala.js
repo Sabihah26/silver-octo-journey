@@ -189,7 +189,7 @@ export default {
       lemma: "فَعَلَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Did not you see how dealt your Lord with Aad,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=89&verse=6"
     }

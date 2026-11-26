@@ -187,7 +187,7 @@ export default {
       lemma: "ضَرَبَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And he sets forth for Us an example and forgets his (own) creation. He says, \"Who will give life (to) the bones while they (are) decomposed?\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=36&verse=78"
     }

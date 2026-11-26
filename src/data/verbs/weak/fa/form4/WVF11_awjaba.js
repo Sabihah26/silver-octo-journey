@@ -188,7 +188,7 @@ export default {
       lemma: "أَوْجَبَ",
       use: "related word",
       morphology: "Form I perfect, third-person feminine singular, a related verb from the same root و-ج-ب",
-      translation: "",
+      translation: "… (is) good. So mention (the) name (of) Allah over them (when) lined up; and when are down their sides, then eat from them and feed the needy who do not ask and the needy who ask. Thus …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=22&verse=36"
     }

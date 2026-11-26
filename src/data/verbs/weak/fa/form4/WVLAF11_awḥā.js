@@ -182,7 +182,7 @@ export default {
       lemma: "أَوْحَى",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "And inspired your Lord to the bee, [that] \"Take among the mountains, houses and among the trees, and in what they construct.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=16&verse=68"
     }

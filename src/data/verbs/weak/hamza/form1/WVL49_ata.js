@@ -190,7 +190,7 @@ export default {
       lemma: "أَتَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And has come to you the narration (of) Musa?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=9"
     }

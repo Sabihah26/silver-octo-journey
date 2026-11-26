@@ -184,7 +184,7 @@ export default {
       lemma: "مَشَى",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine singular",
-      translation: "",
+      translation: "Then is he who walks fallen on his face better guided, or (he) who walks upright on (the) Path Straight?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=67&verse=22"
     }

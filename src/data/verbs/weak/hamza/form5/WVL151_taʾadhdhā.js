@@ -189,7 +189,7 @@ export default {
       lemma: "آذَى",
       use: "related verb",
       morphology: "Form IV imperfect, third-person masculine singular; same root أ-ذ-ي, not the target Form V",
-      translation: "",
+      translation: "… Indeed, that was troubling the Prophet, …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=53"
     }

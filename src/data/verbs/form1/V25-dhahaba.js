@@ -187,7 +187,7 @@ export default {
       lemma: "ذَهَبَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Then he went to his family, swaggering.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=75&verse=33"
     }

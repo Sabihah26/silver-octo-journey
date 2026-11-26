@@ -185,7 +185,7 @@ export default {
       lemma: "وَعَى",
       use: "related verb",
       morphology: "Form I imperfect, third-person feminine singular subjunctive with a feminine object suffix; same root as أَوْعَى",
-      translation: "",
+      translation: "and would be conscious of it an ear conscious.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=69&verse=12"
     }

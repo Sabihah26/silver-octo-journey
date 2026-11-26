@@ -189,7 +189,7 @@ export default {
       lemma: "وَرِثَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And inherited Sulaiman Dawood. And he said, \"O people! We have been taught (the) language (of) the birds, and we have been given from every thing. Indeed, this surely, it (is) the favor evident.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=16"
     }

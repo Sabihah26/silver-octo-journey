@@ -186,7 +186,7 @@ export default {
       lemma: "أَضَاءَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "Almost the lightning snatches away their sight. Whenever it flashes for them they walk in it, and when it darkens on them they stand (still). …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=20"
     }

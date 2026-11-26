@@ -190,7 +190,7 @@ export default {
       lemma: "نَالَ",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine singular",
-      translation: "",
+      translation: "Are these the ones whom you had sworn (that) not (will) grant them Allah Mercy? \"Enter Paradise. (There will be) no fear upon you and not you will grieve.\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=7&verse=49"
     }

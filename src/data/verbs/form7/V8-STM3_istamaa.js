@@ -185,7 +185,7 @@ export default {
       lemma: "اِسْتَمَعَ",
       use: "verb",
       morphology: "Form VIII perfect, third-person masculine plural",
-      translation: "",
+      translation: "Not comes to them of a Reminder from their Lord, anew except they listen to it while they (are at) play",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=2"
     }

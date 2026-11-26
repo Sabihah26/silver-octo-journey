@@ -186,7 +186,7 @@ export default {
       lemma: "أَحَالَ",
       use: "related word",
       morphology: "Form I perfect, third-person masculine singular, a related verb from the same root ح-و-ل",
-      translation: "",
+      translation: "… today from the Command of Allah the Command of Allah except, (on) whom He has mercy.\" And came (in) between them the waves, so he was among the drowned.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=11&verse=43"
     }

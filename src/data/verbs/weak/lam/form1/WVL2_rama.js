@@ -185,7 +185,7 @@ export default {
       lemma: "رَمَى",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "… killed them. And not you threw when you threw, but Allah threw and that He may test the believers from Him (with) a trial good. Indeed, Allah …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=8&verse=17"
     }

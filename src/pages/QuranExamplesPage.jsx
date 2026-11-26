@@ -60,9 +60,14 @@ export default function QuranExamplesPage() {
                     {example.arabic}
                   </p>
                 )}
+                {example.translation && (
+                  <p className="quran-translation" lang="en">
+                    {example.translation}
+                  </p>
+                )}
                 {example.source && example.sourceUrl && (
                   <p className="quran-source">
-                    Arabic and morphology from{" "}
+                    {example.translation ? "Arabic, word-by-word translation and morphology from" : "Arabic and morphology from"}{" "}
                     <a href={example.sourceUrl} target="_blank" rel="noreferrer">
                       {example.source}
                     </a>

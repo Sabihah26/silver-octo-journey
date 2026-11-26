@@ -189,7 +189,7 @@ export default {
       lemma: "بَاعَ",
       use: "related word",
       morphology: "Noun from the same root ب-ي-ع",
-      translation: "",
+      translation: "Men - not distracts them trade and not sale from (the) remembrance of Allah (the) remembrance of Allah and (from) establishing the prayer and giving zakah. They fear a Day will turn about therein the hearts and the eyes.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=24&verse=37"
     }

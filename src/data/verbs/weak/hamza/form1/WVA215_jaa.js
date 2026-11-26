@@ -191,7 +191,7 @@ export default {
       lemma: "جَاءَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And came (the) people (of) the city, rejoicing.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=15&verse=67"
     }

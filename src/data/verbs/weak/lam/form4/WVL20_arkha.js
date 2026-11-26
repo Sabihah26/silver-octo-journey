@@ -185,7 +185,7 @@ export default {
       lemma: "أَرْخَى",
       use: "related word",
       morphology: "Noun from the same root ر-خ-و",
-      translation: "",
+      translation: "Then We subjected to him the wind to flow by his command, gently, wherever he directed,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=38&verse=36"
     }

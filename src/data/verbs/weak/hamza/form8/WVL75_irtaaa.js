@@ -188,7 +188,7 @@ export default {
       lemma: "اِرْتَأَى",
       use: "related word",
       morphology: "Form I perfect, third-person masculine singular, a related verb from the same root ر-أ-ي",
-      translation: "",
+      translation: "That he sees himself self-sufficient.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=96&verse=7"
     }

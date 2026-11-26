@@ -189,7 +189,7 @@ export default {
       lemma: "وَضَعَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And the earth, He laid it for the creatures,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=55&verse=10"
     }

@@ -185,7 +185,7 @@ export default {
       lemma: "أَجْرَى",
       use: "related word",
       morphology: "Active participle from the same root ج-ر-ي",
-      translation: "",
+      translation: "And those sailing (with) ease,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=51&verse=3"
     }

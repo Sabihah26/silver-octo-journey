@@ -189,7 +189,7 @@ export default {
       lemma: "وَطَّأَ",
       use: "related word",
       morphology: "Noun from the same root و-ط-ء",
-      translation: "",
+      translation: "Indeed, (the) rising (at) the night, it (is) very hard and most potent and more suitable (for) Word.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=73&verse=6"
     }

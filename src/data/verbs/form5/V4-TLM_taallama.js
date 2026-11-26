@@ -184,7 +184,7 @@ export default {
       lemma: "تَعَلَّمَ",
       use: "verb",
       morphology: "Form V imperfect, third-person masculine plural",
-      translation: "",
+      translation: "… unless they [both] say, \"Only we (are) a trial, so (do) not disbelieve.\" But they learn from those two what [they] causes separation with it between the man and his spouse. …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=102"
     }

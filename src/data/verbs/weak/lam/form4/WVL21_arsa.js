@@ -188,7 +188,7 @@ export default {
       lemma: "أَرْسَى",
       use: "related word",
       morphology: "Passive participle from the same root ر-س-و",
-      translation: "",
+      translation: "They ask you about the Hour, when (is) its arrival?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=79&verse=42"
     }

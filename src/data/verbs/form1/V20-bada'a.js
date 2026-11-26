@@ -187,7 +187,7 @@ export default {
       lemma: "بَدَأَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "The One Who made good every thing He created, and He began (the) creation (of) man from clay.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=32&verse=7"
     }

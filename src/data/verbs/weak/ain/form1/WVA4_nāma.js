@@ -189,7 +189,7 @@ export default {
       lemma: "نَامَ",
       use: "related word",
       morphology: "Noun from the same root ن-و-م",
-      translation: "",
+      translation: "And We made your sleep (for) rest,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=78&verse=9"
     }

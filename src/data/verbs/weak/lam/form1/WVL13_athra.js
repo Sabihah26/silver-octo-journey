@@ -186,7 +186,7 @@ export default {
       lemma: "أَثْرَى",
       use: "related word",
       morphology: "Noun from the same root ث-ر-و",
-      translation: "",
+      translation: "To Him (belongs) whatever (is) in the heavens and whatever (is) in the earth, and whatever (is) between them and whatever (is) under the soil.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=6"
     }

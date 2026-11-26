@@ -190,7 +190,7 @@ export default {
       lemma: "فَازَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "He will amend for you your deeds and forgive for you your sins. And whoever obeys Allah and His Messenger certainly has attained an attainment great.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=71"
     }

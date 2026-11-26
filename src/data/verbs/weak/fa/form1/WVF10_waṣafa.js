@@ -187,7 +187,7 @@ export default {
       lemma: "وَصَفَ",
       use: "verb",
       morphology: "Form I imperfect, third-person masculine plural",
-      translation: "",
+      translation: "Glory be (to) Allah above what they attribute,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=37&verse=159"
     }

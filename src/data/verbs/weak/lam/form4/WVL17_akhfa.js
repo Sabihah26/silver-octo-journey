@@ -186,7 +186,7 @@ export default {
       lemma: "أَخْفَى",
       use: "verb",
       morphology: "Form IV passive perfect, third-person masculine singular",
-      translation: "",
+      translation: "And not knows a soul what is hidden for them of (the) comfort (for) the eyes (as) a reward for what they used (to) do.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=32&verse=17"
     }

@@ -188,7 +188,7 @@ export default {
       lemma: "اِحْتَوَى",
       use: "related word",
       morphology: "Adjective from the same root ح-و-ي",
-      translation: "",
+      translation: "And then makes it stubble, dark.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=87&verse=5"
     }

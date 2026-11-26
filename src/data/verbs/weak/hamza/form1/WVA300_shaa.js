@@ -190,7 +190,7 @@ export default {
       lemma: "شَاءَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "So whosoever wills may remember it.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=80&verse=12"
     }

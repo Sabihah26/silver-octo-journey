@@ -186,7 +186,7 @@ export default {
       lemma: "أَصْغَى",
       use: "related word",
       morphology: "Form I imperfect subjunctive, third-person feminine singular, a related verb from the same root ص-غ-و",
-      translation: "",
+      translation: "And so that incline to it hearts (of) those who (do) not believe in the Hereafter, and so that they may be pleased with it and so that they may commit what they (are) committing.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=113"
     }

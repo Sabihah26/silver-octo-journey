@@ -187,7 +187,7 @@ export default {
       lemma: "أَوْلَجَ",
       use: "verb",
       morphology: "Form IV imperfect, third-person masculine singular",
-      translation: "",
+      translation: "He merges the night into the day and He merges the day into the night, and He (is) All-Knower of what is in the breasts. of what is in the breasts.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=57&verse=6"
     }

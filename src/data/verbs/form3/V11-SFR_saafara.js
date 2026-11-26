@@ -187,7 +187,7 @@ export default {
       lemma: "سَافَرَ",
       use: "related word",
       morphology: "Form IV perfect, third-person masculine singular, a related verb from the same root س-ف-ر",
-      translation: "",
+      translation: "And the morning when it brightens,",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=34"
     }

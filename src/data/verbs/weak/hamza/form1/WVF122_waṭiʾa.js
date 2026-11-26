@@ -186,7 +186,7 @@ export default {
       lemma: "وَطِئَ",
       use: "verb",
       morphology: "Form I imperfect subjunctive, second-person masculine plural",
-      translation: "",
+      translation: "… (for) men believing and women believing not you knew them that you may trample them and would befall you from them any harm without knowledge. That Allah may admit That Allah may admit …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=48&verse=25"
     }

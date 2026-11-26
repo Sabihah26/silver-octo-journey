@@ -188,7 +188,7 @@ export default {
       lemma: "زَادَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "And those who accept guidance, He increases them (in) guidance and gives them their righteousness.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=47&verse=17"
     }

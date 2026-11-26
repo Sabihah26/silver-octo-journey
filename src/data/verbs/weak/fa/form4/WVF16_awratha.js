@@ -185,7 +185,7 @@ export default {
       lemma: "أَوْرَثَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "And He caused you to inherit their land, and their houses, and their properties and a land not you (had) trodden. And Allah is And Allah is on every thing All-Powerful.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=27"
     }

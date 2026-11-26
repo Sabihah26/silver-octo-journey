@@ -187,7 +187,7 @@ export default {
       lemma: "أَمَرَ",
       use: "verb",
       morphology: "Form I perfect, third-person masculine singular",
-      translation: "",
+      translation: "Or he enjoins [of the] righteousness?",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=96&verse=12"
     }

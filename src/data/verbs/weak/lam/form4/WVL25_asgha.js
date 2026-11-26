@@ -187,7 +187,7 @@ export default {
       lemma: "أَصْغَى",
       use: "related word",
       morphology: "Form I perfect, third-person feminine singular, a related verb from the same root ص-غ-و",
-      translation: "",
+      translation: "If you both turn to Allah, so indeed, (are) inclined your hearts; but if you backup each other against him, then indeed, Allah, He …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=66&verse=4"
     }

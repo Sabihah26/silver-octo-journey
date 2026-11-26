@@ -187,7 +187,7 @@ export default {
       lemma: "تَشَارَكَ",
       use: "related word",
       morphology: "Form IV perfect, third-person masculine singular, a related verb from the same root ش-ر-ك",
-      translation: "",
+      translation: "Or you say, \"Only partners (were) associated (with Allah) (by) our forefathers from before (us) and we are descendants from after them. So will You destroy us for what did the falsifiers?\"",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=7&verse=173"
     }

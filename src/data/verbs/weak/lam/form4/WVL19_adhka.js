@@ -188,7 +188,7 @@ export default {
       lemma: "أَذْكَى",
       use: "related word",
       morphology: "Form II perfect, second-person masculine plural, a related verb from the same root ذ-ك-و",
-      translation: "",
+      translation: "… and that which has a fatal fall, and that which is gored by horns, and that which ate (it) the wild animal except what you slaughtered, and what is sacrificed on the stone altars, and that you seek division by divining arrows - …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=5&verse=3"
     }

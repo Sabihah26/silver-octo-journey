@@ -186,7 +186,7 @@ export default {
       lemma: "أَخْلَى",
       use: "related word",
       morphology: "Form I perfect, third-person masculine singular, a related verb from the same root خ-ل-و",
-      translation: "",
+      translation: "Indeed, We [We] have sent you with the truth, (as) a bearer of glad tidings and (as) a warner. And not (was) any nation but had passed within it a warner.",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=35&verse=24"
     }

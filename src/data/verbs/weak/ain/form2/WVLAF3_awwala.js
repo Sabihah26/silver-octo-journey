@@ -183,7 +183,7 @@ export default {
       lemma: "أَوَّلَ",
       use: "verbal noun",
       morphology: "Form II verbal noun (maṣdar)",
-      translation: "",
+      translation: "and will teach you of (the) interpretation (of) the narratives",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=6"
     }

@@ -188,7 +188,7 @@ export default {
       lemma: "أَيَّدَ",
       use: "verb",
       morphology: "Form II perfect, third-person masculine singular",
-      translation: "",
+      translation: "But if they intend to deceive you, then indeed, is sufficient for you, Allah. He (is) the One Who supported you with His help and with the believers",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=8&verse=62"
     }

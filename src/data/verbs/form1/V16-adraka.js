@@ -188,7 +188,7 @@ export default {
       lemma: "أَدْرَكَ",
       use: "verb",
       morphology: "Form IV perfect, third-person masculine singular",
-      translation: "",
+      translation: "… and followed them Firaun and his hosts (in) rebellion and enmity, until when overtook him the drowning, he said, \"I believe that (there is) no god except …",
       source: "Quranic Arabic Corpus",
       sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=10&verse=90"
     }
