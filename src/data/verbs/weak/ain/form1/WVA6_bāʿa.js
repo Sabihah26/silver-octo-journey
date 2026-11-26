@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 24:37",
+      arabic: "رِجَالٌ لَّا تُلْهِيهِمْ تِجَٰرَةٌ وَلَا بَيْعٌ عَن ذِكْرِ ٱللَّهِ وَإِقَامِ ٱلصَّلَوٰةِ وَإِيتَآءِ ٱلزَّكَوٰةِ يَخَافُونَ يَوْمًا تَتَقَلَّبُ فِيهِ ٱلْقُلُوبُ وَٱلْأَبْصَٰرُ",
+      focusWord: "بَيْعٌ",
+      lemma: "بَاعَ",
+      use: "related word",
+      morphology: "Noun from the same root ب-ي-ع",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=24&verse=37"
+    }
+  ]
 };

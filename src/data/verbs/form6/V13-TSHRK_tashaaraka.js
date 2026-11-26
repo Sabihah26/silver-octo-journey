@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: "The passive forms are grammatically possible but uncommon; this verb is usually used reflexively or reciprocally."
+  notes: "The passive forms are grammatically possible but uncommon; this verb is usually used reflexively or reciprocally.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 7:173",
+      arabic: "أَوْ تَقُولُوٓا۟ إِنَّمَآ أَشْرَكَ ءَابَآؤُنَا مِن قَبْلُ وَكُنَّا ذُرِّيَّةً مِّنۢ بَعْدِهِمْ أَفَتُهْلِكُنَا بِمَا فَعَلَ ٱلْمُبْطِلُونَ",
+      focusWord: "أَشْرَكَ",
+      lemma: "تَشَارَكَ",
+      use: "related word",
+      morphology: "Form IV perfect, third-person masculine singular, a related verb from the same root ش-ر-ك",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=7&verse=173"
+    }
+  ]
 };

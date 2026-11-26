@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "Form II verb with a medial ي and final hamza."
+  notes: "Form II verb with a medial ي and final hamza.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 18:16",
+      arabic: "وَإِذِ ٱعْتَزَلْتُمُوهُمْ وَمَا يَعْبُدُونَ إِلَّا ٱللَّهَ فَأْوُۥٓا۟ إِلَى ٱلْكَهْفِ يَنشُرْ لَكُمْ رَبُّكُم مِّن رَّحْمَتِهِۦ وَيُهَيِّئْ لَكُم مِّنْ أَمْرِكُم مِّرْفَقًا",
+      focusWord: "وَيُهَيِّئْ",
+      lemma: "هَيَّأَ",
+      use: "verb",
+      morphology: "Form II imperfect jussive, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=16"
+    }
+  ]
 };

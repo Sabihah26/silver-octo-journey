@@ -1,9 +1,12 @@
 // src/pages/TopicNounList.jsx
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import nouns from "../data/nouns";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 export default function TopicNounList() {
+  const { allNouns: nouns } = useWordAccess();
   const { category, topic } = useParams();   // ⭐ READ BOTH
 
   const [search, setSearch] = React.useState("");
@@ -42,6 +45,8 @@ export default function TopicNounList() {
         {formatTopicName(topic)} Nouns
       </h1>
 
+      <FreeTierBanner type="noun" />
+
       {/* Search Bar */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
         <input
@@ -56,7 +61,7 @@ export default function TopicNounList() {
       {/* Noun Grid */}
       <div style={gridContainer}>
         {displayedNouns.map((noun) => (
-          <Link
+          <WordLink type="noun" id={noun.id}
             key={noun.id}
             to={`/noun/${noun.id}`}
             style={nounCard}
@@ -70,7 +75,7 @@ export default function TopicNounList() {
             <div style={{ fontSize: "18px", opacity: 0.8 }}>
               {noun.arabic}
             </div>
-          </Link>
+          </WordLink>
         ))}
       </div>
     </div>

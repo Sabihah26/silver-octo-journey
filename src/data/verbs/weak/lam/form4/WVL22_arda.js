@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 9:62",
+      arabic: "يَحْلِفُونَ بِٱللَّهِ لَكُمْ لِيُرْضُوكُمْ وَٱللَّهُ وَرَسُولُهُۥٓ أَحَقُّ أَن يُرْضُوهُ إِن كَانُوا۟ مُؤْمِنِينَ",
+      focusWord: "لِيُرْضُوكُمْ",
+      lemma: "أَرْضَى",
+      use: "verb",
+      morphology: "Form IV imperfect subjunctive, third-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=9&verse=62"
+    }
+  ]
 };

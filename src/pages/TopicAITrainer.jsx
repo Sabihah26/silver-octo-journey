@@ -1,9 +1,11 @@
 // src/pages/TopicAITrainer.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import nouns from "../data/nouns";
+import useWordAccess from "../hooks/useWordAccess";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 export default function TopicAITrainer() {
+  const { nouns } = useWordAccess();
   const { category, topic } = useParams();   // ⭐ READ BOTH
   const [cards, setCards] = useState([]);
   const [index, setIndex] = useState(0);
@@ -25,12 +27,13 @@ export default function TopicAITrainer() {
     setIndex(0);
     setInput("");
     setFeedback("");
-  }, [category, topic]);
+  }, [category, topic, nouns]);
 
   if (cards.length === 0) {
     return (
       <div style={pageStyle}>
         <h2>No nouns found for this topic.</h2>
+        <FreeTierBanner type="noun" />
       </div>
     );
   }

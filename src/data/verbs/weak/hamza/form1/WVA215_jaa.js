@@ -181,5 +181,19 @@ export default {
   },
 
   audio: "",
-  notes: "The root contains a medial weak ي and a final hamza. The passive is mainly used with the جاء بـ frame, meaning “to be brought.”"
+  notes: "The root contains a medial weak ي and a final hamza. The passive is mainly used with the جاء بـ frame, meaning “to be brought.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 15:67",
+      arabic: "وَجَآءَ أَهْلُ ٱلْمَدِينَةِ يَسْتَبْشِرُونَ",
+      focusWord: "وَجَآءَ",
+      lemma: "جَاءَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=15&verse=67"
+    }
+  ]
 };

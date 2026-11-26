@@ -174,5 +174,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:16",
+      arabic: "أُو۟لَٰٓئِكَ ٱلَّذِينَ ٱشْتَرَوُا۟ ٱلضَّلَٰلَةَ بِٱلْهُدَىٰ فَمَا رَبِحَت تِّجَٰرَتُهُمْ وَمَا كَانُوا۟ مُهْتَدِينَ",
+      focusWord: "ٱشْتَرَوُا۟",
+      lemma: "اِشْتَرَى",
+      use: "verb",
+      morphology: "Form VIII perfect, third-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=16"
+    }
+  ]
 };

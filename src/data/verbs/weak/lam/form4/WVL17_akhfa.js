@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 32:17",
+      arabic: "فَلَا تَعْلَمُ نَفْسٌ مَّآ أُخْفِىَ لَهُم مِّن قُرَّةِ أَعْيُنٍ جَزَآءًۢ بِمَا كَانُوا۟ يَعْمَلُونَ",
+      focusWord: "أُخْفِىَ",
+      lemma: "أَخْفَى",
+      use: "verb",
+      morphology: "Form IV passive perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=32&verse=17"
+    }
+  ]
 };

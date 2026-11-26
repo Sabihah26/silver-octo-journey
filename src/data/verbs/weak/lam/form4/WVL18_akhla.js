@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 35:24",
+      arabic: "إِنَّآ أَرْسَلْنَٰكَ بِٱلْحَقِّ بَشِيرًا وَنَذِيرًا وَإِن مِّنْ أُمَّةٍ إِلَّا خَلَا فِيهَا نَذِيرٌ",
+      focusWord: "خَلَا",
+      lemma: "أَخْلَى",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root خ-ل-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=35&verse=24"
+    }
+  ]
 };

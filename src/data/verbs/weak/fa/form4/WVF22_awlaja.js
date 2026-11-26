@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 57:6",
+      arabic: "يُولِجُ ٱلَّيْلَ فِى ٱلنَّهَارِ وَيُولِجُ ٱلنَّهَارَ فِى ٱلَّيْلِ وَهُوَ عَلِيمٌۢ بِذَاتِ ٱلصُّدُورِ",
+      focusWord: "يُولِجُ",
+      lemma: "أَوْلَجَ",
+      use: "verb",
+      morphology: "Form IV imperfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=57&verse=6"
+    }
+  ]
 };

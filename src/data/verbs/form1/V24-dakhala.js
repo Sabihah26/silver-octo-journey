@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 18:35",
+      arabic: "وَدَخَلَ جَنَّتَهُۥ وَهُوَ ظَالِمٌ لِّنَفْسِهِۦ قَالَ مَآ أَظُنُّ أَن تَبِيدَ هَٰذِهِۦٓ أَبَدًا",
+      focusWord: "وَدَخَلَ",
+      lemma: "دَخَلَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=35"
+    }
+  ]
 };

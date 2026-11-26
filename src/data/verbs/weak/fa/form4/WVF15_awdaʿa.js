@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 93:3",
+      arabic: "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",
+      focusWord: "وَدَّعَكَ",
+      lemma: "أَوْدَعَ",
+      use: "related word",
+      morphology: "Form II perfect, third-person masculine singular, a related verb from the same root و-د-ع",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=93&verse=3"
+    }
+  ]
 };

@@ -48,7 +48,7 @@ serve(async (req) => {
     const admin = createClient(supabaseUrl, serviceRoleKey);
     let { data: profile, error: profileError } = await admin
       .from("profiles")
-      .select("stripe_customer_id, is_premium")
+      .select("stripe_customer_id, is_premium, is_admin, is_complimentary")
       .eq("id", user.id)
       .maybeSingle();
     if (profileError) throw profileError;
@@ -58,12 +58,15 @@ serve(async (req) => {
       const { data: created, error: createError } = await admin
         .from("profiles")
         .upsert({ id: user.id, email: user.email }, { onConflict: "id" })
-        .select("stripe_customer_id, is_premium")
+        .select("stripe_customer_id, is_premium, is_admin, is_complimentary")
         .single();
       if (createError) throw createError;
       profile = created;
     }
     if (profile.is_premium) throw new Error("Your Premium subscription is already active.");
+    if (profile.is_admin || profile.is_complimentary) {
+      throw new Error("Your account already has full access.");
+    }
 
     const stripe = new Stripe(stripeSecret);
     let customerId = profile.stripe_customer_id;

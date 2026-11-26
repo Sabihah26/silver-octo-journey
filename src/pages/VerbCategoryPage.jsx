@@ -1,6 +1,7 @@
 // src/pages/VerbCategoryPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 const categories = [
   { key: "action", label: "Action Verbs", icon: "⚡" },
@@ -46,6 +47,8 @@ export default function VerbCategoryPage() {
         <h1 style={{ textAlign: "center", marginBottom: 30, fontSize: "42px" }}>
           Verb Categories
         </h1>
+
+        <FreeTierBanner type="verb" />
 
         <div style={gridContainer}>
           {categories.map((cat) => (

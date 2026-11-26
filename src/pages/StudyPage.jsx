@@ -1,7 +1,6 @@
 // src/pages/StudyPage.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import verbs from "../data/verbs";
 import {
   initSession,
   gradeCard,
@@ -9,8 +8,10 @@ import {
   updateSRS,
   getNextRecommendedVerb,
 } from "../utils/srsEngine";
+import useWordAccess from "../hooks/useWordAccess";
 
 export default function StudyPage() {
+  const { verbs } = useWordAccess();
   const [session, setSession] = useState({ queue: [], current: null });
   const [record, setRecord] = useState(null);
   const [recommended, setRecommended] = useState(null);
@@ -28,11 +29,11 @@ export default function StudyPage() {
       setRecord(rec);
     }
 
-    const next = getNextRecommendedVerb();
+    const next = getNextRecommendedVerb(new Set(), verbs);
     setRecommended(next);
 
     setTimeout(() => setAnimateCard(true), 50);
-  }, []);
+  }, [verbs]);
 
   function handleRate(rating) {
     if (!session.current) return;
@@ -68,7 +69,7 @@ export default function StudyPage() {
         setRecord(null);
       }
 
-      const next = getNextRecommendedVerb();
+      const next = getNextRecommendedVerb(new Set(), verbs);
       setRecommended(next);
 
       setAnimateCard(true);

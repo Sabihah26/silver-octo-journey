@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "Intransitive verb; passive forms are impersonal and uncommon."
+  notes: "Intransitive verb; passive forms are impersonal and uncommon.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 33:71",
+      arabic: "يُصْلِحْ لَكُمْ أَعْمَٰلَكُمْ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ وَمَن يُطِعِ ٱللَّهَ وَرَسُولَهُۥ فَقَدْ فَازَ فَوْزًا عَظِيمًا",
+      focusWord: "فَازَ",
+      lemma: "فَازَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=71"
+    }
+  ]
 };

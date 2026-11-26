@@ -1,0 +1,12 @@
+.quran-example-card {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(0, 2fr);
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .quran-example-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}

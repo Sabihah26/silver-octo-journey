@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: "The passive forms are rare. The verb is hollow and ends in hamza."
+  notes: "The passive forms are rare. The verb is hollow and ends in hamza.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 80:2",
+      arabic: "أَن جَآءَهُ ٱلْأَعْمَىٰ",
+      focusWord: "جَآءَهُ",
+      lemma: "جَاءَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=80&verse=2"
+    }
+  ]
 };

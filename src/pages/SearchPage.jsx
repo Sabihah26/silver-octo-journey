@@ -2,12 +2,10 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 
-import verbs from "../data/verbs";
-import nouns from "../data/nouns";
-import adverbs from "../data/Adverbs";
-import adjectives from "../data/adjectives";
 
 import SearchCard from "../components/SearchCard";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -56,6 +54,7 @@ function distance(a, b) {
 }
 
 export default function SearchPage() {
+  const { allVerbs: verbs, allNouns: nouns, allAdverbs: adverbs, allAdjectives: adjectives } = useWordAccess();
   const query = useQuery();
   const rootQuery = query.get("root") || "";
   const q = query.get("q") || rootQuery;
@@ -317,7 +316,7 @@ export default function SearchPage() {
                 <p style={{ opacity: 0.6, fontSize: 20 }}>No verbs found.</p>
               )}
               {verbResults.slice(0, visibleCount).map((v, i) => (
-                <Link
+                <WordLink type="verb" id={v.id}
                   key={`verb-${v.id}-${i}`}
                   to={`/verb/${v.id}`}
                   style={{ textDecoration: "none" }}
@@ -328,7 +327,7 @@ export default function SearchPage() {
                     searchTerm={searchTerm}
                     index={i}
                   />
-                </Link>
+                </WordLink>
               ))}
             </div>
           )}
@@ -361,7 +360,7 @@ export default function SearchPage() {
                 <p style={{ opacity: 0.6, fontSize: 20 }}>No adverbs found.</p>
               )}
               {adverbResults.slice(0, visibleCount).map((a, i) => (
-                <Link
+                <WordLink type="adverb" id={a.id}
                   key={`adv-${a.id}-${i}`}
                   to={`/adverbs/${a.id}`}
                   style={{ textDecoration: "none" }}
@@ -372,7 +371,7 @@ export default function SearchPage() {
                     searchTerm={searchTerm}
                     index={i}
                   />
-                </Link>
+                </WordLink>
               ))}
             </div>
           )}
@@ -387,7 +386,7 @@ export default function SearchPage() {
                 </p>
               )}
               {adjectiveResults.slice(0, visibleCount).map((adj, i) => (
-                <Link
+                <WordLink type="adjective" id={adj.id}
                   key={`adj-${adj.id}-${i}`}
                   to={`/adjectives/${adj.id}`}
                   style={{ textDecoration: "none" }}
@@ -398,7 +397,7 @@ export default function SearchPage() {
                     searchTerm={searchTerm}
                     index={i}
                   />
-                </Link>
+                </WordLink>
               ))}
             </div>
           )}

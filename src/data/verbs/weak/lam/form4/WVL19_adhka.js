@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 5:3",
+      arabic: "… وَٱلْمُتَرَدِّيَةُ وَٱلنَّطِيحَةُ وَمَآ أَكَلَ ٱلسَّبُعُ إِلَّا مَا ذَكَّيْتُمْ وَمَا ذُبِحَ عَلَى ٱلنُّصُبِ وَأَن تَسْتَقْسِمُوا۟ بِٱلْأَزْلَٰمِ …",
+      focusWord: "ذَكَّيْتُمْ",
+      lemma: "أَذْكَى",
+      use: "related word",
+      morphology: "Form II perfect, second-person masculine plural, a related verb from the same root ذ-ك-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=5&verse=3"
+    }
+  ]
 };

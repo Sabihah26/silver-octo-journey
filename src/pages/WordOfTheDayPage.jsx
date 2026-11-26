@@ -3,11 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { loadWordOfTheDay } from "../utils/wordOfTheDay";
+import useWordAccess from "../hooks/useWordAccess";
 import { colorizeArabic } from "../engine/vowelColorizer";
 import { transliterate } from "../engine/transliterate";
 
 export default function WordOfTheDayPage() {
-  const word = loadWordOfTheDay();
+  const { verbs } = useWordAccess();
+  const word = loadWordOfTheDay(verbs);
   const arabicPast = word?.arabic?.past;
   const transliterationPast = word?.transliteration?.past;
 

@@ -214,3 +214,15 @@
     font-size: 16px;
   }
 }
+
+/* Hero search: input and button stack on phones. */
+@media (max-width: 600px) {
+  .home-search {
+    flex-wrap: wrap;
+    gap: 10px !important;
+  }
+
+  .home-search input {
+    width: 100% !important;
+  }
+}

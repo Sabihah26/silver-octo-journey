@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 11:43",
+      arabic: "… ٱلْيَوْمَ مِنْ أَمْرِ ٱللَّهِ إِلَّا مَن رَّحِمَ وَحَالَ بَيْنَهُمَا ٱلْمَوْجُ فَكَانَ مِنَ ٱلْمُغْرَقِينَ",
+      focusWord: "وَحَالَ",
+      lemma: "أَحَالَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root ح-و-ل",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=11&verse=43"
+    }
+  ]
 };

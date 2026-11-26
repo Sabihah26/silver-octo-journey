@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 36:80",
+      arabic: "ٱلَّذِى جَعَلَ لَكُم مِّنَ ٱلشَّجَرِ ٱلْأَخْضَرِ نَارًا فَإِذَآ أَنتُم مِّنْهُ تُوقِدُونَ",
+      focusWord: "تُوقِدُونَ",
+      lemma: "أَوْقَدَ",
+      use: "verb",
+      morphology: "Form IV imperfect, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=36&verse=80"
+    }
+  ]
 };

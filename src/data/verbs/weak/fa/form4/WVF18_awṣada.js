@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 90:20",
+      arabic: "عَلَيْهِمْ نَارٌ مُّؤْصَدَةٌۢ",
+      focusWord: "مُّؤْصَدَةٌۢ",
+      lemma: "أَوْصَدَ",
+      use: "related word",
+      morphology: "Adjective from the same root و-ص-د",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=90&verse=20"
+    }
+  ]
 };

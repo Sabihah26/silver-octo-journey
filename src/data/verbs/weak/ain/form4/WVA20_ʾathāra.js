@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 100:4",
+      arabic: "فَأَثَرْنَ بِهِۦ نَقْعًا",
+      focusWord: "فَأَثَرْنَ",
+      lemma: "أَثَارَ",
+      use: "verb",
+      morphology: "Form IV perfect, third-person feminine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=100&verse=4"
+    }
+  ]
 };

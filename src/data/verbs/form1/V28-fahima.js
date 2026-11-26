@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 21:79",
+      arabic: "فَفَهَّمْنَٰهَا سُلَيْمَٰنَ وَكُلًّا ءَاتَيْنَا حُكْمًا وَعِلْمًا وَسَخَّرْنَا مَعَ دَاوُۥدَ ٱلْجِبَالَ يُسَبِّحْنَ وَٱلطَّيْرَ وَكُنَّا فَٰعِلِينَ",
+      focusWord: "فَفَهَّمْنَٰهَا",
+      lemma: "فَهِمَ",
+      use: "related word",
+      morphology: "Form II perfect, first-person plural, a related verb from the same root ف-ه-م",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=79"
+    }
+  ]
 };

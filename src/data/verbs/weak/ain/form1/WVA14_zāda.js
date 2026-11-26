@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 47:17",
+      arabic: "وَٱلَّذِينَ ٱهْتَدَوْا۟ زَادَهُمْ هُدًى وَءَاتَىٰهُمْ تَقْوَىٰهُمْ",
+      focusWord: "زَادَهُمْ",
+      lemma: "زَادَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=47&verse=17"
+    }
+  ]
 };

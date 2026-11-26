@@ -1,10 +1,11 @@
 // src/pages/WeakVerbTrainer.jsx
 import React, { useState, useEffect } from "react";
-import verbs from "../data/verbs";
 import detectWeak from "../utils/detectWeak";
 import { Link } from "react-router-dom";
+import useWordAccess from "../hooks/useWordAccess";
 
 export default function WeakVerbTrainer() {
+  const { verbs } = useWordAccess();
   const [current, setCurrent] = useState(null);
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState(null);
@@ -35,7 +36,7 @@ export default function WeakVerbTrainer() {
 
   useEffect(() => {
     loadVerb();
-  }, []);
+  }, [verbs]);
 
   function checkAnswer() {
     if (!current) return;

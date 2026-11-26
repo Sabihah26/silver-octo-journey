@@ -1,0 +1,144 @@
+/* src/styles/responsive.css
+   Makes the app fit phones (≤600px), iPads/tablets (≤1024px), laptops and
+   desktops. Most pages use inline React styles, which CSS can't override
+   without !important, so these rules match the inline style text React writes
+   (e.g. style="grid-template-columns: repeat(5, 1fr)") and only apply on
+   smaller screens. Desktop layouts are unchanged.
+   If you add a new fixed-column grid, prefer
+   "repeat(auto-fit, minmax(180px, 1fr))", which adapts on its own. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Long words or URLs wrap instead of pushing the page sideways. */
+main {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Laptops and small desktops (≤1280px) ---------- */
+@media (max-width: 1280px) {
+  /* Wide fixed-width card grids */
+  main [style*="grid-template-columns: repeat(5, 280px)"] {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+    width: 100% !important;
+  }
+  main [style*="grid-template-columns: repeat(6, 190px)"] {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
+    width: 100% !important;
+  }
+  main [style*="grid-template-columns: repeat(4, minmax(260px, 1fr))"] {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  }
+}
+
+/* ---------- iPads and tablets (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  main [style*="grid-template-columns: repeat(5"],
+  main [style*="grid-template-columns: repeat(6"],
+  main [style*="grid-template-columns: repeat(7"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  main [style*="grid-template-columns: 220px 1fr 220px"] {
+    grid-template-columns: 160px minmax(0, 1fr) !important;
+  }
+  /* Third hero column moves under the other two */
+  main [style*="grid-template-columns: 220px 1fr 220px"] > :nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Tablets and phones (≤1024px): rows of buttons wrap ---------- */
+@media (max-width: 1024px) {
+  /* Flex rows (filter tabs, button bars) wrap onto a new line instead of
+     running off the side. Rows that already fit are unaffected. */
+  main [style*="display: flex"]:not([style*="flex-direction: column"]) {
+    flex-wrap: wrap;
+  }
+
+  /* Grid cells may shrink below their content width (long button labels). */
+  main [style*="grid-template-columns"] > * {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+}
+
+/* ---------- Phones (≤600px) ---------- */
+@media (max-width: 600px) {
+  /* Any fixed-column grid becomes two columns... */
+  /* :where() keeps this rule weak so the stacking rules below win. */
+  main :where([style*="grid-template-columns"]:not([style*="auto-fit"]):not([style*="auto-fill"])) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Wide word-card and button grids: two columns (overrides the tablet rule). */
+  main [style*="grid-template-columns: repeat(4"],
+  main [style*="grid-template-columns: repeat(5"],
+  main [style*="grid-template-columns: repeat(6"],
+  main [style*="grid-template-columns: repeat(7"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* ...and grids of big cards or side-by-side panels stack. */
+  main [style*="grid-template-columns: 1fr 1fr"],
+  main [style*="grid-template-columns: repeat(2"],
+  main [style*="grid-template-columns: repeat(3, 1fr)"],
+  main [style*="grid-template-columns: 220px 1fr 220px"],
+  main [style*="grid-template-columns: repeat(5, 280px)"],
+  main [style*="grid-template-columns: repeat(4, minmax(260px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  main [style*="grid-template-columns: 220px 1fr 220px"] > * {
+    grid-column: auto;
+  }
+
+  /* Auto-fill grids with wide minimums still fit a 320px phone. */
+  main [style*="minmax(250px"],
+  main [style*="minmax(260px"],
+  main [style*="minmax(280px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Nothing inside the page is wider than the screen. */
+  main *:not(svg):not(svg *) {
+    max-width: 100%;
+  }
+
+  /* Desktop minimum widths (e.g. 190px tense buttons) give way on phones. */
+  main [style*="min-width"] {
+    min-width: 0 !important;
+  }
+  main [style*="min-width: 190px"] {
+    font-size: 17px !important;
+  }
+
+  /* Big inline headings shrink to fit. */
+  main h1 {
+    font-size: clamp(1.6rem, 8vw, 2.4rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Side gutters: pages with big desktop padding get a phone-sized one. */
+  main [style*="padding: 40px"],
+  main [style*="padding: 50px"],
+  main [style*="padding: 60px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Comfortable tap targets for form fields (and no iOS zoom on focus). */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

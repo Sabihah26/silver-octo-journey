@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "The passive forms قِيمَ and يُقَامُ are rare for the common intransitive meaning “stand/get up.”"
+  notes: "The passive forms قِيمَ and يُقَامُ are rare for the common intransitive meaning “stand/get up.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 72:19",
+      arabic: "وَأَنَّهُۥ لَمَّا قَامَ عَبْدُ ٱللَّهِ يَدْعُوهُ كَادُوا۟ يَكُونُونَ عَلَيْهِ لِبَدًا",
+      focusWord: "قَامَ",
+      lemma: "قَامَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=72&verse=19"
+    }
+  ]
 };

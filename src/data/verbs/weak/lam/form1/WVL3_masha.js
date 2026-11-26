@@ -174,5 +174,19 @@ export default {
   },
 
   audio: "",
-  notes: "This verb is intransitive, so passive forms are not normally used."
+  notes: "This verb is intransitive, so passive forms are not normally used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 67:22",
+      arabic: "أَفَمَن يَمْشِى مُكِبًّا عَلَىٰ وَجْهِهِۦٓ أَهْدَىٰٓ أَمَّن يَمْشِى سَوِيًّا عَلَىٰ صِرَٰطٍ مُّسْتَقِيمٍ",
+      focusWord: "يَمْشِى",
+      lemma: "مَشَى",
+      use: "verb",
+      morphology: "Form I imperfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=67&verse=22"
+    }
+  ]
 };

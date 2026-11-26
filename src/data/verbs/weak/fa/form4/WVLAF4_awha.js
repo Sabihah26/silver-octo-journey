@@ -176,6 +176,20 @@ export default {
     }
   },
 
+  quranExamples: [
+    {
+      reference: "Qur'an 69:16",
+      arabic: "وَٱنشَقَّتِ ٱلسَّمَآءُ فَهِىَ يَوْمَئِذٍ وَاهِيَةٌ",
+      focusWord: "وَاهِيَةٌ",
+      lemma: "وَهَى",
+      use: "related participle",
+      morphology: "Active participle from the same root و-ه-ي; the verse describes the sky as frail",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=69&verse=16"
+    }
+  ],
+
   audio: "",
   notes: "Form IV from و-ه-ي, a lafīf mafrūq root with an initial weak wāw and final weak yāʾ. It means to weaken or undermine something."
 };

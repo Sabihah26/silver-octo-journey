@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 68:9",
+      arabic: "وَدُّوا۟ لَوْ تُدْهِنُ فَيُدْهِنُونَ",
+      focusWord: "وَدُّوا۟",
+      lemma: "تَوَدَّدَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine plural, a related verb from the same root و-د-د",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=68&verse=9"
+    }
+  ]
 };

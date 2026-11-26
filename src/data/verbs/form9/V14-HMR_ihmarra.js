@@ -174,5 +174,19 @@ export default {
   },
 
   audio: "",
-  notes: "This is an intransitive Form IX verb; passive forms are not normally used."
+  notes: "This is an intransitive Form IX verb; passive forms are not normally used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 74:50",
+      arabic: "كَأَنَّهُمْ حُمُرٌ مُّسْتَنفِرَةٌ",
+      focusWord: "حُمُرٌ",
+      lemma: "اِحْمَرَّ",
+      use: "related word",
+      morphology: "Noun from the same root ح-م-ر",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=50"
+    }
+  ]
 };

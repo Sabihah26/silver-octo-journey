@@ -1,7 +1,9 @@
 // src/pages/StudyAllVerbsPage.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import verbs from "../data/verbs";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 // ⭐ SAFE DIACRITIC REMOVER (works with objects)
 function stripDiacritics(text) {
@@ -27,6 +29,7 @@ function normalizeForm(form) {
 }
 
 export default function StudyAllVerbsPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const [search, setSearch] = useState("");
   const [formFilter, setFormFilter] = useState("all");
   const [sortBy, setSortBy] = useState("arabic");
@@ -114,6 +117,8 @@ export default function StudyAllVerbsPage() {
       <h1 style={{ textAlign: "center", marginBottom: 20 }}>
         Study All Verbs
       </h1>
+
+      <FreeTierBanner type="verb" />
 
       {/* SEARCH BAR */}
       <input
@@ -208,7 +213,7 @@ export default function StudyAllVerbsPage() {
 
           return isMobile ? (
             // 📱 MOBILE LIST VIEW
-            <Link
+            <WordLink type="verb" id={v.id}
               key={v.id}
               to={`/verb/${v.id}`}
               style={{
@@ -246,10 +251,10 @@ export default function StudyAllVerbsPage() {
               >
                 {form}
               </div>
-            </Link>
+            </WordLink>
           ) : (
             // 💻 DESKTOP GRID VIEW
-            <Link
+            <WordLink type="verb" id={v.id}
               key={v.id}
               to={`/verb/${v.id}`}
               style={{
@@ -296,7 +301,7 @@ export default function StudyAllVerbsPage() {
               >
                 {form}
               </div>
-            </Link>
+            </WordLink>
           );
         })}
       </div>

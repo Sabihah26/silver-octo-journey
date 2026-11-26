@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 96:12",
+      arabic: "أَوْ أَمَرَ بِٱلتَّقْوَىٰٓ",
+      focusWord: "أَمَرَ",
+      lemma: "أَمَرَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=96&verse=12"
+    }
+  ]
 };

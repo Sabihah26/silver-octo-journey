@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 6:113",
+      arabic: "وَلِتَصْغَىٰٓ إِلَيْهِ أَفْـِٔدَةُ ٱلَّذِينَ لَا يُؤْمِنُونَ بِٱلْـَٔاخِرَةِ وَلِيَرْضَوْهُ وَلِيَقْتَرِفُوا۟ مَا هُم مُّقْتَرِفُونَ",
+      focusWord: "وَلِتَصْغَىٰٓ",
+      lemma: "أَصْغَى",
+      use: "related word",
+      morphology: "Form I imperfect subjunctive, third-person feminine singular, a related verb from the same root ص-غ-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=113"
+    }
+  ]
 };

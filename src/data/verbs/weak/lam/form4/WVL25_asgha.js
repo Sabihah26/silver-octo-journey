@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 66:4",
+      arabic: "إِن تَتُوبَآ إِلَى ٱللَّهِ فَقَدْ صَغَتْ قُلُوبُكُمَا وَإِن تَظَٰهَرَا عَلَيْهِ فَإِنَّ ٱللَّهَ هُوَ …",
+      focusWord: "صَغَتْ",
+      lemma: "أَصْغَى",
+      use: "related word",
+      morphology: "Form I perfect, third-person feminine singular, a related verb from the same root ص-غ-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=66&verse=4"
+    }
+  ]
 };

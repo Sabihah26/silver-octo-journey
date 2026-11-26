@@ -1,14 +1,16 @@
 // src/pages/SuperStudyMode.jsx
 import { checkAchievements } from "../utils/achievements";
 import React, { useState, useEffect } from "react";
-import nouns from "../data/nouns";
 import { Link } from "react-router-dom";
+import useWordAccess from "../hooks/useWordAccess";
+import FreeTierBanner from "../components/FreeTierBanner";
 import {
   updateNounSRS,
   getNounSRS,
 } from "../utils/srsNouns";
 
 export default function SuperStudyMode() {
+  const { nouns } = useWordAccess();
   const [mode, setMode] = useState("study"); // study | flashcards | trainer | quiz
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [cards, setCards] = useState([]);
@@ -38,7 +40,7 @@ useEffect(() => {
   setFeedback("");
   setFinished(false);
   setScore(0);
-}, [selectedTopics, mode]);
+}, [selectedTopics, mode, nouns]);
 
 
   const toggleTopic = (topic) => {
@@ -182,6 +184,7 @@ useEffect(() => {
           No nouns found for these topics.
         </p>
       )}
+      {selectedTopics.length > 0 && cards.length === 0 && <FreeTierBanner type="noun" />}
 
       {/* STUDY MODE */}
       {mode === "study" && current && (

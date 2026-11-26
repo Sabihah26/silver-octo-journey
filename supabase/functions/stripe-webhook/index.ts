@@ -2,7 +2,8 @@ import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import Stripe from "npm:stripe@17.7.0";
 import { createClient } from "npm:@supabase/supabase-js@2.49.1";
 
-const premiumStatuses = new Set(["active", "trialing"]);
+// past_due keeps access while Stripe retries a failed renewal.
+const premiumStatuses = new Set(["active", "trialing", "past_due"]);
 
 const subscriptionEvents = new Set([
   "customer.subscription.created",

@@ -11,6 +11,8 @@ import ScrollToTop from "./components/ScrollToTop";
 // PREMIUM
 import BillingPage from "./pages/BillingPage";
 import AuthPage from "./pages/AuthPage";
+import PremiumGate from "./components/PremiumGate";
+import AdminRoute from "./components/AdminRoute";
 
 // MAIN PAGES
 import HomePage from "./pages/HomePage";
@@ -18,6 +20,7 @@ import StudyPage from "./pages/StudyPage";
 import RecommendedStudyPage from "./pages/RecommendedStudyPage";
 import StudyAllVerbsPage from "./pages/StudyAllVerbsPage";
 import VerbPage from "./pages/VerbPage";
+import QuranExamplesPage from "./pages/QuranExamplesPage";
 import VerbConjugationPage from "./pages/VerbConjugationPage";
 
 // ⭐ NEW FULL GRID PAGE
@@ -122,9 +125,12 @@ export default function App() {
             <Route path="/search" element={<SearchPage />} />
 
             {/* VERB DETAILS */}
-            <Route path="/verb/:id" element={<VerbPage />} />
-            <Route path="/verb/:id/grid" element={<VerbGridPage />} />
-            <Route path="/verb/:id/:tense" element={<VerbConjugationPage />} />
+            <Route element={<PremiumGate type="verb" />}>
+              <Route path="/verb/:id" element={<VerbPage />} />
+              <Route path="/verb/:id/quran-examples" element={<QuranExamplesPage />} />
+              <Route path="/verb/:id/grid" element={<VerbGridPage />} />
+              <Route path="/verb/:id/:tense" element={<VerbConjugationPage />} />
+            </Route>
 
             {/* ⭐ VERB CATEGORY SYSTEM (NEW) */}
             <Route path="/verbs/categories" element={<VerbCategoryPage />} />   {/* ← NEW */}
@@ -163,7 +169,7 @@ export default function App() {
             <Route path="/nouns" element={<NounList />} />
 
             {/* noun details */}
-            <Route path="/noun/:id" element={<NounPage />} />
+            <Route element={<PremiumGate type="noun" />}><Route path="/noun/:id" element={<NounPage />} /></Route>
 
             {/* ⭐ FIXED — category buttons now work */}
             <Route path="/nouns/category/:category" element={<NounList />} />
@@ -173,14 +179,14 @@ export default function App() {
 
             {/* ADVERBS */}
             <Route path="/adverbs" element={<AdverbList />} />
-            <Route path="/adverbs/:id" element={<AdverbPage />} />
+            <Route element={<PremiumGate type="adverb" />}><Route path="/adverbs/:id" element={<AdverbPage />} /></Route>
 
             {/* ⭐ ADVERB CATEGORY SYSTEM (NEW) */}
             <Route path="/adverbs/category/:category" element={<AdverbList />} />   {/* ← NEW */}
 
             {/* ADJECTIVES */}
             <Route path="/adjectives" element={<AdjectiveList />} />
-            <Route path="/adjectives/:id" element={<AdjectivePage />} />
+            <Route element={<PremiumGate type="adjective" />}><Route path="/adjectives/:id" element={<AdjectivePage />} /></Route>
 
             {/* ⭐ RESTORED — AdjectiveCategoryPage (AMENDED) */}
             <Route path="/adjectives/category/:category" element={<AdjectiveCategoryPage />} />
@@ -193,7 +199,7 @@ export default function App() {
             <Route path="/study/mastery" element={<ProgressDashboard />} />
 
             {/* ⭐ ADMIN DASHBOARD (NEW) */}
-            <Route path="/admin" element={<AdminDashboard />} />   {/* ← ADDED */}
+            <Route element={<AdminRoute />}><Route path="/admin" element={<AdminDashboard />} /></Route>
 
             {/* PLACEHOLDER PAGES */}
             <Route path="/word-of-the-day" element={<WordOfTheDayPage />} />
@@ -206,8 +212,10 @@ export default function App() {
             <Route path="/auth" element={<AuthPage />} />
 
             {/* DEV PAGES */}
-            <Route path="/dev/tests" element={<DevTestPage />} />
-            <Route path="/dev/inspector" element={<ConjugationInspector />} />
+            <Route element={<AdminRoute />}>
+              <Route path="/dev/tests" element={<DevTestPage />} />
+              <Route path="/dev/inspector" element={<ConjugationInspector />} />
+            </Route>
 
             {/* FLASHCARDS */}
             <Route path="/flashcards" element={<FlashcardsPage />} />

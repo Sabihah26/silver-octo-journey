@@ -182,5 +182,19 @@ export default {
   },
 
   audio: "",
-  notes: "صَارَ is a hollow, copular verb meaning “become.” Its passive forms are impersonal and rare."
+  notes: "صَارَ is a hollow, copular verb meaning “become.” Its passive forms are impersonal and rare.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 42:53",
+      arabic: "صِرَٰطِ ٱللَّهِ ٱلَّذِى لَهُۥ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ أَلَآ إِلَى ٱللَّهِ تَصِيرُ ٱلْأُمُورُ",
+      focusWord: "تَصِيرُ",
+      lemma: "صَارَ",
+      use: "verb",
+      morphology: "Form I imperfect, third-person feminine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=42&verse=53"
+    }
+  ]
 };

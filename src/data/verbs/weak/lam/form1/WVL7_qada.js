@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:117",
+      arabic: "بَدِيعُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَإِذَا قَضَىٰٓ أَمْرًا فَإِنَّمَا يَقُولُ لَهُۥ كُن فَيَكُونُ",
+      focusWord: "قَضَىٰٓ",
+      lemma: "قَضَى",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=117"
+    }
+  ]
 };

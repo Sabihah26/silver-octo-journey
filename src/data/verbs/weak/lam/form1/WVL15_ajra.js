@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 51:3",
+      arabic: "فَٱلْجَٰرِيَٰتِ يُسْرًا",
+      focusWord: "فَٱلْجَٰرِيَٰتِ",
+      lemma: "أَجْرَى",
+      use: "related word",
+      morphology: "Active participle from the same root ج-ر-ي",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=51&verse=3"
+    }
+  ]
 };

@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 79:40",
+      arabic: "وَأَمَّا مَنْ خَافَ مَقَامَ رَبِّهِۦ وَنَهَى ٱلنَّفْسَ عَنِ ٱلْهَوَىٰ",
+      focusWord: "خَافَ",
+      lemma: "أَخَافَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root خ-و-ف",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=79&verse=40"
+    }
+  ]
 };

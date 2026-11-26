@@ -13,6 +13,7 @@ import RecommendedPage from "./pages/RecommendedPage";
 // -----------------------------
 import VerbList from "./pages/VerbList";
 import VerbPage from "./pages/VerbPage";
+import QuranExamplesPage from "./pages/QuranExamplesPage";
 import VerbSummary from "./pages/VerbSummary";
 import WeakVerbSummaryPage from "./pages/WeakVerbSummaryPage";
 import VerbGridPage from "./pages/VerbGridPage";
@@ -101,6 +102,7 @@ export default function AppRoutes() {
       {/* Dictionary */}
       <Route path="/verbs" element={<VerbList />} />
       <Route path="/verb/:id" element={<VerbPage />} />
+      <Route path="/verb/:id/quran-examples" element={<QuranExamplesPage />} />
       <Route path="/verb-summary/:id" element={<VerbSummary />} />
       <Route path="/weak-verb-summary/:id" element={<WeakVerbSummaryPage />} />
 

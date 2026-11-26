@@ -38,32 +38,43 @@ export function PremiumProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasStripeCustomer, setHasStripeCustomer] = useState(false);
+  // Granted by hand in Supabase (profiles.is_admin / is_complimentary);
+  // Stripe never changes these.
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isComplimentary, setIsComplimentary] = useState(false);
   const userRef = useRef(null);
   userRef.current = user;
 
   const refreshPremium = useCallback(async (sessionUser = userRef.current) => {
-    if (!sessionUser) {
+    const reset = () => {
       setIsPremium(false);
       setHasStripeCustomer(false);
+      setIsAdmin(false);
+      setIsComplimentary(false);
+    };
+
+    if (!sessionUser) {
+      reset();
       return false;
     }
 
     const { data, error } = await supabase
       .from("profiles")
-      .select("is_premium, stripe_customer_id")
+      .select("is_premium, is_admin, is_complimentary, stripe_customer_id")
       .eq("id", sessionUser.id)
       .maybeSingle();
 
     if (error) {
       console.error("Could not load premium status:", error);
-      setIsPremium(false);
-      setHasStripeCustomer(false);
+      reset();
       return false;
     }
 
     const premium = data?.is_premium === true;
     setIsPremium(premium);
     setHasStripeCustomer(Boolean(data?.stripe_customer_id));
+    setIsAdmin(data?.is_admin === true);
+    setIsComplimentary(data?.is_complimentary === true);
     return premium;
   }, []);
 
@@ -75,6 +86,8 @@ export function PremiumProvider({ children }) {
       setUser(sessionUser);
       setIsPremium(false);
       setHasStripeCustomer(false);
+      setIsAdmin(false);
+      setIsComplimentary(false);
       setLoading(Boolean(sessionUser));
 
       window.clearTimeout(refreshTimer);
@@ -136,6 +149,10 @@ export function PremiumProvider({ children }) {
     <PremiumContext.Provider
       value={{
         isPremium,
+        isAdmin,
+        isComplimentary,
+        // Paying, admin or complimentary: unlocks every word.
+        hasFullAccess: isPremium || isAdmin || isComplimentary,
         user,
         loading,
         hasStripeCustomer,

@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 22:36",
+      arabic: "… خَيْرٌ فَٱذْكُرُوا۟ ٱسْمَ ٱللَّهِ عَلَيْهَا صَوَآفَّ فَإِذَا وَجَبَتْ جُنُوبُهَا فَكُلُوا۟ مِنْهَا وَأَطْعِمُوا۟ ٱلْقَانِعَ وَٱلْمُعْتَرَّ كَذَٰلِكَ …",
+      focusWord: "وَجَبَتْ",
+      lemma: "أَوْجَبَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person feminine singular, a related verb from the same root و-ج-ب",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=22&verse=36"
+    }
+  ]
 };

@@ -1,8 +1,10 @@
 // src/pages/FormPage.jsx
 import React, { useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import verbs from "../data/verbs";
 import { matchesTopic } from "../utils/verbCatalog";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 // Convert 1–10 → I–X
 const romanMap = {
@@ -30,6 +32,7 @@ const STANDARD_TOPICS = [
 ];
 
 export default function FormPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const { formNumber } = useParams();
 
   const formLabel = `Form ${romanMap[Number(formNumber)]}`;
@@ -86,6 +89,8 @@ export default function FormPage() {
       </div>
 
       <h1 style={{ textAlign: "center", marginBottom: 20 }}>{formLabel}</h1>
+
+      <FreeTierBanner type="verb" />
 
       {/* ⭐ NEW — Form Navigation Grid (I–X) */}
       <div
@@ -240,7 +245,7 @@ export default function FormPage() {
           </div>
         ) : (
           visibleVerbs.map((verb) => (
-            <Link
+            <WordLink type="verb" id={verb.id}
               key={verb.id}
               to={`/verb/${verb.id}`}
       style={{
@@ -276,7 +281,7 @@ export default function FormPage() {
               <div style={{ fontSize: "16px", fontWeight: 600 }}>
                 {verb.english?.simple}
               </div>
-            </Link>
+            </WordLink>
           ))
         )}
       </div>

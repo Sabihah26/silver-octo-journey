@@ -4,6 +4,8 @@ import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import data from "../data/index.js";
 import { verbTopics } from "../data/verbTopics";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 const verbs = data.verbs || [];
 
@@ -23,6 +25,9 @@ function isAinWeak(root) {
 function isLamWeak(root) {
   return root && WEAK_LETTERS.includes(root[2]);
 }
+function weakRadicalCount(root) {
+  return root.filter((radical) => WEAK_LETTERS.includes(radical)).length;
+}
 
 const romanMap = {
   1: "I",
@@ -38,9 +43,7 @@ const romanMap = {
 };
 
 export default function WeakVerbsPage() {
-  const [weakType, setWeakType] = useState(
-    localStorage.getItem("weakType") || "fa"
-  );
+  const [weakType, setWeakType] = useState("all");
   const [formNumber, setFormNumber] = useState("all");
   const [selectedTopic, setSelectedTopic] = useState("all");
   const [difficulty, setDifficulty] = useState("all");
@@ -53,11 +56,12 @@ export default function WeakVerbsPage() {
     return verbs.filter((verb) => {
       const rootArray = normalizeRoot(verb.root);
 
+      if (weakType === "all") return weakRadicalCount(rootArray) > 0;
       if (weakType === "fa") return isFaWeak(rootArray);
       if (weakType === "ain") return isAinWeak(rootArray);
       if (weakType === "lam") return isLamWeak(rootArray);
-      if (weakType === "hamza") return verb.root.includes("ء");
-      if (weakType === "double") return rootArray[1] === rootArray[2];
+      if (weakType === "hamza") return ["ء", "أ", "إ", "ؤ", "ئ"].some((letter) => rootArray.includes(letter));
+      if (weakType === "double") return weakRadicalCount(rootArray) >= 2;
 
       return false;
     });
@@ -112,6 +116,8 @@ export default function WeakVerbsPage() {
 
         <h1 style={{ textAlign: "center", marginBottom: 30 }}>Weak Verbs</h1>
 
+        <FreeTierBanner type="verb" />
+
         {/* FILTER BAR */}
         <div
           style={{
@@ -130,8 +136,16 @@ export default function WeakVerbsPage() {
           >
             <DropdownItem
               onClick={() => {
+                setWeakType("all");
+                setOpenDropdown(null);
+              }}
+            >
+              All Weak Verbs
+            </DropdownItem>
+
+            <DropdownItem
+              onClick={() => {
                 setWeakType("fa");
-                localStorage.setItem("weakType", "fa");
                 setOpenDropdown(null);
               }}
             >
@@ -141,7 +155,6 @@ export default function WeakVerbsPage() {
             <DropdownItem
               onClick={() => {
                 setWeakType("ain");
-                localStorage.setItem("weakType", "ain");
                 setOpenDropdown(null);
               }}
             >
@@ -151,7 +164,6 @@ export default function WeakVerbsPage() {
             <DropdownItem
               onClick={() => {
                 setWeakType("lam");
-                localStorage.setItem("weakType", "lam");
                 setOpenDropdown(null);
               }}
             >
@@ -161,7 +173,6 @@ export default function WeakVerbsPage() {
             <DropdownItem
               onClick={() => {
                 setWeakType("hamza");
-                localStorage.setItem("weakType", "hamza");
                 setOpenDropdown(null);
               }}
             >
@@ -171,7 +182,6 @@ export default function WeakVerbsPage() {
             <DropdownItem
               onClick={() => {
                 setWeakType("double");
-                localStorage.setItem("weakType", "double");
                 setOpenDropdown(null);
               }}
             >
@@ -287,7 +297,7 @@ export default function WeakVerbsPage() {
             </div>
           ) : (
             finalVerbs.map((verb) => (
-              <Link
+              <WordLink type="verb" id={verb.id}
                 key={verb.id}
                 to={`/verb/${verb.id}`}
                 style={{
@@ -347,7 +357,7 @@ export default function WeakVerbsPage() {
     ? verb.english.simple
     : verb.english}
 </div>
-              </Link>
+              </WordLink>
             ))
           )}
         </div>

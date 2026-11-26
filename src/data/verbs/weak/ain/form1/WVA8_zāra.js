@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 102:2",
+      arabic: "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ",
+      focusWord: "زُرْتُمُ",
+      lemma: "زَارَ",
+      use: "verb",
+      morphology: "Form I perfect, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=102&verse=2"
+    }
+  ]
 };

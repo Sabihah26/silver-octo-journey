@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 17:66",
+      arabic: "رَّبُّكُمُ ٱلَّذِى يُزْجِى لَكُمُ ٱلْفُلْكَ فِى ٱلْبَحْرِ لِتَبْتَغُوا۟ مِن فَضْلِهِۦٓ إِنَّهُۥ كَانَ بِكُمْ رَحِيمًا",
+      focusWord: "يُزْجِى",
+      lemma: "أَزْجَى",
+      use: "verb",
+      morphology: "Form IV imperfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=17&verse=66"
+    }
+  ]
 };

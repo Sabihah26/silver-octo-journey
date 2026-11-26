@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: "Intransitive verb; commonly followed by مِنْ. No passive forms are normally used."
+  notes: "Intransitive verb; commonly followed by مِنْ. No passive forms are normally used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 27:58",
+      arabic: "وَأَمْطَرْنَا عَلَيْهِم مَّطَرًا فَسَآءَ مَطَرُ ٱلْمُنذَرِينَ",
+      focusWord: "فَسَآءَ",
+      lemma: "اِسْتَاءَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root س-و-ء",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=58"
+    }
+  ]
 };

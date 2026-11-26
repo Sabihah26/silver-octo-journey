@@ -2,12 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import verbs from "../data/verbs";
 import { loadFavourites, saveFavourites } from "../utils/favourites";
 import { colorizeArabic } from "../engine/vowelColorizer";
 import { transliterate } from "../engine/transliterate";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 
 export default function FavouritesPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const favIds = loadFavourites();
   const items = favIds
     .map((id) => verbs.find((v) => v.id === id))
@@ -28,14 +30,14 @@ export default function FavouritesPage() {
       {items.length === 0 && <p>No favourites yet.</p>}
 
       {items.map((v) => (
-        <Link to={`/verb/${v.id}`} key={v.id} style={item}>
+        <WordLink type="verb" id={v.id} to={`/verb/${v.id}`} key={v.id} style={item}>
           <div
             style={arabic}
             dangerouslySetInnerHTML={{ __html: colorizeArabic(v.past) }}
           />
           <div style={translit}>{transliterate(v.past)}</div>
           <div style={meaning}>{v.meaning}</div>
-        </Link>
+        </WordLink>
       ))}
 
       {items.length > 0 && (

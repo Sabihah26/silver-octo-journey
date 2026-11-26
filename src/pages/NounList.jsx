@@ -1,9 +1,12 @@
 // src/pages/NounList.jsx
 import React, { useState, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
-import nouns from "../data/nouns";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 export default function NounList() {
+  const { allNouns: nouns } = useWordAccess();
   const [query, setQuery] = useState("");
 
   const { category, topic } = useParams();
@@ -35,6 +38,8 @@ export default function NounList() {
           : "Nouns"}
       </h1>
 
+      <FreeTierBanner type="noun" />
+
       <input
         type="text"
         placeholder="Search nouns..."
@@ -45,7 +50,7 @@ export default function NounList() {
 
       <div style={styles.grid}>
         {filtered.map((n) => (
-          <Link
+          <WordLink type="noun" id={n.id}
             key={`${n.id}-${n.arabic}`}
             to={`/noun/${n.id}`}
             style={styles.card}
@@ -53,7 +58,7 @@ export default function NounList() {
             <div style={styles.id}>{n.id}</div>
             <div style={styles.arabic}>{n.arabic}</div>
             <div style={styles.english}>{n.english}</div>
-          </Link>
+          </WordLink>
         ))}
       </div>
     </div>

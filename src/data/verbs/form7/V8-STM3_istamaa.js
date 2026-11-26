@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 21:2",
+      arabic: "مَا يَأْتِيهِم مِّن ذِكْرٍ مِّن رَّبِّهِم مُّحْدَثٍ إِلَّا ٱسْتَمَعُوهُ وَهُمْ يَلْعَبُونَ",
+      focusWord: "ٱسْتَمَعُوهُ",
+      lemma: "اِسْتَمَعَ",
+      use: "verb",
+      morphology: "Form VIII perfect, third-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=2"
+    }
+  ]
 };

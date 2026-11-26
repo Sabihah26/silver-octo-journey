@@ -2,10 +2,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import adverbs from "../data/Adverbs";
-import { usePremium } from "../context/PremiumContext";
 
 export default function AdverbPage() {
-  const { isPremium } = usePremium();
   const { id } = useParams();
   const adverb = adverbs.find((a) => String(a.id) === String(id));
 
@@ -24,18 +22,7 @@ export default function AdverbPage() {
     );
   }
 
-  const isLocked = adverb.premium === true && !isPremium;
-
-  if (isLocked) {
-    return (
-      <div style={styles.page}>
-        <h1>Premium adverb</h1>
-        <p>This entry is available with Premium.</p>
-        <Link to="/billing" style={styles.back}>View Premium plans</Link>
-      </div>
-    );
-  }
-
+  // Locked adverbs never reach this page: PremiumGate wraps the route.
   return (
     <div style={styles.page}>
       {/* Back to list */}
@@ -44,13 +31,6 @@ export default function AdverbPage() {
       </Link>
 
       <div style={styles.card}>
-        {/* ⭐ PREMIUM LOCK OVERLAY */}
-        {isLocked && (
-          <div style={styles.lockOverlay}>
-            🔒 Premium
-          </div>
-        )}
-
         {/* Arabic + Audio */}
         <div style={{ textAlign: "center", direction: "rtl" }}>
           <div style={styles.arabic}>{adverb.arabic}</div>

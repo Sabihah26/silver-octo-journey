@@ -4,12 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { loadStudyProgress } from "../utils/studyStorage";
 import logo from "../assets/logo.png";
 import "./HomePage.css";
-import verbs from "../data/verbs";
-import nouns from "../data/nouns";
-import adverbs from "../data/Adverbs";
-import adjectives from "../data/adjectives";
+import useWordAccess from "../hooks/useWordAccess";
 
 export default function HomePage() {
+  const { verbs, nouns, adverbs, adjectives } = useWordAccess();
   const navigate = useNavigate();
 
   const [query, setQuery] = useState("");
@@ -57,7 +55,10 @@ export default function HomePage() {
     setShowSuggestions(false);
   }
 
-  const allWords = useMemo(() => [...verbs, ...nouns, ...adverbs, ...adjectives], []);
+  const allWords = useMemo(
+    () => [...verbs, ...nouns, ...adverbs, ...adjectives],
+    [verbs, nouns, adverbs, adjectives]
+  );
 
   const suggestions = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -138,6 +139,7 @@ export default function HomePage() {
 
             {/* SEARCH BAR */}
             <form
+              className="home-search"
               onSubmit={handleSearch}
               style={{
                 display: "flex",

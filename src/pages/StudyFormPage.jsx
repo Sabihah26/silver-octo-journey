@@ -1,8 +1,9 @@
 // src/pages/StudyFormPage.jsx
 import React, { useState, useMemo } from "react";
-import verbs from "../data/verbs";
 import { Link, useNavigate } from "react-router-dom";
 
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 import {
   loadStudyProgress,
   saveStudyProgress,
@@ -19,6 +20,7 @@ function shuffleArray(array) {
 }
 
 export default function StudyFormPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const navigate = useNavigate();
 
   const [selectedForm, setSelectedForm] = useState(null);
@@ -79,7 +81,7 @@ export default function StudyFormPage() {
       const normalizedForm = (v.form || "").replace("Form", "").trim();
       return normalizedForm === normalizedSelected;
     });
-  }, [selectedForm]);
+  }, [selectedForm, verbs]);
 
   const studiedCount = filteredVerbs.filter((v) => v.studied).length;
   const totalCount = filteredVerbs.length;
@@ -424,7 +426,7 @@ export default function StudyFormPage() {
                         alignItems: "center",
                       }}
                     >
-                      <Link
+                      <WordLink type="verb" id={verb.id}
                         to={`/verb/${verb.id}`}
                         style={{ textDecoration: "none", color: "#000", flex: 1 }}
                       >
@@ -436,7 +438,7 @@ export default function StudyFormPage() {
                             {verb.english?.simple || verb.english?.detailed || ""}
                           </div>
                         </div>
-                      </Link>
+                      </WordLink>
                     </div>
 
                     {/* Study + Audio */}

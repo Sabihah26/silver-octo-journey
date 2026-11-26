@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 12:76",
+      arabic: "فَبَدَأَ بِأَوْعِيَتِهِمْ قَبْلَ وِعَآءِ أَخِيهِ ثُمَّ ٱسْتَخْرَجَهَا مِن وِعَآءِ أَخِيهِ كَذَٰلِكَ كِدْنَا لِيُوسُفَ مَا …",
+      focusWord: "ٱسْتَخْرَجَهَا",
+      lemma: "اِسْتَخْرَجَ",
+      use: "verb",
+      morphology: "Form X perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=76"
+    }
+  ]
 };

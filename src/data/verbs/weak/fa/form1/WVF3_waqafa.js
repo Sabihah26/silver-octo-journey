@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 37:24",
+      arabic: "وَقِفُوهُمْ إِنَّهُم مَّسْـُٔولُونَ",
+      focusWord: "وَقِفُوهُمْ",
+      lemma: "وَقَفَ",
+      use: "verb",
+      morphology: "Form I imperative, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=37&verse=24"
+    }
+  ]
 };

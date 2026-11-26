@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 83:3",
+      arabic: "وَإِذَا كَالُوهُمْ أَو وَّزَنُوهُمْ يُخْسِرُونَ",
+      focusWord: "وَّزَنُوهُمْ",
+      lemma: "وَزَنَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=83&verse=3"
+    }
+  ]
 };

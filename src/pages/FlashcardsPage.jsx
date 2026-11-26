@@ -1,12 +1,11 @@
 // src/pages/FlashcardsPage.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useWordAccess from "../hooks/useWordAccess";
 
-import verbs from "../data/verbs";
-import nouns from "../data/nouns";
-import adverbs from "../data/Adverbs";
 
 export default function FlashcardsPage() {
+  const { verbs, nouns, adverbs } = useWordAccess();
   // ⭐ URL PARAMS
   const params = new URLSearchParams(window.location.search);
   const formFilter = params.get("form");   // e.g. "Form I"
@@ -20,8 +19,9 @@ export default function FlashcardsPage() {
     type: "verb",
     id: v.id,
     form: v.form,
-    arabic: v.arabic,
-    english: v.english,
+    // Verb data stores these as objects ({ past }, { simple, detailed }).
+    arabic: v.arabic?.past || v.past || "",
+    english: v.english?.simple || "",
   }));
 
   // ⭐ STRICT FILTERING WHEN FORM IS PASSED
@@ -54,7 +54,7 @@ export default function FlashcardsPage() {
   let initialIndex = 0;
 
   if (startId) {
-    const foundIndex = allCards.findIndex((c) => c.id === Number(startId));
+    const foundIndex = allCards.findIndex((c) => String(c.id) === startId);
     if (foundIndex !== -1) {
       initialIndex = foundIndex;
     }

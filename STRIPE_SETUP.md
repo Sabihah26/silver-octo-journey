@@ -59,6 +59,8 @@ supabase functions deploy create-checkout-session create-customer-portal stripe-
 - Check: after Checkout, `/billing` flips to "Premium Active". `profiles.is_premium` is true. Cancelling in the portal sets `subscription_status` (Premium stays until the period ends, then a `customer.subscription.deleted` event turns it off).
 - Function logs: Supabase Dashboard → Edge Functions → logs.
 
-## Not yet done (product decisions)
-- **Nothing is actually gated.** Only adverbs check `premium === true`, and no item is flagged. Decide what's free vs Premium and apply `PremiumLock`/`PremiumModal`. Note that `data/freeVerbs.js` uses stale IDs.
-- Client-side gating is cosmetic, because all data ships in the JS bundle.
+## Access rules (added 2026-11-23)
+- **Full access:** paying (`is_premium`, set by the webhook for `active`, `trialing` and `past_due`), `is_admin`, or `is_complimentary`.
+- **Free:** everyone else, including signed-out visitors: 25 verbs, 25 nouns, all adjectives and adverbs (`src/data/freeWords.js`). Locked words show with 🔒 in lists. Opening one shows an upgrade card.
+- **Grant admin or complimentary access:** Supabase Dashboard → Table Editor → `profiles` → set `is_admin` or `is_complimentary` to `true` for that user's row. They need to reload the app. Checkout refuses these accounts ("already has full access").
+- **Known limitation:** gating is client-side, and all word data ships in the JS bundle. Real protection would need Premium words served from Supabase behind RLS.

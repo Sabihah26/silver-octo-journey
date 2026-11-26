@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "Defective Form I verb. It commonly means “come/arrive”; أَتَى بِـ means “bring.”"
+  notes: "Defective Form I verb. It commonly means “come/arrive”; أَتَى بِـ means “bring.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 20:9",
+      arabic: "وَهَلْ أَتَىٰكَ حَدِيثُ مُوسَىٰٓ",
+      focusWord: "أَتَىٰكَ",
+      lemma: "أَتَى",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=9"
+    }
+  ]
 };

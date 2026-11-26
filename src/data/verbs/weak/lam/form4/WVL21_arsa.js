@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 79:42",
+      arabic: "يَسْـَٔلُونَكَ عَنِ ٱلسَّاعَةِ أَيَّانَ مُرْسَىٰهَا",
+      focusWord: "مُرْسَىٰهَا",
+      lemma: "أَرْسَى",
+      use: "related word",
+      morphology: "Passive participle from the same root ر-س-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=79&verse=42"
+    }
+  ]
 };

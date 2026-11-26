@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 33:19",
+      arabic: "… عَلَيْكُمْ فَإِذَا جَآءَ ٱلْخَوْفُ رَأَيْتَهُمْ يَنظُرُونَ إِلَيْكَ تَدُورُ أَعْيُنُهُمْ كَٱلَّذِى يُغْشَىٰ عَلَيْهِ مِنَ ٱلْمَوْتِ فَإِذَا …",
+      focusWord: "تَدُورُ",
+      lemma: "دَارَ",
+      use: "verb",
+      morphology: "Form I imperfect, third-person feminine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=19"
+    }
+  ]
 };

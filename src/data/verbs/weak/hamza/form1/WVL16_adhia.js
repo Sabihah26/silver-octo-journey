@@ -181,5 +181,19 @@ export default {
   },
 
   audio: "",
-  notes: "Rare defective Form I verb meaning to suffer harm. Do not confuse with آذَى, the transitive Form IV verb meaning “to harm someone.”"
+  notes: "Rare defective Form I verb meaning to suffer harm. Do not confuse with آذَى, the transitive Form IV verb meaning “to harm someone.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:263",
+      arabic: "قَوْلٌ مَّعْرُوفٌ وَمَغْفِرَةٌ خَيْرٌ مِّن صَدَقَةٍ يَتْبَعُهَآ أَذًى وَٱللَّهُ غَنِىٌّ حَلِيمٌ",
+      focusWord: "أَذًى",
+      lemma: "أَذِيَ",
+      use: "related word",
+      morphology: "Noun from the same root أ-ذ-ي",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=263"
+    }
+  ]
 };

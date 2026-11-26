@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 9:37",
+      arabic: "… بِهِ ٱلَّذِينَ كَفَرُوا۟ يُحِلُّونَهُۥ عَامًا وَيُحَرِّمُونَهُۥ عَامًا لِّيُوَاطِـُٔوا۟ عِدَّةَ مَا حَرَّمَ ٱللَّهُ فَيُحِلُّوا۟ مَا حَرَّمَ …",
+      focusWord: "لِّيُوَاطِـُٔوا۟",
+      lemma: "تَوَاطَأَ",
+      use: "related word",
+      morphology: "Form III imperfect subjunctive, third-person masculine plural, a related verb from the same root و-ط-أ",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=9&verse=37"
+    }
+  ]
 };

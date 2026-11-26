@@ -239,6 +239,48 @@ export default function VerbPage() {
         </div>
       </div>
 
+      {verb.quranExamples?.length > 0 && (
+        <section
+          aria-labelledby="quran-examples-heading"
+          style={{
+            width: "100%",
+            maxWidth: "1500px",
+            margin: "0 auto 40px auto",
+            background: "white",
+            padding: "20px",
+            borderRadius: "14px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            color: "#111827",
+          }}
+        >
+          <h2
+            id="quran-examples-heading"
+            style={{ color: "#1061e4", marginTop: 0 }}
+          >
+            Quran Examples
+          </h2>
+          <p style={{ color: "#4b5563" }}>
+            Explore {verb.quranExamples.length} Quran{" "}
+            {verb.quranExamples.length === 1 ? "example" : "examples"} for this
+            verb.
+          </p>
+          <Link
+            to={`/verb/${verb.id}/quran-examples`}
+            style={{
+              display: "inline-block",
+              padding: "10px 18px",
+              borderRadius: "8px",
+              background: "#1061e4",
+              color: "white",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            View Quran examples
+          </Link>
+        </section>
+      )}
+
       {/* GOLD LINE */}
       <div
         style={{

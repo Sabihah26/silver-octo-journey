@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "Form II defective verb with a final ي. Also used in أَدَّى إِلَى, meaning “led to.”"
+  notes: "Form II defective verb with a final ي. Also used in أَدَّى إِلَى, meaning “led to.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 44:18",
+      arabic: "أَنْ أَدُّوٓا۟ إِلَىَّ عِبَادَ ٱللَّهِ إِنِّى لَكُمْ رَسُولٌ أَمِينٌ",
+      focusWord: "أَدُّوٓا۟",
+      lemma: "أَدَّى",
+      use: "verb",
+      morphology: "Form II imperative, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=44&verse=18"
+    }
+  ]
 };

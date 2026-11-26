@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 28:51",
+      arabic: "وَلَقَدْ وَصَّلْنَا لَهُمُ ٱلْقَوْلَ لَعَلَّهُمْ يَتَذَكَّرُونَ",
+      focusWord: "وَصَّلْنَا",
+      lemma: "أَوْصَلَ",
+      use: "related word",
+      morphology: "Form II perfect, first-person plural, a related verb from the same root و-ص-ل",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=51"
+    }
+  ]
 };

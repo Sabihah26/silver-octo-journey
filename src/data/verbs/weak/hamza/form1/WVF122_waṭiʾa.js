@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: "Depending on context, وَطِئَ can also mean to have sexual intercourse with someone."
+  notes: "Depending on context, وَطِئَ can also mean to have sexual intercourse with someone.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 48:25",
+      arabic: "… رِجَالٌ مُّؤْمِنُونَ وَنِسَآءٌ مُّؤْمِنَٰتٌ لَّمْ تَعْلَمُوهُمْ أَن تَطَـُٔوهُمْ فَتُصِيبَكُم مِّنْهُم مَّعَرَّةٌۢ بِغَيْرِ عِلْمٍ لِّيُدْخِلَ ٱللَّهُ …",
+      focusWord: "تَطَـُٔوهُمْ",
+      lemma: "وَطِئَ",
+      use: "verb",
+      morphology: "Form I imperfect subjunctive, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=48&verse=25"
+    }
+  ]
 };

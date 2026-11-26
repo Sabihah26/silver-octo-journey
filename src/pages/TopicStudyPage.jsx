@@ -1,9 +1,11 @@
 // src/pages/TopicStudyPage.jsx
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import nouns from "../data/nouns";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 
 export default function TopicStudyPage() {
+  const { allNouns: nouns } = useWordAccess();
   const { category, topic } = useParams();
 
   if (!topic) {
@@ -63,7 +65,7 @@ export default function TopicStudyPage() {
               {noun.arabic}
             </div>
 
-            <Link
+            <WordLink type="noun" id={noun.id}
               to={`/noun/${noun.id}`}
               style={{
                 marginTop: "12px",
@@ -74,7 +76,7 @@ export default function TopicStudyPage() {
               }}
             >
               View Details →
-            </Link>
+            </WordLink>
           </div>
         ))}
       </div>

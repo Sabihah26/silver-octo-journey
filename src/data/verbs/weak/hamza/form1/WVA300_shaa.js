@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: "Hollow verb with a final hamza. The imperative شَأْ is uncommon; the verb is more often used in past and present forms."
+  notes: "Hollow verb with a final hamza. The imperative شَأْ is uncommon; the verb is more often used in past and present forms.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 80:12",
+      arabic: "فَمَن شَآءَ ذَكَرَهُۥ",
+      focusWord: "شَآءَ",
+      lemma: "شَاءَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=80&verse=12"
+    }
+  ]
 };

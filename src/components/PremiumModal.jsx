@@ -30,8 +30,8 @@ export default function PremiumModal({ isOpen, onClose }) {
         </p>
 
         <ul style={benefits}>
-          <li>✔ 20 free verbs included</li>
-          <li>✔ Unlock all remaining verbs</li>
+          <li>✔ 25 free verbs and 25 free nouns included</li>
+          <li>✔ Unlock every remaining verb</li>
           <li>✔ Unlock all nouns & adverbs</li>
           <li>✔ Unlock all grammar & examples</li>
           <li>✔ Unlimited quizzes & flashcards</li>

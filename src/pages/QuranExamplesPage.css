@@ -1,0 +1,88 @@
+.quran-examples-page {
+  width: min(100% - 32px, 1100px);
+  margin: 32px auto 60px;
+  color: #111827;
+}
+
+.quran-examples-header,
+.quran-examples-empty,
+.quran-example-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quran-examples-header,
+.quran-examples-empty {
+  padding: 24px;
+}
+
+.quran-examples-header h1 {
+  margin: 12px 0 8px;
+  color: #1061e4;
+}
+
+.quran-examples-header p {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+.quran-examples-back {
+  color: #1061e4;
+  font-weight: 600;
+}
+
+.quran-examples-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.quran-example-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 2fr);
+  gap: 24px;
+  padding: 24px;
+}
+
+.quran-example-details h2 {
+  margin: 0 0 10px;
+  color: #1061e4;
+}
+
+.quran-example-details p {
+  line-height: 1.6;
+}
+
+.quran-reference {
+  font-weight: 700;
+}
+
+.quran-arabic {
+  margin: 0 0 16px;
+  color: #111827;
+  font-size: 35px;
+  line-height: 1.8;
+}
+
+.quran-source {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.quran-examples-page a {
+  color: #1061e4;
+}
+
+@media (max-width: 640px) {
+  .quran-example-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .quran-arabic {
+    font-size: 30px;
+  }
+}

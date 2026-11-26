@@ -181,5 +181,19 @@ export default {
   },
 
   audio: "",
-  notes: "Hollow verb with a final hamza. It can be intransitive (“to be bad”) or transitive (“to displease someone”)."
+  notes: "Hollow verb with a final hamza. It can be intransitive (“to be bad”) or transitive (“to displease someone”).",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 26:173",
+      arabic: "وَأَمْطَرْنَا عَلَيْهِم مَّطَرًا فَسَآءَ مَطَرُ ٱلْمُنذَرِينَ",
+      focusWord: "فَسَآءَ",
+      lemma: "سَاءَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=26&verse=173"
+    }
+  ]
 };

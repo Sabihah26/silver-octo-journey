@@ -1,7 +1,7 @@
 # Arabic Dictionary — Project Constitution
 
 > Reference document for future work in this repo. It records how the project is put together,
-> its conventions, and its known pitfalls. Last surveyed: **2026-11-22** (branch `main`, HEAD `b362d8f`).
+> its conventions, and its known pitfalls. Last surveyed: **2026-11-22**; free tier added **2026-11-23** (branch `main`, HEAD `b362d8f`).
 > Update this file whenever the structure or conventions change.
 
 ---
@@ -165,7 +165,8 @@ Noun categories: household, people, food, nature, school, places, abstract, tool
 - `data/index.js`: barrel aggregating everything.
 - `data/schema.js`: an **aspirational** schema (numeric ids, nested conjugations) that does **not** match the real verb files. Don't treat it as truth.
 - `data/categories.json`: semantic and grammatical category lists (used by `scripts/autoAssignCategories.js`).
-- `data/verbTopics.js`, `data/freeVerbs.js`, `data/premium.js`: ⚠️ **stale**. They reference numeric IDs (1–20, 101–167) that no longer exist (current ids are strings like `"V1_akala"`).
+- `data/verbTopics.js`: ⚠️ **stale**. It references numeric IDs that no longer exist (current ids are strings like `"V1_akala"`).
+- `data/freeWords.js` + `data/access.js`: the free tier (see §8).
 
 ---
 
@@ -203,7 +204,7 @@ Noun categories: household, people, food, nature, school, places, abstract, tool
 | Topics | `/topics`, `/topics/:topic[/study|/flashcards|/ai|/super]` |
 | User | `/word-of-the-day`, `/recent`, `/favourites` |
 | Account | `/billing`, `/auth` |
-| Misc | `/about`, `/contact`, `/report-error`, `/admin` (GA4 placeholders, **no auth guard**), `/dev/tests`, `/dev/inspector` |
+| Misc | `/about`, `/contact`, `/report-error`, `/admin` (GA4 placeholders), `/dev/tests`, `/dev/inspector` (the last three are admin-only via `AdminRoute`) |
 | 404 | inline `*` route |
 
 Navbar links: Home, Verbs (`/verbs/categories`), Nouns (`/nouns/categories`), Adjectives (`/adjectives/category`), Adverbs, About, Contact, Report Error, Premium (`/billing`), Sign in/Account (`/auth`).
@@ -230,15 +231,23 @@ Navbar links: Home, Verbs (`/verbs/categories`), Nouns (`/nouns/categories`), Ad
 Flow:
 1. `/auth` (`AuthPage.jsx`): Supabase email auth.
 2. On sign-up, a DB trigger `handle_new_user` inserts a row in `public.profiles`.
-3. `PremiumContext` listens to `onAuthStateChange` and reads `profiles.is_premium, stripe_customer_id` (RLS: a user can select only their own row).
+3. `PremiumContext` listens to `onAuthStateChange` and reads `profiles.is_premium, is_admin, is_complimentary, stripe_customer_id` (RLS: a user can select only their own row). It exposes `isPremium` (paying), `isAdmin`, `isComplimentary` and `hasFullAccess` (any of the three).
 4. `startCheckout()` → Edge Function `create-checkout-session` (JWT required) → Stripe Checkout URL → redirect.
-5. `stripe-webhook` (signature-verified, service-role) updates `is_premium`, `subscription_status`, `subscription_period_end`, etc. Premium = status `active` or `trialing`.
+5. `stripe-webhook` (signature-verified, service-role) updates `is_premium`, `subscription_status`, `subscription_period_end`, etc. Premium = status `active`, `trialing` or `past_due` (`past_due` keeps access while Stripe retries a failed renewal).
 6. `openCustomerPortal()` → `create-customer-portal` → Stripe billing portal.
 
 Rules:
 - **Premium status is only written server-side** by the webhook. The client never writes `profiles`. Keep it that way.
-- Gating today is light. Only adverbs check `item.premium === true && !isPremium`, and **no data item is currently flagged premium**, so nothing is actually locked. `PremiumLock`/`PremiumModal` components exist for wider gating. `data/premium.js`'s `userIsPremium` flag and the ID lists are legacy.
+- `is_admin` / `is_complimentary` are set **by hand** in the Supabase Table Editor (migration `20261123000000_profile_access_flags.sql`). Stripe never touches them. Users can't write `profiles` (RLS has no update policy).
 - Client gating is cosmetic, because all data ships in the JS bundle.
+
+### Free tier (word gating)
+- **Who:** full access = paying, admin or complimentary. Free = signed out, or signed in without any of those. Signed-out visitors get the same free words.
+- **What's free:** the fixed ID list in `data/freeWords.js` (25 verbs spread across forms, 25 nouns across categories; all 19 adjectives and 20 adverbs). It is fixed on purpose: adding words never changes what free users already have. Edit it by hand. `data/access.js` exposes `isFreeItem`, `freeListOf`, `FREE_LIMIT`.
+- **`useWordAccess()`** (`hooks/useWordAccess.js`): `allVerbs/allNouns/allAdjectives/allAdverbs` for **browse lists** (locked words still show, dimmed, with 🔒 via `components/WordLink.jsx`); `verbs/nouns/adjectives/adverbs` (the accessible subset) for **study, flashcard, quiz and word-of-the-day pools**; `isLocked(type, id)`.
+- **Detail routes** (`/verb/:id/*`, `/noun/:id`, `/adjectives/:id`, `/adverbs/:id`) are wrapped in `components/PremiumGate.jsx`, which shows an upgrade card for locked words. `components/FreeTierBanner.jsx` ("25 of N are free") sits on the main list pages.
+- `/admin` and `/dev/*` are wrapped in `components/AdminRoute.jsx` (admins only).
+- New pages that list or study words must use `useWordAccess()`, not a direct `import verbs from "../data/verbs"`. `srsEngine.getNextRecommendedVerb(used, list)` and `wordOfTheDay.loadWordOfTheDay(list)` take the allowed list.
 
 ### Reports
 - `components/ReportIssue.jsx` inserts `{ description }` into a Supabase **`reports`** table. That table has **no migration in the repo**, so it was presumably created manually.
@@ -253,6 +262,7 @@ Rules:
 - Arabic text is always **fully vowelled** (with ḥarakāt) in data. Roots use hyphens `ف-ع-ل`. Transliteration uses scholarly diacritics in newer files (ā ī ū ḥ ṣ ḍ ṭ ẓ ʿ ʾ) and ASCII-ish forms in older ones (`kitaab`, `daa'iman`).
 - Pages look items up with `items.find(x => String(x.id) === String(id))`, so IDs are strings.
 - Styling is mostly inline style objects plus some Tailwind and CSS files. The dark navy background is global and forced.
+- **Screen sizes:** the app must work on phones (≤600px), iPads/tablets (≤1024px), laptops and desktops. `src/styles/responsive.css` (imported in `index.js`) adapts inline-styled pages by matching their inline style text (e.g. `[style*="grid-template-columns: repeat(5"]`), so fixed grids collapse to 3 columns on tablets and 2 or 1 on phones, and flex button rows wrap. The navbar becomes a swipeable row below 1240px (`Navbar.css`). For new grids prefer `repeat(auto-fit, minmax(180px, 1fr))`, and check new pages at 375px and 768px wide.
 - Defensive accessors are common (`verb.arabic?.past || verb.past || …`) because data shapes vary. Normalizing data is better than adding more fallbacks.
 - Windows dev machine (CRLF warnings appear in git), and filenames contain Unicode (ʿ ʾ ḥ ṣ ā). Quote paths in shell commands.
 
@@ -269,12 +279,13 @@ Rules:
 
 1. `react` / `react-dom` are missing from `package.json` dependencies, and React 19 is running on CRA 4 (an unsupported combination, which works through the legacy OpenSSL flag).
 2. `AppRoutes.jsx` is dead, and ~50 pages are unrouted (§6).
-3. Stale ID lists: `freeVerbs.js`, `premium.js`, `verbTopics.js` use numeric IDs.
+3. Stale ID list: `verbTopics.js` uses numeric IDs. (`freeVerbs.js`/`premium.js` were removed and replaced by `freeWords.js`.)
 4. `schema.js` doesn't match the real data.
 5. Inconsistent field names across nouns, adjectives and adverbs.
 6. Two empty verb files in `weak/lam/form5/`. The `Form Iq (quadriliteral)` form is unsupported by `conjugate()`.
 7. `VerbPage` calls `conjugate()` without using the result, and many tense pages ignore `overrides`.
-8. `/admin` and `/dev/*` routes are public. `ga4.js` returns placeholders.
+8. `/admin` and `/dev/*` are now admin-only in the app, but this is client-side; any data they read needs its own RLS. `ga4.js` returns placeholders.
+14. ~~`/flashcards` crashed ("Objects are not valid as a React child")~~ Fixed 2026-11-25: verb cards now use `arabic.past` / `english.simple`, and `?start=<id>` matches string IDs.
 9. The `reports` table has no migration. `send-report-email` is unauthenticated.
 10. The README is outdated boilerplate with a repeated garbled "silver-octo-journey" heading.
 11. Stray files and folders: `check-ids.js/` (empty dir), `src/pages/src/pages/`, `src/pages/SRS Engine (Spaced Repetition)`, `src/hooks/useSRS` (empty), the PNG in `src/`.

@@ -1,8 +1,10 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import adjectives from "../data/adjectives";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 
 export default function AdjectiveCategoryList() {
+  const { allAdjectives: adjectives } = useWordAccess();
   const { category } = useParams();
 
   const filtered = adjectives
@@ -30,7 +32,7 @@ export default function AdjectiveCategoryList() {
         }}
       >
         {filtered.map((adj) => (
-          <Link
+          <WordLink type="adjective" id={adj.id}
             key={adj.id}
             to={`/adjectives/${adj.id}`}
             style={{
@@ -86,7 +88,7 @@ export default function AdjectiveCategoryList() {
             >
               {adj.en}
             </p>
-          </Link>
+          </WordLink>
         ))}
       </div>
 

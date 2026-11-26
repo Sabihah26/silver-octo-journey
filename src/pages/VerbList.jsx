@@ -1,7 +1,9 @@
 // src/pages/VerbList.jsx
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import verbs from "../data/verbs";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 // ⭐ WEAK VERB HELPERS ⭐
 const WEAK_LETTERS = ["و", "ي", "ا"];
@@ -39,6 +41,7 @@ function getWeakLabel(type) {
 }
 
 export default function VerbList() {
+  const { allVerbs: verbs } = useWordAccess();
   const [query, setQuery] = useState("");
 
   // ⭐ NEW — read category from URL
@@ -75,6 +78,8 @@ export default function VerbList() {
       <h1 style={styles.title}>
         {category ? `Verbs · ${category}` : "Verbs"}
       </h1>
+
+      <FreeTierBanner type="verb" />
 
       {/* ⭐ NEW — back buttons */}
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
@@ -138,7 +143,7 @@ export default function VerbList() {
           const weakColor = getWeakColor(weakType);
 
           return (
-            <Link key={v.id} to={`/verb/${v.id}`} style={styles.card}>
+            <WordLink type="verb" id={v.id} key={v.id} to={`/verb/${v.id}`} style={styles.card}>
               {/* ID */}
               <div style={styles.id}>{v.id}</div>
 
@@ -178,7 +183,7 @@ export default function VerbList() {
                   Weak Verb · {weakLabel}
                 </div>
               )}
-            </Link>
+            </WordLink>
           );
         })}
       </div>

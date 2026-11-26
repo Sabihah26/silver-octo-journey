@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: "The passive is generally impersonal and uncommon with this intransitive verb."
+  notes: "The passive is generally impersonal and uncommon with this intransitive verb.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 78:9",
+      arabic: "وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا",
+      focusWord: "نَوْمَكُمْ",
+      lemma: "نَامَ",
+      use: "related word",
+      morphology: "Noun from the same root ن-و-م",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=78&verse=9"
+    }
+  ]
 };

@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 18:62",
+      arabic: "فَلَمَّا جَاوَزَا قَالَ لِفَتَىٰهُ ءَاتِنَا غَدَآءَنَا لَقَدْ لَقِينَا مِن سَفَرِنَا هَٰذَا نَصَبًا",
+      focusWord: "جَاوَزَا",
+      lemma: "أَجَازَ",
+      use: "related word",
+      morphology: "Form III perfect, third-person masculine dual, a related verb from the same root ج-و-ز",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=62"
+    }
+  ]
 };

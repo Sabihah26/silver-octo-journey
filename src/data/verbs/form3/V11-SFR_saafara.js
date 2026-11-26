@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: "This verb is usually intransitive; its passive forms are uncommon."
+  notes: "This verb is usually intransitive; its passive forms are uncommon.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 74:34",
+      arabic: "وَٱلصُّبْحِ إِذَآ أَسْفَرَ",
+      focusWord: "أَسْفَرَ",
+      lemma: "سَافَرَ",
+      use: "related word",
+      morphology: "Form IV perfect, third-person masculine singular, a related verb from the same root س-ف-ر",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=34"
+    }
+  ]
 };

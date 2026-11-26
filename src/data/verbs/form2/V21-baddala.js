@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 27:11",
+      arabic: "إِلَّا مَن ظَلَمَ ثُمَّ بَدَّلَ حُسْنًۢا بَعْدَ سُوٓءٍ فَإِنِّى غَفُورٌ رَّحِيمٌ",
+      focusWord: "بَدَّلَ",
+      lemma: "بَدَّلَ",
+      use: "verb",
+      morphology: "Form II perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=11"
+    }
+  ]
 };

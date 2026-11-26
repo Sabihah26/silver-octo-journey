@@ -175,7 +175,21 @@ export default {
       tr: "yusāʿidu at-taʿāwunu ʿalā at-taʾākhī bayna ash-shuʿūbi",
       audio: ""
     }
-  }
+  },
+
+  quranExamples: [
+    {
+      reference: "Qur'an 49:10",
+      arabic: "إِنَّمَا ٱلْمُؤْمِنُونَ إِخْوَةٌ",
+      focusWord: "إِخْوَةٌ",
+      lemma: "أَخٌ",
+      use: "related noun",
+      morphology: "Plural noun from the same root أ-خ-و, expressing brotherhood",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=49&verse=10"
+    }
+  ],
 
   audio: "",
   notes: "Intransitive, reciprocal Form VI verb with a weak final radical."

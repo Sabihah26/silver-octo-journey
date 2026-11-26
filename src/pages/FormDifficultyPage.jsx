@@ -1,7 +1,7 @@
 // src/pages/FormDifficultyPage.jsx
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import verbs from "../data/verbs";
+import useWordAccess from "../hooks/useWordAccess";
 
 // Convert 1–10 → I–X
 const romanMap = {
@@ -18,6 +18,7 @@ const romanMap = {
 };
 
 export default function FormDifficultyPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const { formNumber, difficulty } = useParams();
 
   // ⭐ FIX: Correct form label

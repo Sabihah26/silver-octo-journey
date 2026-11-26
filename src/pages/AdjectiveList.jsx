@@ -1,9 +1,10 @@
 // src/pages/AdverbList.jsx
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import adverbs from "../data/Adverbs";
+import useWordAccess from "../hooks/useWordAccess";
 
 export default function AdverbList() {
+  const { allAdverbs: adverbs, isLocked: isWordLocked } = useWordAccess();
   const { category: urlCategory } = useParams();
 
   const [query, setQuery] = useState("");
@@ -86,7 +87,7 @@ export default function AdverbList() {
       {/* ⭐ Grid */}
       <div style={styles.grid}>
         {filtered.map((a) => {
-          const isLocked = a.premium === true;
+          const isLocked = isWordLocked("adverb", a.id);
 
           return (
             <div key={a.id} style={styles.card}>
@@ -102,10 +103,10 @@ export default function AdverbList() {
               )}
 
               <Link
-                to={isLocked ? "#" : `/adverbs/${a.id}`}
+                to={isLocked ? "/billing" : `/adverbs/${a.id}`}
                 style={{
                   ...styles.cardLink,
-                  pointerEvents: isLocked ? "none" : "auto",
+                  pointerEvents: "auto",
                   filter: isLocked ? "blur(2px)" : "none",
                   opacity: isLocked ? 0.6 : 1,
                 }}

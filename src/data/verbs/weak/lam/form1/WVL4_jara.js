@@ -178,5 +178,19 @@ overrides: {
   },
 
   audio: "",
-  notes: "This verb is usually intransitive, so passive forms are not normally used."
+  notes: "This verb is usually intransitive, so passive forms are not normally used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 39:5",
+      arabic: "… ٱلنَّهَارَ عَلَى ٱلَّيْلِ وَسَخَّرَ ٱلشَّمْسَ وَٱلْقَمَرَ كُلٌّ يَجْرِى لِأَجَلٍ مُّسَمًّى أَلَا هُوَ ٱلْعَزِيزُ ٱلْغَفَّٰرُ",
+      focusWord: "يَجْرِى",
+      lemma: "جَرَى",
+      use: "verb",
+      morphology: "Form I imperfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=39&verse=5"
+    }
+  ]
 };

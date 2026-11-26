@@ -181,5 +181,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 8:16",
+      arabic: "وَمَن يُوَلِّهِمْ يَوْمَئِذٍ دُبُرَهُۥٓ إِلَّا مُتَحَرِّفًا لِّقِتَالٍ أَوْ مُتَحَيِّزًا إِلَىٰ فِئَةٍ فَقَدْ بَآءَ بِغَضَبٍ مِّنَ ٱللَّهِ وَمَأْوَىٰهُ جَهَنَّمُ وَبِئْسَ ٱلْمَصِيرُ",
+      focusWord: "مُتَحَيِّزًا",
+      lemma: "حَازَ",
+      use: "related word",
+      morphology: "Active participle from the same root ح-و-ز",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=8&verse=16"
+    }
+  ]
 };

@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 10:85",
+      arabic: "فَقَالُوا۟ عَلَى ٱللَّهِ تَوَكَّلْنَا رَبَّنَا لَا تَجْعَلْنَا فِتْنَةً لِّلْقَوْمِ ٱلظَّٰلِمِينَ",
+      focusWord: "تَوَكَّلْنَا",
+      lemma: "أَوْكَلَ",
+      use: "related word",
+      morphology: "Form V perfect, first-person plural, a related verb from the same root و-ك-ل",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=10&verse=85"
+    }
+  ]
 };

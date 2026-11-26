@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 6:27",
+      arabic: "وَلَوْ تَرَىٰٓ إِذْ وُقِفُوا۟ عَلَى ٱلنَّارِ فَقَالُوا۟ يَٰلَيْتَنَا نُرَدُّ وَلَا نُكَذِّبَ بِـَٔايَٰتِ رَبِّنَا وَنَكُونَ مِنَ ٱلْمُؤْمِنِينَ",
+      focusWord: "وُقِفُوا۟",
+      lemma: "أَوْقَفَ",
+      use: "related word",
+      morphology: "Form I passive perfect, third-person masculine plural, a related verb from the same root و-ق-ف",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=27"
+    }
+  ]
 };

@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: "Form II verb with a weak medial root radical (أ-ي-د)."
+  notes: "Form II verb with a weak medial root radical (أ-ي-د).",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 8:62",
+      arabic: "وَإِن يُرِيدُوٓا۟ أَن يَخْدَعُوكَ فَإِنَّ حَسْبَكَ ٱللَّهُ هُوَ ٱلَّذِىٓ أَيَّدَكَ بِنَصْرِهِۦ وَبِٱلْمُؤْمِنِينَ",
+      focusWord: "أَيَّدَكَ",
+      lemma: "أَيَّدَ",
+      use: "verb",
+      morphology: "Form II perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=8&verse=62"
+    }
+  ]
 };

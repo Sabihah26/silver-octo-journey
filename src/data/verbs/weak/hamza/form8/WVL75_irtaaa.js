@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: "Form VIII defective verb, derived from رَأَى. The passive finite forms are left blank because they are uncommon."
+  notes: "Form VIII defective verb, derived from رَأَى. The passive finite forms are left blank because they are uncommon.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 96:7",
+      arabic: "أَن رَّءَاهُ ٱسْتَغْنَىٰٓ",
+      focusWord: "رَّءَاهُ",
+      lemma: "اِرْتَأَى",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root ر-أ-ي",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=96&verse=7"
+    }
+  ]
 };

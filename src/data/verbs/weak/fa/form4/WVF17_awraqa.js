@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 20:121",
+      arabic: "فَأَكَلَا مِنْهَا فَبَدَتْ لَهُمَا سَوْءَٰتُهُمَا وَطَفِقَا يَخْصِفَانِ عَلَيْهِمَا مِن وَرَقِ ٱلْجَنَّةِ وَعَصَىٰٓ ءَادَمُ رَبَّهُۥ فَغَوَىٰ",
+      focusWord: "وَرَقِ",
+      lemma: "أَوْرَقَ",
+      use: "related word",
+      morphology: "Noun from the same root و-ر-ق",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=20&verse=121"
+    }
+  ]
 };

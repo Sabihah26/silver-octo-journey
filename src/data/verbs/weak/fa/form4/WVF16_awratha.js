@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 33:27",
+      arabic: "وَأَوْرَثَكُمْ أَرْضَهُمْ وَدِيَٰرَهُمْ وَأَمْوَٰلَهُمْ وَأَرْضًا لَّمْ تَطَـُٔوهَا وَكَانَ ٱللَّهُ عَلَىٰ كُلِّ شَىْءٍ قَدِيرًا",
+      focusWord: "وَأَوْرَثَكُمْ",
+      lemma: "أَوْرَثَ",
+      use: "verb",
+      morphology: "Form IV perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=33&verse=27"
+    }
+  ]
 };

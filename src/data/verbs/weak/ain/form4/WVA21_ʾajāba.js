@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 28:65",
+      arabic: "وَيَوْمَ يُنَادِيهِمْ فَيَقُولُ مَاذَآ أَجَبْتُمُ ٱلْمُرْسَلِينَ",
+      focusWord: "أَجَبْتُمُ",
+      lemma: "أَجَابَ",
+      use: "verb",
+      morphology: "Form IV perfect, second-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=65"
+    }
+  ]
 };

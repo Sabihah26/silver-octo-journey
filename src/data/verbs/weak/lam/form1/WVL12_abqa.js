@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 74:28",
+      arabic: "لَا تُبْقِى وَلَا تَذَرُ",
+      focusWord: "تُبْقِى",
+      lemma: "أَبْقَى",
+      use: "verb",
+      morphology: "Form IV imperfect, third-person feminine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=28"
+    }
+  ]
 };

@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 27:16",
+      arabic: "وَوَرِثَ سُلَيْمَٰنُ دَاوُۥدَ وَقَالَ يَٰٓأَيُّهَا ٱلنَّاسُ عُلِّمْنَا مَنطِقَ ٱلطَّيْرِ وَأُوتِينَا مِن كُلِّ شَىْءٍ إِنَّ هَٰذَا لَهُوَ ٱلْفَضْلُ ٱلْمُبِينُ",
+      focusWord: "وَوَرِثَ",
+      lemma: "وَرِثَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=27&verse=16"
+    }
+  ]
 };

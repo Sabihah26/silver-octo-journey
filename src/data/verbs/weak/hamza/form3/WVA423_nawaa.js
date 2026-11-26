@@ -181,5 +181,19 @@ export default {
   },
 
   audio: "",
-  notes: "Uncommon formal verb. Its root contains a medial weak و and a final hamza."
+  notes: "Uncommon formal verb. Its root contains a medial weak و and a final hamza.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 28:76",
+      arabic: "… عَلَيْهِمْ وَءَاتَيْنَٰهُ مِنَ ٱلْكُنُوزِ مَآ إِنَّ مَفَاتِحَهُۥ لَتَنُوٓأُ بِٱلْعُصْبَةِ أُو۟لِى ٱلْقُوَّةِ إِذْ قَالَ لَهُۥ قَوْمُهُۥ …",
+      focusWord: "لَتَنُوٓأُ",
+      lemma: "نَاوَأَ",
+      use: "related word",
+      morphology: "Form I imperfect, third-person feminine singular, a related verb from the same root ن-و-ء",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=76"
+    }
+  ]
 };

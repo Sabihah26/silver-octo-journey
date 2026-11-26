@@ -8,7 +8,10 @@ export function today() {
   return new Date().toISOString().split("T")[0];
 }
 
-export function loadWordOfTheDay() {
+// `list` is the verbs this user may open; a stored word outside it (e.g.
+// picked while the user had Premium) is replaced.
+export function loadWordOfTheDay(list = verbs) {
+  if (!list.length) return null;
   const raw = localStorage.getItem(KEY);
 
   if (raw) {
@@ -16,12 +19,13 @@ export function loadWordOfTheDay() {
 
     // If same day → return stored word
     if (data.date === today()) {
-      return verbs.find((v) => v.id === data.id);
+      const stored = list.find((v) => v.id === data.id);
+      if (stored) return stored;
     }
   }
 
   // Otherwise pick a new word
-  const random = verbs[Math.floor(Math.random() * verbs.length)];
+  const random = list[Math.floor(Math.random() * list.length)];
 
   const data = {
     id: random.id,

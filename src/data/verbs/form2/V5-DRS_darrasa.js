@@ -174,5 +174,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 6:105",
+      arabic: "وَكَذَٰلِكَ نُصَرِّفُ ٱلْـَٔايَٰتِ وَلِيَقُولُوا۟ دَرَسْتَ وَلِنُبَيِّنَهُۥ لِقَوْمٍ يَعْلَمُونَ",
+      focusWord: "دَرَسْتَ",
+      lemma: "دَرَّسَ",
+      use: "related word",
+      morphology: "Form I perfect, second-person masculine singular, a related verb from the same root د-ر-س",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=105"
+    }
+  ]
 };

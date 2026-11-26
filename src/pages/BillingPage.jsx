@@ -4,7 +4,9 @@ import { Link, useSearchParams } from "react-router-dom";
 import { usePremium } from "../context/PremiumContext";
 
 export default function BillingPage() {
-  const { isPremium, user, loading, hasStripeCustomer, startCheckout, openCustomerPortal, refreshPremium } = usePremium();
+  const { isPremium, isAdmin, isComplimentary, hasFullAccess, user, loading, hasStripeCustomer, startCheckout, openCustomerPortal, refreshPremium } = usePremium();
+  // Admin/complimentary access is granted in Supabase, not paid for.
+  const grantedAccess = !isPremium && !hasStripeCustomer && (isAdmin || isComplimentary);
   const [searchParams] = useSearchParams();
   const [message, setMessage] = useState("");
   const [actionLoading, setActionLoading] = useState(false);
@@ -44,7 +46,7 @@ export default function BillingPage() {
 
   return (
     <div style={pageContainer}>
-      <h1 style={title}>{isPremium ? "Premium Active" : "Go Premium"}</h1>
+      <h1 style={title}>{hasFullAccess ? "Premium Active" : "Go Premium"}</h1>
       <p style={subtitle}>
         Unlock all verbs, nouns, adverbs, examples, grammar lessons, quizzes,
         flashcards, and saved words.
@@ -64,7 +66,11 @@ export default function BillingPage() {
           <li>Premium-only study modes</li>
         </ul>
 
-        {isPremium || hasStripeCustomer ? (
+        {grantedAccess ? (
+          <p style={statusMessage}>
+            Your account has full access ({isAdmin ? "admin" : "complimentary"}). No payment needed.
+          </p>
+        ) : isPremium || hasStripeCustomer ? (
           <button
             style={primaryBtn}
             disabled={loading || actionLoading}

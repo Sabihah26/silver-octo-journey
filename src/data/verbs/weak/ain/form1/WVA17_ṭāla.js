@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: "The adjective طَوِيل means “long.” Passive forms are mainly relevant to the transitive sense “to reach or affect.”"
+  notes: "The adjective طَوِيل means “long.” Passive forms are mainly relevant to the transitive sense “to reach or affect.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 21:44",
+      arabic: "بَلْ مَتَّعْنَا هَٰٓؤُلَآءِ وَءَابَآءَهُمْ حَتَّىٰ طَالَ عَلَيْهِمُ ٱلْعُمُرُ أَفَلَا يَرَوْنَ أَنَّا نَأْتِى ٱلْأَرْضَ نَنقُصُهَا مِنْ أَطْرَافِهَآ أَفَهُمُ ٱلْغَٰلِبُونَ",
+      focusWord: "طَالَ",
+      lemma: "طَالَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=21&verse=44"
+    }
+  ]
 };

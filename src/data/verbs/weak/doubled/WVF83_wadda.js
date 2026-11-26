@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: "The imperative is uncommon; وَدَّ and اِئْدَدْ are listed variants."
+  notes: "The imperative is uncommon; وَدَّ and اِئْدَدْ are listed variants.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:109",
+      arabic: "وَدَّ كَثِيرٌ مِّنْ أَهْلِ ٱلْكِتَٰبِ لَوْ يَرُدُّونَكُم مِّنۢ …",
+      focusWord: "وَدَّ",
+      lemma: "وَدَّ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=109"
+    }
+  ]
 };

@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 41:46",
+      arabic: "مَّنْ عَمِلَ صَٰلِحًا فَلِنَفْسِهِۦ وَمَنْ أَسَآءَ فَعَلَيْهَا وَمَا رَبُّكَ بِظَلَّٰمٍ لِّلْعَبِيدِ",
+      focusWord: "أَسَآءَ",
+      lemma: "أَسَاءَ",
+      use: "verb",
+      morphology: "Form IV perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=41&verse=46"
+    }
+  ]
 };

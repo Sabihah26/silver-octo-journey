@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 36:78",
+      arabic: "وَضَرَبَ لَنَا مَثَلًا وَنَسِىَ خَلْقَهُۥ قَالَ مَن يُحْىِ ٱلْعِظَٰمَ وَهِىَ رَمِيمٌ",
+      focusWord: "وَضَرَبَ",
+      lemma: "ضَرَبَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=36&verse=78"
+    }
+  ]
 };

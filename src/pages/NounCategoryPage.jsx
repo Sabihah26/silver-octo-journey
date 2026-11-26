@@ -1,6 +1,7 @@
 // src/pages/NounCategoryPage.jsx
 import React from "react";
 import { Link } from "react-router-dom";
+import FreeTierBanner from "../components/FreeTierBanner";
 
 /* White Folder SVG Icon */
 const WhiteFolderIcon = () => (
@@ -49,6 +50,8 @@ export default function NounCategoryPage() {
 
       {/* Category Section */}
       <h1 style={{ textAlign: "center", marginBottom: 20 }}>Noun Categories</h1>
+
+      <FreeTierBanner type="noun" />
 
       <div style={gridContainer}>
         {categories.map((cat) => (

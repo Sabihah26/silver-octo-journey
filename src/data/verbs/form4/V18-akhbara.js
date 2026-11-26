@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 99:4",
+      arabic: "يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا",
+      focusWord: "أَخْبَارَهَا",
+      lemma: "أَخْبَرَ",
+      use: "related word",
+      morphology: "Noun from the same root خ-ب-ر",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=99&verse=4"
+    }
+  ]
 };

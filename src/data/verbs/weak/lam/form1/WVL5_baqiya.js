@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: "This verb is intransitive, so passive forms are not normally used."
+  notes: "This verb is intransitive, so passive forms are not normally used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:278",
+      arabic: "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱتَّقُوا۟ ٱللَّهَ وَذَرُوا۟ مَا بَقِىَ مِنَ ٱلرِّبَوٰٓا۟ إِن كُنتُم مُّؤْمِنِينَ",
+      focusWord: "بَقِىَ",
+      lemma: "بَقِيَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=278"
+    }
+  ]
 };

@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 73:6",
+      arabic: "إِنَّ نَاشِئَةَ ٱلَّيْلِ هِىَ أَشَدُّ وَطْـًٔا وَأَقْوَمُ قِيلًا",
+      focusWord: "وَطْـًٔا",
+      lemma: "وَطَّأَ",
+      use: "related word",
+      morphology: "Noun from the same root و-ط-ء",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=73&verse=6"
+    }
+  ]
 };

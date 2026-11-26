@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 12:77",
+      arabic: "… مِن قَبْلُ فَأَسَرَّهَا يُوسُفُ فِى نَفْسِهِۦ وَلَمْ يُبْدِهَا لَهُمْ قَالَ أَنتُمْ شَرٌّ مَّكَانًا وَٱللَّهُ أَعْلَمُ …",
+      focusWord: "يُبْدِهَا",
+      lemma: "أَبْدَى",
+      use: "verb",
+      morphology: "Form IV imperfect jussive, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=12&verse=77"
+    }
+  ]
 };

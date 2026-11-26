@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: "The written form أَتَاهُ means “he came to him”; the base verb is أَتَى. The distinct verb آتَى means “to give.”"
+  notes: "The written form أَتَاهُ means “he came to him”; the base verb is أَتَى. The distinct verb آتَى means “to give.”",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 74:47",
+      arabic: "حَتَّىٰٓ أَتَىٰنَا ٱلْيَقِينُ",
+      focusWord: "أَتَىٰنَا",
+      lemma: "أَتَى",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=74&verse=47"
+    }
+  ]
 };

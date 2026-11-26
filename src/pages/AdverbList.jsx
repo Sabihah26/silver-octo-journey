@@ -1,11 +1,10 @@
 // src/pages/AdverbList.jsx
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";   // ⭐ ADDED useParams
-import adverbs from "../data/Adverbs";
-import { usePremium } from "../context/PremiumContext";
+import useWordAccess from "../hooks/useWordAccess";
 
 export default function AdverbList() {
-  const { isPremium } = usePremium();
+  const { allAdverbs: adverbs, isLocked: isWordLocked } = useWordAccess();
   const { category: urlCategory } = useParams();   // ⭐ READ category from URL
 
   const [query, setQuery] = useState("");
@@ -99,7 +98,7 @@ export default function AdverbList() {
       {/* Grid */}
       <div style={styles.grid}>
         {filtered.map((a) => {
-          const isLocked = a.premium === true && !isPremium;
+          const isLocked = isWordLocked("adverb", a.id);
 
           return (
             <div key={a.id} style={styles.card}>

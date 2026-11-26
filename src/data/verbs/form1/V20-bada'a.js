@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 32:7",
+      arabic: "ٱلَّذِىٓ أَحْسَنَ كُلَّ شَىْءٍ خَلَقَهُۥ وَبَدَأَ خَلْقَ ٱلْإِنسَٰنِ مِن طِينٍ",
+      focusWord: "وَبَدَأَ",
+      lemma: "بَدَأَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=32&verse=7"
+    }
+  ]
 };

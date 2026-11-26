@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 87:3",
+      arabic: "وَٱلَّذِى قَدَّرَ فَهَدَىٰ",
+      focusWord: "فَهَدَىٰ",
+      lemma: "هَدَى",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=87&verse=3"
+    }
+  ]
 };

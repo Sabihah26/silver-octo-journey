@@ -1,8 +1,9 @@
 // src/pages/FormTopicPage.jsx
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import verbs from "../data/verbs";
 import { normalizeTopicKey } from "../utils/verbCatalog";
+import useWordAccess from "../hooks/useWordAccess";
+import WordLink from "../components/WordLink";
 
 // Convert 1–10 → I–X
 const romanMap = {
@@ -19,6 +20,7 @@ const romanMap = {
 };
 
 export default function FormTopicPage() {
+  const { allVerbs: verbs } = useWordAccess();
   const { formNumber, difficulty, topic } = useParams();
 
   // ⭐ FIX: Correct form label
@@ -60,7 +62,7 @@ export default function FormTopicPage() {
           <p style={{ color: "#9ca3af" }}>No verbs yet.</p>
         ) : (
           filtered.map((verb) => (
-            <Link
+            <WordLink type="verb" id={verb.id}
               key={verb.id}
               to={`/verb/${verb.id}`}
               style={{
@@ -86,7 +88,7 @@ export default function FormTopicPage() {
               <div style={{ fontSize: 20, marginTop: 6 }}>
                 {verb.english?.simple}
               </div>
-            </Link>
+            </WordLink>
           ))
         )}
       </div>

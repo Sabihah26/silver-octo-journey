@@ -175,5 +175,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 38:36",
+      arabic: "فَسَخَّرْنَا لَهُ ٱلرِّيحَ تَجْرِى بِأَمْرِهِۦ رُخَآءً حَيْثُ أَصَابَ",
+      focusWord: "رُخَآءً",
+      lemma: "أَرْخَى",
+      use: "related word",
+      morphology: "Noun from the same root ر-خ-و",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=38&verse=36"
+    }
+  ]
 };

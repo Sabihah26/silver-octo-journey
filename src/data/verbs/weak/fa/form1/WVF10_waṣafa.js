@@ -177,5 +177,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 37:159",
+      arabic: "سُبْحَٰنَ ٱللَّهِ عَمَّا يَصِفُونَ",
+      focusWord: "يَصِفُونَ",
+      lemma: "وَصَفَ",
+      use: "verb",
+      morphology: "Form I imperfect, third-person masculine plural",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=37&verse=159"
+    }
+  ]
 };

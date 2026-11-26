@@ -4,8 +4,8 @@ import { useLocation, Link } from "react-router-dom";
 
 import { buildVerbQuiz } from "../utils/quizEngine";
 import conjugate from "../utils/conjugate";
-import verbs from "../data/verbs";
 
+import useWordAccess from "../hooks/useWordAccess";
 import {
   getNextRecommendedVerb,
   getItemSRS,
@@ -34,6 +34,7 @@ function uniqueArabicOptions(options) {
 }
 
 export default function VerbQuiz() {
+  const { verbs } = useWordAccess();
   const location = useLocation();
 
   const [verb, setVerb] = useState(null);
@@ -62,7 +63,7 @@ export default function VerbQuiz() {
   }
 
   useEffect(() => {
-    const nextVerb = getNextRecommendedVerb();
+    const nextVerb = getNextRecommendedVerb(new Set(), verbs);
     if (!nextVerb) return;
 
     setVerb(nextVerb);
@@ -97,7 +98,7 @@ export default function VerbQuiz() {
     }
 
     setQuestions(qs);
-  }, []);
+  }, [verbs]);
 
   function shuffleWeak(correct) {
     const all = ["hollow", "defective", "assimilated", "doubled", "hamzated"];

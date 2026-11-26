@@ -180,5 +180,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 2:185",
+      arabic: "… مِّنَ ٱلْهُدَىٰ وَٱلْفُرْقَانِ فَمَن شَهِدَ مِنكُمُ ٱلشَّهْرَ فَلْيَصُمْهُ وَمَن كَانَ مَرِيضًا أَوْ عَلَىٰ سَفَرٍ فَعِدَّةٌ …",
+      focusWord: "فَلْيَصُمْهُ",
+      lemma: "صَامَ",
+      use: "verb",
+      morphology: "Form I imperfect jussive, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=185"
+    }
+  ]
 };

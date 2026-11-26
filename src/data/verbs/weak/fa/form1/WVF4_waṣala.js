@@ -179,5 +179,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 6:136",
+      arabic: "… بِزَعْمِهِمْ وَهَٰذَا لِشُرَكَآئِنَا فَمَا كَانَ لِشُرَكَآئِهِمْ فَلَا يَصِلُ إِلَى ٱللَّهِ وَمَا كَانَ لِلَّهِ فَهُوَ يَصِلُ …",
+      focusWord: "يَصِلُ",
+      lemma: "وَصَلَ",
+      use: "verb",
+      morphology: "Form I imperfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=6&verse=136"
+    }
+  ]
 };

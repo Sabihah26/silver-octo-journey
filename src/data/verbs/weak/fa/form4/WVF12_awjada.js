@@ -178,5 +178,19 @@ export default {
   },
 
   audio: "",
-  notes: ""
+  notes: "",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 18:93",
+      arabic: "حَتَّىٰٓ إِذَا بَلَغَ بَيْنَ ٱلسَّدَّيْنِ وَجَدَ مِن دُونِهِمَا قَوْمًا لَّا يَكَادُونَ يَفْقَهُونَ قَوْلًا",
+      focusWord: "وَجَدَ",
+      lemma: "أَوْجَدَ",
+      use: "related word",
+      morphology: "Form I perfect, third-person masculine singular, a related verb from the same root و-ج-د",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=18&verse=93"
+    }
+  ]
 };

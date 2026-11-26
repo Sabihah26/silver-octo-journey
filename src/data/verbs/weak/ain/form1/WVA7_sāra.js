@@ -183,5 +183,19 @@ export default {
   },
 
   audio: "",
-  notes: "The passive is mainly used impersonally or in formal constructions; it is uncommon with the ordinary intransitive meaning."
+  notes: "The passive is mainly used impersonally or in formal constructions; it is uncommon with the ordinary intransitive meaning.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 28:29",
+      arabic: "فَلَمَّا قَضَىٰ مُوسَى ٱلْأَجَلَ وَسَارَ بِأَهْلِهِۦٓ ءَانَسَ مِن جَانِبِ ٱلطُّورِ نَارًا قَالَ …",
+      focusWord: "وَسَارَ",
+      lemma: "سَارَ",
+      use: "verb",
+      morphology: "Form I perfect, third-person masculine singular",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=28&verse=29"
+    }
+  ]
 };

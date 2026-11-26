@@ -173,11 +173,12 @@ export function gradeCard(state, rating) {
 // ---------------------------
 // Top N Recommended Verbs
 // ---------------------------
-export function getTopRecommendedVerbs(count = 5) {
+// Pass `list` to limit picks to the words this user may open.
+export function getTopRecommendedVerbs(count = 5, list = verbs) {
   const data = load();
   const now = Date.now();
 
-  const scored = verbs.map((verb) => {
+  const scored = list.map((verb) => {
     const rec = data[verb.id] || {
       score: 0,
       interval: 1,
@@ -208,11 +209,11 @@ export function getTopRecommendedVerbs(count = 5) {
 // ---------------------------
 // Next recommended verb
 // ---------------------------
-export function getNextRecommendedVerb(used = new Set()) {
+export function getNextRecommendedVerb(used = new Set(), list = verbs) {
   let best = null;
   let bestScore = -Infinity;
 
-  verbs.forEach((v) => {
+  list.forEach((v) => {
     if (used.has(v.id)) return;
 
     const srs = getItemSRS(v.id);

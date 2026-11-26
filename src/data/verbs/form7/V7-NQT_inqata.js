@@ -176,5 +176,19 @@ export default {
   },
 
   audio: "",
-  notes: "Form VII is generally intransitive here, so a separate passive conjugation is not commonly used."
+  notes: "Form VII is generally intransitive here, so a separate passive conjugation is not commonly used.",
+
+  quranExamples: [
+    {
+      reference: "Qur'an 69:46",
+      arabic: "ثُمَّ لَقَطَعْنَا مِنْهُ ٱلْوَتِينَ",
+      focusWord: "لَقَطَعْنَا",
+      lemma: "اِنْقَطَعَ",
+      use: "related word",
+      morphology: "Form I perfect, first-person plural, a related verb from the same root ق-ط-ع",
+      translation: "",
+      source: "Quranic Arabic Corpus",
+      sourceUrl: "https://corpus.quran.com/wordbyword.jsp?chapter=69&verse=46"
+    }
+  ]
 };
