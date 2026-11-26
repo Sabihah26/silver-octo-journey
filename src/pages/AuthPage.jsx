@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { supabase } from "../supabase";
+import { isSupabaseConfigured, supabase } from "../supabase";
 import { usePremium } from "../context/PremiumContext";
 
 export default function AuthPage() {
@@ -99,7 +99,11 @@ export default function AuthPage() {
           {mode === "update" ? "Set a new password" : user ? "Account" : mode === "reset" ? "Reset password" : "Sign in"}
         </h1>
 
-        {mode === "update" ? (
+        {!isSupabaseConfigured ? (
+          <p role="alert" style={messageStyle}>
+            Sign-in is unavailable because Supabase is not configured for this deployment.
+          </p>
+        ) : mode === "update" ? (
           user ? (
             <form onSubmit={submit}>
               <label style={label}>New password</label>
@@ -140,7 +144,7 @@ export default function AuthPage() {
               </>
             )}
 
-            <button style={primary} type="submit" disabled={submitting || loading}>
+            <button style={primary} type="submit" disabled={!isSupabaseConfigured || submitting || loading}>
               {mode === "magic" ? "Send sign-in link" : mode === "signup" ? "Create account" : "Sign in"}
             </button>
 

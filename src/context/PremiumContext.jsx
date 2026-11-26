@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { supabase } from "../supabase";
+import { isSupabaseConfigured, supabase } from "../supabase";
 
 const PremiumContext = createContext();
 
@@ -53,7 +53,7 @@ export function PremiumProvider({ children }) {
       setIsComplimentary(false);
     };
 
-    if (!sessionUser) {
+    if (!isSupabaseConfigured || !sessionUser) {
       reset();
       return false;
     }
@@ -79,6 +79,11 @@ export function PremiumProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return undefined;
+    }
+
     let active = true;
     let refreshTimer;
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -110,6 +115,10 @@ export function PremiumProvider({ children }) {
   }, [refreshPremium]);
 
   const startCheckout = async () => {
+    if (!isSupabaseConfigured) {
+      throw new Error("Premium checkout is unavailable because Supabase is not configured.");
+    }
+
     if (!userRef.current) {
       window.location.assign("/auth?redirect=/billing");
       return;
@@ -128,6 +137,10 @@ export function PremiumProvider({ children }) {
   };
 
   const openCustomerPortal = async () => {
+    if (!isSupabaseConfigured) {
+      throw new Error("The customer portal is unavailable because Supabase is not configured.");
+    }
+
     if (!userRef.current) {
       window.location.assign("/auth?redirect=/billing");
       return;
